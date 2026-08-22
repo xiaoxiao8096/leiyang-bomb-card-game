@@ -2405,7 +2405,8 @@
     <h3 id="shopTitle">牌桌商店</h3>
     <button class="dialog-close" data-close-dialog="shopDialog" aria-label="关闭商店">×</button>
   </div>
-  <p id="shopIntro" style="font-size:11px;color:#9fb9dd;margin-bottom:12px;"></p>
+  <div class="shop-mode-tabs" id="shopModeTabs"></div>
+  <div class="shop-category-tabs" id="shopCategoryTabs"></div>
   <div class="dialog-body shop-grid" id="shopGrid"></div>
 </dialog>
 
@@ -2570,6 +2571,9 @@
     ,{ id:'mode-ddz-river', type:'modeTheme', mode:'doudizhu', name:'江山牌局', icon:'江', price:3200, preview:'linear-gradient(135deg,#0c3444,#75b6bb)' }
     ,{ id:'mode-pdk-spring', type:'modeTheme', mode:'paodekuai', name:'春风跑道', icon:'春', price:2800, preview:'linear-gradient(135deg,#0d3b3f,#8dd2ad)' }
     ,{ id:'mode-pdk-night', type:'modeTheme', mode:'paodekuai', name:'夜驰蓝湾', icon:'夜', price:3100, preview:'linear-gradient(135deg,#081630,#3b87c5)' }
+    ,{ id:'gm-effect-gold', type:'gmEffect', mode:'gomoku', name:'金线落子', icon:'✦', price:0, preview:'radial-gradient(circle,#fff2a3 0 9%,#d6a03d 10% 22%,#17251f 23% 100%)' }
+    ,{ id:'gm-effect-ink', type:'gmEffect', mode:'gomoku', name:'墨痕落子', icon:'墨', price:1200, preview:'radial-gradient(circle,#e8eadb 0 8%,#1b2422 9% 28%,#06100f 29% 100%)' }
+    ,{ id:'gm-effect-vermilion', type:'gmEffect', mode:'gomoku', name:'朱砂连珠', icon:'朱', price:1600, preview:'radial-gradient(circle,#ffd77b 0 8%,#bd3d27 9% 28%,#34110d 29% 100%)' }
   ];
 
   let N = ['Amy', '啊哦额一五', 'Tomie', '我不坏'];
@@ -2621,6 +2625,8 @@
   profile.modeThemes = { doudizhu:'', paodekuai:'', changsha:'', zhuanzhuan:'', gomoku:'', ...(profile.modeThemes || {}) };
   profile.modeSkins = { bomb:{frame:''}, doudizhu:{frame:''}, paodekuai:{frame:''}, changsha:{frame:''}, zhuanzhuan:{frame:''}, gomoku:{frame:''}, ...(profile.modeSkins || {}) };
   Object.keys(profile.modeSkins).forEach(k=>profile.modeSkins[k]={frame:'',...(profile.modeSkins[k]||{})});
+  profile.gmEffect = profile.gmEffect || 'gm-effect-gold';
+  if (!profile.ownedSkins.includes('gm-effect-gold')) profile.ownedSkins.push('gm-effect-gold');
   profile.aiDelay = [420,720,1150].includes(Number(profile.aiDelay)) ? Number(profile.aiDelay) : 720;
   profile.hintEnabled = profile.hintEnabled !== false;
   profile.roundHistory = Array.isArray(profile.roundHistory) ? profile.roundHistory.slice(-60) : [];
@@ -4105,26 +4111,25 @@
 
   const MJ_SKIN_CLASS = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon' };
   function renderShop() {
-    const shopCtx = window.shopContext || 'all';
-    const shopMeta={
-      all:{title:'炸弹商店',intro:'这里只展示炸弹专属头像框、炸弹牌桌和扑克三玩法共用的牌面套装。'},
-      doudizhu:{title:'斗地主商店',intro:'只展示斗地主专属头像框、斗地主桌面主题和扑克三玩法共用的牌面套装。'},
-      paodekuai:{title:'跑得快商店',intro:'只展示跑得快专属头像框、跑得快桌面主题和扑克三玩法共用的牌面套装。'},
-      changsha:{title:'长沙麻将商店',intro:'只展示长沙麻将专属头像框、长沙桌面主题和长沙/转转共用的麻将牌面。'},
-      zhuanzhuan:{title:'转转麻将商店',intro:'只展示转转麻将专属头像框、转转桌面主题和长沙/转转共用的麻将牌面。'},
-      gomoku:{title:'五子棋商店',intro:'只展示五子棋专属头像框、棋盘与棋子主题，不混入任何牌类商品。'}
-    };
+    const shopCtx = window.shopContext || 'all',modeTabs=[['all','炸弹'],['doudizhu','斗地主'],['paodekuai','跑得快'],['changsha','长沙麻将'],['zhuanzhuan','转转麻将'],['gomoku','五子棋']];
     const allowed={
-      all:it=>it.type==='modeFrame'&&it.mode==='bomb'||it.type==='table'||it.type==='card',
-      doudizhu:it=>(it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='doudizhu'||it.type==='card',
-      paodekuai:it=>(it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='paodekuai'||it.type==='card',
-      changsha:it=>(it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='changsha'||it.type==='mjtile',
-      zhuanzhuan:it=>(it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='zhuanzhuan'||it.type==='mjtile',
-      gomoku:it=>(it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='gomoku'
+      all:it=>(it.type==='modeFrame'&&it.mode==='bomb')||it.type==='frame'||it.type==='table'||it.type==='card',
+      doudizhu:it=>((it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='doudizhu')||it.type==='card',
+      paodekuai:it=>((it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='paodekuai')||it.type==='card',
+      changsha:it=>((it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='changsha')||it.type==='mjtile',
+      zhuanzhuan:it=>((it.type==='modeFrame'||it.type==='modeTheme')&&it.mode==='zhuanzhuan')||it.type==='mjtile',
+      gomoku:it=>((it.type==='modeFrame'||it.type==='modeTheme'||it.type==='gmEffect')&&it.mode==='gomoku')
     };
-    const ctx=shopMeta[shopCtx]||shopMeta.all;
-    $('shopTitle').textContent=ctx.title;$('shopIntro').textContent=ctx.intro;
-    const items = SHOP_ITEMS.filter(allowed[shopCtx]||allowed.all).sort((a,b)=>((a.type==='modeFrame')?0:1)-((b.type==='modeFrame')?0:1));
+    const categoryOf=item=>item.type==='frame'||item.type==='modeFrame'?'frame':item.type==='card'||item.type==='mjtile'?'face':item.type==='gmEffect'?'effect':'table';
+    const categoryLabel={frame:'头像框',face:shopCtx==='gomoku'?'棋子':'牌面',table:shopCtx==='gomoku'?'棋盘':'桌面',effect:'特效'};
+    const allItems=SHOP_ITEMS.filter(allowed[shopCtx]||allowed.all),availableCats=['frame','face','table','effect'].filter(cat=>allItems.some(it=>categoryOf(it)===cat));
+    let shopCategory=window.shopCategory||availableCats[0]||'frame';if(!availableCats.includes(shopCategory))shopCategory=availableCats[0]||'frame';window.shopCategory=shopCategory;
+    $('shopTitle').textContent='商店';
+    $('shopModeTabs').innerHTML=modeTabs.map(([id,label])=>`<button type="button" class="shop-tab ${shopCtx===id?'active':''}" data-shop-mode="${id}">${label}</button>`).join('');
+    $('shopCategoryTabs').innerHTML=availableCats.map(id=>`<button type="button" class="shop-category ${shopCategory===id?'active':''}" data-shop-category="${id}">${categoryLabel[id]}</button>`).join('');
+    $('shopModeTabs').querySelectorAll('[data-shop-mode]').forEach(btn=>btn.onclick=()=>{window.shopContext=btn.dataset.shopMode;window.shopCategory='frame';renderShop();});
+    $('shopCategoryTabs').querySelectorAll('[data-shop-category]').forEach(btn=>btn.onclick=()=>{window.shopCategory=btn.dataset.shopCategory;renderShop();});
+    const items = allItems.filter(item=>categoryOf(item)===shopCategory).sort((a,b)=>String(a.name).localeCompare(String(b.name),'zh-CN'));
     $('shopGrid').innerHTML = items.map(item => {
       const owned = profile.ownedSkins.includes(item.id);
       const equipped = item.type==='modeTheme' ? profile.modeThemes[item.mode] === item.id : item.type==='modeFrame' ? profile.modeSkins?.[item.mode]?.frame===item.id : profile.skins[item.type] === item.id;
@@ -4135,11 +4140,14 @@
       } else if (item.type === 'mjtile') {
         preview = `<span class="mj-prev-row ${MJ_SKIN_CLASS[item.id]||''}"><span class="mj-tile mj-prev-tile">${mjTileHTML({suit:'万',n:5})}</span><span class="mj-tile mj-prev-tile">${mjTileHTML({suit:'条',n:1})}</span><span class="mj-tile mj-prev-tile">${mjTileHTML({suit:'中'})}</span></span>`;
         previewStyle = 'background:rgba(4,18,32,.55)';
+      } else if(item.type==='frame'||item.type==='modeFrame') {
+        preview = `<span class="shop-avatar-preview" style="background:${item.preview}"><img src="${profile.playerAvatar}" alt="头像"></span>`;
+        previewStyle = 'background:rgba(6,17,31,.7)';previewExtra='avatar-frame-preview';
       } else {
         preview = item.icon;
         previewStyle = `background:${item.preview};filter:${item.filter||'none'}`;
       }
-      const typeLabel = { table:'炸弹牌桌', frame:'旧版通用头像框', card:'扑克三玩法共用牌面', mjtile:'麻将两玩法共用牌面', modeFrame:(({bomb:'炸弹',doudizhu:'斗地主',paodekuai:'跑得快',changsha:'长沙麻将',zhuanzhuan:'转转麻将',gomoku:'五子棋'}[item.mode])+'专属头像框') }[item.type] || ((({doudizhu:'斗地主',paodekuai:'跑得快',changsha:'长沙麻将',zhuanzhuan:'转转麻将',gomoku:'五子棋'}[item.mode])||'玩法') + '专属主题');
+      const typeLabel = categoryLabel[categoryOf(item)];
       return `<button class="shop-card ${equipped ? 'equipped' : ''}" data-shop-id="${item.id}" type="button">
         <span class="shop-preview ${previewExtra}" style="${previewStyle}">${preview}</span>
         <strong>${item.name}</strong>
@@ -4156,6 +4164,7 @@
           profile.ownedSkins.push(item.id);
         }
         if(item.type==='modeTheme')profile.modeThemes[item.mode] = item.id;
+        else if(item.type==='gmEffect')profile.gmEffect=item.id;
         else if(item.type==='modeFrame')profile.modeSkins[item.mode].frame=item.id;
         else profile.skins[item.type] = item.id;
         saveProfile();
@@ -5080,9 +5089,12 @@
   function gmPointValue(board,r,c,color){if(board[r][c])return -Infinity;board[r][c]=color;let score=0;for(const [dr,dc] of GM_DIRS){const a=gmRun(board,r,c,dr,dc,color),b=gmRun(board,r,c,-dr,-dc,color),n=1+a+b;let open=0;const r1=r+(a+1)*dr,c1=c+(a+1)*dc,r2=r-(b+1)*dr,c2=c-(b+1)*dc;if(gmInside(r1,c1)&&!board[r1][c1])open++;if(gmInside(r2,c2)&&!board[r2][c2])open++;if(n>=5)score+=2000000;else if(n===4)score+=open===2?220000:36000;else if(n===3)score+=open===2?11000:2100;else if(n===2)score+=open===2?460:95;else score+=open?16:3;}board[r][c]=0;const center=7-Math.max(Math.abs(r-7),Math.abs(c-7));return score+center*3;}
   function gmAIPick(){const board=gm.board,options=[];for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,2))return {r,c,reason:'成五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,1))return {r,c,reason:'挡五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]){const own=gmPointValue(board,r,c,2),block=gmPointValue(board,r,c,1),near=GM_DIRS.some(([dr,dc])=>[1,2].some(k=>[[r+dr*k,c+dc*k],[r-dr*k,c-dc*k]].some(([x,y])=>gmInside(x,y)&&board[x][y])));if(near||!gm.moves)options.push({r,c,score:own*1.04+block*1.12+Math.random()*.6});}return options.sort((a,b)=>b.score-a.score)[0]||{r:7,c:7};}
   function gmStart(){clearTimeout(gmTimer);gmSelectedMove=null;const aiName=shuffle(allRoles().filter(n=>n!==profile.playerName))[0]||'Tomie';gm={phase:'play',turn:0,names:[profile.playerName,aiName],board:Array.from({length:GM_SIZE},()=>Array(GM_SIZE).fill(0)),moves:0,last:null,roundBase:gmBase,message:`${profile.playerName} 执黑先行`,firstCenter:false};$('gmResult').classList.add('hidden');renderGM();}
+  function gmVisual(kind,r,c){const table=document.querySelector('#gmScreen .gm-table');if(!table)return;const fx=document.createElement('i');fx.className=`gm-vfx ${kind} ${profile.gmEffect||'gm-effect-gold'}`;fx.style.setProperty('--gx',`${7.8+c*6.02}%`);fx.style.setProperty('--gy',`${9.02+r*5.55}%`);table.append(fx);setTimeout(()=>fx.remove(),kind==='finish'?1500:900);}
   function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase;profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${winner===0?'执黑':'执白'}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();playModeCinema('gomoku','finish',winner===0?'五 子 连 珠':'棋 局 落 定');modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${winner===0?'执黑':'执白'}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
-  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.last={r,c};if(id===0&&gm.moves===1&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${line.count>=4?' · 四连威胁':note?` · ${note}`:''}`;AudioSys.fx('stone');if(line.count>=5)return gmSettle(id);if(line.count>=4){playModeCinema('gomoku','threat','四 连');modeEventReact('gm',gm.names,'gomoku','threat');}gm.turn=id===0?1:0;renderGM();if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
-  function renderGM(){if(!gm)return;$('gmBeanCount').textContent=profile.beans.toLocaleString();$('gmBaseLabel').textContent=`底注 ${gm.roundBase.toLocaleString()}`;const turnHint=gm.phase==='play'?(gm.turn===0?(gmSelectedMove?'再次点击确认落子':'轮到你落子 · 双击确认'):`${gm.names[1]} 正在推演`):'';$('gmStatus').textContent=turnHint?`${gm.message} · ${turnHint}`:gm.message;for(let id=0;id<2;id++){$(`gmName${id}`).textContent=gm.names[id];$(`gmAvatar${id}`).src=id===0?profile.playerAvatar:AVATAR_LIBRARY[gm.names[id]];$(`gmSeat${id}`).classList.toggle('active',gm.phase==='play'&&gm.turn===id);}$('gmGrid').innerHTML='<i class="gm-star s1"></i><i class="gm-star s2"></i><i class="gm-star s3"></i><i class="gm-star s4"></i><i class="gm-star s5"></i>'+gm.board.map((row,r)=>row.map((v,c)=>`<button class="gm-cell ${gm.last?.r===r&&gm.last?.c===c?'last':''} ${gmSelectedMove?.r===r&&gmSelectedMove?.c===c?'selected':''}" data-gm-r="${r}" data-gm-c="${c}" ${gm.phase!=='play'||gm.turn!==0||v?'disabled':''}>${v?`<i class="gm-stone ${v===1?'black':'white'}"></i>`:''}</button>`).join('')).join('');$('gmGrid').querySelectorAll('[data-gm-r]').forEach(cell=>cell.onclick=()=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC),same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();});$('gmBaseSelect').disabled=gm.moves>0;$('gmCustomBase').disabled=gm.moves>0;}
+  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.last={r,c};if(id===0&&gm.moves===1&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${line.count>=4?' · 四连威胁':note?` · ${note}`:''}`;AudioSys.fx('stone');gmVisual('land',r,c);if(line.count>=5){gmVisual('finish',r,c);return gmSettle(id);}if(line.count>=4){gmVisual('threat',r,c);playModeCinema('gomoku','threat','四 连');modeEventReact('gm',gm.names,'gomoku','threat');}gm.turn=id===0?1:0;renderGM();if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
+  function renderGM(){if(!gm)return;$('gmBeanCount').textContent=profile.beans.toLocaleString();$('gmBaseLabel').textContent=`底注 ${gm.roundBase.toLocaleString()}`;const turnHint=gm.phase==='play'?(gm.turn===0?(gmSelectedMove?'再次点击确认落子':'轮到你落子 · 双击确认'):`${gm.names[1]} 正在推演`):'';$('gmStatus').textContent=turnHint?`${gm.message} · ${turnHint}`:gm.message;for(let id=0;id<2;id++){$(`gmName${id}`).textContent=gm.names[id];$(`gmAvatar${id}`).src=id===0?profile.playerAvatar:AVATAR_LIBRARY[gm.names[id]];$(`gmSeat${id}`).classList.toggle('active',gm.phase==='play'&&gm.turn===id);}
+    const point=(r,c)=>`left:${7.8+c*6.02}%;top:${9.02+r*5.55}%`;const stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');
+    $('gmGrid').innerHTML=stars+gm.board.map((row,r)=>row.map((v,c)=>`<button class="gm-cell ${gm.last?.r===r&&gm.last?.c===c?'last':''} ${gmSelectedMove?.r===r&&gmSelectedMove?.c===c?'selected':''}" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}" ${gm.phase!=='play'||gm.turn!==0||v?'disabled':''}>${v?`<i class="gm-stone ${v===1?'black':'white'}"></i>`:''}</button>`).join('')).join('');$('gmGrid').querySelectorAll('[data-gm-r]').forEach(cell=>cell.onclick=()=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC),same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();});$('gmBaseSelect').disabled=gm.moves>0;$('gmCustomBase').disabled=gm.moves>0;}
   function gmApplyBase(){const select=$('gmBaseSelect');if(select.value==='custom'){$('gmCustomBase').classList.remove('hidden');gmBase=Math.max(50,Math.min(1000000,Number($('gmCustomBase').value)||200));}else{$('gmCustomBase').classList.add('hidden');gmBase=Number(select.value);}base=gmBase;localStorage.setItem('ly_base',String(base));if(!gm||gm.moves===0){if(gm)gm.roundBase=gmBase;renderGM();}}
   function enterGomoku(){clearTimeout(aiTimer);clearTimeout(ddzTimer);clearTimeout(pdkTimer);clearTimeout(mjTimer);clearTimeout(gmTimer);$('lobbyScreen').classList.add('hidden-view');$('app').classList.add('hidden-view');$('ddzScreen').classList.add('hidden-view');$('pdkScreen').classList.add('hidden-view');$('mjScreen').classList.add('hidden-view');$('gmScreen').classList.remove('hidden-view');$('gmBaseSelect').value=String([50,100,200,500,1000].includes(base)?base:200);gmBase=base;applySkins();gmStart();}
   $('gmNewBtn').onclick=gmStart;$('gmRestartBtn').onclick=gmStart;$('gmAgainBtn').onclick=gmStart;$('gmLobbyBtn').onclick=showLobby;$('gmShopBtn').onclick=()=>{window.shopContext='gomoku';renderShop();$('shopDialog').showModal();};$('gmRecordBtn').onclick=()=>openModeRecord('gomoku');$('gmSettingBtn').onclick=()=>$('settingBtn').click();$('gmRuleBtn').onclick=()=>openModeRule('gomoku');$('gmHintBtn').onclick=()=>{if(!gm||gm.phase!=='play'||gm.turn!==0)return;const candidates=[];for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!gm.board[r][c])candidates.push({r,c,score:gmPointValue(gm.board,r,c,1)*1.08+gmPointValue(gm.board,r,c,2)*1.15});const best=candidates.sort((a,b)=>b.score-a.score)[0];if(best){gmSelectedMove={r:best.r,c:best.c};gm.message=`提示：建议落在 ${String.fromCharCode(65+best.c)}${best.r+1}，再次点击确认`;renderGM();}};$('gmBaseSelect').onchange=gmApplyBase;$('gmCustomBase').onchange=gmApplyBase;setupModeChat('gm',()=>gm?.names||[profile.playerName,'AI'],'gomoku');
@@ -5099,11 +5111,22 @@
     @keyframes modeGoldPulse{50%{box-shadow:0 0 0 2px rgba(255,223,126,.9),0 0 28px rgba(255,191,45,.42)}}
     #shopDialog .shop-grid{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:12px}
     #shopDialog .shop-card{min-height:176px;text-align:left}
+    #shopDialog{width:min(860px,94vw);max-height:88vh;padding:18px 20px 20px;overflow:auto}
+    #shopDialog .shop-mode-tabs,#shopDialog .shop-category-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 10px}
+    #shopDialog .shop-tab,#shopDialog .shop-category{border:1px solid rgba(152,186,226,.32);border-radius:999px;background:rgba(3,18,36,.76);color:#b9d3ef;padding:7px 12px;font-size:12px;font-weight:800;cursor:pointer;transition:transform .16s ease,background .16s ease,color .16s ease}
+    #shopDialog .shop-tab.active{background:linear-gradient(135deg,#c99835,#f1d17a);color:#1f1708;border-color:#f6df9c;box-shadow:0 0 14px rgba(237,187,71,.36)}
+    #shopDialog .shop-category{padding:5px 11px;color:#92b6db}
+    #shopDialog .shop-category.active{background:#174d76;color:#f6deb0;border-color:#8fc5ee}
+    #shopDialog .shop-tab:active,#shopDialog .shop-category:active{transform:scale(.96)}
+    #shopDialog .shop-card{padding:10px;border:1px solid rgba(113,155,198,.35);border-radius:13px;background:linear-gradient(145deg,rgba(14,39,67,.96),rgba(4,19,39,.98))}
+    #shopDialog .shop-preview.avatar-frame-preview{display:grid;place-items:center;overflow:hidden}
+    #shopDialog .shop-avatar-preview{display:grid;place-items:center;width:74px;height:74px;padding:5px;border-radius:50%;box-shadow:0 0 0 3px rgba(244,210,128,.8),0 5px 16px rgba(0,0,0,.48)}
+    #shopDialog .shop-avatar-preview img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #061a2e}
     #mjScreen .mj-table{--mj-table-art:url('assets/mahjong_table_xiang_v2.png');background:#081b20 url('assets/mahjong_table_xiang_v2.png') center/cover no-repeat}
     #mjScreen.mj-theme-redzhong .mj-table{background:#250b10 url('assets/mahjong_table_redcourtyard_v2.png') center/cover no-repeat}
     #mjScreen.mj-theme-ebony .mj-table{background:#111519 url('assets/mahjong_table_ebony_v2.png') center/cover no-repeat}
-    #mjScreen .mj-table::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(7,55,48,.03) 0%,rgba(0,8,10,.58) 92%);z-index:0}
-    #mjScreen .mj-board{background:linear-gradient(145deg,rgba(8,53,48,.94),rgba(3,27,27,.9));box-shadow:inset 0 0 0 1px rgba(236,208,127,.62),inset 0 0 54px rgba(0,0,0,.31),0 18px 34px rgba(0,0,0,.54)}
+    #mjScreen .mj-table::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,4,6,.05),rgba(0,4,6,.18));z-index:0}
+    #mjScreen .mj-board{background:transparent!important;border:0!important;box-shadow:none!important}
     #mjScreen .mj-zone{background:linear-gradient(145deg,rgba(8,36,34,.76),rgba(30,69,62,.54));border-color:rgba(225,194,111,.32)}
     #mjScreen #mjZone0{min-width:385px}
     #mjScreen #mjRiver0{grid-template-columns:repeat(9,39px);grid-auto-rows:54px;gap:0;justify-content:start}
@@ -5127,19 +5150,28 @@
     #mjScreen #mjMeld1 .mj-zone-meld,#mjScreen #mjMeld2 .mj-zone-meld,#mjScreen #mjMeld3 .mj-zone-meld{gap:0;filter:drop-shadow(0 3px 3px rgba(0,0,0,.34))}
     #mjScreen #mjMeld1 .mj-tile,#mjScreen #mjMeld3 .mj-tile{width:31px;height:43px;min-width:31px}
     #mjScreen #mjMeld2 .mj-tile{width:35px;height:49px;min-width:35px}
-    #gmScreen .gm-table{background:#071b1a radial-gradient(ellipse at 50% 46%,rgba(36,86,70,.34),transparent 46%),url('assets/gomoku_board_blackgold.png') center/cover no-repeat}
-    #gmScreen .gm-center{padding:19px;background:linear-gradient(145deg,#1b211c 0%,#0b1211 53%,#293126 100%);border:1px solid rgba(232,195,101,.82);border-radius:20px;box-shadow:0 0 0 4px rgba(27,21,12,.98),0 0 0 6px rgba(201,159,73,.67),0 26px 50px rgba(0,0,0,.66),inset 0 1px rgba(255,236,167,.22),inset 0 0 45px rgba(0,0,0,.52)}
-    #gmScreen .gm-board{position:relative;background:linear-gradient(135deg,#392816,#1b1510 45%,#513a1f);border:10px solid #6d4d26;border-radius:9px;box-shadow:inset 0 0 0 2px rgba(253,215,125,.45),inset 0 0 30px rgba(18,10,3,.62),0 12px 22px rgba(0,0,0,.43)}
-    #gmScreen .gm-board::before{content:'';position:absolute;inset:5px;pointer-events:none;border:1px solid rgba(255,227,151,.37);box-shadow:inset 0 0 14px rgba(255,230,156,.12);border-radius:4px;z-index:3}
-    #gmScreen .gm-grid{isolation:isolate;background-color:#d5ae60;background-image:linear-gradient(rgba(53,31,10,.94) 0 2px,transparent 2px),linear-gradient(90deg,rgba(53,31,10,.94) 0 2px,transparent 2px),repeating-linear-gradient(7deg,rgba(255,238,183,.13) 0 1px,transparent 1px 6px),radial-gradient(circle at 45% 37%,#ffe8aa 0%,#d9af62 56%,#9b6632 100%);background-size:calc(100% / 14) calc(100% / 14),calc(100% / 14) calc(100% / 14),auto,auto;background-position:3.5714% 3.5714%,3.5714% 3.5714%,0 0,0 0;box-shadow:inset 0 0 26px rgba(67,38,11,.5),inset 0 1px rgba(255,248,203,.72)}
-    #gmScreen .gm-star{width:8px;height:8px;background:#2d1809;border:1px solid rgba(255,230,157,.42);border-radius:50%;box-shadow:0 1px 1px rgba(255,240,187,.5),inset 0 1px 1px #000;z-index:5;transform:translate(-50%,-50%)}
-    #gmScreen .gm-cell{z-index:6}
+    #gmScreen .gm-table{background:#06110f url('assets/gomoku_board_blackgold.png') center/cover no-repeat}
+    #gmScreen .gm-center{inset:0!important;width:auto;height:auto;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;transform:none!important}
+    #gmScreen .gm-board{position:relative;width:100%;height:100%;background:transparent;border:0;border-radius:0;box-shadow:none}
+    #gmScreen .gm-board::before{display:none}
+    #gmScreen .gm-grid{position:absolute;inset:0;display:block;isolation:isolate;background:none;box-shadow:none}
+    #gmScreen .gm-star{position:absolute;width:8px;height:8px;background:#b88945;border:1px solid rgba(255,236,178,.65);border-radius:50%;box-shadow:0 1px 2px #000;z-index:5;transform:translate(-50%,-50%)}
+    #gmScreen .gm-cell{position:absolute;display:flex;align-items:center;justify-content:center;width:4.2%;aspect-ratio:1/1;padding:0;border:0;background:transparent;z-index:6;transform:translate(-50%,-50%)}
     #gmScreen .gm-stone.black{background:radial-gradient(circle at 32% 28%,#586360 0%,#1b2524 28%,#020404 78%);box-shadow:inset -3px -4px 8px #000,inset 3px 3px 7px rgba(255,255,255,.25),0 4px 7px rgba(0,0,0,.56)}
     #gmScreen .gm-stone.white{background:radial-gradient(circle at 32% 25%,#fff 0%,#e9e7d5 43%,#a9ad9e 100%);box-shadow:inset -3px -4px 7px rgba(78,82,73,.5),inset 3px 3px 7px rgba(255,255,255,.95),0 4px 7px rgba(0,0,0,.48)}
     #gmScreen .gm-cell.last .gm-stone{animation:gmStoneLand .34s cubic-bezier(.23,1,.32,1) both}
     #gmScreen .gm-cell.last::before{content:'';position:absolute;inset:8%;border:2px solid rgba(255,229,125,.94);border-radius:50%;animation:gmLandRing .7s ease-out both;pointer-events:none}
     @keyframes gmStoneLand{from{transform:scale(1.45);filter:brightness(1.8)}to{transform:scale(1);filter:brightness(1)}}
     @keyframes gmLandRing{from{transform:scale(.55);opacity:1}to{transform:scale(1.65);opacity:0}}
+    #gmScreen .gm-vfx{position:absolute;left:var(--gx);top:var(--gy);z-index:20;pointer-events:none;transform:translate(-50%,-50%);border-radius:50%}
+    #gmScreen .gm-vfx.land{width:18px;height:18px;border:2px solid #f4ca61;box-shadow:0 0 18px #f6cc67;animation:gmVfxLand .85s ease-out both}
+    #gmScreen .gm-vfx.threat{width:26px;height:26px;border:3px solid #e57e32;box-shadow:0 0 28px rgba(233,96,36,.9);animation:gmVfxThreat 1.1s ease-out both}
+    #gmScreen .gm-vfx.finish{width:42px;height:42px;background:radial-gradient(circle,#fff5b0 0 8%,#e7a63f 9% 24%,transparent 25%);box-shadow:0 0 46px 16px rgba(250,183,52,.58);animation:gmVfxFinish 1.45s cubic-bezier(.16,.9,.2,1) both}
+    #gmScreen .gm-vfx.gm-effect-ink{border-color:#d9e7dd;box-shadow:0 0 23px rgba(194,232,210,.68)}
+    #gmScreen .gm-vfx.gm-effect-vermilion{border-color:#f4bd62;box-shadow:0 0 25px rgba(203,52,34,.82)}
+    @keyframes gmVfxLand{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(-50%,-50%) scale(4.5);opacity:0}}
+    @keyframes gmVfxThreat{0%{transform:translate(-50%,-50%) scale(.5);opacity:1}55%{transform:translate(-50%,-50%) scale(4);opacity:.84}100%{transform:translate(-50%,-50%) scale(6);opacity:0}}
+    @keyframes gmVfxFinish{0%{transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:0}20%{opacity:1}100%{transform:translate(-50%,-50%) scale(10) rotate(165deg);opacity:0}}
     #ddzScreen.mode-theme-ddz-lantern .ddz-table{background:radial-gradient(ellipse at center,rgba(140,65,17,.34),transparent 56%),linear-gradient(155deg,#301008,#5c210d 54%,#210a07)!important}
     #ddzScreen.mode-theme-ddz-river .ddz-table{background:radial-gradient(ellipse at center,rgba(89,163,165,.28),transparent 55%),linear-gradient(155deg,#062b39,#105c69 54%,#082933)!important}
     #pdkScreen.mode-theme-pdk-spring .ddz-table{background:radial-gradient(ellipse at center,rgba(143,213,165,.23),transparent 56%),linear-gradient(155deg,#083733,#19755b 52%,#062e2e)!important}
