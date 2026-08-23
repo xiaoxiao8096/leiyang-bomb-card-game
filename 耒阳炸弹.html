@@ -1883,6 +1883,22 @@
       #gmScreen .mode-chat-panel { top:12px !important; right:7px !important; width:154px; height:134px; }
       #gmScreen .gm-seat.right { top:52%; }
     }
+    /* 仅补齐原本无反馈的通用工具按钮与聊天发送按钮；既有金色/蓝色主动作按钮不覆盖。 */
+    @media(hover:hover) {
+      #ddzScreen .ddz-tool:hover,#pdkScreen .ddz-tool:hover,#mjScreen .ddz-tool:hover,#gmScreen .ddz-tool:hover {
+        transform:translateY(-1px); border-color:rgba(250,211,104,.9); color:#fff7d4;
+        background:linear-gradient(145deg,rgba(232,183,65,.28),rgba(20,67,106,.74));
+        box-shadow:0 0 0 1px rgba(255,231,154,.18) inset,0 0 14px rgba(226,169,49,.34),0 5px 11px rgba(0,0,0,.2);
+      }
+      #ddzChatSend:hover,#pdkChatSend:hover,#mjChatSend:hover,#gmChatSend:hover {
+        transform:translateY(-1px); filter:brightness(1.13); color:#fff6ca;
+        background:linear-gradient(145deg,#f1c45d,#a65d19); box-shadow:0 0 12px rgba(245,193,72,.52),0 3px 8px rgba(0,0,0,.26);
+      }
+    }
+    #ddzScreen .ddz-tool:focus-visible,#pdkScreen .ddz-tool:focus-visible,#mjScreen .ddz-tool:focus-visible,#gmScreen .ddz-tool:focus-visible,
+    #ddzChatSend:focus-visible,#pdkChatSend:focus-visible,#mjChatSend:focus-visible,#gmChatSend:focus-visible { outline:2px solid #ffe48a; outline-offset:2px; }
+    #ddzScreen .ddz-tool:active,#pdkScreen .ddz-tool:active,#mjScreen .ddz-tool:active,#gmScreen .ddz-tool:active,
+    #ddzChatSend:active,#pdkChatSend:active,#mjChatSend:active,#gmChatSend:active { transform:translateY(1px) scale(.97); }
     /* 麻将固定桌面本体：牌墙、牌河、副露、手牌均是桌面上的真实分区，不以场景海报代替牌局结构。 */
     #mjScreen .mj-table {
       --mj-rail:#3b2817; --mj-rail-hi:#8b6940; --mj-metal:#d9ad5c; --mj-felt:#154f47; --mj-felt-deep:#082c2c;
