@@ -3555,7 +3555,8 @@
     g.cap[g.t[id]] += n;
     g.p[id].cap += n;
     if (n >= 25) AudioSys.fx('win');
-    if (n >= 25) playCinema(`收 ${n} 分`, 'fifty');
+    // 全民特效只属于玩家所在分队的收分时刻；对方收分仍正常计分和音效，但不占用玩家画面。
+    if (n >= 25 && g.t[id] === g.t[0]) playCinema(`收 ${n} 分`, 'fifty');
     return n;
   }
 
@@ -5199,11 +5200,13 @@
   function gmPointValue(board,r,c,color){if(board[r][c])return -Infinity;board[r][c]=color;let score=0;for(const [dr,dc] of GM_DIRS){const a=gmRun(board,r,c,dr,dc,color),b=gmRun(board,r,c,-dr,-dc,color),n=1+a+b;let open=0;const r1=r+(a+1)*dr,c1=c+(a+1)*dc,r2=r-(b+1)*dr,c2=c-(b+1)*dc;if(gmInside(r1,c1)&&!board[r1][c1])open++;if(gmInside(r2,c2)&&!board[r2][c2])open++;if(n>=5)score+=2000000;else if(n===4)score+=open===2?220000:36000;else if(n===3)score+=open===2?11000:2100;else if(n===2)score+=open===2?460:95;else score+=open?16:3;}board[r][c]=0;const center=7-Math.max(Math.abs(r-7),Math.abs(c-7));return score+center*3;}
   function gmAIPick(){const board=gm.board,options=[];for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,2))return {r,c,reason:'成五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,1))return {r,c,reason:'挡五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]){const own=gmPointValue(board,r,c,2),block=gmPointValue(board,r,c,1),near=GM_DIRS.some(([dr,dc])=>[1,2].some(k=>[[r+dr*k,c+dc*k],[r-dr*k,c-dc*k]].some(([x,y])=>gmInside(x,y)&&board[x][y])));if(near||!gm.moves)options.push({r,c,score:own*1.04+block*1.12+Math.random()*.6});}return options.sort((a,b)=>b.score-a.score)[0]||{r:7,c:7};}
   function gmStart(){clearTimeout(gmTimer);gmSelectedMove=null;const aiName=shuffle(allRoles().filter(n=>n!==profile.playerName))[0]||'Tomie';gm={phase:'play',turn:0,names:[profile.playerName,aiName],board:Array.from({length:GM_SIZE},()=>Array(GM_SIZE).fill(0)),moves:0,last:null,roundBase:gmBase,message:`${profile.playerName} 执黑先行`,firstCenter:false};$('gmResult').classList.add('hidden');renderGM();}
-  function gmVisual(kind,r,c){
+  function gmVisual(kind,r,c,owner=0){
     const table=document.querySelector('#gmScreen .gm-table'),center=document.querySelector('#gmScreen .gm-center');
     if(!table)return;
     const fx=document.createElement('i');
-    fx.className=`gm-vfx ${kind} ${profile.gmEffect||'gm-effect-gold'}`;
+    // 商城购买的落子皮肤只应用于玩家本人；AI 使用固定中性银玉效果。
+    const effect=owner===0?(profile.gmEffect||'gm-effect-gold'):'gm-effect-neutral';
+    fx.className=`gm-vfx ${kind} ${effect} ${owner===0?'gm-owner-vfx':'gm-ai-vfx'}`;
     fx.style.setProperty('--gx',`${7.5+c*6.0714}%`);
     fx.style.setProperty('--gy',`${7.5+r*6.0714}%`);
     table.append(fx);
@@ -5217,7 +5220,7 @@
     setTimeout(()=>fx.remove(),kind==='finish'?1500:900);
   }
   function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase;profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${winner===0?'执黑':'执白'}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();playModeCinema('gomoku','finish',winner===0?'五 子 连 珠':'棋 局 落 定');modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${winner===0?'执黑':'执白'}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
-  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.last={r,c};if(id===0&&gm.moves===1&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${line.count>=4?' · 四连威胁':note?` · ${note}`:''}`;AudioSys.fx('stone');gmVisual('land',r,c);if(line.count>=5){gmVisual('finish',r,c);return gmSettle(id);}if(line.count>=4){gmVisual('threat',r,c);playModeCinema('gomoku','threat','四 连');modeEventReact('gm',gm.names,'gomoku','threat');}gm.turn=id===0?1:0;renderGM();if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
+  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.last={r,c};if(id===0&&gm.moves===1&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${line.count>=4?' · 四连威胁':note?` · ${note}`:''}`;AudioSys.fx('stone');gmVisual('land',r,c,id);if(line.count>=5){gmVisual('finish',r,c,id);return gmSettle(id);}if(line.count>=4){gmVisual('threat',r,c,id);playModeCinema('gomoku','threat','四 连');modeEventReact('gm',gm.names,'gomoku','threat');}gm.turn=id===0?1:0;renderGM();if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
   function renderGM(){if(!gm)return;$('gmBeanCount').textContent=profile.beans.toLocaleString();$('gmBaseLabel').textContent=`底注 ${gm.roundBase.toLocaleString()}`;const turnHint=gm.phase==='play'?(gm.turn===0?(gmSelectedMove?'再次点击确认落子':'轮到你落子 · 双击确认'):`${gm.names[1]} 正在推演`):'';$('gmStatus').textContent=turnHint?`${gm.message} · ${turnHint}`:gm.message;for(let id=0;id<2;id++){$(`gmName${id}`).textContent=gm.names[id];$(`gmAvatar${id}`).src=id===0?profile.playerAvatar:AVATAR_LIBRARY[gm.names[id]];$(`gmSeat${id}`).classList.toggle('active',gm.phase==='play'&&gm.turn===id);}
     const point=(r,c)=>`left:${7.5+c*6.0714}%;top:${7.5+r*6.0714}%`;const stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');
     $('gmGrid').innerHTML=stars+gm.board.map((row,r)=>row.map((v,c)=>`<button class="gm-cell ${gm.last?.r===r&&gm.last?.c===c?'last':''} ${gmSelectedMove?.r===r&&gmSelectedMove?.c===c?'selected':''}" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}" ${gm.phase!=='play'||gm.turn!==0||v?'disabled':''}>${v?`<i class="gm-stone ${v===1?'black':'white'}"></i>`:''}</button>`).join('')).join('');$('gmGrid').querySelectorAll('[data-gm-r]').forEach(cell=>cell.onclick=()=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC),same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();});}
@@ -5331,6 +5334,9 @@
     #gmScreen .gm-vfx.finish::after{content:'';position:absolute;inset:-26px;border:2px solid rgba(255,230,153,.8);border-radius:50%;animation:gmSparkOrbit 1.42s ease-out both}
     #gmScreen .gm-vfx.gm-effect-ink{border-color:#d9e7dd;box-shadow:0 0 23px rgba(194,232,210,.68)}
     #gmScreen .gm-vfx.gm-effect-vermilion{border-color:#f4bd62;box-shadow:0 0 25px rgba(203,52,34,.82)}
+    #gmScreen .gm-vfx.gm-effect-neutral.land{border-color:#c2d4d5;box-shadow:0 0 15px rgba(156,188,193,.58),0 0 0 7px rgba(177,204,207,.12)}
+    #gmScreen .gm-vfx.gm-effect-neutral.threat{border-color:#b7c8d0;box-shadow:0 0 22px rgba(132,170,192,.68),0 0 0 9px rgba(153,185,202,.11)}
+    #gmScreen .gm-vfx.gm-effect-neutral.finish{background:radial-gradient(circle,#f4f5eb 0 8%,#b7c2c1 9% 24%,transparent 25%);box-shadow:0 0 38px 13px rgba(177,196,195,.46),0 0 0 16px rgba(213,225,220,.1)}
     @keyframes gmVfxLand{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(-50%,-50%) scale(4.5);opacity:0}}
     @keyframes gmVfxThreat{0%{transform:translate(-50%,-50%) scale(.5);opacity:1}55%{transform:translate(-50%,-50%) scale(4);opacity:.84}100%{transform:translate(-50%,-50%) scale(6);opacity:0}}
     @keyframes gmVfxFinish{0%{transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:0}20%{opacity:1}100%{transform:translate(-50%,-50%) scale(10) rotate(165deg);opacity:0}}
