@@ -4070,6 +4070,10 @@
     $('youMembers').textContent = `${N[0]} · ${N[2]}`;
     $('enemyMembers').textContent = `${N[1]} · ${N[3]}`;
 
+    // 本人出完后才公开同队剩余手牌；分队由抽牌后落座决定，敌方手牌始终不渲染。
+    const teammateId = g.p?.find(p => p.id !== 0 && g.t[p.id] === g.t[0])?.id;
+    const revealTeammate = ['play','last'].includes(g.phase) && Boolean(g.p[0]?.done) && teammateId !== undefined && !g.p[teammateId]?.done && g.p[teammateId]?.h?.length;
+
     // 座位名字与头像
     for (let i = 0; i < 4; i++) {
       let nameEl = $(`name${i}`);
@@ -4096,6 +4100,14 @@
       // 回合高亮
       if (seatEl) {
         seatEl.classList.toggle('active', g.turn === i && ['play', 'last'].includes(g.phase));
+        const shouldReveal = revealTeammate && i === teammateId;
+        seatEl.classList.toggle('team-hand-revealed', shouldReveal);
+        let revealEl = seatEl.querySelector('.team-hand-reveal');
+        if (shouldReveal) {
+          if (!revealEl) { revealEl = document.createElement('div'); revealEl.className = 'team-hand-reveal'; seatEl.appendChild(revealEl); }
+          const cards = g.p[i].h;
+          revealEl.innerHTML = `<strong>你已出完 · ${N[i]} 剩余 ${cards.length} 张</strong><div class="team-open-cards">${cards.map(c=>`<span class="team-open-card ${isRed(c)?'red':''}"><em>${c.r}</em><b>${c.s==='王'?'★':c.s}</b></span>`).join('')}</div>`;
+        } else if (revealEl) revealEl.remove();
       }
 
       // 手牌张数 & 报单
@@ -5472,6 +5484,14 @@
     #pdkScreen .ddz-result-card,#ddzScreen .ddz-result-card{position:relative;z-index:2;border:2px solid #f3cd72;background:linear-gradient(145deg,#173f6d,#091a35);box-shadow:0 24px 70px rgba(0,0,0,.76),inset 0 1px 0 rgba(255,255,255,.15)}
     #pdkScreen .ddz-result-card .ddz-action,#ddzScreen .ddz-result-card .ddz-action{position:relative;z-index:3;display:inline-flex;align-items:center;justify-content:center;min-width:154px;height:50px;margin-top:8px;border:2px solid #fff1a2;border-radius:25px;background:linear-gradient(180deg,#ffe878 0%,#f5b52e 48%,#c86908 100%);color:#3f1c00;font-size:18px;font-weight:950;letter-spacing:.08em;text-shadow:0 1px 0 rgba(255,255,255,.54);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 5px 0 #864005,0 11px 22px rgba(0,0,0,.5);opacity:1;filter:none}
     #pdkScreen .ddz-result-card .ddz-action:focus-visible,#ddzScreen .ddz-result-card .ddz-action:focus-visible{outline:3px solid #fff8bd;outline-offset:4px}
+    /* 炸弹：本人出完后，仅将同队剩余手牌公开给本人；对手席位没有任何明牌容器。 */
+    #tableFelt .seat .team-hand-reveal{position:absolute;z-index:24;left:50%;top:calc(100% + 8px);transform:translateX(-50%);width:max-content;max-width:min(390px,52vw);padding:5px 7px 7px;border:1px solid rgba(112,210,255,.92);border-radius:11px;background:linear-gradient(150deg,rgba(12,67,102,.96),rgba(4,25,52,.95));box-shadow:0 9px 20px rgba(0,0,0,.5),inset 0 1px 0 rgba(233,252,255,.2);pointer-events:none}
+    #tableFelt .seat .team-hand-reveal strong{display:block;margin:0 0 4px;color:#d9f6ff;font-size:11px;letter-spacing:.04em;text-align:center;text-shadow:0 1px 2px #001827}
+    #tableFelt .seat .team-open-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:2px}
+    #tableFelt .seat .team-open-card{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:27px;height:40px;border:1px solid #d7c08a;border-radius:4px;background:linear-gradient(145deg,#fffdf3,#e6d7b5);color:#17243a;font-family:Georgia,serif;font-size:12px;font-weight:950;line-height:1;box-shadow:0 2px 4px rgba(0,0,0,.35)}
+    #tableFelt .seat .team-open-card.red{color:#c42735}#tableFelt .seat .team-open-card b{font-size:10px;line-height:1.1}
+    #tableFelt .seat.team-hand-revealed .seat-card-count{border-color:#82ddff;background:#15588a;color:#effdff;box-shadow:0 0 12px rgba(101,212,255,.48)}
+    @media(max-width:760px){#tableFelt .seat .team-hand-reveal{max-width:46vw;padding:4px 5px 5px}#tableFelt .seat .team-open-card{width:22px;height:33px;font-size:10px}#tableFelt .seat .team-open-card b{font-size:8px}}
     @media(max-width:900px){#mjScreen .mj-hand-zone{left:92px;right:118px}#mjScreen #mjHand .mj-tile{width:36px;height:51px;min-width:36px}#mjScreen #mjMeld0{left:-110px;bottom:-74px;width:106px}#mjScreen #mjMeld0 .mj-tile{width:18px;height:27px;min-width:18px}}
     @media(max-width:900px) and (orientation:landscape){
       #lobbyScreen .lobby-main{height:calc(100vh - 64px);grid-template-columns:240px minmax(0,1fr);gap:14px;align-items:center;overflow:hidden;padding:10px 16px}
