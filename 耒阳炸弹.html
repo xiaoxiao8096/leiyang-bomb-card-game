@@ -2558,9 +2558,10 @@
     ,{ id:'mode-cs-ebony-court', type:'modeTheme', mode:'changsha', name:'月下墨台', icon:'墨', price:4200, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
     ,{ id:'mode-zz-redzhong-court', type:'modeTheme', mode:'zhuanzhuan', name:'朱庭红局', icon:'中', price:3800, preview:"url('assets/mahjong_table_redcourtyard_v2.png') center/cover" }
     ,{ id:'mode-zz-ebony-court', type:'modeTheme', mode:'zhuanzhuan', name:'夜玉轮台', icon:'夜', price:4400, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
-    ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/gomoku_board_jade_mountain.png') center/cover" }
+    ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/gomoku_board_jade_standard_v2.png') center/cover" }
     ,{ id:'mode-gm-ink', type:'modeTheme', mode:'gomoku', name:'玄金残局', icon:'弈', price:4000, preview:"url('assets/gomoku_board_blackgold.png') center/cover" }
-    ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/gomoku_board_vermilion.png') center/cover" }
+    ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/gomoku_board_inkstone_standard_v2.png') center/cover" }
+    ,{ id:'mode-gm-rosewood', type:'modeTheme', mode:'gomoku', name:'檀木棋枰', icon:'檀', price:4200, preview:"url('assets/gomoku_board_rosewood_standard_v2.png') center/cover" }
     ,{ id:'mode-frame-bomb', type:'modeFrame', mode:'bomb', name:'雷纹战框', icon:'炸', price:1100, preview:'linear-gradient(135deg,#09223f,#bf8d30)' }
     ,{ id:'mode-frame-ddz', type:'modeFrame', mode:'doudizhu', name:'金冠牌框', icon:'斗', price:1200, preview:'linear-gradient(135deg,#47200b,#d8a73d)' }
     ,{ id:'mode-frame-pdk', type:'modeFrame', mode:'paodekuai', name:'风驰牌框', icon:'跑', price:1200, preview:'linear-gradient(135deg,#083b54,#44b8d6)' }
@@ -2792,8 +2793,16 @@
     if(pdkThemeClass)pdkApp.classList.add(pdkThemeClass);
     if(profile.modeThemes[mjMode]==='mode-cs-jade')mjApp.classList.add(themes.changsha);
     if(profile.modeThemes[mjMode]==='mode-zz-redzhong')mjApp.classList.add(themes.zhuanzhuan);
-    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion' }[profile.modeThemes.gomoku];
+    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood' }[profile.modeThemes.gomoku];
     if(gmTheme)gmApp.classList.add(gmTheme);
+    const gmBoardSource={
+      'mode-gm-jade':'assets/gomoku_board_jade_standard_v2.png',
+      'mode-gm-ink':'assets/gomoku_board_square_obsidian.png',
+      'mode-gm-vermilion':'assets/gomoku_board_inkstone_standard_v2.png',
+      'mode-gm-rosewood':'assets/gomoku_board_rosewood_standard_v2.png'
+    }[profile.modeThemes.gomoku] || 'assets/gomoku_board_square_obsidian.png';
+    const gmBoardArt=$('gmBoardArt');
+    if(gmBoardArt) gmBoardArt.src=gmBoardSource;
     const mjCourtTheme={
       'mode-cs-jade':'mj-theme-jade',
       'mode-zz-redzhong':'mj-theme-redzhong',
@@ -5155,9 +5164,10 @@
     #gmScreen .gm-board-art{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;z-index:0!important;pointer-events:none!important}
     #gmScreen .gm-status{z-index:3!important}
     #gmScreen #gmGrid .gm-star{display:none!important}
-    #gmScreen.mode-theme-gm-jade .gm-center{background-image:url('assets/gomoku_board_jade_mountain.png')}
+    #gmScreen.mode-theme-gm-jade .gm-center{background-image:url('assets/gomoku_board_jade_standard_v2.png')}
     #gmScreen.mode-theme-gm-ink .gm-center{background-image:url('assets/gomoku_board_square_obsidian.png')}
-    #gmScreen.mode-theme-gm-vermilion .gm-center{background-image:url('assets/gomoku_board_vermilion.png')}
+    #gmScreen.mode-theme-gm-vermilion .gm-center{background-image:url('assets/gomoku_board_inkstone_standard_v2.png')}
+    #gmScreen.mode-theme-gm-rosewood .gm-center{background-image:url('assets/gomoku_board_rosewood_standard_v2.png')}
     #gmScreen .gm-board{position:relative;z-index:1;width:100%;height:100%;background:transparent;border:0;border-radius:0;box-shadow:none}
     #gmScreen .gm-board::before{display:none}
     #gmScreen .gm-grid{position:absolute;inset:0;display:block;isolation:isolate;background:none;box-shadow:none}
