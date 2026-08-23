@@ -1877,6 +1877,48 @@
       .mode-chat-panel { display:none; }
       .mode-quick-popover { width:min(252px,88vw); }
     }
+    /* 麻将固定桌面本体：牌墙、牌河、副露、手牌均是桌面上的真实分区，不以场景海报代替牌局结构。 */
+    #mjScreen .mj-table {
+      --mj-rail:#3b2817; --mj-rail-hi:#8b6940; --mj-metal:#d9ad5c; --mj-felt:#154f47; --mj-felt-deep:#082c2c;
+      --mj-zone-line:rgba(227,193,111,.32); --mj-zone-fill:rgba(6,39,37,.55); --mj-wall-shadow:rgba(2,18,16,.82);
+      background:
+        linear-gradient(145deg,rgba(255,232,165,.08),transparent 14%,transparent 86%,rgba(0,0,0,.3)),
+        repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),
+        radial-gradient(ellipse at 50% 47%,var(--mj-felt) 0%,var(--mj-felt-deep) 76%) !important;
+      border:3px solid var(--mj-rail-hi); border-radius:42% / 18%;
+      box-shadow:0 0 0 5px #181007,0 0 0 8px var(--mj-metal),0 26px 58px rgba(0,0,0,.64),inset 0 0 0 8px var(--mj-rail),inset 0 0 0 11px rgba(244,211,137,.18),inset 0 0 48px rgba(0,0,0,.54) !important;
+    }
+    #mjScreen.mj-theme-jade .mj-table { --mj-rail:#2c2417; --mj-rail-hi:#967744; --mj-metal:#e3bd68; --mj-felt:#256d61; --mj-felt-deep:#0a3735; --mj-zone-fill:rgba(8,57,51,.58); }
+    #mjScreen.mj-theme-redzhong .mj-table { --mj-rail:#421a18; --mj-rail-hi:#a95843; --mj-metal:#d6a84d; --mj-felt:#6f252b; --mj-felt-deep:#301419; --mj-zone-fill:rgba(55,13,19,.58); }
+    #mjScreen.mj-theme-ebony .mj-table { --mj-rail:#12191b; --mj-rail-hi:#566069; --mj-metal:#b89a5c; --mj-felt:#1d3a42; --mj-felt-deep:#101c24; --mj-zone-fill:rgba(10,24,31,.62); }
+    #mjScreen .mj-board {
+      left:50%; top:49%; width:min(76%,960px); aspect-ratio:1.42/1; transform:translate(-50%,-50%);
+      border:0; border-radius:0; background:transparent; box-shadow:none; overflow:visible;
+    }
+    #mjScreen .mj-board::before {
+      z-index:0; inset:3.5%; border:1px solid color-mix(in srgb,var(--mj-metal) 62%,transparent); border-radius:28px;
+      background:linear-gradient(135deg,rgba(255,245,194,.045),transparent 21%,transparent 78%,rgba(0,0,0,.16)),rgba(0,0,0,.07);
+      box-shadow:inset 0 0 0 5px rgba(0,0,0,.13),inset 0 0 34px rgba(0,0,0,.3),0 0 0 1px rgba(255,237,165,.06);
+    }
+    #mjScreen .mj-board::after { content:""; position:absolute; z-index:1; inset:15% 20%; border:1px solid rgba(255,234,159,.12); border-radius:24px; box-shadow:inset 0 0 30px rgba(0,0,0,.18); pointer-events:none; }
+    #mjScreen .mj-wall-side { z-index:6; gap:3px; filter:drop-shadow(0 5px 5px rgba(0,0,0,.3)); }
+    #mjScreen .mj-wall-top,#mjScreen .mj-wall-bottom { left:14%; right:14%; height:35px; }
+    #mjScreen .mj-wall-top { top:6.5%; } #mjScreen .mj-wall-bottom { bottom:6.5%; }
+    #mjScreen .mj-wall-left,#mjScreen .mj-wall-right { top:18%; bottom:18%; width:35px; }
+    #mjScreen .mj-wall-left { left:6.5%; } #mjScreen .mj-wall-right { right:6.5%; }
+    #mjScreen .mj-wall-stack { width:28px; height:29px; border-color:color-mix(in srgb,var(--mj-metal) 34%,#d9f2de); box-shadow:inset 0 2px rgba(255,255,255,.25),0 3px 0 var(--mj-wall-shadow),0 7px 10px rgba(0,0,0,.34); }
+    #mjScreen .mj-wall-left .mj-wall-stack,#mjScreen .mj-wall-right .mj-wall-stack { width:29px; height:24px; }
+    #mjScreen .mj-zone { z-index:5; padding:6px 7px 7px; border-color:var(--mj-zone-line); border-radius:12px; background:linear-gradient(135deg,rgba(255,255,255,.045),transparent 42%),var(--mj-zone-fill); box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -18px 28px rgba(0,0,0,.14); }
+    #mjScreen .mj-zone-top,#mjScreen .mj-zone-bottom { left:22%; right:22%; height:20%; } #mjScreen .mj-zone-top { top:16.5%; } #mjScreen .mj-zone-bottom { bottom:16.5%; }
+    #mjScreen .mj-zone-left,#mjScreen .mj-zone-right { top:34.5%; width:20%; height:31%; } #mjScreen .mj-zone-left { left:9.5%; } #mjScreen .mj-zone-right { right:9.5%; }
+    #mjScreen .mj-zone-head { color:rgba(245,238,207,.86); text-shadow:0 1px 1px rgba(0,0,0,.65); } #mjScreen .mj-zone-head b { color:var(--mj-metal); }
+    #mjScreen .mj-river-grid { grid-template-columns:repeat(12,29px); row-gap:2px; } #mjScreen .mj-zone-left .mj-river-grid,#mjScreen .mj-zone-right .mj-river-grid { grid-template-columns:repeat(5,29px); }
+    #mjScreen .mj-river-grid .mj-tile { width:29px; height:39px; padding:1px 2px 4px; box-shadow:inset 0 -3px 0 var(--mjedge,#8eb48c),0 3px 0 var(--mjback,#3d7c5a),0 5px 6px rgba(0,0,0,.28); }
+    #mjScreen .mj-zone-meld .mj-tile { width:25px; height:35px; padding:1px 2px 4px; }
+    #mjScreen .mj-board-status { z-index:7; min-width:144px; padding:8px 14px; border-color:color-mix(in srgb,var(--mj-metal) 74%,#fff); background:linear-gradient(160deg,color-mix(in srgb,var(--mj-felt) 82%,#07171a),var(--mj-felt-deep)); box-shadow:0 9px 22px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.12); }
+    @media(max-width:700px) {
+      #mjScreen .mj-board { width:82%; top:48%; } #mjScreen .mj-zone { padding:4px; } #mjScreen .mj-river-grid { grid-template-columns:repeat(12,24px); } #mjScreen .mj-zone-left .mj-river-grid,#mjScreen .mj-zone-right .mj-river-grid { grid-template-columns:repeat(5,24px); } #mjScreen .mj-river-grid .mj-tile { width:24px; height:33px; }
+    }
   </style>
 </head>
 <body>
@@ -2552,12 +2594,12 @@
     { id:'mj-celadon', type:'mjtile', name:'青花', icon:'中', price:2200 },
     { id:'mode-ddz-royal', type:'modeTheme', mode:'doudizhu', name:'金冠局', icon:'斗', price:2600, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/GUdMDWtTArDiBVuQ.jpg') center/cover" },
     { id:'mode-pdk-run', type:'modeTheme', mode:'paodekuai', name:'疾风跑道', icon:'跑', price:2400, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/RPZyyLyrsSwlTNqu.jpg') center/cover" },
-    { id:'mode-cs-jade', type:'modeTheme', mode:'changsha', name:'湘水雅局', icon:'长', price:2800, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/JaaASIzncGcQMGrC.jpg') center/cover" },
-    { id:'mode-zz-redzhong', type:'modeTheme', mode:'zhuanzhuan', name:'红中转轮', icon:'转', price:3000, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/NPWCoSLAkcXaULXU.jpg') center/cover" }
-    ,{ id:'mode-cs-jade-court', type:'modeTheme', mode:'changsha', name:'湘江玉宴', icon:'玉', price:3600, preview:"url('assets/mahjong_table_xiang_v2.png') center/cover" }
-    ,{ id:'mode-cs-ebony-court', type:'modeTheme', mode:'changsha', name:'月下墨台', icon:'墨', price:4200, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
-    ,{ id:'mode-zz-redzhong-court', type:'modeTheme', mode:'zhuanzhuan', name:'朱庭红局', icon:'中', price:3800, preview:"url('assets/mahjong_table_redcourtyard_v2.png') center/cover" }
-    ,{ id:'mode-zz-ebony-court', type:'modeTheme', mode:'zhuanzhuan', name:'夜玉轮台', icon:'夜', price:4400, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
+    { id:'mode-cs-jade', type:'modeTheme', mode:'changsha', name:'湘水雅局', icon:'长', price:2800, preview:'radial-gradient(ellipse at center,#2f8173 0%,#0b3633 66%),linear-gradient(135deg,#907141,#20170e)' },
+    { id:'mode-zz-redzhong', type:'modeTheme', mode:'zhuanzhuan', name:'红中转轮', icon:'转', price:3000, preview:'radial-gradient(ellipse at center,#8c3639 0%,#311519 66%),linear-gradient(135deg,#a55d48,#421b18)' }
+    ,{ id:'mode-cs-jade-court', type:'modeTheme', mode:'changsha', name:'湘江玉宴', icon:'玉', price:3600, preview:'radial-gradient(ellipse at center,#327a6d 0%,#102f2f 66%),linear-gradient(135deg,#9d7741,#302115)' }
+    ,{ id:'mode-cs-ebony-court', type:'modeTheme', mode:'changsha', name:'月下墨台', icon:'墨', price:4200, preview:'radial-gradient(ellipse at center,#294d55 0%,#111c22 66%),linear-gradient(135deg,#586068,#151b1c)' }
+    ,{ id:'mode-zz-redzhong-court', type:'modeTheme', mode:'zhuanzhuan', name:'朱庭红局', icon:'中', price:3800, preview:'radial-gradient(ellipse at center,#8b3237 0%,#331317 66%),linear-gradient(135deg,#b36546,#411716)' }
+    ,{ id:'mode-zz-ebony-court', type:'modeTheme', mode:'zhuanzhuan', name:'夜玉轮台', icon:'夜', price:4400, preview:'radial-gradient(ellipse at center,#2a4851 0%,#101b22 66%),linear-gradient(135deg,#686868,#111719)' }
     ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/gomoku_board_jade_standard_v2.png') center/cover" }
     ,{ id:'mode-gm-ink', type:'modeTheme', mode:'gomoku', name:'玄金残局', icon:'弈', price:4000, preview:"url('assets/gomoku_board_blackgold.png') center/cover" }
     ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/gomoku_board_inkstone_standard_v2.png') center/cover" }
