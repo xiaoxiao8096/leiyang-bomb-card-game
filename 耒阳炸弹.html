@@ -2616,12 +2616,12 @@
     { id:'mj-celadon', type:'mjtile', name:'青花', icon:'中', price:2200 },
     { id:'mode-ddz-royal', type:'modeTheme', mode:'doudizhu', name:'金冠局', icon:'斗', price:2600, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/GUdMDWtTArDiBVuQ.jpg') center/cover" },
     { id:'mode-pdk-run', type:'modeTheme', mode:'paodekuai', name:'疾风跑道', icon:'跑', price:2400, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/RPZyyLyrsSwlTNqu.jpg') center/cover" },
-    { id:'mode-cs-jade', type:'modeTheme', mode:'changsha', name:'湘水雅局', icon:'长', price:2800, preview:'radial-gradient(ellipse at center,#2f8173 0%,#0b3633 66%),linear-gradient(135deg,#907141,#20170e)' },
-    { id:'mode-zz-redzhong', type:'modeTheme', mode:'zhuanzhuan', name:'红中转轮', icon:'转', price:3000, preview:'radial-gradient(ellipse at center,#8c3639 0%,#311519 66%),linear-gradient(135deg,#a55d48,#421b18)' }
-    ,{ id:'mode-cs-jade-court', type:'modeTheme', mode:'changsha', name:'湘江玉宴', icon:'玉', price:3600, preview:'radial-gradient(ellipse at center,#327a6d 0%,#102f2f 66%),linear-gradient(135deg,#9d7741,#302115)' }
-    ,{ id:'mode-cs-ebony-court', type:'modeTheme', mode:'changsha', name:'月下墨台', icon:'墨', price:4200, preview:'radial-gradient(ellipse at center,#294d55 0%,#111c22 66%),linear-gradient(135deg,#586068,#151b1c)' }
-    ,{ id:'mode-zz-redzhong-court', type:'modeTheme', mode:'zhuanzhuan', name:'朱庭红局', icon:'中', price:3800, preview:'radial-gradient(ellipse at center,#8b3237 0%,#331317 66%),linear-gradient(135deg,#b36546,#411716)' }
-    ,{ id:'mode-zz-ebony-court', type:'modeTheme', mode:'zhuanzhuan', name:'夜玉轮台', icon:'夜', price:4400, preview:'radial-gradient(ellipse at center,#2a4851 0%,#101b22 66%),linear-gradient(135deg,#686868,#111719)' }
+    { id:'mode-cs-jade', type:'modeTheme', mode:'changsha', name:'湘水雅局', icon:'长', price:2800, preview:"url('assets/mahjong_table_xiang_v2.png') center/cover" },
+    { id:'mode-zz-redzhong', type:'modeTheme', mode:'zhuanzhuan', name:'红中转轮', icon:'转', price:3000, preview:"url('assets/mahjong_table_redcourtyard_v2.png') center/cover" }
+    ,{ id:'mode-cs-jade-court', type:'modeTheme', mode:'changsha', name:'湘江玉宴', icon:'玉', price:3600, preview:"url('assets/mahjong_table_xiang_v2.png') center/cover" }
+    ,{ id:'mode-cs-ebony-court', type:'modeTheme', mode:'changsha', name:'月下墨台', icon:'墨', price:4200, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
+    ,{ id:'mode-zz-redzhong-court', type:'modeTheme', mode:'zhuanzhuan', name:'朱庭红局', icon:'中', price:3800, preview:"url('assets/mahjong_table_redcourtyard_v2.png') center/cover" }
+    ,{ id:'mode-zz-ebony-court', type:'modeTheme', mode:'zhuanzhuan', name:'夜玉轮台', icon:'夜', price:4400, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" }
     ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/gomoku_board_jade_standard_v2.png') center/cover" }
     ,{ id:'mode-gm-ink', type:'modeTheme', mode:'gomoku', name:'玄金残局', icon:'弈', price:4000, preview:"url('assets/gomoku_board_square_obsidian.png') center/cover" }
     ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/gomoku_board_inkstone_standard_v2.png') center/cover" }
@@ -2966,7 +2966,10 @@
         setTimeout(()=>this.playTone(208,.11,'sine',1.9),42);
         setTimeout(()=>this.playTone(156,.075,'triangle',1.15),94);
       }
-      else if (kind === 'mj') { this.playTone(425,.065,'triangle'); setTimeout(()=>this.playTone(330,.11,'sine'),45); }
+      else if (kind === 'mjDraw') { this.playTone(610,.045,'sine',1.12); setTimeout(()=>this.playTone(486,.07,'triangle',.82),27); }
+      else if (kind === 'mj') { this.playTone(355,.06,'triangle',1.95); setTimeout(()=>this.playTone(228,.105,'sine',1.55),38); }
+      else if (kind === 'mjClaim') { this.playTone(468,.075,'triangle',1.65); setTimeout(()=>this.playTone(585,.11,'sine',1.45),55); }
+      else if (kind === 'mjGang') { this.playTone(218,.09,'square',2.05); setTimeout(()=>this.playTone(178,.11,'triangle',1.8),65); setTimeout(()=>this.playTone(342,.12,'sine',1.4),125); }
     }
   };
   // 浏览器要求在真实用户手势中解锁音频；先于五子棋双击确认执行，避免第一手落子静音。
@@ -4233,6 +4236,16 @@
       } else if(item.type==='frame'||item.type==='modeFrame') {
         preview = `<span class="shop-avatar-preview" style="background:${item.preview}"><img src="${profile.playerAvatar}" alt="头像"></span>`;
         previewStyle = 'background:rgba(6,17,31,.7)';previewExtra='avatar-frame-preview';
+      } else if(item.type==='modeTheme'&&['changsha','zhuanzhuan'].includes(item.mode)) {
+        /* 麻将桌面商品用真实桌布缩略图，不再用单字图标遮挡材质。 */
+        preview = '';
+        previewStyle = `background:${item.preview};filter:${item.filter||'none'}`;
+        previewExtra='table-material-preview';
+      } else if(item.type==='modeTheme'&&item.mode==='gomoku') {
+        /* 五子棋商品直接展示固定15×15棋面，不用图标遮挡交叉点与边框。 */
+        preview = '';
+        previewStyle = `background:${item.preview};filter:${item.filter||'none'}`;
+        previewExtra='gomoku-board-preview';
       } else {
         preview = item.icon;
         previewStyle = `background:${item.preview};filter:${item.filter||'none'}`;
@@ -5078,9 +5091,16 @@
     const roll=()=>{round++;const rolls=Array(4).fill(null);contenders.forEach(id=>rolls[id]=mjRollPair());mjRenderDice(session.names,rolls,contenders);$('mjDiceResult').textContent=round===1?'四家掷双骰定庄':'最高点重摇';mjRitualTimer=setTimeout(()=>{ritual.classList.remove('rolling');const high=Math.max(...contenders.map(id=>rolls[id][0]+rolls[id][1])),tops=contenders.filter(id=>rolls[id][0]+rolls[id][1]===high);if(tops.length>1){$('mjDiceResult').textContent=`${tops.map(id=>session.names[id]).join('、')} 同为 ${high} 点，重摇`;contenders=tops;ritual.classList.add('rolling');return mjRitualTimer=setTimeout(roll,820);}const dealer=tops[0];mjRenderDice(session.names,rolls,contenders,dealer);$('mjDiceResult').textContent=`${session.names[dealer]} ${high} 点，坐庄`;session.dealer=dealer;session.opened=true;session.diceRounds=round;mjRitualTimer=setTimeout(()=>{ritual.classList.remove('show');ritual.setAttribute('aria-hidden','true');playModeCinema(mjMode,'dice','双 骰 定 庄');modeEventReact('mj',session.names,mjMode,'dice');mjDealRound(session,dealer);},860);},720);};roll();}
   function mjDealRound(session,dealer){clearTimeout(mjTimer);mjSelected=null;const cards=shuffle(mjDeck(mjMode)),p=Array.from({length:4},(_,id)=>({id,h:mjSort(cards.slice(id*13,id*13+13))})),wall=cards.slice(52),first=wall.shift();p[dealer].h=mjSort([...p[dealer].h,first]);mj={mode:mjMode,names:session.names,p,wall,river:[],turn:dealer,dealer,phase:'play',canHu:false,lastDraw:first,roundBase:base,message:`${session.names[dealer]} 坐庄，先打`,melds:[[],[],[],[]],flyGhost:[false,false,false,false],flyGhostOnDraw:null,gangCounts:[0,0,0,0],pending:null,lastDiscard:null};mjRefreshState(dealer);$('mjResult').classList.add('hidden');renderMJ();AudioSys.fx('deal');if(mj.canHu){mj.message=`${session.names[dealer]} 天胡`;renderMJ();playModeCinema(mjMode,'heaven','天 胡');modeEventReact('mj',mj.names,mjMode,'heaven');return mjTimer=setTimeout(()=>mjSettle(dealer,'heaven',first),1060);}if(dealer!==0)mjTimer=setTimeout(()=>mjDiscard(dealer,mjAIChoice(dealer).id),650);}
   function mjStart(){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;let session=mjSessions[mjMode];if(!session){session={names:[profile.playerName,...shuffle(allRoles()).slice(0,3)],dealer:null,opened:false,diceRounds:0};mjSessions[mjMode]=session;}if(session.dealer===null)return mjRollForDealer(session);mjDealRound(session,session.dealer);}
+  function mjVisual(kind,id,tile){
+    const table=document.querySelector('#mjScreen .mj-table');if(!table)return;
+    const p=[[50,84],[16,51],[50,17],[84,51]][id]||[50,50],fx=document.createElement('i');
+    fx.className=`mj-vfx ${kind}`;fx.style.setProperty('--mx',`${p[0]}%`);fx.style.setProperty('--my',`${p[1]}%`);
+    if(tile)fx.dataset.tile=tile.label;
+    table.append(fx);setTimeout(()=>fx.remove(),kind==='gang'?1280:880);
+  }
   function mjDraw(id,gangDraw=false){
     if(!mj.wall.length)return mjDrawEnd();
-    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;renderMJ();
+    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;AudioSys.fx('mjDraw');mjVisual(gangDraw?'gangDraw':'draw',id,tile);renderMJ();
     if(id!==0)mjTimer=setTimeout(()=>mjAIDecide(id),650);
   }
   function mjAfterNoClaim(discarder){if(!mj||mj.phase==='result')return;mj.pending=null;renderMJ();mjTimer=setTimeout(()=>mjDraw(mjNext(discarder)),420);}
@@ -5107,7 +5127,7 @@
     if(opt.type==='hu')return mjSettle(opt.id,'discard',tile,discarder);
     const used=new Set(opt.used.map(c=>c.id));mj.p[opt.id].h=mj.p[opt.id].h.filter(c=>!used.has(c.id));
     const riverIndex=[...mj.river].map(t=>t.id).lastIndexOf(tile.id);if(riverIndex>=0)mj.river.splice(riverIndex,1);
-    const type=opt.type==='gang'?'gang':opt.type,meld={type,tiles:[...opt.used,tile],from:discarder};mj.melds[opt.id].push(meld);mj.pending=null;mj.turn=opt.id;mj.phase='play';mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[opt.id]=mjIsFlyingGhostFor(opt.id);mj.message=`${mj.names[opt.id]} ${mjMeldLabel(meld)} ${tile.label}`;AudioSys.fx(opt.type==='gang'?'bomb':'play');renderMJ();
+    const type=opt.type==='gang'?'gang':opt.type,meld={type,tiles:[...opt.used,tile],from:discarder};mj.melds[opt.id].push(meld);mj.pending=null;mj.turn=opt.id;mj.phase='play';mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[opt.id]=mjIsFlyingGhostFor(opt.id);mj.message=`${mj.names[opt.id]} ${mjMeldLabel(meld)} ${tile.label}`;AudioSys.fx(opt.type==='gang'?'mjGang':'mjClaim');mjVisual(opt.type==='gang'?'gang':'claim',opt.id,tile);renderMJ();
     if(opt.type==='gang'){mj.gangCounts[opt.id]++;return mjTimer=setTimeout(()=>mjDraw(opt.id,true),480);}if(opt.id!==0)mjTimer=setTimeout(()=>mjAIDecide(opt.id),520);
   }
   function mjTryRobGang(option){
@@ -5124,7 +5144,7 @@
     }else{
       const used=new Set(option.used.map(c=>c.id));mj.p[id].h=hand.filter(c=>!used.has(c.id));meld={type:'darkGang',tiles:option.used,from:id};mj.melds[id].push(meld);
     }
-    mj.pending=null;mj.phase='play';mj.turn=id;mj.flyGhostOnDraw=null;mj.gangCounts[id]++;mj.message=`${mj.names[id]} ${mjMeldLabel(meld)} ${option.tile.label}`;AudioSys.fx('bomb');renderMJ();mjTimer=setTimeout(()=>mjDraw(id,true),480);
+    mj.pending=null;mj.phase='play';mj.turn=id;mj.flyGhostOnDraw=null;mj.gangCounts[id]++;mj.message=`${mj.names[id]} ${mjMeldLabel(meld)} ${option.tile.label}`;AudioSys.fx('mjGang');mjVisual('gang',id,option.tile);renderMJ();mjTimer=setTimeout(()=>mjDraw(id,true),480);
   }
   function mjOfferSelfGang(id){
     const opts=mjSelfGangOptions(id);if(!opts.length)return;
@@ -5144,7 +5164,7 @@
   function mjDiscard(id,tileId){
     if(!mj||mj.phase!=='play'||mj.turn!==id)return;const h=mj.p[id].h,tile=h.find(t=>t.id===tileId);if(!tile)return;
     mj.p[id].h=h.filter(t=>t.id!==tileId);mj.river.push({...tile,by:id});mj.lastDiscard={...tile,by:id};mjSelected=null;mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[id]=mjIsFlyingGhostFor(id);mj.message=`${mj.names[id]} 打出 ${tile.label}`;
-    if(mj.mode==='zhuanzhuan'&&tile.suit==='中')playModeCinema('zhuanzhuan','redzhong','红 中');else AudioSys.fx(id===0?'play':'mj');
+    mjVisual('discard',id,tile);if(mj.mode==='zhuanzhuan'&&tile.suit==='中')playModeCinema('zhuanzhuan','redzhong','红 中');else AudioSys.fx('mj');
     if(id!==0)AudioSys.speak(`${mj.names[id]}，${tile.label}`);
     const options=mjClaimOptions(id,tile);renderMJ();modeEventReact('mj',mj.names,mj.mode,'play');mjStartClaim(id,tile,options);
   }
@@ -5227,6 +5247,10 @@
     #shopDialog .shop-tab:active,#shopDialog .shop-category:active{transform:scale(.96)}
     #shopDialog .shop-card{padding:10px;border:1px solid rgba(113,155,198,.35);border-radius:13px;background:linear-gradient(145deg,rgba(14,39,67,.96),rgba(4,19,39,.98))}
     #shopDialog .shop-preview.avatar-frame-preview{display:grid;place-items:center;overflow:hidden}
+    #shopDialog .shop-preview.table-material-preview{overflow:hidden;background-position:center!important;background-size:cover!important;filter:brightness(1.22) saturate(1.16)!important;box-shadow:inset 0 0 0 1px rgba(255,229,147,.24),inset 0 -24px 24px rgba(2,13,21,.42)}
+    #shopDialog .shop-preview.table-material-preview::after{inset:5px;border:1px solid rgba(239,208,127,.44);border-radius:8px;background:linear-gradient(135deg,rgba(255,246,202,.13),transparent 38%,rgba(0,0,0,.26));}
+    #shopDialog .shop-preview.gomoku-board-preview{overflow:hidden;background-position:center!important;background-size:cover!important;filter:brightness(1.08) saturate(1.08)!important;box-shadow:inset 0 0 0 1px rgba(255,230,156,.36),inset 0 -20px 20px rgba(3,16,18,.22)}
+    #shopDialog .shop-preview.gomoku-board-preview::after{inset:5px;border:1px solid rgba(255,236,174,.48);border-radius:8px;background:linear-gradient(135deg,rgba(255,247,207,.13),transparent 42%,rgba(0,0,0,.14));}
     #shopDialog .shop-avatar-preview{display:grid;place-items:center;width:74px;height:74px;padding:5px;border-radius:50%;box-shadow:0 0 0 3px rgba(244,210,128,.8),0 5px 16px rgba(0,0,0,.48)}
     #shopDialog .shop-avatar-preview img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #061a2e}
     #mjScreen .mj-table{--mj-table-art:url('assets/mahjong_table_xiang_v2.png');background:#081b20 url('assets/mahjong_table_xiang_v2.png') center/cover no-repeat}
@@ -5251,6 +5275,20 @@
     #mjScreen .mj-seat.active .ddz-avatar{animation:mjActorPulse .72s ease-out both;box-shadow:0 0 0 3px #edc76e,0 0 24px rgba(251,211,111,.82)}
     #mjScreen .mj-seat.active::after{content:'行动中';position:absolute;left:50%;top:-18px;transform:translateX(-50%);color:#fff0b0;font-size:10px;font-weight:900;white-space:nowrap;text-shadow:0 2px 4px #000;animation:mjActorPulse .72s ease-out both}
     @keyframes mjActorPulse{0%{transform:scale(.92);filter:brightness(1)}55%{transform:scale(1.08);filter:brightness(1.35)}100%{transform:scale(1);filter:brightness(1)}}
+    #mjScreen .mj-vfx{position:absolute;left:var(--mx);top:var(--my);z-index:22;width:20px;height:20px;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:screen}
+    #mjScreen .mj-vfx.draw{border:2px solid rgba(191,238,211,.88);box-shadow:0 0 18px rgba(131,232,189,.76),0 0 0 8px rgba(148,234,202,.13);animation:mjDrawPulse .76s ease-out both}
+    #mjScreen .mj-vfx.draw::after,#mjScreen .mj-vfx.gangDraw::after{content:'';position:absolute;inset:-11px;border:1px solid rgba(242,221,133,.72);border-radius:50%;animation:mjTileOrbit .75s ease-out both}
+    #mjScreen .mj-vfx.gangDraw{border:3px solid rgba(255,212,98,.96);box-shadow:0 0 24px rgba(255,196,77,.88),0 0 0 10px rgba(255,207,108,.16);animation:mjDrawPulse .96s ease-out both}
+    #mjScreen .mj-vfx.discard{border:3px solid rgba(236,184,100,.94);box-shadow:0 0 20px rgba(247,188,82,.8);animation:mjDiscardPulse .82s cubic-bezier(.2,.85,.22,1) both}
+    #mjScreen .mj-vfx.discard::after{content:'';position:absolute;inset:-19px;border:2px solid rgba(249,222,151,.7);border-radius:50%;animation:mjTileOrbit .8s ease-out both}
+    #mjScreen .mj-vfx.claim{width:30px;height:30px;border:3px solid rgba(118,213,237,.94);box-shadow:0 0 28px rgba(81,183,228,.86),0 0 0 13px rgba(95,197,235,.13);animation:mjClaimPulse .98s ease-out both}
+    #mjScreen .mj-vfx.gang{width:34px;height:34px;border:4px solid rgba(255,202,75,.96);box-shadow:0 0 33px rgba(255,177,49,.92),0 0 0 16px rgba(252,182,69,.15);animation:mjGangPulse 1.22s cubic-bezier(.16,.9,.2,1) both}
+    #mjScreen .mj-vfx.gang::after{content:'';position:absolute;inset:-24px;border:2px solid rgba(255,229,139,.75);border-radius:50%;animation:mjTileOrbit 1.18s ease-out both}
+    @keyframes mjDrawPulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(4)}}
+    @keyframes mjDiscardPulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.35)}35%{opacity:1;transform:translate(-50%,-50%) scale(1.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(4.8)}}
+    @keyframes mjClaimPulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.25) rotate(0)}35%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(5) rotate(105deg)}}
+    @keyframes mjGangPulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.18)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.24)}100%{opacity:0;transform:translate(-50%,-50%) scale(5.8)}}
+    @keyframes mjTileOrbit{from{opacity:1;transform:scale(.2) rotate(0)}to{opacity:0;transform:scale(2.6) rotate(120deg)}}
     #mjScreen #mjMeld0 .mj-tile{width:25px;height:35px;min-width:25px}
     #mjScreen #mjMeld1,#mjScreen #mjMeld2,#mjScreen #mjMeld3{position:relative;min-height:0;padding-top:15px;align-items:flex-start;gap:3px}
     #mjScreen #mjMeld1:not(:empty)::before,#mjScreen #mjMeld2:not(:empty)::before,#mjScreen #mjMeld3:not(:empty)::before{content:attr(data-owner) ' 副露';position:absolute;left:1px;top:0;color:#f3d780;font-size:10px;font-weight:900;letter-spacing:.08em;text-shadow:0 1px 2px #001613;white-space:nowrap}
