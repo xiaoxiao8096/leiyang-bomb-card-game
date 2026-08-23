@@ -1270,6 +1270,8 @@
     .cinema-fx.fx-pdk-aaa { --fx-art:url('assets/vfx/fx-pdk-aaa-storm.png'); --fx-accent:#8cecff; background-position:center; }
     .cinema-fx.fx-cs-robgang { --fx-art:url('assets/vfx/fx-cs-robgang-jade.png'); --fx-accent:#ffcf77; background-position:center; }
     .cinema-fx.fx-zz-fly { --fx-art:url('assets/vfx/fx-zz-flying-ghost.png'); --fx-accent:#92ffd0; background-position:center; }
+    .cinema-fx.fx-ddz-chain { --fx-art:url('assets/vfx/fx-ddz-chain-rush.png'); --fx-accent:#94f6ff; background-position:center; }
+    .cinema-fx.fx-cs-pure { --fx-art:url('assets/vfx/fx-cs-pure-suit-jade.png'); --fx-accent:#b8ffaf; background-position:center; }
     .cinema-fx.cinema-theme-ddz { --fx-accent:#ffe18a; }
     .cinema-fx.cinema-theme-pdk { --fx-accent:#76f1ff; }
     .cinema-fx.cinema-theme-cs { --fx-accent:#ffe18a; }
@@ -1322,6 +1324,13 @@
     .cinema-fx.fx-zz-fly.show { animation:fxFlyVeil 2.06s cubic-bezier(.14,.86,.22,1) forwards; }
     .cinema-fx.fx-zz-fly.show .fx-title { animation:fxFlyTitle 1.68s cubic-bezier(.16,.9,.22,1) forwards; }
     .cinema-fx.fx-zz-fly.show::before,.cinema-fx.fx-zz-fly.show::after { border-color:rgba(126,255,194,.82); animation-name:fxJadeRing; }
+    .cinema-fx.fx-ddz-chain.show { animation:fxChainVeil 1.92s cubic-bezier(.08,.9,.18,1) forwards; }
+    .cinema-fx.fx-ddz-chain.show .fx-title { color:#eaffff; text-shadow:0 0 12px #32e8ff,0 0 42px #126dff,0 5px 0 #092c60; animation:fxChainTitle 1.58s cubic-bezier(.08,.92,.18,1) forwards; }
+    .cinema-fx.fx-ddz-chain.show::before { width:12vmax; height:12vmax; border-radius:12px; border-color:rgba(132,244,255,.88); animation-name:fxRunStreak; }
+    .cinema-fx.fx-ddz-chain.show::after { border-color:rgba(255,174,66,.78); animation-name:fxRocketRing; }
+    .cinema-fx.fx-cs-pure.show { animation:fxPureVeil 2.18s cubic-bezier(.15,.86,.22,1) forwards; }
+    .cinema-fx.fx-cs-pure.show .fx-title { color:#f2ffe8; text-shadow:0 0 14px #79eb9a,0 0 44px #168158,0 5px 0 #103f32; animation:fxPureTitle 1.78s cubic-bezier(.16,.9,.22,1) forwards; }
+    .cinema-fx.fx-cs-pure.show::before,.cinema-fx.fx-cs-pure.show::after { border-color:rgba(184,255,175,.86); animation-name:fxJadeRing; }
     .mj-event-art { position:absolute; z-index:1; left:50%; top:50%; width:min(54vmin,520px); height:min(54vmin,520px); pointer-events:none; background:center/contain no-repeat; opacity:0; transform:translate(-50%,-50%) scale(.62) rotate(-18deg); }
     .cinema-fx.show .mj-event-art { animation:mjEventArt 1.72s cubic-bezier(.15,.86,.22,1) forwards; }
     .mj-event-art.jade { background-image:url('assets/mj_fx_jade_meld_v2.png'); }.mj-event-art.vermilion { background-image:url('assets/mj_fx_redzhong_v2.png'); }
@@ -1370,6 +1379,10 @@
     @keyframes fxRobGangTitle { 0%{transform:translateY(38px) scale(.58) rotate(-5deg);opacity:0} 31%,70%{transform:translateY(0) scale(1.05) rotate(0);opacity:1} 100%{transform:translateY(-18px) scale(1.15) rotate(4deg);opacity:0} }
     @keyframes fxFlyVeil { 0%{opacity:0;background-size:124%;background-position:center 62%} 20%,74%{opacity:1} 100%{opacity:0;background-size:103%;background-position:center 42%} }
     @keyframes fxFlyTitle { 0%{transform:rotate(-16deg) scale(.4);opacity:0} 30%,70%{transform:rotate(0) scale(1.05);opacity:1} 100%{transform:rotate(15deg) scale(1.22);opacity:0} }
+    @keyframes fxChainVeil { 0%{opacity:0;background-position:12% center;background-size:130%;filter:saturate(.72)} 16%,70%{opacity:1;filter:saturate(1.22)} 100%{opacity:0;background-position:88% center;background-size:103%;filter:saturate(1)} }
+    @keyframes fxChainTitle { 0%{transform:translateX(-58vw) skewX(-18deg) scale(.76);opacity:0} 28%,68%{transform:translateX(0) skewX(-5deg) scale(1.06);opacity:1} 100%{transform:translateX(54vw) skewX(-16deg) scale(1.18);opacity:0} }
+    @keyframes fxPureVeil { 0%{opacity:0;background-size:122%;filter:brightness(.78)} 20%,74%{opacity:1;filter:brightness(1.1)} 100%{opacity:0;background-size:102%;filter:brightness(1)} }
+    @keyframes fxPureTitle { 0%{transform:translateY(42px) scale(.52) rotate(-6deg);opacity:0} 30%,70%{transform:translateY(0) scale(1.08) rotate(0);opacity:1} 100%{transform:translateY(-24px) scale(1.18) rotate(4deg);opacity:0} }
     .table-felt.fx-shake { animation:tableShake .42s ease-out; }
     @keyframes tableShake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(7px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
     .cinema-fx.dice .fx-title { color:#f6ffd1; text-shadow:0 0 13px #4fe3cf,0 0 42px #167965,0 5px 0 #0e433c; }
@@ -3843,6 +3856,7 @@
     doudizhu:{
       reveal:{kind:'fx-ddz-landlord',sound:'deal',duration:2050,particles:26},landlord:{kind:'fx-ddz-landlord',sound:'deal',duration:2050,particles:26},
       double:{kind:'fx-ddz-double',sound:'play',duration:1620,particles:34},
+      combo:{kind:'fx-ddz-chain',sound:'play',duration:1920,particles:48},
       bomb:{kind:'fx-ddz-rocket',sound:'bomb',duration:1350,particles:42},report:{kind:'fx-ddz-spring',sound:'one',duration:2100,particles:32},
       spring:{kind:'fx-ddz-spring',sound:'win',duration:2100,particles:36},win:{kind:'fx-ddz-landlord',sound:'win',duration:2050,particles:28}
     },
@@ -3854,7 +3868,7 @@
     },
     changsha:{
       dice:{kind:'fx-cs-dice',sound:'deal',duration:1700,particles:18},heaven:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:28},
-      self:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24},robgang:{kind:'fx-cs-robgang',sound:'win',duration:2080,particles:34},bird:{kind:'fx-cs-bird',sound:'win',duration:1680,particles:20},
+      self:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24},pure:{kind:'fx-cs-pure',sound:'win',duration:2180,particles:48},robgang:{kind:'fx-cs-robgang',sound:'win',duration:2080,particles:34},bird:{kind:'fx-cs-bird',sound:'win',duration:1680,particles:20},
       discard:{kind:'fx-cs-bird',sound:'play',duration:1680,particles:18},win:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24}
     },
     zhuanzhuan:{
@@ -4725,7 +4739,8 @@
     if(!ddzBeat(z,ddz.lead))return ddzToast('这手牌压不过桌面牌');
     const used=new Set(cards.map(c=>c.id));ddz.p[id].h=hand.filter(c=>!used.has(c.id));
     ddz.table.push(...cards);ddz.playedHistory.push(...cards);ddz.lead=z;ddz.leader=id;ddz.passes=0;ddz.playCounts[id]++;ddzSelected.clear();
-    if(z.bomb){ddz.bombFactor*=2;playModeCinema('doudizhu','bomb',z.k==='rocket'?'王 炸':'炸 弹');modeEventReact('ddz',ddz.names,'doudizhu','bomb');}else AudioSys.fx('play');
+    const comboRush=['straight','pairRun','plane','planeSingle','planePair'].includes(z.k)&&z.a.length>=8;
+    if(z.bomb){ddz.bombFactor*=2;playModeCinema('doudizhu','bomb',z.k==='rocket'?'王 炸':'炸 弹');modeEventReact('ddz',ddz.names,'doudizhu','bomb');}else if(comboRush){playModeCinema('doudizhu','combo',z.k.startsWith('plane')?'飞 机 连 击':'链 式 压 制');modeEventReact('ddz',ddz.names,'doudizhu','combo');}else AudioSys.fx('play');
     ddz.message=`${ddz.names[id]} 打出 ${z.l}`;
     if(!ddz.p[id].h.length)return ddzSettle(id);
     if(ddz.p[id].h.length===1){ddz.message+=` · ${ddz.names[id]} 报单`;playModeCinema('doudizhu','report','报 单');modeEventReact('ddz',ddz.names,'doudizhu','report');}
@@ -5202,9 +5217,9 @@
   function mjRevealHTML(){return mj.p.map((p,i)=>`<div class="mode-reveal-row"><b>${mj.names[i]} · ${p.h.length}张</b><div class="mode-reveal-cards">${p.h.map(t=>`<span class="mj-tile ${t.suit==='中'?'red':''}">${mjTileHTML(t)}</span>`).join('')}</div></div>`).join('');}
   function mjSettle(winner,kind,tile,discarder=null){clearTimeout(mjTimer);mj.phase='result';let delta=0,detail='',factor=1,stake=mj.roundBase,effectTitle='胡 牌',event='win';
     if(kind==='heaven'){factor=4;effectTitle='天 胡';event='heaven';const amount=stake*factor;delta=winner===0?amount*3:-amount;detail='天胡 · 庄家起手十四张成胡 · ×4';}
-    else if(mj.mode==='changsha'){const bird=mj.wall.shift()||null,birdHit=bird&&((Math.max(1,bird.n)-1)%4)==((winner-mj.dealer+4)%4);factor=birdHit?2:1;effectTitle=birdHit?'扎 鸟 命 中':(kind==='self'?'自 摸':kind==='robGang'?'抢 杠 胡':'胡 牌');event=birdHit?'bird':'win';const amount=stake*factor;if(kind==='self')delta=winner===0?amount*3:-amount;else delta=winner===0?amount*3:(discarder===0?-amount*3:0);detail=`${kind==='self'?'自摸':kind==='robGang'?'抢杠胡':'点炮'} · 二五八将<br>扎鸟 ${bird?bird.label:'无牌'}${birdHit?'，命中 ×2':'，未命中'}`;}
+    else if(mj.mode==='changsha'){const bird=mj.wall.shift()||null,birdHit=bird&&((Math.max(1,bird.n)-1)%4)==((winner-mj.dealer+4)%4),pureSuitSelf=kind==='self'&&(()=>{const tiles=mjAllTiles(winner),suit=tiles[0]?.suit;return tiles.length>=14&&['万','筒','条'].includes(suit)&&tiles.every(t=>t.suit===suit);})();factor=birdHit?2:1;effectTitle=pureSuitSelf?'清 一 色 自 摸':birdHit?'扎 鸟 命 中':(kind==='self'?'自 摸':kind==='robGang'?'抢 杠 胡':'胡 牌');event=pureSuitSelf?'pure':birdHit?'bird':'win';const amount=stake*factor;if(kind==='self')delta=winner===0?amount*3:-amount;else delta=winner===0?amount*3:(discarder===0?-amount*3:0);detail=`${pureSuitSelf?'清一色自摸 · ':''}${kind==='self'?'自摸':kind==='robGang'?'抢杠胡':'点炮'} · 二五八将<br>扎鸟 ${bird?bird.label:'无牌'}${birdHit?'，命中 ×2':'，未命中'}`;}
     else {const code=mj.wall.shift()||tile,codeScore=code.suit==='中'||code.n===1||code.n===9?10:code.n+1,killGhost=!mj.p[winner].h.some(t=>t.suit==='中'),flyGhostWin=kind==='self'&&mj.flyGhostOnDraw===winner;factor=killGhost?2:1;effectTitle=killGhost?'杀 鬼':flyGhostWin?'飞 鬼 自 摸':'翻 码';event=killGhost?'kill':'win';const amount=stake*codeScore*factor;delta=winner===0?amount*3:-amount;const intercepted=(mj.flyGhost||[]).map((v,id)=>v&&id!==winner?mj.names[id]:null).filter(Boolean);detail=`自摸 · 翻码 ${code.label} = ${codeScore}分${killGhost?' · 杀鬼 ×2':''}${flyGhostWin?' · 飞鬼':''}${intercepted.length?`<br>飞鬼被截胡：${intercepted.join('、')}`:''}`;}
-    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(kind==='robGang'?'robgang':event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':flyGhostWin?'fly':'flip'));playModeCinema(mj.mode,cinemaEvent,effectTitle);modeEventReact('mj',mj.names,mj.mode,event);
+    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(kind==='robGang'?'robgang':event==='pure'?'pure':event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':flyGhostWin?'fly':'flip'));playModeCinema(mj.mode,cinemaEvent,effectTitle);modeEventReact('mj',mj.names,mj.mode,event);
     profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(winner===0)profile.wins++;profile.mjHistory[mj.mode].push({at:Date.now(),win:winner===0,base:stake,multiplier:factor,delta,detail:detail.replace(/<br>/g,' ')});profile.mjHistory[mj.mode]=profile.mjHistory[mj.mode].slice(-30);const loan=serviceLoanAfterMatch();saveProfile();$('mjResultTitle').textContent=kind==='heaven'?'天胡':(winner===0?'本局获胜':`${mj.names[winner]} 胡牌`);$('mjResultText').innerHTML=`${detail}<br>${mj.names[winner]} 下局坐庄<br>底注 ${stake.toLocaleString()}<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('mjRevealHands').innerHTML=mjRevealHTML();$('mjResult').classList.remove('hidden');renderMJ();AudioSys.fx(winner===0?'win':'bomb');}
   function renderMJ(){
     if(!mj)return;
