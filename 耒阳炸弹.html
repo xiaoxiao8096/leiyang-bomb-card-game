@@ -5340,6 +5340,8 @@
     #mjScreen #mjMeld0:not(:empty)::before{content:'我的副露';position:absolute;left:8px;top:3px;color:#f7d77c;font-size:10px;font-weight:900;letter-spacing:.1em}
     #mjScreen #mjMeld0 .mj-zone-meld{gap:0}
     #mjScreen .mj-wall-stack{width:29px;height:36px;box-shadow:inset 0 0 0 1px rgba(224,242,210,.35),0 3px 0 rgba(13,79,67,.95),0 7px 8px rgba(0,0,0,.36)}
+    /* 对家牌背贴合内桌上沿，不能落在牌桌外的场景背景中。 */
+    #mjScreen .mj-board #mjWallTop{top:13%!important;bottom:auto!important}
     #mjScreen .mj-seat.active .ddz-avatar{animation:mjActorPulse .72s ease-out both;box-shadow:0 0 0 3px #edc76e,0 0 24px rgba(251,211,111,.82)}
     #mjScreen .mj-seat.active::after{content:'行动中';position:absolute;left:50%;top:-18px;transform:translateX(-50%);color:#fff0b0;font-size:10px;font-weight:900;white-space:nowrap;text-shadow:0 2px 4px #000;animation:mjActorPulse .72s ease-out both}
     @keyframes mjActorPulse{0%{transform:scale(.92);filter:brightness(1)}55%{transform:scale(1.08);filter:brightness(1.35)}100%{transform:scale(1);filter:brightness(1)}}
