@@ -1877,6 +1877,12 @@
       .mode-chat-panel { display:none; }
       .mode-quick-popover { width:min(252px,88vw); }
     }
+    /* 五子棋专属避让：消息框固定在右上安全区，右侧对手头像单独保留呼吸空间。 */
+    #gmScreen .mode-chat-panel { top:44px !important; right:16px !important; bottom:auto !important; width:210px; height:172px; }
+    @media(max-width:900px) {
+      #gmScreen .mode-chat-panel { top:12px !important; right:7px !important; width:154px; height:134px; }
+      #gmScreen .gm-seat.right { top:52%; }
+    }
     /* 麻将固定桌面本体：牌墙、牌河、副露、手牌均是桌面上的真实分区，不以场景海报代替牌局结构。 */
     #mjScreen .mj-table {
       --mj-rail:#3b2817; --mj-rail-hi:#8b6940; --mj-metal:#d9ad5c; --mj-felt:#154f47; --mj-felt-deep:#082c2c;
