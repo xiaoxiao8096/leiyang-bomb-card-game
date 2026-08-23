@@ -4633,6 +4633,18 @@
   }
 
   // 斗地主AI只评估自己的手牌、桌面牌型、已公开角色和公开张数；不读取其他座位的牌面。
+  function ddzAIHandProfile(hand) {
+    // 只传入当前AI自己的手牌；该评估器不接收、也不读取其他座位的牌面。
+    const m=group(hand),groups=Object.values(m),pairs=groups.filter(a=>a.length===2).length,trips=groups.filter(a=>a.length===3).length,quads=groups.filter(a=>a.length===4).length;
+    const twos=(m['2']||[]).length,aces=(m['A']||[]).length,kings=(m['K']||[]).length,rocket=hand.filter(c=>c.s==='王').length===2;
+    const singles=groups.filter(a=>a.length===1).length;
+    const chains=ddzCandidates(hand).filter(z=>['straight','pairRun','plane','planeSingle','planePair'].includes(z.k));
+    const bestChain=chains.reduce((n,z)=>Math.max(n,z.a.length),0);
+    const planeCount=chains.filter(z=>z.k.startsWith('plane')).length;
+    const score=7+pairs*1.2+trips*3.3+quads*6+(rocket?7:0)+twos*2+aces*.85+kings*.3+bestChain*.52+planeCount*1.4-singles*.55;
+    return {score,pairs,trips,quads,rocket,twos,bestChain,planeCount,singles};
+  }
+
   function ddzRemainValue(cards) {
     if (!cards.length) return 180;
     const m=group(cards),groups=Object.values(m),pairs=groups.filter(a=>a.length===2).length,trips=groups.filter(a=>a.length===3).length,quads=groups.filter(a=>a.length===4).length;
@@ -4647,10 +4659,10 @@
     const legal=ddzCandidates(p.h).filter(z=>ddzBeat(z,ddz.lead));
     const finish=legal.find(z=>z.a.length===p.h.length); if(finish)return finish;
     const sameSide=(a,b)=>a===b || (ddz.landlord!==null && a!==ddz.landlord && b!==ddz.landlord);
-    const next=ddzNext(id), nextEnemy=!sameSide(id,next), nextOne=nextEnemy&&ddz.p[next].h.length===1;
-    const farmer=ddz.landlord!==id,landlordOne=ddz.landlord!==null&&ddz.p[ddz.landlord].h.length===1;
+    const next=ddzNext(id), nextEnemy=!sameSide(id,next), nextOne=nextEnemy&&ddz.p[next].count===1;
+    const farmer=ddz.landlord!==id,landlordOne=ddz.landlord!==null&&ddz.p[ddz.landlord].count===1;
     const partner=id===ddz.landlord?null:[0,1,2].find(x=>x!==id&&x!==ddz.landlord);
-    const partnerOne=partner!==null&&ddz.p[partner].h.length===1;
+    const partnerOne=partner!==null&&ddz.p[partner].count===1;
     const nextIsPartner=partner!==null&&next===partner;
     // 农民同伴已经压住地主时，直接让牌；只在地主公开报单时才保留封口机会。
     if(ddz.lead && sameSide(id,ddz.leader) && !landlordOne) return null;
@@ -4659,7 +4671,13 @@
     const pool = safe.length?safe:legal;
     const scored=pool.map(z=>{
       let score=z.x*.8-z.a.length*8+(z.bomb?240:0);
-      if(!ddz.lead) score-=z.a.length*4;
+      const comboLead=['straight','pairRun','plane','planeSingle','planePair'].includes(z.k);
+      // 领牌时优先消化成型组合；飞机与长连优先级显著高于零散单张，但不强行拆炸弹。
+      if(!ddz.lead){
+        score-=z.a.length*4;
+        if(comboLead)score-=36+z.a.length*4+(z.k.startsWith('plane')?28:0);
+        else if(z.k==='single')score+=18;
+      }
       if(mustBlock&&z.k==='single') score-=z.x*6;
       if(z.bomb&&p.h.length-z.a.length>4&&!mustBlock)score+=260;
       const remain=p.h.filter(c=>!new Set(z.a.map(x=>x.id)).has(c.id));
@@ -4678,7 +4696,7 @@
       return {z,score};
     }).sort((a,b)=>a.score-b.score);
     const choice=scored[0]?.z||null;
-    if(choice) choice.reason=farmer&&partnerOne&&nextIsPartner&&!landlordOne?'队友报单，领低牌交给队友':landlordOne?'地主报单，优先封口':(ddz.lead?'用较小代价接牌':'优先多出牌、保留炸弹');
+    if(choice) choice.reason=farmer&&partnerOne&&nextIsPartner&&!landlordOne?'队友报单，领低牌交给队友':landlordOne?'地主报单，优先封口':(!ddz.lead&&['straight','pairRun','plane','planeSingle','planePair'].includes(choice.k)?'手牌成型，优先连出组合':(ddz.lead?'用较小代价接牌':'优先多出牌、保留炸弹'));
     return choice;
   }
 
@@ -4690,17 +4708,19 @@
     const cards=shuffle(ddzDeck());
     const starter=Math.floor(Math.random()*3);
     ddz={phase:'double',names,p:[],bottom:cards.slice(51),doubleTurn:starter,doubleStarter:starter,doubleCount:0,doubles:[1,1,1],doubleFactor:1,callTurn:null,callCount:0,callers:[],landlord:null,turn:null,lead:null,leader:null,passes:0,table:[],playedHistory:[],revealFactor:1,revealed:[false,false,false],bombFactor:1,springFactor:1,playCounts:[0,0,0],message:'先选择加倍'};
-    for(let id=0;id<3;id++)ddz.p.push({id,h:ddzSort(cards.slice(id*17,id*17+17))});
+    for(let id=0;id<3;id++){const h=ddzSort(cards.slice(id*17,id*17+17));ddz.p.push({id,h,count:h.length});}
     $('ddzResult').classList.add('hidden'); renderDDZ(); ddzAI();
   }
 
-  function ddzStrength(id) {
-    const h=ddz.p[id].h,m=group(h);
-    const bombs=Object.values(m).filter(a=>a.length===4).length;
-    const rocket=h.filter(c=>c.s==='王').length===2;
-    const high=h.filter(c=>['2','小王','大王'].includes(c.r)).length;
-    const strength=bombs*3+(rocket?4:0)+high;
-    return strength;
+  function ddzStrength(id) { return ddzAIHandProfile(ddz.p[id].h).score; }
+  function ddzAIDoubleFactor(id) {
+    const p=ddzAIHandProfile(ddz.p[id].h);
+    return p.score>=22?4:p.score>=17?3:p.score>=14?2:1;
+  }
+  function ddzAIWantsLandlord(id) {
+    const p=ddzAIHandProfile(ddz.p[id].h);
+    // 首叫标准略低，已有叫地主时需更强的单手牌才抢；不使用任何对手牌面信息。
+    return p.score >= (ddz.callers.length?15.5:12.25);
   }
 
   function ddzDouble(factor) {
@@ -4728,7 +4748,7 @@
 
   function ddzFinishBid(){
     ddz.phase='play';ddz.turn=ddz.landlord;
-    ddz.p[ddz.landlord].h=ddzSort([...ddz.p[ddz.landlord].h,...ddz.bottom]);
+    ddz.p[ddz.landlord].h=ddzSort([...ddz.p[ddz.landlord].h,...ddz.bottom]);ddz.p[ddz.landlord].count=ddz.p[ddz.landlord].h.length;
     ddz.message=`${ddz.names[ddz.landlord]} 成为地主，先出牌`;renderDDZ();playModeCinema('doudizhu','landlord','地 主');ddzAI();
   }
 
@@ -4737,7 +4757,7 @@
     const hand=ddz.p[id].h,cards=ids.map(x=>hand.find(c=>c.id===x)).filter(Boolean),z=ddzCombo(cards);
     if(!z)return ddzToast('所选牌型不能这样出');
     if(!ddzBeat(z,ddz.lead))return ddzToast('这手牌压不过桌面牌');
-    const used=new Set(cards.map(c=>c.id));ddz.p[id].h=hand.filter(c=>!used.has(c.id));
+    const used=new Set(cards.map(c=>c.id));ddz.p[id].h=hand.filter(c=>!used.has(c.id));ddz.p[id].count=ddz.p[id].h.length;
     ddz.table.push(...cards);ddz.playedHistory.push(...cards);ddz.lead=z;ddz.leader=id;ddz.passes=0;ddz.playCounts[id]++;ddzSelected.clear();
     const comboRush=['straight','pairRun','plane','planeSingle','planePair'].includes(z.k)&&z.a.length>=8;
     if(z.bomb){ddz.bombFactor*=2;playModeCinema('doudizhu','bomb',z.k==='rocket'?'王 炸':'炸 弹');modeEventReact('ddz',ddz.names,'doudizhu','bomb');}else if(comboRush){playModeCinema('doudizhu','combo',z.k.startsWith('plane')?'飞 机 连 击':'链 式 压 制');modeEventReact('ddz',ddz.names,'doudizhu','combo');}else AudioSys.fx('play');
@@ -4806,8 +4826,8 @@
 
   function ddzAI(){
     clearTimeout(ddzTimer);if(!ddz)return;
-    if(ddz.phase==='double'&&ddz.doubleTurn!==0){const id=ddz.doubleTurn,s=ddzStrength(id),factor=s>=11?4:s>=8?3:s>=5?2:1;ddzTimer=setTimeout(()=>ddzDouble(factor),650);}
-    else if(ddz.phase==='call'&&ddz.callTurn!==0){const id=ddz.callTurn,s=ddzStrength(id),threshold=ddz.callers.length?7:5;ddzTimer=setTimeout(()=>ddzCall(s>=threshold?1:0),650);}
+    if(ddz.phase==='double'&&ddz.doubleTurn!==0){const id=ddz.doubleTurn,factor=ddzAIDoubleFactor(id);ddzTimer=setTimeout(()=>ddzDouble(factor),650);}
+    else if(ddz.phase==='call'&&ddz.callTurn!==0){const id=ddz.callTurn,wants=ddzAIWantsLandlord(id);ddzTimer=setTimeout(()=>ddzCall(wants?1:0),650);}
     else if(ddz.phase==='play'&&ddz.turn!==0){const id=ddz.turn;ddzTimer=setTimeout(()=>{const z=ddzChoose(id);z?ddzPlay(id,z.a.map(c=>c.id)):ddzPass(id);},720);}
   }
 
