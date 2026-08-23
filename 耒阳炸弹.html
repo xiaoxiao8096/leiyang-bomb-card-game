@@ -1265,6 +1265,11 @@
     .cinema-fx.fx-zz-redzhong { --fx-art:url('/manus-storage/fx-zz-redzhong-spiral_d3f7d79f.jpg'); --fx-accent:#ff6d60; background-position:center; }
     .cinema-fx.fx-zz-flip { --fx-art:url('/manus-storage/fx-zz-flipcode-orbit_aab17c8a.jpg'); --fx-accent:#f0cf7b; background-position:center; }
     .cinema-fx.fx-zz-kill { --fx-art:url('/manus-storage/fx-zz-killghost-shatter_e8e77dc8.jpg'); --fx-accent:#8ff0c7; background-position:center; }
+    /* 本轮新增的稀有事件美术：加倍、AAA、抢杠胡、飞鬼均保留各玩法自己的色彩语汇。 */
+    .cinema-fx.fx-ddz-double { --fx-art:url('assets/vfx/fx-ddz-super-double.png'); --fx-accent:#ffc15e; background-position:center; }
+    .cinema-fx.fx-pdk-aaa { --fx-art:url('assets/vfx/fx-pdk-aaa-storm.png'); --fx-accent:#8cecff; background-position:center; }
+    .cinema-fx.fx-cs-robgang { --fx-art:url('assets/vfx/fx-cs-robgang-jade.png'); --fx-accent:#ffcf77; background-position:center; }
+    .cinema-fx.fx-zz-fly { --fx-art:url('assets/vfx/fx-zz-flying-ghost.png'); --fx-accent:#92ffd0; background-position:center; }
     .cinema-fx.cinema-theme-ddz { --fx-accent:#ffe18a; }
     .cinema-fx.cinema-theme-pdk { --fx-accent:#76f1ff; }
     .cinema-fx.cinema-theme-cs { --fx-accent:#ffe18a; }
@@ -1304,6 +1309,19 @@
     .cinema-fx.fx-zz-kill.show { animation:fxKillVeil 1.9s ease-out forwards; }
     .cinema-fx.fx-zz-redzhong.show .fx-title,.cinema-fx.fx-zz-flip.show .fx-title,.cinema-fx.fx-zz-kill.show .fx-title { animation:fxZhongTitle 1.48s cubic-bezier(.18,.9,.22,1) forwards; }
     .cinema-fx.fx-zz-redzhong.show::before,.cinema-fx.fx-zz-redzhong.show::after,.cinema-fx.fx-zz-flip.show::before,.cinema-fx.fx-zz-flip.show::after,.cinema-fx.fx-zz-kill.show::before,.cinema-fx.fx-zz-kill.show::after { border-color:rgba(126,255,194,.78); animation-name:fxJadeRing; }
+    .cinema-fx.fx-ddz-double.show { animation:fxDoubleVeil 1.62s cubic-bezier(.15,.84,.22,1) forwards; }
+    .cinema-fx.fx-ddz-double.show .fx-title { animation:fxDoubleTitle 1.38s cubic-bezier(.15,.9,.22,1) forwards; }
+    .cinema-fx.fx-ddz-double.show::before,.cinema-fx.fx-ddz-double.show::after { border-color:rgba(255,193,94,.84); animation-name:fxCrownRing; }
+    .cinema-fx.fx-pdk-aaa.show { animation:fxAAAVeil 1.62s cubic-bezier(.1,.9,.18,1) forwards; }
+    .cinema-fx.fx-pdk-aaa.show .fx-title { animation:fxAAATitle 1.36s cubic-bezier(.08,.92,.18,1) forwards; }
+    .cinema-fx.fx-pdk-aaa.show::before { width:9vmax; height:9vmax; border-radius:10px; border-color:rgba(130,239,255,.88); animation-name:fxRunStreak; }
+    .cinema-fx.fx-pdk-aaa.show::after { display:none; }
+    .cinema-fx.fx-cs-robgang.show { animation:fxRobGangVeil 2.08s cubic-bezier(.18,.84,.24,1) forwards; }
+    .cinema-fx.fx-cs-robgang.show .fx-title { animation:fxRobGangTitle 1.7s cubic-bezier(.18,.9,.24,1) forwards; }
+    .cinema-fx.fx-cs-robgang.show::before,.cinema-fx.fx-cs-robgang.show::after { border-color:rgba(255,201,106,.85); animation-name:fxCrownRing; }
+    .cinema-fx.fx-zz-fly.show { animation:fxFlyVeil 2.06s cubic-bezier(.14,.86,.22,1) forwards; }
+    .cinema-fx.fx-zz-fly.show .fx-title { animation:fxFlyTitle 1.68s cubic-bezier(.16,.9,.22,1) forwards; }
+    .cinema-fx.fx-zz-fly.show::before,.cinema-fx.fx-zz-fly.show::after { border-color:rgba(126,255,194,.82); animation-name:fxJadeRing; }
     .mj-event-art { position:absolute; z-index:1; left:50%; top:50%; width:min(54vmin,520px); height:min(54vmin,520px); pointer-events:none; background:center/contain no-repeat; opacity:0; transform:translate(-50%,-50%) scale(.62) rotate(-18deg); }
     .cinema-fx.show .mj-event-art { animation:mjEventArt 1.72s cubic-bezier(.15,.86,.22,1) forwards; }
     .mj-event-art.jade { background-image:url('assets/mj_fx_jade_meld_v2.png'); }.mj-event-art.vermilion { background-image:url('assets/mj_fx_redzhong_v2.png'); }
@@ -1344,6 +1362,14 @@
     @keyframes fxFlipVeil { 0%{opacity:0;background-size:112%;filter:hue-rotate(18deg)} 20%,68%{opacity:1} 100%{opacity:0;background-size:100%;filter:hue-rotate(0)} }
     @keyframes fxKillVeil { 0%{opacity:0;background-size:126%} 22%,72%{opacity:1} 100%{opacity:0;background-size:102%} }
     @keyframes fxZhongTitle { 0%{transform:rotate(-18deg) scale(.45);opacity:0} 32%,70%{transform:rotate(0) scale(1);opacity:1} 100%{transform:rotate(18deg) scale(1.16);opacity:0} }
+    @keyframes fxDoubleVeil { 0%{opacity:0;background-size:120%;filter:saturate(.8)} 18%,70%{opacity:1;filter:saturate(1.18)} 100%{opacity:0;background-size:102%;filter:saturate(1)} }
+    @keyframes fxDoubleTitle { 0%{transform:scale(.32) rotate(-7deg);opacity:0} 30%,68%{transform:scale(1.1) rotate(0);opacity:1} 100%{transform:scale(1.25) rotate(4deg);opacity:0} }
+    @keyframes fxAAAVeil { 0%{opacity:0;background-position:15% center;background-size:126%} 16%,66%{opacity:1} 100%{opacity:0;background-position:84% center;background-size:104%} }
+    @keyframes fxAAATitle { 0%{transform:translateX(-52vw) skewX(-14deg);opacity:0} 28%,68%{transform:translateX(0) skewX(-5deg);opacity:1} 100%{transform:translateX(46vw) skewX(-12deg);opacity:0} }
+    @keyframes fxRobGangVeil { 0%{opacity:0;background-size:120%;filter:contrast(.92)} 22%,74%{opacity:1;filter:contrast(1.12)} 100%{opacity:0;background-size:102%;filter:contrast(1)} }
+    @keyframes fxRobGangTitle { 0%{transform:translateY(38px) scale(.58) rotate(-5deg);opacity:0} 31%,70%{transform:translateY(0) scale(1.05) rotate(0);opacity:1} 100%{transform:translateY(-18px) scale(1.15) rotate(4deg);opacity:0} }
+    @keyframes fxFlyVeil { 0%{opacity:0;background-size:124%;background-position:center 62%} 20%,74%{opacity:1} 100%{opacity:0;background-size:103%;background-position:center 42%} }
+    @keyframes fxFlyTitle { 0%{transform:rotate(-16deg) scale(.4);opacity:0} 30%,70%{transform:rotate(0) scale(1.05);opacity:1} 100%{transform:rotate(15deg) scale(1.22);opacity:0} }
     .table-felt.fx-shake { animation:tableShake .42s ease-out; }
     @keyframes tableShake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(7px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
     .cinema-fx.dice .fx-title { color:#f6ffd1; text-shadow:0 0 13px #4fe3cf,0 0 42px #167965,0 5px 0 #0e433c; }
@@ -3816,22 +3842,24 @@
   const MODE_CINEMA = {
     doudizhu:{
       reveal:{kind:'fx-ddz-landlord',sound:'deal',duration:2050,particles:26},landlord:{kind:'fx-ddz-landlord',sound:'deal',duration:2050,particles:26},
+      double:{kind:'fx-ddz-double',sound:'play',duration:1620,particles:34},
       bomb:{kind:'fx-ddz-rocket',sound:'bomb',duration:1350,particles:42},report:{kind:'fx-ddz-spring',sound:'one',duration:2100,particles:32},
       spring:{kind:'fx-ddz-spring',sound:'win',duration:2100,particles:36},win:{kind:'fx-ddz-landlord',sound:'win',duration:2050,particles:28}
     },
     paodekuai:{
       start:{kind:'fx-pdk-start',sound:'deal',duration:1420,particles:34},plane:{kind:'fx-pdk-plane',sound:'play',duration:1420,particles:34},
+      aaa:{kind:'fx-pdk-aaa',sound:'bomb',duration:1620,particles:46},
       bomb:{kind:'fx-pdk-plane',sound:'bomb',duration:1420,particles:42},report:{kind:'fx-pdk-finish',sound:'one',duration:1420,particles:34},
       spring:{kind:'fx-pdk-finish',sound:'win',duration:1420,particles:38},finish:{kind:'fx-pdk-finish',sound:'win',duration:1420,particles:34}
     },
     changsha:{
       dice:{kind:'fx-cs-dice',sound:'deal',duration:1700,particles:18},heaven:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:28},
-      self:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24},bird:{kind:'fx-cs-bird',sound:'win',duration:1680,particles:20},
+      self:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24},robgang:{kind:'fx-cs-robgang',sound:'win',duration:2080,particles:34},bird:{kind:'fx-cs-bird',sound:'win',duration:1680,particles:20},
       discard:{kind:'fx-cs-bird',sound:'play',duration:1680,particles:18},win:{kind:'fx-cs-tianhu',sound:'win',duration:2000,particles:24}
     },
     zhuanzhuan:{
       dice:{kind:'fx-zz-redzhong',sound:'deal',duration:1780,particles:20},redzhong:{kind:'fx-zz-redzhong',sound:'play',duration:1780,particles:22},
-      flip:{kind:'fx-zz-flip',sound:'play',duration:1580,particles:18},kill:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:28},
+      flip:{kind:'fx-zz-flip',sound:'play',duration:1580,particles:18},fly:{kind:'fx-zz-fly',sound:'win',duration:2060,particles:34},kill:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:28},
       self:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:24},heaven:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:28},win:{kind:'fx-zz-flip',sound:'win',duration:1580,particles:18}
     },
     gomoku:{
@@ -4665,6 +4693,7 @@
     if(!ddz||ddz.phase!=='double')return;
     const id=ddz.doubleTurn;factor=Math.max(1,Math.min(4,Number(factor)||1));ddz.doubles[id]=factor;ddz.doubleFactor=Math.max(...ddz.doubles);ddz.doubleCount++;
     ddz.message=`${ddz.names[id]} ${factor===1?'不加倍':factor===4?'超级加倍 ×4':`加倍 ×${factor}`}`;
+    if(factor>1){playModeCinema('doudizhu','double',factor===4?'超 级 加 倍':'加 倍 ×2');modeEventReact('ddz',ddz.names,'doudizhu','double');}
     if(ddz.doubleCount===3){ddz.phase='call';ddz.callTurn=ddz.doubleStarter;ddz.message='加倍完成，开始叫地主';renderDDZ();return ddzAI();}
     ddz.doubleTurn=ddzNext(id);renderDDZ();ddzAI();
   }
@@ -4929,7 +4958,7 @@
     clearTimeout(pdkTimer);pdkSelected.clear();if(!pdkNames)pdkNames=[profile.playerName,...shuffle(allRoles()).slice(0,2)];const cards=shuffle(pdkDeck());pdk={phase:'play',names:pdkNames,p:[],turn:0,lead:null,leader:null,passes:0,table:[],message:'开始出牌',mustHeart3:pdkFirstRound,playCounts:[0,0,0],roundBase:base};for(let i=0;i<3;i++)pdk.p.push({id:i,h:ddzSort(cards.slice(i*16,i*16+16))});
     if(pdkFirstRound)pdk.turn=pdk.p.findIndex(x=>x.h.some(c=>c.r==='3'&&c.s==='♥'));else pdk.turn=pdkNextStarter??0;$('pdkResult').classList.add('hidden');pdk.message=pdkFirstRound?`${pdk.names[pdk.turn]} 持红桃3，首局先出`:`${pdk.names[pdk.turn]} 上局获胜，先出`;renderPDK();if(pdkFirstRound)playModeCinema('paodekuai','start','红 桃 3 开 冲');pdkAI();
   }
-  function pdkPlay(id,ids){if(!pdk||pdk.phase!=='play'||pdk.turn!==id)return;const hand=pdk.p[id].h,cards=ids.map(x=>hand.find(c=>c.id===x)).filter(Boolean),z=pdkCombo(cards);if(!z)return pdkToast('所选牌型不能这样出');if(pdk.mustHeart3&&!pdk.lead&&!cards.some(c=>c.r==='3'&&c.s==='♥'))return pdkToast('首局第一手必须带红桃3');if(!pdkBeat(z,pdk.lead))return pdkToast('这手牌压不过桌面牌');const used=new Set(cards.map(c=>c.id));pdk.p[id].h=hand.filter(c=>!used.has(c.id));pdk.table.push(...cards);pdk.lead=z;pdk.leader=id;pdk.passes=0;pdk.mustHeart3=false;pdk.playCounts[id]++;pdkSelected.clear();if(z.bomb){playModeCinema('paodekuai','bomb',z.k==='aaa'?'AAA':'炸 弹');modeEventReact('pdk',pdk.names,'paodekuai','bomb');}else if(z.k==='plane'||z.k==='planeWings')playModeCinema('paodekuai','plane','飞 机');else AudioSys.fx('play');pdk.message=`${pdk.names[id]} 打出 ${z.l}`;if(!pdk.p[id].h.length)return pdkSettle(id);if(pdk.p[id].h.length===1){pdk.message+=` · ${pdk.names[id]} 报单`;playModeCinema('paodekuai','report','冲 刺');modeEventReact('pdk',pdk.names,'paodekuai','report');}pdk.turn=pdkNext(id);renderPDK();pdkAI();}
+  function pdkPlay(id,ids){if(!pdk||pdk.phase!=='play'||pdk.turn!==id)return;const hand=pdk.p[id].h,cards=ids.map(x=>hand.find(c=>c.id===x)).filter(Boolean),z=pdkCombo(cards);if(!z)return pdkToast('所选牌型不能这样出');if(pdk.mustHeart3&&!pdk.lead&&!cards.some(c=>c.r==='3'&&c.s==='♥'))return pdkToast('首局第一手必须带红桃3');if(!pdkBeat(z,pdk.lead))return pdkToast('这手牌压不过桌面牌');const used=new Set(cards.map(c=>c.id));pdk.p[id].h=hand.filter(c=>!used.has(c.id));pdk.table.push(...cards);pdk.lead=z;pdk.leader=id;pdk.passes=0;pdk.mustHeart3=false;pdk.playCounts[id]++;pdkSelected.clear();if(z.bomb){const event=z.k==='aaa'?'aaa':'bomb';playModeCinema('paodekuai',event,z.k==='aaa'?'AAA':'炸 弹');modeEventReact('pdk',pdk.names,'paodekuai',event);}else if(z.k==='plane'||z.k==='planeWings')playModeCinema('paodekuai','plane','飞 机');else AudioSys.fx('play');pdk.message=`${pdk.names[id]} 打出 ${z.l}`;if(!pdk.p[id].h.length)return pdkSettle(id);if(pdk.p[id].h.length===1){pdk.message+=` · ${pdk.names[id]} 报单`;playModeCinema('paodekuai','report','冲 刺');modeEventReact('pdk',pdk.names,'paodekuai','report');}pdk.turn=pdkNext(id);renderPDK();pdkAI();}
   function pdkPass(id){if(!pdk||pdk.phase!=='play'||pdk.turn!==id||!pdk.lead||pdk.leader===id)return;const canBeat=pdkCandidates(pdk.p[id].h).some(z=>pdkBeat(z,pdk.lead));if(canBeat){if(id===0)pdkToast('跑得快要得起必须出，不能选择不出');return;}pdk.passes++;pdkSelected.clear();pdk.message=`${pdk.names[id]} 无牌可压`;if(pdk.passes>=2){const leader=pdk.leader;pdk.lead=null;pdk.table=[];pdk.passes=0;pdk.turn=leader;pdk.message=`${pdk.names[leader]} 重新领出`;}else pdk.turn=pdkNext(id);renderPDK();pdkAI();}
   function pdkSettle(winner){
     clearTimeout(pdkTimer);pdk.phase='result';
@@ -4951,7 +4980,7 @@
   $('pdkPassBtn').onclick=()=>pdkPass(0);$('pdkHintBtn').onclick=()=>{const z=pdkChoose(0);pdkSelected=new Set(z?z.a.map(c=>c.id):[]);pdkToast(z?`建议：${z.l}${pdk.p[pdkNext(0)].h.length===1?'，优先阻止下家报单':'，尽量多走牌'}`:'建议不出');renderPDK();};$('pdkPlayBtn').onclick=()=>pdkPlay(0,[...pdkSelected]);$('pdkNewBtn').onclick=pdkStart;$('pdkAgainBtn').onclick=pdkStart;$('pdkLobbyBtn').onclick=showLobby;$('pdkShopBtn').onclick=()=>{window.shopContext='poker';renderShop();$('shopDialog').showModal();};$('pdkRecordBtn').onclick=()=>openModeRecord('paodekuai');$('pdkSettingBtn').onclick=()=>$('settingBtn').click();$('pdkRuleBtn').onclick=()=>openModeRule('paodekuai');setupModeChat('pdk',()=>pdk?.names||[profile.playerName],'paodekuai');
 
   /* ---------------- 长沙麻将 / 转转麻将：独立牌墙与胡牌引擎 ---------------- */
-  let mj=null,mjMode='changsha',mjTimer=null,mjRitualTimer=null,mjSelected=null;
+  let mj=null,mjMode='changsha',mjTimer=null,mjRitualTimer=null,mjSelected=null,mjClickTile=null,mjClickAt=0;
   const mjSessions={changsha:null,zhuanzhuan:null};
   const mjNext=id=>(id+3)%4;
   const MJ_SUITS=['万','筒','索'];
@@ -5088,10 +5117,10 @@
   const mjDieHTML=n=>`<span class="mj-die">${Array.from({length:9},(_,i)=>`<i class="${mjDieDots[n].includes(i)?'on':''}"></i>`).join('')}</span>`;
   const mjRollPair=()=>[1+Math.floor(Math.random()*6),1+Math.floor(Math.random()*6)];
   function mjRenderDice(names,rolls,contenders,winner=null){$('mjDiceGrid').innerHTML=names.map((name,id)=>{const pair=rolls[id],sum=pair?pair[0]+pair[1]:null;return `<div class="mj-dice-player ${winner===id?'winner':''}"><span class="mj-dice-name">${name}</span><div class="mj-dice-pair">${pair?mjDieHTML(pair[0])+mjDieHTML(pair[1]):'<span class="mj-die"></span><span class="mj-die"></span>'}</div><span class="mj-dice-score">${sum?`${sum} 点`:(contenders.includes(id)?'重摇':'—')}</span></div>`;}).join('');}
-  function mjRollForDealer(session){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;$('mjResult').classList.add('hidden');const ritual=$('mjDiceRitual');ritual.classList.add('show','rolling');ritual.setAttribute('aria-hidden','false');let contenders=[0,1,2,3],round=0;
+  function mjRollForDealer(session){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;$('mjResult').classList.add('hidden');const ritual=$('mjDiceRitual');ritual.classList.add('show','rolling');ritual.setAttribute('aria-hidden','false');let contenders=[0,1,2,3],round=0;
     const roll=()=>{round++;const rolls=Array(4).fill(null);contenders.forEach(id=>rolls[id]=mjRollPair());mjRenderDice(session.names,rolls,contenders);$('mjDiceResult').textContent=round===1?'四家掷双骰定庄':'最高点重摇';mjRitualTimer=setTimeout(()=>{ritual.classList.remove('rolling');const high=Math.max(...contenders.map(id=>rolls[id][0]+rolls[id][1])),tops=contenders.filter(id=>rolls[id][0]+rolls[id][1]===high);if(tops.length>1){$('mjDiceResult').textContent=`${tops.map(id=>session.names[id]).join('、')} 同为 ${high} 点，重摇`;contenders=tops;ritual.classList.add('rolling');return mjRitualTimer=setTimeout(roll,820);}const dealer=tops[0];mjRenderDice(session.names,rolls,contenders,dealer);$('mjDiceResult').textContent=`${session.names[dealer]} ${high} 点，坐庄`;session.dealer=dealer;session.opened=true;session.diceRounds=round;mjRitualTimer=setTimeout(()=>{ritual.classList.remove('show');ritual.setAttribute('aria-hidden','true');playModeCinema(mjMode,'dice','双 骰 定 庄');modeEventReact('mj',session.names,mjMode,'dice');mjDealRound(session,dealer);},860);},720);};roll();}
-  function mjDealRound(session,dealer){clearTimeout(mjTimer);mjSelected=null;const cards=shuffle(mjDeck(mjMode)),p=Array.from({length:4},(_,id)=>({id,h:mjSort(cards.slice(id*13,id*13+13))})),wall=cards.slice(52),first=wall.shift();p[dealer].h=mjSort([...p[dealer].h,first]);mj={mode:mjMode,names:session.names,p,wall,river:[],turn:dealer,dealer,phase:'play',canHu:false,lastDraw:first,roundBase:base,message:`${session.names[dealer]} 坐庄，先打`,melds:[[],[],[],[]],flyGhost:[false,false,false,false],flyGhostOnDraw:null,gangCounts:[0,0,0,0],pending:null,lastDiscard:null};mjRefreshState(dealer);$('mjResult').classList.add('hidden');renderMJ();AudioSys.fx('deal');if(mj.canHu){mj.message=`${session.names[dealer]} 天胡`;renderMJ();playModeCinema(mjMode,'heaven','天 胡');modeEventReact('mj',mj.names,mjMode,'heaven');return mjTimer=setTimeout(()=>mjSettle(dealer,'heaven',first),1060);}if(dealer!==0)mjTimer=setTimeout(()=>mjDiscard(dealer,mjAIChoice(dealer).id),650);}
-  function mjStart(){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;let session=mjSessions[mjMode];if(!session){session={names:[profile.playerName,...shuffle(allRoles()).slice(0,3)],dealer:null,opened:false,diceRounds:0};mjSessions[mjMode]=session;}if(session.dealer===null)return mjRollForDealer(session);mjDealRound(session,session.dealer);}
+  function mjDealRound(session,dealer){clearTimeout(mjTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;const cards=shuffle(mjDeck(mjMode)),p=Array.from({length:4},(_,id)=>({id,h:mjSort(cards.slice(id*13,id*13+13))})),wall=cards.slice(52),first=wall.shift();p[dealer].h=mjSort([...p[dealer].h,first]);mj={mode:mjMode,names:session.names,p,wall,river:[],turn:dealer,dealer,phase:'play',canHu:false,lastDraw:first,roundBase:base,message:`${session.names[dealer]} 坐庄，先打`,melds:[[],[],[],[]],flyGhost:[false,false,false,false],flyGhostOnDraw:null,gangCounts:[0,0,0,0],pending:null,lastDiscard:null};mjRefreshState(dealer);$('mjResult').classList.add('hidden');renderMJ();AudioSys.fx('deal');if(mj.canHu){mj.message=`${session.names[dealer]} 天胡`;renderMJ();playModeCinema(mjMode,'heaven','天 胡');modeEventReact('mj',mj.names,mjMode,'heaven');return mjTimer=setTimeout(()=>mjSettle(dealer,'heaven',first),1060);}if(dealer!==0)mjTimer=setTimeout(()=>mjDiscard(dealer,mjAIChoice(dealer).id),650);}
+  function mjStart(){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;let session=mjSessions[mjMode];if(!session){session={names:[profile.playerName,...shuffle(allRoles()).slice(0,3)],dealer:null,opened:false,diceRounds:0};mjSessions[mjMode]=session;}if(session.dealer===null)return mjRollForDealer(session);mjDealRound(session,session.dealer);}
   function mjVisual(kind,id,tile){
     const table=document.querySelector('#mjScreen .mj-table');if(!table)return;
     const p=[[50,84],[16,51],[50,17],[84,51]][id]||[50,50],fx=document.createElement('i');
@@ -5101,7 +5130,7 @@
   }
   function mjDraw(id,gangDraw=false){
     if(!mj.wall.length)return mjDrawEnd();
-    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;AudioSys.fx('mjDraw');mjVisual(gangDraw?'gangDraw':'draw',id,tile);renderMJ();
+    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;if(id===0){mjClickTile=null;mjClickAt=0;}mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;AudioSys.fx('mjDraw');mjVisual(gangDraw?'gangDraw':'draw',id,tile);renderMJ();
     if(id!==0)mjTimer=setTimeout(()=>mjAIDecide(id),650);
   }
   function mjAfterNoClaim(discarder){if(!mj||mj.phase==='result')return;mj.pending=null;renderMJ();mjTimer=setTimeout(()=>mjDraw(mjNext(discarder)),420);}
@@ -5164,7 +5193,7 @@
   }
   function mjDiscard(id,tileId){
     if(!mj||mj.phase!=='play'||mj.turn!==id)return;const h=mj.p[id].h,tile=h.find(t=>t.id===tileId);if(!tile)return;
-    mj.p[id].h=h.filter(t=>t.id!==tileId);mj.river.push({...tile,by:id});mj.lastDiscard={...tile,by:id};mjSelected=null;mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[id]=mjIsFlyingGhostFor(id);mj.message=`${mj.names[id]} 打出 ${tile.label}`;
+    mj.p[id].h=h.filter(t=>t.id!==tileId);mj.river.push({...tile,by:id});mj.lastDiscard={...tile,by:id};mjSelected=null;mjClickTile=null;mjClickAt=0;mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[id]=mjIsFlyingGhostFor(id);mj.message=`${mj.names[id]} 打出 ${tile.label}`;
     mjVisual('discard',id,tile);if(mj.mode==='zhuanzhuan'&&tile.suit==='中')playModeCinema('zhuanzhuan','redzhong','红 中');else AudioSys.fx('mj');
     if(id!==0)AudioSys.speak(`${mj.names[id]}，${tile.label}`);
     const options=mjClaimOptions(id,tile);renderMJ();modeEventReact('mj',mj.names,mj.mode,'play');mjStartClaim(id,tile,options);
@@ -5175,7 +5204,7 @@
     if(kind==='heaven'){factor=4;effectTitle='天 胡';event='heaven';const amount=stake*factor;delta=winner===0?amount*3:-amount;detail='天胡 · 庄家起手十四张成胡 · ×4';}
     else if(mj.mode==='changsha'){const bird=mj.wall.shift()||null,birdHit=bird&&((Math.max(1,bird.n)-1)%4)==((winner-mj.dealer+4)%4);factor=birdHit?2:1;effectTitle=birdHit?'扎 鸟 命 中':(kind==='self'?'自 摸':kind==='robGang'?'抢 杠 胡':'胡 牌');event=birdHit?'bird':'win';const amount=stake*factor;if(kind==='self')delta=winner===0?amount*3:-amount;else delta=winner===0?amount*3:(discarder===0?-amount*3:0);detail=`${kind==='self'?'自摸':kind==='robGang'?'抢杠胡':'点炮'} · 二五八将<br>扎鸟 ${bird?bird.label:'无牌'}${birdHit?'，命中 ×2':'，未命中'}`;}
     else {const code=mj.wall.shift()||tile,codeScore=code.suit==='中'||code.n===1||code.n===9?10:code.n+1,killGhost=!mj.p[winner].h.some(t=>t.suit==='中'),flyGhostWin=kind==='self'&&mj.flyGhostOnDraw===winner;factor=killGhost?2:1;effectTitle=killGhost?'杀 鬼':flyGhostWin?'飞 鬼 自 摸':'翻 码';event=killGhost?'kill':'win';const amount=stake*codeScore*factor;delta=winner===0?amount*3:-amount;const intercepted=(mj.flyGhost||[]).map((v,id)=>v&&id!==winner?mj.names[id]:null).filter(Boolean);detail=`自摸 · 翻码 ${code.label} = ${codeScore}分${killGhost?' · 杀鬼 ×2':''}${flyGhostWin?' · 飞鬼':''}${intercepted.length?`<br>飞鬼被截胡：${intercepted.join('、')}`:''}`;}
-    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':'flip'));playModeCinema(mj.mode,cinemaEvent,effectTitle);modeEventReact('mj',mj.names,mj.mode,event);
+    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(kind==='robGang'?'robgang':event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':flyGhostWin?'fly':'flip'));playModeCinema(mj.mode,cinemaEvent,effectTitle);modeEventReact('mj',mj.names,mj.mode,event);
     profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(winner===0)profile.wins++;profile.mjHistory[mj.mode].push({at:Date.now(),win:winner===0,base:stake,multiplier:factor,delta,detail:detail.replace(/<br>/g,' ')});profile.mjHistory[mj.mode]=profile.mjHistory[mj.mode].slice(-30);const loan=serviceLoanAfterMatch();saveProfile();$('mjResultTitle').textContent=kind==='heaven'?'天胡':(winner===0?'本局获胜':`${mj.names[winner]} 胡牌`);$('mjResultText').innerHTML=`${detail}<br>${mj.names[winner]} 下局坐庄<br>底注 ${stake.toLocaleString()}<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('mjRevealHands').innerHTML=mjRevealHTML();$('mjResult').classList.remove('hidden');renderMJ();AudioSys.fx(winner===0?'win':'bomb');}
   function renderMJ(){
     if(!mj)return;
@@ -5183,7 +5212,7 @@
     for(let i=0;i<4;i++){$(`mjName${i}`).textContent=mj.names[i];$(`mjAvatar${i}`).src=i===0?profile.playerAvatar:AVATAR_LIBRARY[mj.names[i]];$(`mjSeat${i}`).classList.toggle('active',(mj.phase==='play'&&mj.turn===i)||(mj.phase==='claim'&&mj.pending?.human?.some(x=>x.id===i)));$(`mjSeat${i}`).classList.toggle('dealer',mj.dealer===i);$(`mjZoneLabel${i}`).textContent=i===0?'我的牌河':`${mj.names[i]}的牌河`;const river=mj.river.filter(t=>t.by===i).slice(-21);$(`mjRiver${i}`).innerHTML=river.map(t=>`<span class="mj-tile ${t.suit==='中'?'red':''}" title="${mj.names[i]} 打出">${mjTileHTML(t,true)}</span>`).join('');const melds=(mj.melds?.[i]||[]),meldEl=$(`mjMeld${i}`);meldEl.dataset.owner=i===0?'我的':mj.names[i];meldEl.innerHTML=melds.map(m=>`<div class="mj-zone-meld" title="${mj.names[i]} ${mjMeldLabel(m)}">${m.tiles.map(t=>`<span class="mj-tile ${t.suit==='中'?'red':''}">${mjTileHTML(t)}</span>`).join('')}</div>`).join('');}
     const wallSegments=Math.max(4,Math.min(17,Math.ceil(mj.wall.length/8))),wallHTML=Array.from({length:wallSegments},()=>'<i class="mj-wall-stack"></i>').join('');['mjWallTop','mjWallBottom','mjWallLeft','mjWallRight'].forEach(id=>$(id).innerHTML=wallHTML);
     const flag=$('mjStateFlag'),flyingNow=mj.flyGhost?.[0],flyingWin=mj.flyGhostOnDraw===0&&mj.canHu;flag.textContent=flyingWin?'飞鬼自摸 · 任意摸牌已成胡':flyingNow?'飞鬼听牌 · 任意摸牌可胡':'';flag.classList.toggle('hidden',!flyingNow&&!flyingWin);
-    const hand=$('mjHand');hand.innerHTML=mj.p[0].h.map(t=>`<button class="mj-tile ${t.suit==='中'?'red':''} ${mjSelected===t.id?'selected':''}" data-mj-id="${t.id}" title="单击选中，双击打出">${mjTileHTML(t)}</button>`).join('');hand.querySelectorAll('[data-mj-id]').forEach(b=>{b.onclick=()=>{if(mj.phase!=='play'||mj.turn!==0)return;mjSelected=b.dataset.mjId;renderMJ();};b.ondblclick=e=>{e.preventDefault();if(mj.phase!=='play'||mj.turn!==0)return;mjDiscard(0,b.dataset.mjId);};});
+    const hand=$('mjHand');hand.innerHTML=mj.p[0].h.map(t=>`<button class="mj-tile ${t.suit==='中'?'red':''} ${mjSelected===t.id?'selected':''}" data-mj-id="${t.id}" title="单击选中，再次快速点击打出">${mjTileHTML(t)}</button>`).join('');hand.querySelectorAll('[data-mj-id]').forEach(b=>{b.onclick=()=>{if(mj.phase!=='play'||mj.turn!==0)return;const id=b.dataset.mjId,now=Date.now(),isDouble=mjClickTile===id&&now-mjClickAt<=560;mjSelected=id;if(isDouble){mjClickTile=null;mjClickAt=0;return mjDiscard(0,id);}mjClickTile=id;mjClickAt=now;renderMJ();};b.ondblclick=e=>e.preventDefault();});
     const mine=mj.phase==='play'&&mj.turn===0,gangs=mine?mjSelfGangOptions(0):[];$('mjHuBtn').disabled=!mine||!mj.canHu;$('mjDiscardBtn').disabled=!mine||!mjSelected;$('mjHintBtn').disabled=!mine;$('mjGangBtn').disabled=!mine||!gangs.length;$('mjGangBtn').textContent=gangs.length?`碰杠 ${gangs.length}`:'碰杠';
     const panel=$('mjClaimPanel'),pending=mj.pending;if(pending?.human?.length){const human=pending.human;const title=pending.kind==='robGang'?'抢杠胡':pending.kind==='selfGang'?'选择开杠':`${mj.names[pending.discarder]} 打出 ${pending.tile.label}`;$('mjClaimTitle').textContent=title;$('mjClaimSub').textContent=pending.kind==='robGang'?'长沙麻将仅明杠、补杠可抢杠胡':pending.kind==='selfGang'?'补杠会先检查长沙麻将抢杠胡':'选择要声明的牌型，或选择过牌';$('mjClaimActions').innerHTML=`${human.map((x,i)=>`<button class="${x.type==='hu'?'gold':''}" data-mj-claim="${i}">${x.label}</button>`).join('')}<button data-mj-pass="1">过</button>`;$('mjClaimActions').querySelectorAll('[data-mj-claim]').forEach(b=>b.onclick=()=>mjContinuePending(false,Number(b.dataset.mjClaim)));$('mjClaimActions').querySelector('[data-mj-pass]').onclick=()=>mjContinuePending(true);panel.classList.remove('hidden');}else panel.classList.add('hidden');
   }
