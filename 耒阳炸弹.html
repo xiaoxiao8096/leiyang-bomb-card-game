@@ -2687,6 +2687,11 @@
     ,{ id:'mode-cs-celadon-lantern', type:'modeTheme', mode:'changsha', name:'青瓷灯宴', icon:'瓷', price:4800, preview:"url('assets/mahjong_table_celadon_lantern.png') center/cover" }
     ,{ id:'mode-zz-moonstone', type:'modeTheme', mode:'zhuanzhuan', name:'月石轮台', icon:'月', price:5000, preview:"url('assets/mahjong_table_moonstone.png') center/cover" }
     ,{ id:'mode-gm-amber-walnut', type:'modeTheme', mode:'gomoku', name:'琥珀胡桃枰', icon:'琥', price:5200, preview:"url('assets/gomoku_board_amber_walnut.png') center/cover" }
+    ,{ id:'mode-ddz-jade-lacquer', type:'modeTheme', mode:'doudizhu', name:'玉漆灯庭', icon:'玉', price:4600, preview:"url('assets/ddz_table_jade_lacquer_hall.png') center/cover" }
+    ,{ id:'mode-pdk-teal-gale', type:'modeTheme', mode:'paodekuai', name:'青岚竞速', icon:'岚', price:4400, preview:"url('assets/pdk_table_teal_gale.png') center/cover" }
+    ,{ id:'mode-cs-lotus-jade', type:'modeTheme', mode:'changsha', name:'莲影玉台', icon:'莲', price:5400, preview:"url('assets/changsha_mahjong_table_lotus_jade.png') center/cover" }
+    ,{ id:'mode-zz-cinnabar-moon', type:'modeTheme', mode:'zhuanzhuan', name:'月魄朱庭', icon:'月', price:5600, preview:"url('assets/zhuanzhuan_mahjong_table_cinnabar_moon.png') center/cover" }
+    ,{ id:'mode-gm-silver-ink', type:'modeTheme', mode:'gomoku', name:'银墨棋枰', icon:'银', price:5800, preview:"url('assets/gomoku_board_silver_ink_standard.png') center/cover" }
     ,{ id:'gm-effect-gold', type:'gmEffect', mode:'gomoku', name:'金线落子', icon:'✦', price:0, preview:'radial-gradient(circle,#fff2a3 0 9%,#d6a03d 10% 22%,#17251f 23% 100%)' }
     ,{ id:'gm-effect-ink', type:'gmEffect', mode:'gomoku', name:'墨痕落子', icon:'墨', price:1200, preview:'radial-gradient(circle,#e8eadb 0 8%,#1b2422 9% 28%,#06100f 29% 100%)' }
     ,{ id:'gm-effect-vermilion', type:'gmEffect', mode:'gomoku', name:'朱砂连珠', icon:'朱', price:1600, preview:'radial-gradient(circle,#ffd77b 0 8%,#bd3d27 9% 28%,#34110d 29% 100%)' }
@@ -2903,13 +2908,16 @@
     const mjClass = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon', 'mj-moonstone':'mj-skin-moonstone', 'mj-amber':'mj-skin-amber' }[profile.skins.mjtile];
     if (mjClass) mjApp.classList.add(mjClass);
     const themes={doudizhu:'mode-theme-ddz-royal',paodekuai:'mode-theme-pdk-run',changsha:'mode-theme-cs-jade',zhuanzhuan:'mode-theme-zz-redzhong'};
-    const ddzThemeClass={'mode-ddz-royal':'mode-theme-ddz-royal','mode-ddz-lantern':'mode-theme-ddz-lantern','mode-ddz-river':'mode-theme-ddz-river','mode-ddz-copper-court':'mode-theme-ddz-copper-court'}[profile.modeThemes.doudizhu];
-    const pdkThemeClass={'mode-pdk-run':'mode-theme-pdk-run','mode-pdk-spring':'mode-theme-pdk-spring','mode-pdk-night':'mode-theme-pdk-night','mode-pdk-silver-river':'mode-theme-pdk-silver-river'}[profile.modeThemes.paodekuai];
+    const ddzThemeClass={'mode-ddz-royal':'mode-theme-ddz-royal','mode-ddz-lantern':'mode-theme-ddz-lantern','mode-ddz-river':'mode-theme-ddz-river','mode-ddz-copper-court':'mode-theme-ddz-copper-court','mode-ddz-jade-lacquer':'mode-theme-ddz-jade-lacquer'}[profile.modeThemes.doudizhu];
+    const pdkThemeClass={'mode-pdk-run':'mode-theme-pdk-run','mode-pdk-spring':'mode-theme-pdk-spring','mode-pdk-night':'mode-theme-pdk-night','mode-pdk-silver-river':'mode-theme-pdk-silver-river','mode-pdk-teal-gale':'mode-theme-pdk-teal-gale'}[profile.modeThemes.paodekuai];
     if(ddzThemeClass)ddzApp.classList.add(ddzThemeClass);
     if(pdkThemeClass)pdkApp.classList.add(pdkThemeClass);
-    if(profile.modeThemes[mjMode]==='mode-cs-jade')mjApp.classList.add(themes.changsha);
-    if(profile.modeThemes[mjMode]==='mode-zz-redzhong')mjApp.classList.add(themes.zhuanzhuan);
-    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood', 'mode-gm-bronze-cloud':'mode-theme-gm-bronze-cloud', 'mode-gm-porcelain-lacquer':'mode-theme-gm-porcelain-lacquer', 'mode-gm-obsidian-crimson':'mode-theme-gm-obsidian-crimson', 'mode-gm-amber-walnut':'mode-theme-gm-amber-walnut' }[profile.modeThemes.gomoku];
+    const mjThemeClass={
+      changsha:{'mode-cs-jade':'mj-theme-cs-jade','mode-cs-jade-court':'mj-theme-cs-jade-court','mode-cs-ebony-court':'mj-theme-cs-ebony-court','mode-cs-celadon-lantern':'mj-theme-celadon-lantern','mode-cs-lotus-jade':'mj-theme-cs-lotus-jade'},
+      zhuanzhuan:{'mode-zz-redzhong':'mj-theme-zz-redzhong','mode-zz-redzhong-court':'mj-theme-zz-redzhong-court','mode-zz-ebony-court':'mj-theme-zz-ebony-court','mode-zz-moonstone':'mj-theme-moonstone','mode-zz-cinnabar-moon':'mj-theme-zz-cinnabar-moon'}
+    }[mjMode]?.[profile.modeThemes[mjMode]];
+    if(mjThemeClass)mjApp.classList.add(mjThemeClass);
+    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood', 'mode-gm-bronze-cloud':'mode-theme-gm-bronze-cloud', 'mode-gm-porcelain-lacquer':'mode-theme-gm-porcelain-lacquer', 'mode-gm-obsidian-crimson':'mode-theme-gm-obsidian-crimson', 'mode-gm-amber-walnut':'mode-theme-gm-amber-walnut', 'mode-gm-silver-ink':'mode-theme-gm-silver-ink' }[profile.modeThemes.gomoku];
     if(gmTheme)gmApp.classList.add(gmTheme);
     const gmBoardSource={
       'mode-gm-jade':'assets/gomoku_board_jade_standard_v2.png',
@@ -2919,7 +2927,8 @@
       'mode-gm-bronze-cloud':'assets/gomoku_board_bronze_cloud_v2.png',
       'mode-gm-porcelain-lacquer':'assets/gomoku_board_porcelain_lacquer_v2.png',
       'mode-gm-obsidian-crimson':'assets/gomoku_board_obsidian_crimson_v2.png',
-      'mode-gm-amber-walnut':'assets/gomoku_board_amber_walnut.png'
+      'mode-gm-amber-walnut':'assets/gomoku_board_amber_walnut.png',
+      'mode-gm-silver-ink':'assets/gomoku_board_silver_ink_standard.png'
     }[profile.modeThemes.gomoku] || 'assets/gomoku_board_square_obsidian.png';
     const gmBoardArt=$('gmBoardArt');
     if(gmBoardArt) gmBoardArt.src=gmBoardSource;
@@ -3890,8 +3899,9 @@
       self:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:24},heaven:{kind:'fx-zz-kill',sound:'win',duration:1900,particles:28},win:{kind:'fx-zz-flip',sound:'win',duration:1580,particles:18}
     },
     gomoku:{
-      threat:{kind:'fx-gm-threat',sound:'play',duration:1380,particles:28},
-      finish:{kind:'fx-gm-finish',sound:'win',duration:1980,particles:44}
+      opening:{kind:'fx-gm-opening',sound:'deal',duration:1520,particles:36},
+      threat:{kind:'fx-gm-threat',sound:'play',duration:1760,particles:38},
+      finish:{kind:'fx-gm-finish',sound:'win',duration:2480,particles:58}
     }
   };
   function activeCinemaMode() {
@@ -5299,11 +5309,11 @@
   function gmStart(){
     clearTimeout(gmTimer);gmSelectedMove=null;
     document.querySelectorAll('#gmScreen .gm-vfx').forEach(node=>node.remove());
-    $('cinemaFx').classList.remove('show','mode-gomoku','fx-gm-threat','fx-gm-finish');
+    $('cinemaFx').classList.remove('show','mode-gomoku','fx-gm-opening','fx-gm-threat','fx-gm-finish');
     const aiName=shuffle(allRoles().filter(n=>n!==profile.playerName))[0]||'Tomie';
     const userBlack=Math.random()<.5,colors=userBlack?['black','white']:['white','black'];
     gm={phase:'play',turn:userBlack?0:1,names:[profile.playerName,aiName],colors,board:Array.from({length:GM_SIZE},()=>Array(GM_SIZE).fill(0)),moves:0,last:null,history:[],roundBase:gmBase,message:userBlack?`${profile.playerName} 执黑先行`:`${aiName} 执黑先行`,firstCenter:false};
-    $('gmResult').classList.add('hidden');renderGM();
+    $('gmResult').classList.add('hidden');renderGM();playModeCinema('gomoku','opening','棋 局 开 启');
     if(gm.turn===1)gmTimer=setTimeout(()=>{if(gm?.phase!=='play'||gm.turn!==1)return;const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));
   }
   // 五子棋落子反馈只附着在棋子中心；最后一手标记由棋子自身轮廓绘制，不产生独立坐标偏差。
@@ -5312,15 +5322,15 @@
     stone.querySelectorAll('.gm-vfx').forEach(node=>node.remove());
     const effect=owner===0?profile.gmEffect:'gm-effect-neutral',fx=document.createElement('i');
     fx.className=`gm-vfx land ${effect}`;
-    if(effect==='gm-effect-gold')fx.innerHTML='<i class="gm-vfx-core"></i><b style="--a:0deg"></b><b style="--a:90deg"></b><b style="--a:180deg"></b><b style="--a:270deg"></b>';
-    else if(effect==='gm-effect-ink')fx.innerHTML='<i class="gm-ink-core"></i><span class="gm-ink-drop d1"></span><span class="gm-ink-drop d2"></span><span class="gm-ink-drop d3"></span>';
-    else if(effect==='gm-effect-vermilion')fx.innerHTML='<i class="gm-seal-core">印</i><span class="gm-seal-spark s1"></span><span class="gm-seal-spark s2"></span>';
+    if(effect==='gm-effect-gold')fx.innerHTML='<i class="gm-vfx-core"></i><b class="gm-gold-star s1">✦</b><b class="gm-gold-star s2">✦</b><b class="gm-gold-star s3">✦</b><b class="gm-gold-star s4">✦</b>';
+    else if(effect==='gm-effect-ink')fx.innerHTML='<i class="gm-ink-core">墨</i><span class="gm-ink-drop d1"></span><span class="gm-ink-drop d2"></span><span class="gm-ink-drop d3"></span><b class="gm-ink-slash"></b>';
+    else if(effect==='gm-effect-vermilion')fx.innerHTML='<i class="gm-seal-core">朱</i><span class="gm-seal-spark s1"></span><span class="gm-seal-spark s2"></span><b class="gm-seal-ray r1"></b><b class="gm-seal-ray r2"></b>';
     else fx.innerHTML='<i class="gm-neutral-core"></i>';
     stone.appendChild(fx);
-    setTimeout(()=>fx.remove(),effect==='gm-effect-ink'?1180:effect==='gm-effect-vermilion'?1040:960);
+    setTimeout(()=>fx.remove(),effect==='gm-effect-ink'?1680:effect==='gm-effect-vermilion'?1540:1480);
   }
-  function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase,color=gm.colors?.[winner]||'black',colorText=color==='black'?'执黑':'执白';profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${colorText}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${colorText}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
-  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.history.push({r,c,owner:id});gm.last={r,c,owner:id};if(id===0&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${note?` · ${note}`:''}`;AudioSys.fx('stone');gm.turn=id===0?1:0;renderGM();gmVisual('land',r,c,id);if(line.count>=5)return gmSettle(id);if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
+  function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';playModeCinema('gomoku','finish','五 子 连 珠');const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase,color=gm.colors?.[winner]||'black',colorText=color==='black'?'执黑':'执白';profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${colorText}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${colorText}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
+  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.history.push({r,c,owner:id});gm.last={r,c,owner:id};if(id===0&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${note?` · ${note}`:''}`;AudioSys.fx('stone');gm.turn=id===0?1:0;renderGM();gmVisual('land',r,c,id);if(line.count===4)playModeCinema('gomoku','threat','四 连 警 戒');if(line.count>=5)return gmSettle(id);if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
   function gmUndo(){if(!gm||gm.phase!=='play'||!gm.history.some(move=>move.owner===0))return;clearTimeout(gmTimer);gmSelectedMove=null;const undoCount=gm.turn===1?1:Math.min(2,gm.history.length),removed=gm.history.splice(-undoCount,undoCount);removed.forEach(move=>{gm.board[move.r][move.c]=0;});gm.moves=gm.history.length;const lastMove=gm.history.at(-1);gm.last=lastMove?{r:lastMove.r,c:lastMove.c,owner:lastMove.owner}:null;gm.firstCenter=Boolean(gm.history.find(move=>move.owner===0&&Math.abs(move.r-7)<=1&&Math.abs(move.c-7)<=1));gm.turn=0;gm.message=undoCount===2?'已悔棋，双方最近一手已撤回':'已撤回刚才落子';renderGM();}
   function gmEnsureGrid(){const grid=$('gmGrid');if(gmCellMap.size===GM_SIZE*GM_SIZE&&grid.querySelectorAll('.gm-cell').length===GM_SIZE*GM_SIZE)return;const point=(r,c)=>`left:${(c*100/(GM_SIZE-1)).toFixed(6)}%;top:${(r*100/(GM_SIZE-1)).toFixed(6)}%`,stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');gmCellMap.clear();grid.innerHTML=stars+Array.from({length:GM_SIZE},(_,r)=>Array.from({length:GM_SIZE},(_,c)=>`<button class="gm-cell" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}"></button>`).join('')).join('');grid.querySelectorAll('[data-gm-r]').forEach(cell=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC);gmCellMap.set(`${r},${c}`,cell);cell.onclick=()=>{if(!gm||gm.phase!=='play'||gm.turn!==0||gm.board[r][c])return;const same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();};});}
   function renderGM(){
@@ -5558,6 +5568,40 @@
     #gmScreen .gm-seal-core{position:absolute;inset:1px;display:grid;place-items:center;border:1px solid rgba(255,220,150,.9);color:#fff1bf;font:900 9px/1 "STKaiti","KaiTi",serif;letter-spacing:.04em;text-shadow:0 0 4px #6d130e}
     #gmScreen .gm-seal-spark{position:absolute;left:50%;top:50%;width:3px;height:3px;background:#ffdc8d;box-shadow:0 0 7px #ffbd57;animation:gmSealSpark .78s ease-out both}.gm-seal-spark.s1{--sx:15px;--sy:-14px}.gm-seal-spark.s2{--sx:-16px;--sy:11px;animation-delay:.1s}
     @keyframes gmGoldCrown{0%{transform:scale(.35)!important;opacity:1}42%{transform:scale(1.2)!important;opacity:1}100%{transform:scale(2.45)!important;opacity:0}}@keyframes gmGoldCrownRing{from{transform:translate(-50%,-50%) scale(.18);opacity:1}to{transform:translate(-50%,-50%) scale(2.7);opacity:0}}@keyframes gmInkBloom{0%{transform:scale(.2) rotate(-18deg)!important;opacity:0}22%{opacity:1}100%{transform:scale(2.85) rotate(126deg)!important;opacity:0}}@keyframes gmInkHalo{from{transform:translate(-50%,-50%) scale(.22) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.9) rotate(-96deg);opacity:0}}@keyframes gmInkDrop{0%{transform:translate(-50%,-50%) scale(.25);opacity:0}25%{opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.45);opacity:0}}@keyframes gmSealStamp{0%{transform:scale(2.35) rotate(-11deg)!important;opacity:0}28%{opacity:1}100%{transform:scale(1.04) rotate(0)!important;opacity:0}}@keyframes gmSealFrame{from{transform:translate(-50%,-50%) scale(.28) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.2) rotate(45deg);opacity:0}}@keyframes gmSealSpark{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}30%{opacity:1}100%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.35);opacity:0}}
+    /* 非炸弹新增桌面：各自保留可摆放手牌、牌河和提示的清净中心区域。 */
+    #ddzScreen.mode-theme-ddz-jade-lacquer .ddz-table{background:linear-gradient(rgba(8,31,24,.18),rgba(20,6,5,.42)),url('assets/ddz_table_jade_lacquer_hall.png') center/cover!important}
+    #pdkScreen.mode-theme-pdk-teal-gale .ddz-table{background:linear-gradient(rgba(0,30,38,.12),rgba(3,10,20,.48)),url('assets/pdk_table_teal_gale.png') center/cover!important}
+    #mjScreen.mj-theme-cs-lotus-jade .mj-table{background:linear-gradient(rgba(6,50,42,.16),rgba(2,17,14,.46)),url('assets/changsha_mahjong_table_lotus_jade.png') center/cover!important}
+    #mjScreen.mj-theme-zz-cinnabar-moon .mj-table{background:linear-gradient(rgba(57,10,18,.18),rgba(8,7,17,.48)),url('assets/zhuanzhuan_mahjong_table_cinnabar_moon.png') center/cover!important}
+    #gmScreen.mode-theme-gm-silver-ink{--gm-board-art:url('assets/gomoku_board_silver_ink_standard.png');--gm-stone-art:url('assets/gomoku_stones_jade.png');--gm-accent:#d9ecff;background:radial-gradient(circle at 50% 42%,#27354c 0,#0b1424 63%,#02060d 100%)}
+    #gmScreen.mode-theme-gm-silver-ink .gm-stone.black{background-image:radial-gradient(circle at 32% 26%,#9dc0e2 0 4%,#263750 21%,#0a101e 72%,#010308 100%)!important;background-size:100% 100%}
+    #gmScreen.mode-theme-gm-silver-ink .gm-stone.white{background-image:radial-gradient(circle at 31% 24%,#fff 0 9%,#d4dfef 38%,#60748e 100%)!important;background-size:100% 100%}
+
+    /* 五子棋：金线、墨痕、朱砂必须以截然不同的轮廓、色彩和节奏出现在棋子正上方。 */
+    #gmScreen .gm-stone{overflow:visible!important}
+    #gmScreen .gm-vfx{z-index:8!important;pointer-events:none!important;mix-blend-mode:normal!important}
+    #gmScreen .gm-vfx.gm-effect-gold{width:36px!important;height:36px!important;left:50%!important;top:50%!important;border:2px solid #ffe27a!important;border-radius:50%!important;background:radial-gradient(circle,rgba(255,255,239,.9) 0 8%,rgba(255,209,90,.4) 18%,rgba(255,181,39,.08) 48%,transparent 68%)!important;box-shadow:0 0 7px #ffe6a6,0 0 22px rgba(255,188,43,.98)!important;animation:gmGoldCrown 1.48s cubic-bezier(.16,.82,.28,1) both!important}
+    #gmScreen .gm-vfx.gm-effect-gold::before{width:42px!important;height:42px!important;border:2px solid rgba(255,221,109,.96)!important;border-radius:50%!important;box-shadow:0 0 10px #ffc944!important;animation:gmGoldCrownRing 1.48s ease-out both!important}
+    #gmScreen .gm-gold-star{position:absolute!important;left:50%!important;top:50%!important;width:auto!important;height:auto!important;border:0!important;background:transparent!important;color:#fff4bb!important;font:900 15px/1 Georgia,serif!important;text-shadow:0 0 7px #ffb119,0 0 14px #ffd76f!important;animation:gmGoldStar 1.42s cubic-bezier(.18,.8,.28,1) both!important}
+    #gmScreen .gm-gold-star.s1{--gx:22px;--gy:-18px}#gmScreen .gm-gold-star.s2{--gx:-24px;--gy:-14px;animation-delay:.09s!important}#gmScreen .gm-gold-star.s3{--gx:19px;--gy:20px;animation-delay:.15s!important}#gmScreen .gm-gold-star.s4{--gx:-21px;--gy:22px;animation-delay:.05s!important}
+    #gmScreen .gm-vfx.gm-effect-ink{width:42px!important;height:42px!important;left:50%!important;top:50%!important;border-radius:46% 58% 52% 44%!important;background:radial-gradient(circle,#d4fff4 0 5%,#3fbeaf 11%,#102f36 40%,rgba(3,13,21,.08) 70%)!important;box-shadow:0 0 0 2px rgba(132,255,233,.74),0 0 18px rgba(33,212,190,.85)!important;animation:gmInkBloom 1.68s cubic-bezier(.11,.72,.25,1) both!important}
+    #gmScreen .gm-vfx.gm-effect-ink::before{width:48px!important;height:28px!important;border:2px dashed #83fff0!important;border-radius:48%!important;box-shadow:0 0 12px #46d8c9!important;animation:gmInkHalo 1.68s ease-out both!important}
+    #gmScreen .gm-ink-core{position:absolute!important;inset:0!important;display:grid!important;place-items:center!important;color:#effffc!important;font:900 16px/1 STKaiti,KaiTi,serif!important;text-shadow:0 0 6px #00252a!important;animation:gmInkGlyph 1.45s ease-out both!important}
+    #gmScreen .gm-ink-drop{width:7px!important;height:7px!important;border-radius:50%!important;background:#85fff0!important;box-shadow:0 0 9px #41d7c6!important;animation:gmInkDrop 1.58s ease-out both!important}
+    #gmScreen .gm-ink-slash{position:absolute!important;left:50%!important;top:50%!important;width:54px!important;height:3px!important;border:0!important;background:linear-gradient(90deg,transparent,#b6fff4,transparent)!important;transform:translate(-50%,-50%) rotate(-32deg)!important;box-shadow:0 0 8px #6effe5!important;animation:gmInkSlash 1.38s ease-out both!important}
+    #gmScreen .gm-vfx.gm-effect-vermilion{width:40px!important;height:40px!important;left:50%!important;top:50%!important;border:3px solid #ffbe73!important;border-radius:3px!important;background:linear-gradient(135deg,rgba(255,222,151,.88),rgba(195,41,27,.92) 30%,rgba(84,6,11,.92) 72%)!important;box-shadow:0 0 0 2px rgba(104,7,9,.8),0 0 21px #e54022!important;animation:gmSealStamp 1.54s cubic-bezier(.1,.8,.25,1) both!important}
+    #gmScreen .gm-vfx.gm-effect-vermilion::before{width:50px!important;height:50px!important;border:2px solid #ff9b49!important;border-radius:2px!important;box-shadow:0 0 13px #ff642d!important;animation:gmSealFrame 1.54s ease-out both!important}
+    #gmScreen .gm-vfx.gm-effect-vermilion::after{width:30px!important;height:30px!important;border:1px solid rgba(255,236,181,.9)!important;border-radius:1px!important;animation:gmSealFrame 1.18s .12s ease-out both!important}
+    #gmScreen .gm-seal-core{inset:0!important;color:#fff6c7!important;font:900 20px/1 STKaiti,KaiTi,serif!important;text-shadow:0 0 5px #7c1008!important;animation:gmSealGlyph 1.3s ease-out both!important}
+    #gmScreen .gm-seal-spark{width:5px!important;height:5px!important;background:#ffe095!important;box-shadow:0 0 11px #ff782e!important;animation:gmSealSpark 1.38s ease-out both!important}
+    #gmScreen .gm-seal-ray{position:absolute!important;left:50%!important;top:50%!important;width:52px!important;height:2px!important;border:0!important;background:linear-gradient(90deg,transparent,#ffd17b,transparent)!important;box-shadow:0 0 8px #ff6b34!important;animation:gmSealRay 1.3s ease-out both!important}.gm-seal-ray.r1{transform:translate(-50%,-50%) rotate(25deg)!important}.gm-seal-ray.r2{transform:translate(-50%,-50%) rotate(-65deg)!important;animation-delay:.1s!important}
+    @keyframes gmGoldStar{0%{transform:translate(-50%,-50%) scale(.1);opacity:0}25%{opacity:1}100%{transform:translate(calc(-50% + var(--gx)),calc(-50% + var(--gy))) scale(1.25) rotate(160deg);opacity:0}}@keyframes gmInkGlyph{0%{transform:scale(.2) rotate(-20deg);opacity:0}22%{opacity:1}100%{transform:scale(1.7) rotate(15deg);opacity:0}}@keyframes gmInkSlash{0%{opacity:0;transform:translate(-50%,-50%) rotate(-32deg) scaleX(.08)!important}28%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) rotate(-32deg) scaleX(1.6)!important}}@keyframes gmSealGlyph{0%{transform:scale(2.8);opacity:0}30%{opacity:1}100%{transform:scale(1.1);opacity:0}}@keyframes gmSealRay{0%{opacity:0;transform:translate(-50%,-50%) scaleX(.1)}28%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scaleX(1.7)}}
+    /* 五子棋的全屏事件只在开局、四连与胜局出现；常规落子保留在棋子局部。 */
+    .cinema-fx.mode-gomoku.fx-gm-opening{background:radial-gradient(circle at 50% 48%,rgba(171,223,255,.25),rgba(5,15,33,.88) 52%,rgba(0,0,0,.96) 100%)!important}.cinema-fx.mode-gomoku.fx-gm-opening::before{content:'棋 局 开 启';color:#e9f6ff;text-shadow:0 0 12px #6fc8ff,0 0 38px #1d7fca;letter-spacing:.62em;font:900 clamp(28px,5vw,66px)/1 STKaiti,KaiTi,serif}.cinema-fx.mode-gomoku.fx-gm-opening::after{content:'';width:min(60vw,560px);height:min(60vw,560px);border:1px solid rgba(162,224,255,.75);border-radius:50%;box-shadow:0 0 0 18px rgba(100,190,255,.08),0 0 44px rgba(96,201,255,.6);animation:gmCinemaOrbit 1.52s ease-out both}
+    .cinema-fx.mode-gomoku.fx-gm-threat{background:radial-gradient(circle at 50% 48%,rgba(255,162,61,.28),rgba(56,15,6,.9) 54%,rgba(8,3,2,.98) 100%)!important}.cinema-fx.mode-gomoku.fx-gm-threat::before{content:'四 连 警 戒';color:#fff1c8;text-shadow:0 0 12px #ff9c2b,0 0 40px #e24618;letter-spacing:.46em;font:900 clamp(28px,5vw,66px)/1 STKaiti,KaiTi,serif}.cinema-fx.mode-gomoku.fx-gm-threat::after{content:'✦';color:#ffd166;font:900 min(30vw,230px)/1 Georgia,serif;text-shadow:0 0 26px #ff7b22,0 0 80px #d92e14;animation:gmCinemaBurst 1.76s ease-out both}
+    .cinema-fx.mode-gomoku.fx-gm-finish{background:radial-gradient(circle at 50% 48%,rgba(255,241,177,.36),rgba(44,24,75,.9) 52%,rgba(4,4,16,.98) 100%)!important}.cinema-fx.mode-gomoku.fx-gm-finish::before{content:'五 子 连 珠';color:#fffbe2;text-shadow:0 0 13px #ffe675,0 0 40px #ad7cff;letter-spacing:.5em;font:900 clamp(30px,5.7vw,72px)/1 STKaiti,KaiTi,serif}.cinema-fx.mode-gomoku.fx-gm-finish::after{content:'✦  ✦  ✦  ✦  ✦';color:#ffe89b;font:900 clamp(24px,4vw,54px)/1 Georgia,serif;letter-spacing:.25em;text-shadow:0 0 12px #ffc746,0 0 48px #9b75ff;animation:gmCinemaFinish 2.48s ease-out both}
+    @keyframes gmCinemaOrbit{from{transform:scale(.38) rotate(-100deg);opacity:0}32%{opacity:1}to{transform:scale(1.35) rotate(70deg);opacity:0}}@keyframes gmCinemaBurst{0%{transform:scale(.1) rotate(-40deg);opacity:0}22%{opacity:1}100%{transform:scale(1.45) rotate(80deg);opacity:0}}@keyframes gmCinemaFinish{0%{transform:scale(.3);opacity:0}20%{opacity:1}78%{opacity:1}100%{transform:scale(1.36);opacity:0}}
+
     /* 消息框独立置于右上安全区，保持完整头部、日志和输入行。 */
     #gmScreen .mode-chat-panel{top:74px!important;right:14px!important;width:232px!important;height:196px!important;min-width:0!important;z-index:60!important;grid-template-rows:31px minmax(0,1fr) 31px!important}
     #gmScreen .mode-chat-log{max-height:none!important;overflow-y:auto!important;padding:5px 6px!important}
