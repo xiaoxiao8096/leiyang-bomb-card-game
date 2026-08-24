@@ -4296,23 +4296,24 @@
 
   const MJ_SKIN_CLASS = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon', 'mj-moonstone':'mj-skin-moonstone', 'mj-amber':'mj-skin-amber' };
   function renderShop() {
-    /* 商城分类约定：头像框全局共用；扑克牌桌和牌面由三种扑克玩法共用；麻将桌和牌面由两种麻将共用；棋盘和落子特效只属于五子棋。旧模式专属头像框不再拆分展示，且不触碰炸弹的既有框体或存档。 */
-    const shopCtx = window.shopContext || 'global',modeTabs=[['global','全局'],['poker','扑克'],['mahjong','麻将'],['gomoku','五子棋']];
+    /* 商城分类约定：头像框全局共用；炸弹桌面独立；斗地主/跑得快共享扑克桌面与牌面；两种麻将共享麻将桌面与牌面；棋盘和落子特效只属于五子棋。 */
+    const shopCtx = window.shopContext || 'global',modeTabs=[['bomb','炸弹'],['poker','扑克'],['mahjong','麻将'],['gomoku','五子棋'],['global','全局']];
     const categoryOf=item=>{
       if(item.type==='frame')return 'global-frame';
       if(item.type==='card')return 'poker-face';
-      if(item.type==='table'||(item.type==='modeTheme'&&['doudizhu','paodekuai'].includes(item.mode)))return 'poker-table';
+      if(item.type==='table')return 'bomb-table';
+      if(item.type==='modeTheme'&&['doudizhu','paodekuai'].includes(item.mode))return 'poker-table';
       if(item.type==='mjtile')return 'mahjong-face';
       if(item.type==='modeTheme'&&['changsha','zhuanzhuan'].includes(item.mode))return 'mahjong-table';
       if(item.type==='modeTheme'&&item.mode==='gomoku')return 'gomoku-board';
       if(item.type==='gmEffect')return 'gomoku-effect';
       return 'legacy';
     };
-    const categoryLabel={'global-frame':'全局头像框','poker-table':'扑克桌面','poker-face':'扑克牌面','mahjong-table':'麻将桌面','mahjong-face':'麻将牌面','gomoku-board':'五子棋棋盘','gomoku-effect':'五子棋特效'};
-    const scope={global:['global-frame'],poker:['poker-table','poker-face'],mahjong:['mahjong-table','mahjong-face'],gomoku:['gomoku-board','gomoku-effect']}[shopCtx]||['global-frame'];
+    const categoryLabel={'global-frame':'全局头像框','bomb-table':'炸弹桌面','poker-table':'扑克桌面','poker-face':'扑克牌面','mahjong-table':'麻将桌面','mahjong-face':'麻将牌面','gomoku-board':'五子棋棋盘','gomoku-effect':'五子棋特效'};
+    const scope={bomb:['bomb-table'],poker:['poker-table','poker-face'],mahjong:['mahjong-table','mahjong-face'],gomoku:['gomoku-board','gomoku-effect'],global:['global-frame']}[shopCtx]||['global-frame'];
     const allItems=SHOP_ITEMS.filter(item=>scope.includes(categoryOf(item))),availableCats=scope.filter(cat=>allItems.some(it=>categoryOf(it)===cat));
     let shopCategory=window.shopCategory||availableCats[0]||scope[0];if(!availableCats.includes(shopCategory))shopCategory=availableCats[0]||scope[0];window.shopCategory=shopCategory;
-    $('shopTitle').textContent=shopCtx==='global'?'全局外观':shopCtx==='poker'?'扑克外观':shopCtx==='mahjong'?'麻将外观':'五子棋外观';
+    $('shopTitle').textContent=shopCtx==='bomb'?'炸弹外观':shopCtx==='poker'?'扑克外观':shopCtx==='mahjong'?'麻将外观':shopCtx==='gomoku'?'五子棋外观':'全局外观';
     $('shopModeTabs').innerHTML=modeTabs.map(([id,label])=>`<button type="button" class="shop-tab ${shopCtx===id?'active':''}" data-shop-mode="${id}">${label}</button>`).join('');
     $('shopCategoryTabs').innerHTML=availableCats.map(id=>`<button type="button" class="shop-category ${shopCategory===id?'active':''}" data-shop-category="${id}">${categoryLabel[id]}</button>`).join('');
     $('shopModeTabs').querySelectorAll('[data-shop-mode]').forEach(btn=>btn.onclick=()=>{window.shopContext=btn.dataset.shopMode;window.shopCategory='';renderShop();});
@@ -5803,6 +5804,7 @@
   /* 所有入口进入同一套共享商城分类；不改变炸弹玩法规则、AI、结算、桌面或头像资源。 */
   const openSharedShop=(context,category='')=>{window.shopContext=context;window.shopCategory=category;renderShop();$('shopDialog').showModal();};
   $('lobbyShopBtn').onclick=()=>openSharedShop('global','global-frame');
+  $('shopBtn').onclick=()=>openSharedShop('bomb','bomb-table');
   $('ddzShopBtn').onclick=()=>openSharedShop('poker','poker-table');
   $('pdkShopBtn').onclick=()=>openSharedShop('poker','poker-table');
   $('mjShopBtn').onclick=()=>openSharedShop('mahjong','mahjong-table');
