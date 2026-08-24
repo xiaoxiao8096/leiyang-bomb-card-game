@@ -1769,6 +1769,8 @@
     .mj-skin-ink { --mjf1:#f4f1e8; --mjf2:#efece1; --mjf3:#dcd6c4; --mjbd:#a8a894; --mjedge:#8a9a8e; --mjback:#20332b; --mjbackhi:#4e6b5c; }
     .mj-skin-rosewood { --mjf1:#fdf7ee; --mjf2:#fbf1e2; --mjf3:#eedcc0; --mjbd:#cfa987; --mjedge:#d3a984; --mjback:#6e2f24; --mjbackhi:#a56a4e; }
     .mj-skin-celadon { --mjf1:#f7fbfd; --mjf2:#f0f7fa; --mjf3:#d8e7ee; --mjbd:#a7c3d3; --mjedge:#a8cbdd; --mjback:#2c5a7c; --mjbackhi:#5f93b0; }
+    .mj-skin-moonstone { --mjf1:#fcfcff; --mjf2:#edf2fb; --mjf3:#c9d5e8; --mjbd:#9caec9; --mjedge:#8daed1; --mjback:#304967; --mjbackhi:#7695b7; }
+    .mj-skin-amber { --mjf1:#fff9e8; --mjf2:#f8edca; --mjf3:#dec58d; --mjbd:#c79d4c; --mjedge:#d5ae53; --mjback:#6b3519; --mjbackhi:#b87130; }
     .mj-tile { position:relative; width:58px; height:79px; display:grid; place-items:center; padding:4px 4px 9px; border:1px solid var(--mjbd,#c7b98f); border-radius:6px 6px 9px 9px; background:linear-gradient(135deg,var(--mjf1,#fffef9) 0%,var(--mjf2,#fffdf4) 47%,var(--mjf3,#eee3ce) 100%); color:#183b35; font-weight:950; box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -2px 0 rgba(139,110,61,.16),inset 0 -8px 0 var(--mjedge,#8eb48c),0 7px 0 var(--mjback,#3d7c5a),0 11px 15px rgba(0,0,0,.42); cursor:pointer; transition:transform .12s ease,box-shadow .12s ease; }
     .mj-tile::after { content:""; position:absolute; inset:4px 5px 11px; border:1px solid rgba(120,96,49,.25); border-radius:4px; background:linear-gradient(110deg,rgba(255,255,255,.5),transparent 34%,rgba(192,157,95,.07)); box-shadow:inset 0 0 11px rgba(169,131,62,.08); pointer-events:none; }
     .mj-svg { position:relative; z-index:1; width:100%; height:100%; display:block; filter:drop-shadow(0 1px 0 rgba(255,255,255,.85)); }
@@ -2653,6 +2655,8 @@
     { id:'mj-ink', type:'mjtile', name:'墨翠', icon:'中', price:1800 },
     { id:'mj-rosewood', type:'mjtile', name:'檀红', icon:'中', price:1800 },
     { id:'mj-celadon', type:'mjtile', name:'青花', icon:'中', price:2200 },
+    { id:'mj-moonstone', type:'mjtile', name:'月白瓷', icon:'中', price:2600 },
+    { id:'mj-amber', type:'mjtile', name:'琥珀金', icon:'中', price:2800 },
     { id:'mode-ddz-royal', type:'modeTheme', mode:'doudizhu', name:'金冠局', icon:'斗', price:2600, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/GUdMDWtTArDiBVuQ.jpg') center/cover" },
     { id:'mode-pdk-run', type:'modeTheme', mode:'paodekuai', name:'疾风跑道', icon:'跑', price:2400, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/RPZyyLyrsSwlTNqu.jpg') center/cover" },
     { id:'mode-cs-jade', type:'modeTheme', mode:'changsha', name:'湘水雅局', icon:'长', price:2800, preview:"url('assets/mahjong_table_xiang_v2.png') center/cover" },
@@ -2678,6 +2682,11 @@
     ,{ id:'mode-ddz-river', type:'modeTheme', mode:'doudizhu', name:'江山牌局', icon:'江', price:3200, preview:'linear-gradient(135deg,#0c3444,#75b6bb)' }
     ,{ id:'mode-pdk-spring', type:'modeTheme', mode:'paodekuai', name:'春风跑道', icon:'春', price:2800, preview:'linear-gradient(135deg,#0d3b3f,#8dd2ad)' }
     ,{ id:'mode-pdk-night', type:'modeTheme', mode:'paodekuai', name:'夜驰蓝湾', icon:'夜', price:3100, preview:'linear-gradient(135deg,#081630,#3b87c5)' }
+    ,{ id:'mode-ddz-copper-court', type:'modeTheme', mode:'doudizhu', name:'铜院牌局', icon:'铜', price:3600, preview:"url('/manus-storage/poker_table_copper_courtyard_19e32917.png') center/cover" }
+    ,{ id:'mode-pdk-silver-river', type:'modeTheme', mode:'paodekuai', name:'银江竞速', icon:'银', price:3800, preview:"url('/manus-storage/poker_table_silver_river_0be021e8.png') center/cover" }
+    ,{ id:'mode-cs-celadon-lantern', type:'modeTheme', mode:'changsha', name:'青瓷灯宴', icon:'瓷', price:4800, preview:"url('/manus-storage/mahjong_table_celadon_lantern_a54fb84e.png') center/cover" }
+    ,{ id:'mode-zz-moonstone', type:'modeTheme', mode:'zhuanzhuan', name:'月石轮台', icon:'月', price:5000, preview:"url('/manus-storage/mahjong_table_moonstone_856e72e2.png') center/cover" }
+    ,{ id:'mode-gm-amber-walnut', type:'modeTheme', mode:'gomoku', name:'琥珀胡桃枰', icon:'琥', price:5200, preview:"url('/manus-storage/gomoku_board_amber_walnut_ebe71453.png') center/cover" }
     ,{ id:'gm-effect-gold', type:'gmEffect', mode:'gomoku', name:'金线落子', icon:'✦', price:0, preview:'radial-gradient(circle,#fff2a3 0 9%,#d6a03d 10% 22%,#17251f 23% 100%)' }
     ,{ id:'gm-effect-ink', type:'gmEffect', mode:'gomoku', name:'墨痕落子', icon:'墨', price:1200, preview:'radial-gradient(circle,#e8eadb 0 8%,#1b2422 9% 28%,#06100f 29% 100%)' }
     ,{ id:'gm-effect-vermilion', type:'gmEffect', mode:'gomoku', name:'朱砂连珠', icon:'朱', price:1600, preview:'radial-gradient(circle,#ffd77b 0 8%,#bd3d27 9% 28%,#34110d 29% 100%)' }
@@ -2891,16 +2900,16 @@
     [tableClass,frameClass,cardClass].filter(Boolean).forEach(c => pdkApp.classList.add(c));
     [tableClass,frameClass].filter(Boolean).forEach(c => mjApp.classList.add(c));
     [tableClass,frameClass].filter(Boolean).forEach(c => gmApp.classList.add(c));
-    const mjClass = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon' }[profile.skins.mjtile];
+    const mjClass = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon', 'mj-moonstone':'mj-skin-moonstone', 'mj-amber':'mj-skin-amber' }[profile.skins.mjtile];
     if (mjClass) mjApp.classList.add(mjClass);
     const themes={doudizhu:'mode-theme-ddz-royal',paodekuai:'mode-theme-pdk-run',changsha:'mode-theme-cs-jade',zhuanzhuan:'mode-theme-zz-redzhong'};
-    const ddzThemeClass={'mode-ddz-royal':'mode-theme-ddz-royal','mode-ddz-lantern':'mode-theme-ddz-lantern','mode-ddz-river':'mode-theme-ddz-river'}[profile.modeThemes.doudizhu];
-    const pdkThemeClass={'mode-pdk-run':'mode-theme-pdk-run','mode-pdk-spring':'mode-theme-pdk-spring','mode-pdk-night':'mode-theme-pdk-night'}[profile.modeThemes.paodekuai];
+    const ddzThemeClass={'mode-ddz-royal':'mode-theme-ddz-royal','mode-ddz-lantern':'mode-theme-ddz-lantern','mode-ddz-river':'mode-theme-ddz-river','mode-ddz-copper-court':'mode-theme-ddz-copper-court'}[profile.modeThemes.doudizhu];
+    const pdkThemeClass={'mode-pdk-run':'mode-theme-pdk-run','mode-pdk-spring':'mode-theme-pdk-spring','mode-pdk-night':'mode-theme-pdk-night','mode-pdk-silver-river':'mode-theme-pdk-silver-river'}[profile.modeThemes.paodekuai];
     if(ddzThemeClass)ddzApp.classList.add(ddzThemeClass);
     if(pdkThemeClass)pdkApp.classList.add(pdkThemeClass);
     if(profile.modeThemes[mjMode]==='mode-cs-jade')mjApp.classList.add(themes.changsha);
     if(profile.modeThemes[mjMode]==='mode-zz-redzhong')mjApp.classList.add(themes.zhuanzhuan);
-    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood', 'mode-gm-bronze-cloud':'mode-theme-gm-bronze-cloud', 'mode-gm-porcelain-lacquer':'mode-theme-gm-porcelain-lacquer', 'mode-gm-obsidian-crimson':'mode-theme-gm-obsidian-crimson' }[profile.modeThemes.gomoku];
+    const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood', 'mode-gm-bronze-cloud':'mode-theme-gm-bronze-cloud', 'mode-gm-porcelain-lacquer':'mode-theme-gm-porcelain-lacquer', 'mode-gm-obsidian-crimson':'mode-theme-gm-obsidian-crimson', 'mode-gm-amber-walnut':'mode-theme-gm-amber-walnut' }[profile.modeThemes.gomoku];
     if(gmTheme)gmApp.classList.add(gmTheme);
     const gmBoardSource={
       'mode-gm-jade':'assets/gomoku_board_jade_standard_v2.png',
@@ -2909,7 +2918,8 @@
       'mode-gm-rosewood':'assets/gomoku_board_rosewood_standard_v2.png',
       'mode-gm-bronze-cloud':'assets/gomoku_board_bronze_cloud_v2.png',
       'mode-gm-porcelain-lacquer':'assets/gomoku_board_porcelain_lacquer_v2.png',
-      'mode-gm-obsidian-crimson':'assets/gomoku_board_obsidian_crimson_v2.png'
+      'mode-gm-obsidian-crimson':'assets/gomoku_board_obsidian_crimson_v2.png',
+      'mode-gm-amber-walnut':'assets/gomoku_board_amber_walnut.png'
     }[profile.modeThemes.gomoku] || 'assets/gomoku_board_square_obsidian.png';
     const gmBoardArt=$('gmBoardArt');
     if(gmBoardArt) gmBoardArt.src=gmBoardSource;
@@ -2919,7 +2929,9 @@
       'mode-cs-jade-court':'mj-theme-jade',
       'mode-cs-ebony-court':'mj-theme-ebony',
       'mode-zz-redzhong-court':'mj-theme-redzhong',
-      'mode-zz-ebony-court':'mj-theme-ebony'
+      'mode-zz-ebony-court':'mj-theme-ebony',
+      'mode-cs-celadon-lantern':'mj-theme-celadon-lantern',
+      'mode-zz-moonstone':'mj-theme-moonstone'
     }[profile.modeThemes[mjMode]];
     if(mjCourtTheme)mjApp.classList.add(mjCourtTheme);
     const modeFrameClass={
@@ -4265,7 +4277,7 @@
       `).join('');
   }
 
-  const MJ_SKIN_CLASS = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon' };
+  const MJ_SKIN_CLASS = { 'mj-jade':'mj-skin-jade', 'mj-ink':'mj-skin-ink', 'mj-rosewood':'mj-skin-rosewood', 'mj-celadon':'mj-skin-celadon', 'mj-moonstone':'mj-skin-moonstone', 'mj-amber':'mj-skin-amber' };
   function renderShop() {
     const shopCtx = window.shopContext || 'all',modeTabs=[['all','炸弹'],['doudizhu','斗地主'],['paodekuai','跑得快'],['changsha','长沙麻将'],['zhuanzhuan','转转麻将'],['gomoku','五子棋']];
     const allowed={
@@ -5290,7 +5302,7 @@
   function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase;profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${winner===0?'执黑':'执白'}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${winner===0?'执黑':'执白'}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
   function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.history.push({r,c,owner:id});gm.last={r,c,owner:id};if(id===0&&gm.moves===1&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${note?` · ${note}`:''}`;AudioSys.fx('stone');gm.turn=id===0?1:0;renderGM();gmVisual('land',r,c,id);if(line.count>=5)return gmSettle(id);if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
   function gmUndo(){if(!gm||gm.phase!=='play'||!gm.history.length)return;clearTimeout(gmTimer);gmSelectedMove=null;const undoCount=gm.turn===1?1:Math.min(2,gm.history.length),removed=gm.history.splice(-undoCount,undoCount);removed.forEach(move=>{gm.board[move.r][move.c]=0;});gm.moves=gm.history.length;const lastMove=gm.history.at(-1);gm.last=lastMove?{r:lastMove.r,c:lastMove.c,owner:lastMove.owner}:null;gm.firstCenter=Boolean(gm.history[0]?.owner===0&&Math.abs(gm.history[0].r-7)<=1&&Math.abs(gm.history[0].c-7)<=1);gm.turn=0;gm.message=undoCount===2?'已悔棋，双方最近一手已撤回':'已撤回刚才落子';renderGM();}
-  function gmEnsureGrid(){const grid=$('gmGrid');if(gmCellMap.size===GM_SIZE*GM_SIZE&&grid.querySelectorAll('.gm-cell').length===GM_SIZE*GM_SIZE)return;const point=(r,c)=>`left:${7.5+c*6.0714}%;top:${7.5+r*6.0714}%`,stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');gmCellMap.clear();grid.innerHTML=stars+Array.from({length:GM_SIZE},(_,r)=>Array.from({length:GM_SIZE},(_,c)=>`<button class="gm-cell" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}"></button>`).join('')).join('');grid.querySelectorAll('[data-gm-r]').forEach(cell=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC);gmCellMap.set(`${r},${c}`,cell);cell.onclick=()=>{if(!gm||gm.phase!=='play'||gm.turn!==0||gm.board[r][c])return;const same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();};});}
+  function gmEnsureGrid(){const grid=$('gmGrid');if(gmCellMap.size===GM_SIZE*GM_SIZE&&grid.querySelectorAll('.gm-cell').length===GM_SIZE*GM_SIZE)return;const point=(r,c)=>`left:${(c*100/(GM_SIZE-1)).toFixed(6)}%;top:${(r*100/(GM_SIZE-1)).toFixed(6)}%`,stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');gmCellMap.clear();grid.innerHTML=stars+Array.from({length:GM_SIZE},(_,r)=>Array.from({length:GM_SIZE},(_,c)=>`<button class="gm-cell" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}"></button>`).join('')).join('');grid.querySelectorAll('[data-gm-r]').forEach(cell=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC);gmCellMap.set(`${r},${c}`,cell);cell.onclick=()=>{if(!gm||gm.phase!=='play'||gm.turn!==0||gm.board[r][c])return;const same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();};});}
   function renderGM(){if(!gm)return;$('gmBeanCount').textContent=profile.beans.toLocaleString();$('gmBaseLabel').textContent=`底注 ${gm.roundBase.toLocaleString()}`;$('gmDifficultySelect').value=profile.gmDifficulty;$('gmAIDifficultyLabel').textContent=`AI·${GM_DIFFICULTY[profile.gmDifficulty]}`;$('gmUndoBtn').disabled=gm.phase!=='play'||!gm.history?.length;const turnHint=gm.phase==='play'?(gm.turn===0?(gmSelectedMove?'再次点击确认落子':'轮到你落子 · 双击确认'):`${gm.names[1]} 正在推演`):'';$('gmStatus').textContent=turnHint?`${gm.message} · ${turnHint}`:gm.message;for(let id=0;id<2;id++){$(`gmName${id}`).textContent=gm.names[id];$(`gmAvatar${id}`).src=id===0?profile.playerAvatar:AVATAR_LIBRARY[gm.names[id]];$(`gmSeat${id}`).classList.toggle('active',gm.phase==='play'&&gm.turn===id);}gmEnsureGrid();for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++){const v=gm.board[r][c],cell=gmCellMap.get(`${r},${c}`),last=gm.last?.r===r&&gm.last?.c===c,selected=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;cell.className=`gm-cell ${last?'last last-'+(v===1?'black':'white'):''} ${selected?'selected':''}`;cell.disabled=gm.phase!=='play'||gm.turn!==0||Boolean(v);cell.title=last?`${v===1?gm.names[0]:gm.names[1]} 上一手落子`:'';const stone=cell.querySelector('.gm-stone');if(v){const color=v===1?'black':'white';if(!stone||!stone.classList.contains(color))cell.innerHTML=`<i class="gm-stone ${color}"></i>`;}else if(stone)cell.innerHTML='';}}
   function gmSyncBaseControl(){const select=$('gmBaseSelect'),custom=$('gmCustomBase'),presets=[50,100,200,500,1000],amount=Math.max(50,Math.min(1000000,Number(gmBase)||200)),isPreset=presets.includes(amount);select.value=isPreset?String(amount):'custom';custom.value=String(amount);custom.classList.toggle('hidden',isPreset);}
   function gmApplyBase(){const select=$('gmBaseSelect'),custom=$('gmCustomBase'),oldBase=gmBase;if(select.value==='custom'){custom.classList.remove('hidden');gmBase=Math.max(50,Math.min(1000000,Number(custom.value)||oldBase||200));}else{custom.classList.add('hidden');gmBase=Number(select.value);}base=gmBase;localStorage.setItem('ly_base',String(base));if(!gm||gm.moves===0){if(gm)gm.roundBase=gmBase;renderGM();}else{gm.message=`下局底注已设为 ${gmBase.toLocaleString()} 豆 · 点击重开生效`;renderGM();}}
@@ -5476,6 +5488,25 @@
     #gmScreen .gm-vfx.gm-effect-ink.finish{background:radial-gradient(circle,#e7f4ec 0 7%,#142b27 8% 25%,transparent 27%);box-shadow:0 0 42px 14px rgba(147,224,193,.5)}
     #gmScreen .gm-vfx.gm-effect-vermilion.finish{background:radial-gradient(circle,#fff0b1 0 7%,#b62f25 8% 25%,transparent 27%);box-shadow:0 0 44px 15px rgba(223,64,39,.58)}
     @keyframes gmInkVfx{from{transform:translate(-50%,-50%) scale(.25) rotate(-40deg);opacity:1}to{transform:translate(-50%,-50%) scale(4.9) rotate(145deg);opacity:0}}@keyframes gmInkOrbit{from{transform:scale(.25) rotate(0);opacity:1}to{transform:scale(2.7) rotate(-160deg);opacity:0}}@keyframes gmVermilionVfx{from{transform:translate(-50%,-50%) scale(.24) rotate(12deg);opacity:1}to{transform:translate(-50%,-50%) scale(4.8) rotate(132deg);opacity:0}}@keyframes gmSealOrbit{from{transform:scale(.3) rotate(0);opacity:1}to{transform:scale(2.6) rotate(112deg);opacity:0}}@keyframes gmIceOrbit{from{transform:scale(.2) rotate(0);opacity:1}to{transform:scale(2.55) rotate(90deg);opacity:0}}
+    /* 非炸弹玩法新增桌面与麻将皮面；炸弹桌面不引用这些选择器。 */
+    #mjScreen.mj-theme-celadon-lantern .mj-table{background-image:linear-gradient(90deg,rgba(4,26,24,.40),rgba(4,26,24,.02) 24%,rgba(4,26,24,.02) 76%,rgba(4,26,24,.40)),url('assets/mahjong_table_celadon_lantern.png')!important}
+    #mjScreen.mj-theme-moonstone .mj-table{background-image:linear-gradient(90deg,rgba(4,10,25,.46),rgba(4,10,25,.02) 24%,rgba(4,10,25,.02) 76%,rgba(4,10,25,.46)),url('assets/mahjong_table_moonstone.png')!important}
+    #ddzScreen.mode-theme-ddz-copper-court .ddz-table{background:linear-gradient(rgba(26,10,5,.18),rgba(4,10,9,.34)),url('assets/poker_table_copper_courtyard.png') center/cover no-repeat!important}
+    #pdkScreen.mode-theme-pdk-silver-river .ddz-table{background:linear-gradient(rgba(3,11,29,.20),rgba(3,11,29,.38)),url('assets/poker_table_silver_river.png') center/cover no-repeat!important}
+    #gmScreen.mode-theme-gm-amber-walnut .gm-center{background-image:url('assets/gomoku_board_amber_walnut.png')!important}
+    .mj-skin-moonstone{--mjf1:#fcfcff;--mjf2:#edf2fb;--mjf3:#c9d5e8;--mjbd:#9caec9;--mjedge:#8daed1;--mjback:#304967;--mjbackhi:#7695b7}
+    .mj-skin-amber{--mjf1:#fff9e8;--mjf2:#f8edca;--mjf3:#dec58d;--mjbd:#c79d4c;--mjedge:#d5ae53;--mjback:#6b3519;--mjbackhi:#b87130}
+    /* 15×15棋盘：格线与15个交叉点使用同一套 0–100% 坐标，消除落点偏移。 */
+    #gmScreen .gm-grid{inset:7.5%!important;overflow:visible!important;background-image:linear-gradient(to right,rgba(57,36,18,.68) 1px,transparent 1px),linear-gradient(to bottom,rgba(57,36,18,.68) 1px,transparent 1px)!important;background-size:7.142857% 7.142857%!important;background-position:0 0!important}
+    #gmScreen .gm-cell{width:7.142857%!important;height:7.142857%!important;aspect-ratio:auto!important}
+    /* 三种用户落子效果只附着在当前棋子中心：金线为圆形金环、墨痕为墨晕虚线、朱砂为方印闪光。 */
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-gold.land{background:radial-gradient(circle,rgba(255,250,206,1) 0 12%,rgba(255,204,81,.92) 13% 31%,transparent 34%)!important;box-shadow:0 0 19px #ffd34e,0 0 0 8px rgba(255,207,92,.18)!important;animation:gmGoldBurst .78s cubic-bezier(.16,.88,.22,1) both!important}
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-gold.land::before{border-color:rgba(255,226,112,.96)!important;border-width:2px!important;animation:gmGoldOrbit .72s ease-out both!important}
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-ink.land{background:radial-gradient(ellipse at 34% 28%,rgba(225,255,239,.94) 0 8%,rgba(21,61,54,.86) 9% 29%,transparent 32%)!important;box-shadow:9px -5px 0 -5px rgba(179,237,208,.88),-10px 7px 0 -6px rgba(10,42,37,.94),0 0 20px rgba(147,225,193,.76)!important;animation:gmInkBurst .9s cubic-bezier(.16,.87,.22,1) both!important}
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-ink.land::before{border-style:dashed!important;border-color:rgba(204,244,222,.86)!important;animation:gmInkOrbit .88s ease-out both!important}
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-vermilion.land{border-radius:3px!important;background:linear-gradient(135deg,rgba(255,237,179,1) 0 18%,rgba(196,48,31,.96) 19% 52%,transparent 54%)!important;box-shadow:0 0 25px rgba(223,59,36,.92),0 0 0 9px rgba(220,58,34,.18)!important;animation:gmVermilionBurst .88s cubic-bezier(.14,.9,.18,1) both!important}
+    #gmScreen .gm-stone>.gm-vfx.gm-effect-vermilion.land::after{border-color:rgba(255,206,125,.92)!important;border-radius:3px!important;animation:gmSealOrbit .84s ease-out both!important}
+    @keyframes gmGoldBurst{from{opacity:1}to{opacity:0}}@keyframes gmGoldOrbit{from{transform:translate(-50%,-50%) scale(.25) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.8) rotate(135deg);opacity:0}}@keyframes gmInkBurst{from{opacity:1}to{opacity:0}}@keyframes gmInkOrbit{from{transform:translate(-50%,-50%) scale(.25) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.7) rotate(-160deg);opacity:0}}@keyframes gmVermilionBurst{from{opacity:1}to{opacity:0}}@keyframes gmSealOrbit{from{transform:translate(-50%,-50%) scale(.3) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.6) rotate(112deg);opacity:0}}
     /* 跑得快/斗地主：主操作即使暂不可用也必须清楚可见；结算再来一局固定为高对比主按钮。 */
     #pdkScreen .ddz-actions .ddz-action,#ddzScreen .ddz-actions .ddz-action{position:relative;min-width:124px;height:46px;border:2px solid #98d9ff;background:linear-gradient(180deg,#5db4f5 0%,#2577c8 48%,#155296 100%);color:#f7fcff;text-shadow:0 1px 2px #062a54;box-shadow:inset 0 1px 0 rgba(255,255,255,.54),0 4px 0 #0a396e,0 10px 20px rgba(0,0,0,.42);letter-spacing:.04em;opacity:1;filter:none}
     #pdkScreen .ddz-actions .ddz-action.gold,#ddzScreen .ddz-actions .ddz-action.gold{border-color:#fff0a0;background:linear-gradient(180deg,#ffe77d 0%,#f6b733 48%,#c56a0a 100%);color:#422000;text-shadow:0 1px 0 rgba(255,255,255,.48);box-shadow:inset 0 1px 0 rgba(255,255,255,.74),0 4px 0 #834006,0 10px 20px rgba(0,0,0,.44)}
