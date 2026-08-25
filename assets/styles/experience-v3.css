@@ -406,3 +406,96 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
 
   #ddzScreen .mode-chat-fab,#pdkScreen .mode-chat-fab,#mjScreen .mode-chat-fab,#gmScreen .mode-chat-fab{min-width:42px!important;height:28px!important;padding:0 8px!important;border-radius:7px!important;background:rgba(12,38,62,.88)!important;box-shadow:0 3px 9px rgba(0,0,0,.32)!important;font-size:10px!important}
 }
+
+/* layout9：手机横屏不再复用桌面端叠牌与麻将内框。触控空间、牌桌内容、顶栏工具彼此独立。 */
+@media(max-width:900px) and (orientation:landscape){
+  /* 斗地主 / 跑得快：每张牌留出稳定触控带，选中只作轻量抬升而不覆盖相邻牌。 */
+  #ddzScreen .ddz-hand-zone,#pdkScreen .ddz-hand-zone{
+    bottom:42px!important;width:min(78vw,690px)!important;height:78px!important;
+    padding:0!important;z-index:36!important;pointer-events:auto!important;
+  }
+  #ddzScreen .ddz-hand,#pdkScreen .ddz-hand{height:76px!important;align-items:flex-end!important;}
+  #ddzScreen .card,#pdkScreen .card{
+    width:42px!important;height:68px!important;flex-basis:42px!important;margin-left:-10px!important;
+    border-radius:4px!important;transform:translateY(0)!important;z-index:auto!important;
+  }
+  #ddzScreen .card:first-child,#pdkScreen .card:first-child{margin-left:0!important;}
+  #ddzScreen .card.selected,#pdkScreen .card.selected{
+    transform:translateY(-7px)!important;z-index:auto!important;
+    border-width:2px!important;border-color:#ffe88b!important;
+    box-shadow:0 0 0 1px rgba(255,224,112,.86),0 4px 9px rgba(0,0,0,.34)!important;
+  }
+  #ddzScreen .card:active:not(:disabled),#pdkScreen .card:active:not(:disabled){transform:translateY(-2px) scale(.985)!important;}
+  #ddzScreen .card.selected:active:not(:disabled),#pdkScreen .card.selected:active:not(:disabled){transform:translateY(-7px) scale(.985)!important;}
+
+  /* 已出牌不再大过手牌；长牌型以紧凑牌列放在中央的独立可读层。 */
+  #ddzScreen .ddz-center,#pdkScreen .ddz-center{top:38%!important;width:min(62vw,500px)!important;gap:7px!important;z-index:18!important;}
+  #ddzScreen .ddz-status,#pdkScreen .ddz-status{max-width:min(56vw,430px)!important;padding:5px 10px!important;font-size:12px!important;}
+  #ddzScreen .ddz-played,#pdkScreen .ddz-played{min-height:58px!important;padding-left:0!important;align-items:flex-end!important;}
+  #ddzScreen .ddz-played-card,#pdkScreen .ddz-played-card{
+    width:39px!important;height:59px!important;flex-basis:39px!important;margin-left:-12px!important;
+    border-radius:4px!important;box-shadow:0 3px 7px rgba(0,0,0,.42)!important;
+  }
+  #ddzScreen .ddz-played-card:first-child,#pdkScreen .ddz-played-card:first-child{margin-left:0!important;}
+  #ddzScreen .ddz-played-card .card-corner,#pdkScreen .ddz-played-card .card-corner{left:3px!important;top:3px!important;font-size:13px!important;}
+  #ddzScreen .ddz-played-card .c-top,#ddzScreen .ddz-played-card .c-suit,#pdkScreen .ddz-played-card .c-top,#pdkScreen .ddz-played-card .c-suit{font-size:14px!important;}
+
+  /* 记牌器是顶栏工具：入口与导航同轨，展开面板只占左上安全区，不进入牌桌中心。 */
+  #ddzScreen .ddz-counter-toggle{
+    position:fixed!important;left:168px!important;top:9px!important;width:28px!important;height:28px!important;
+    border-radius:6px!important;border-color:rgba(231,197,102,.72)!important;background:rgba(28,60,88,.86)!important;
+    box-shadow:none!important;font-size:0!important;z-index:120!important;
+  }
+  #ddzScreen .ddz-counter-toggle::after{content:'记'!important;font:900 12px/1 "Microsoft YaHei",sans-serif!important;color:#ffe7a0!important;}
+  #ddzScreen .ddz-counter:not(.counter-collapsed){
+    position:fixed!important;left:8px!important;top:48px!important;width:154px!important;max-height:116px!important;
+    padding:6px 7px!important;border-radius:0 0 10px 10px!important;transform:none!important;
+    background:linear-gradient(180deg,rgba(4,17,32,.98),rgba(8,29,49,.98))!important;
+    box-shadow:0 8px 18px rgba(0,0,0,.42)!important;z-index:119!important;
+  }
+  #ddzScreen .ddz-counter-head{min-height:13px!important;margin-bottom:3px!important;font-size:9px!important;}
+  #ddzScreen .ddz-counter-close{right:5px!important;top:4px!important;}
+  #ddzScreen .ddz-counter-grid{grid-template-columns:repeat(5,1fr)!important;gap:1px!important;}
+  #ddzScreen .ddz-counter-cell{min-height:17px!important;padding:1px 0!important;border-radius:3px!important;font-size:7px!important;}
+  #ddzScreen .ddz-counter-cell b{font-size:9px!important;}
+
+  /* 麻将手机端：外围仅保留牌墙与座位；中间只服务牌河和状态，完全取消桌面端的“内框套内框”。 */
+  #mjScreen .ddz-table{overflow:hidden!important;border-radius:28px!important;}
+  #mjScreen .mj-board{
+    top:44%!important;width:min(64vw,560px)!important;height:54%!important;aspect-ratio:auto!important;
+    border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;
+  }
+  #mjScreen .mj-board::before,#mjScreen .mj-board::after{display:none!important;}
+  #mjScreen .mj-wall-top{top:3%!important;left:19%!important;right:19%!important;height:23px!important;}
+  #mjScreen .mj-wall-bottom{display:none!important;}
+  #mjScreen .mj-wall-left,#mjScreen .mj-wall-right{top:16%!important;bottom:20%!important;width:23px!important;}
+  #mjScreen .mj-wall-left{left:5%!important;}#mjScreen .mj-wall-right{right:5%!important;}
+  #mjScreen .mj-wall-stack{width:20px!important;height:20px!important;border-radius:3px!important;box-shadow:0 2px 0 var(--mjback,#3d7c5a),0 3px 5px rgba(0,0,0,.25)!important;}
+  #mjScreen .mj-wall-left .mj-wall-stack,#mjScreen .mj-wall-right .mj-wall-stack{width:21px!important;height:18px!important;}
+  #mjScreen .mj-board-status{top:45%!important;min-width:0!important;max-width:250px!important;padding:4px 8px!important;border-radius:7px!important;font-size:10px!important;box-shadow:0 3px 8px rgba(0,0,0,.24)!important;}
+  #mjScreen .mj-board-status b{font-size:11px!important;}#mjScreen .mj-board-status small{margin-top:1px!important;font-size:8px!important;}
+  #mjScreen .mj-zone{padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;}
+  #mjScreen .mj-zone-head{display:none!important;}
+  #mjScreen .mj-zone-top{left:25%!important;right:25%!important;top:12%!important;height:28%!important;}
+  #mjScreen .mj-zone-bottom{left:25%!important;right:25%!important;bottom:6%!important;height:20%!important;}
+  #mjScreen .mj-zone-left,#mjScreen .mj-zone-right{top:35%!important;width:17%!important;height:27%!important;}
+  #mjScreen .mj-zone-left{left:9%!important;}#mjScreen .mj-zone-right{right:9%!important;}
+  #mjScreen .mj-river-grid{grid-template-columns:repeat(9,22px)!important;grid-auto-rows:31px!important;row-gap:0!important;}
+  #mjScreen .mj-zone-left .mj-river-grid,#mjScreen .mj-zone-right .mj-river-grid{grid-template-columns:repeat(3,20px)!important;grid-auto-rows:29px!important;}
+  #mjScreen .mj-river-grid .mj-tile{width:22px!important;height:30px!important;min-width:22px!important;padding:1px 1px 3px!important;border-radius:3px!important;box-shadow:inset 0 -2px 0 var(--mjedge,#8eb48c),0 2px 0 var(--mjback,#3d7c5a),0 3px 4px rgba(0,0,0,.2)!important;}
+  #mjScreen .mj-zone-left .mj-river-grid .mj-tile,#mjScreen .mj-zone-right .mj-river-grid .mj-tile{width:20px!important;height:28px!important;min-width:20px!important;}
+  #mjScreen .mj-seat-meld{padding:3px!important;min-height:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;}
+  #mjScreen .mj-seat-meld:not(:empty)::before{display:none!important;}
+  #mjScreen .mj-seat-meld .mj-tile{width:21px!important;height:30px!important;min-width:21px!important;}
+  #mjScreen #mjMeld1{left:42px!important;top:44%!important;}#mjScreen #mjMeld2{left:calc(50% + 60px)!important;top:48px!important;}#mjScreen #mjMeld3{right:42px!important;top:44%!important;}
+  #mjScreen .mj-hand-zone{bottom:40px!important;width:min(80vw,690px)!important;height:78px!important;padding:0!important;z-index:46!important;}
+  #mjScreen #mjHand{height:74px!important;padding:0!important;gap:0!important;align-items:flex-end!important;}
+  #mjScreen #mjHand .mj-tile{width:44px!important;height:62px!important;min-width:44px!important;flex-basis:44px!important;margin-left:-5px!important;transform:translateY(0)!important;z-index:auto!important;}
+  #mjScreen #mjHand .mj-tile:first-child{margin-left:0!important;}
+  #mjScreen #mjHand .mj-tile.drawn{margin-left:9px!important;}
+  #mjScreen #mjHand .mj-tile.selected{transform:translateY(-8px)!important;z-index:auto!important;box-shadow:0 0 0 1px #ffe36c,0 4px 9px rgba(0,0,0,.34)!important;}
+  #mjScreen #mjHand .mj-tile:active{transform:translateY(-2px) scale(.985)!important;}
+  #mjScreen #mjHand .mj-tile.selected:active{transform:translateY(-8px) scale(.985)!important;}
+  #mjScreen .mj-claim-panel{top:47%!important;width:auto!important;max-width:min(52vw,380px)!important;min-width:0!important;padding:7px 10px!important;border-radius:11px!important;box-shadow:0 8px 18px rgba(0,0,0,.35)!important;}
+  #mjScreen .mj-claim-title{font-size:12px!important;}.mj-claim-sub{margin:3px 0 6px!important;font-size:10px!important;}.mj-claim-actions{gap:5px!important;}.mj-claim-actions button{min-width:52px!important;min-height:29px!important;padding:4px 9px!important;border-radius:8px!important;font-size:11px!important;}
+}
