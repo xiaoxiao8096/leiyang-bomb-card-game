@@ -246,3 +246,77 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
   #lobbyScreen .mode-card{min-height:52px}
   #lobbyScreen .mode-card strong{padding:4px 7px;font-size:14px!important}
 }
+
+/* 横屏牌桌统一轨道：导航 / 两侧信息 / 中央内容 / 底部操作，禁止各层抢同一坐标。 */
+@media(max-width:900px) and (orientation:landscape){
+  :root{--mobile-nav-h:54px;--mobile-action-h:44px;--mobile-side-gap:8px}
+
+  /* 炸弹：手牌、本人座位与操作按钮分别占用独立底部带。 */
+  #app .top-bar{height:54px!important;min-height:54px!important}
+  #app .table-area{top:54px!important;bottom:0!important}
+  #app .seat.bottom{bottom:48px!important;left:8px!important;transform:scale(.72)!important;transform-origin:left bottom!important}
+  #app .hand-zone{left:50%!important;right:auto!important;bottom:50px!important;width:min(70vw,620px)!important;height:74px!important;padding:3px 0!important;transform:translateX(-50%)!important;overflow:visible!important;z-index:34!important}
+  #app .hand-zone .hand{min-width:0!important;width:max-content!important;height:70px!important;justify-content:center!important;padding:0!important}
+  #app .action-bar{bottom:max(5px,env(safe-area-inset-bottom))!important;z-index:42!important}
+  #app .action-btn{min-width:98px!important;height:38px!important}
+  #app .played-cards-box{top:43%!important;width:min(68vw,590px)!important;z-index:24!important}
+  #app .bomb-chat-toggle{top:62px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:55!important}
+
+  /* 斗地主 / 跑得快：底部三带分离，记牌器锁定在左侧浮层轨道。 */
+  #ddzScreen .ddz-table,#pdkScreen .ddz-table{top:var(--mobile-nav-h)!important;bottom:0!important}
+  #ddzScreen .ddz-seat.bottom,#pdkScreen .ddz-seat.bottom{bottom:47px!important;z-index:34!important}
+  #ddzScreen .ddz-hand-zone,#pdkScreen .ddz-hand-zone{bottom:51px!important;z-index:35!important}
+  #ddzScreen .ddz-actions,#pdkScreen .ddz-actions{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--mobile-action-h)!important;padding:3px 8px!important;border:1px solid rgba(118,169,212,.22)!important;border-radius:24px!important;background:linear-gradient(90deg,transparent,rgba(5,22,42,.54) 18%,rgba(5,22,42,.54) 82%,transparent)!important;z-index:43!important}
+  #ddzScreen .ddz-counter{left:8px!important;top:7px!important;transform:scale(.82)!important;transform-origin:left top!important;z-index:30!important}
+  #ddzScreen .ddz-bid-panel{top:45%!important;z-index:48!important}
+  #ddzScreen .mode-chat-fab,#pdkScreen .mode-chat-fab{top:64px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:54!important}
+  #ddzScreen .mode-chat-panel:not(.chat-collapsed),#pdkScreen .mode-chat-panel:not(.chat-collapsed){top:102px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:56!important}
+
+  /* 麻将：顶部头像和牌墙错层；底部牌墙、手牌、操作栏彻底错开。 */
+  #mjScreen .ddz-table{top:var(--mobile-nav-h)!important;bottom:0!important;overflow:hidden!important}
+  #mjScreen .ddz-seat.top{top:2px!important;z-index:32!important}
+  #mjScreen .ddz-seat.left,#mjScreen .ddz-seat.right{top:41%!important;z-index:32!important}
+  #mjScreen .ddz-seat.bottom{left:8px!important;bottom:48px!important;transform:scale(.70)!important;transform-origin:left bottom!important;z-index:42!important}
+  #mjScreen .mj-board{top:47%!important;height:64%!important;max-height:none!important;z-index:8!important}
+  #mjScreen .mj-wall-top{top:32px!important}
+  #mjScreen .mj-wall-bottom{bottom:84px!important}
+  #mjScreen .mj-hand-zone{bottom:48px!important;height:70px!important;z-index:45!important}
+  #mjScreen #mjHand{height:66px!important;align-items:flex-end!important}
+  #mjScreen .mj-actions{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--mobile-action-h)!important;padding:3px 8px!important;border:1px solid rgba(118,169,212,.22)!important;border-radius:24px!important;background:linear-gradient(90deg,transparent,rgba(5,22,42,.62) 18%,rgba(5,22,42,.62) 82%,transparent)!important;z-index:58!important}
+  #mjScreen .mode-chat-fab{top:64px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:54!important}
+  #mjScreen .mode-chat-panel:not(.chat-collapsed){top:102px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:56!important}
+  #mjScreen:has(.mode-chat-panel:not(.chat-collapsed)) .ddz-seat.right{right:calc(min(230px,46vw) + 18px)!important}
+
+  /* 五子棋保持中心棋盘独占内容区，底部只用于操作。 */
+  #gmScreen .gm-table{top:var(--mobile-nav-h)!important;bottom:0!important}
+  #gmScreen .gm-center{top:49%!important;z-index:12!important}
+  #gmScreen .gm-actions{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--mobile-action-h)!important;padding:3px 8px!important;border:1px solid rgba(118,169,212,.22)!important;border-radius:24px!important;background:linear-gradient(90deg,transparent,rgba(5,22,42,.55) 18%,rgba(5,22,42,.55) 82%,transparent)!important;z-index:45!important}
+  #gmScreen .mode-chat-fab{top:64px!important;right:max(8px,env(safe-area-inset-right))!important;z-index:54!important}
+}
+
+/* 极短横屏：所有牌桌顶栏只保留图标，杜绝“大厅/商店/战绩”折成两行。 */
+@media(max-width:560px) and (orientation:landscape){
+  .ddz-topbar{height:48px!important;min-height:48px!important;grid-template-columns:144px minmax(0,1fr) auto!important;gap:2px!important}
+  .ddz-topbar-left{gap:2px!important}
+  .ddz-topbar-left .ddz-tool{width:26px!important;min-width:26px!important;height:30px!important;min-height:30px!important;padding:0!important;font-size:0!important}
+  .ddz-topbar-left .ddz-tool:nth-child(1)::before{content:'⌂';font-size:15px}.ddz-topbar-left .ddz-tool:nth-child(2)::before{content:'🛍';font-size:13px}.ddz-topbar-left .ddz-tool:nth-child(3)::before{content:'▥';font-size:15px}.ddz-topbar-left .ddz-tool:nth-child(4)::before{content:'⚙';font-size:15px}.ddz-topbar-left .ddz-tool:nth-child(5)::before{content:'?';font-size:15px}
+  .ddz-top-title{justify-content:center!important;gap:3px!important}.ddz-top-title h2{font-size:16px!important}.ddz-multiplier{font-size:9px!important;padding:4px 5px!important}
+  .ddz-topbar-right{gap:2px!important}.ddz-topbar-right .ddz-base-control{display:none!important}.ddz-topbar-right .ddz-tool{width:28px!important;min-width:28px!important;height:30px!important;font-size:0!important}.ddz-topbar-right .ddz-tool::before{content:'↻';font-size:16px}.ddz-beans{font-size:10px!important}
+  #ddzScreen .ddz-table,#pdkScreen .ddz-table,#mjScreen .ddz-table,#gmScreen .gm-table{top:48px!important}
+  #app .top-bar{height:48px!important}#app .table-area{top:48px!important}
+}
+
+/* 873px 级别手机横屏同样使用图标导航，不能等到更窄尺寸才修复文字竖排。 */
+@media(max-width:900px) and (orientation:landscape){
+  .ddz-topbar{grid-template-columns:170px minmax(120px,1fr) auto!important}
+  .ddz-topbar-left .ddz-tool{width:31px!important;min-width:31px!important;height:32px!important;min-height:32px!important;padding:0!important;font-size:0!important;overflow:hidden!important}
+  .ddz-topbar-left .ddz-tool:nth-child(1)::before{content:'⌂';font-size:16px}.ddz-topbar-left .ddz-tool:nth-child(2)::before{content:'🛍';font-size:14px}.ddz-topbar-left .ddz-tool:nth-child(3)::before{content:'▥';font-size:16px}.ddz-topbar-left .ddz-tool:nth-child(4)::before{content:'⚙';font-size:16px}.ddz-topbar-left .ddz-tool:nth-child(5)::before{content:'?';font-size:16px}
+  #mjScreen .ddz-seat.top{top:0!important}
+  #mjScreen .mj-wall-top{top:58px!important}
+  #mjScreen .mj-board-status{top:52%!important}
+
+  /* 炸弹左上快捷操作在图标化后必须保留可见符号，不能出现空按钮。 */
+  #app .header-quick-actions{gap:4px!important;z-index:61!important}
+  #app .header-quick-actions .quick-bar-btn{display:grid!important;place-items:center!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;font-size:0!important;border-radius:11px!important}
+  #quickChatBtn::before{content:'💬';font-size:16px}#soundToggleBtn::before{content:'🔊';font-size:16px}#musicToggleBtn::before{content:'🎵';font-size:16px}#ruleBtn::before{content:'?';font:900 17px/1 Arial,sans-serif}
+}
