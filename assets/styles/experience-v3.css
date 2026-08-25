@@ -850,3 +850,73 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
   #gmScreen .gm-grid{inset:7.8%!important;}
   #gmScreen .gm-status{top:calc(100% + 12px)!important;}
 }
+
+/* layout15：手机方向切换与竖屏商城收口。横屏遮罩立即退出；商城标题、预览和商品各占独立轨道。 */
+@media(orientation:landscape){
+  .landscape-guard{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+}
+
+@media(max-width:560px) and (orientation:portrait){
+  #shopDialog[open]{
+    position:fixed!important;
+    top:max(8px,env(safe-area-inset-top))!important;
+    right:max(8px,env(safe-area-inset-right))!important;
+    bottom:max(8px,env(safe-area-inset-bottom))!important;
+    left:max(8px,env(safe-area-inset-left))!important;
+    width:auto!important;
+    height:auto!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:0!important;
+    transform:none!important;
+    padding:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+    border-radius:16px!important;
+  }
+  #shopDialog[open] .dialog-header{flex:0 0 52px!important;min-height:52px!important;padding:12px 14px 8px!important;}
+  #shopDialog[open] .shop-mode-tabs,#shopDialog[open] .shop-category-tabs{
+    flex:0 0 auto!important;
+    min-height:38px!important;
+    margin:0!important;
+    padding:0 12px 5px!important;
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    gap:6px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    white-space:nowrap!important;
+    scrollbar-width:none!important;
+  }
+  #shopDialog[open] .shop-mode-tabs::-webkit-scrollbar,#shopDialog[open] .shop-category-tabs::-webkit-scrollbar{display:none!important;}
+  #shopDialog[open] .shop-tab,#shopDialog[open] .shop-category{flex:0 0 auto!important;min-height:34px!important;height:34px!important;padding:0 11px!important;}
+  #shopDialog[open] .shop-live-preview{
+    flex:0 0 92px!important;
+    height:92px!important;
+    margin:0 12px 7px!important;
+    padding:7px!important;
+    grid-template-columns:98px minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  #shopDialog[open] .shop-live-art{height:76px!important;}
+  #shopDialog[open] .shop-live-meta{min-width:0!important;gap:2px!important;}
+  #shopDialog[open] .shop-live-meta strong{font-size:17px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;}
+  #shopDialog[open] .shop-grid{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:4px 12px calc(18px + env(safe-area-inset-bottom))!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  #shopDialog[open] .shop-card{min-width:0!important;min-height:154px!important;height:auto!important;padding:8px!important;}
+  #shopDialog[open] .shop-card .shop-preview{height:78px!important;min-height:78px!important;transform:none!important;}
+  #shopDialog[open] .shop-card strong{font-size:13px!important;line-height:1.2!important;}
+  #shopDialog[open] .shop-card small,#shopDialog[open] .shop-card span{font-size:11px!important;line-height:1.15!important;}
+}
