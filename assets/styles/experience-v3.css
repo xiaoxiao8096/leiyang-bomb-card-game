@@ -1,0 +1,193 @@
+/* 2026-08-24 三阶段收口：入口封面、消息抽屉、安全区、手机竖屏和商城实物预览。 */
+#lobbyScreen .mode-card{background-position:center!important;background-size:cover!important}
+#lobbyScreen .mode-card[data-game="leiyang"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/table-lacquer-pavilion.webp')!important}
+#lobbyScreen .mode-card[data-game="doudizhu"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/poker_table_copper_courtyard.webp')!important}
+#lobbyScreen .mode-card[data-game="paodekuai"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/pdk_table_teal_gale.webp')!important}
+#lobbyScreen .mode-card[data-game="changsha"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/changsha_mahjong_table_lotus_jade.webp')!important}
+#lobbyScreen .mode-card[data-game="zhuanzhuan"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/zhuanzhuan_mahjong_table_cinnabar_moon.webp')!important}
+#lobbyScreen .mode-card[data-game="gomoku"]{background-image:linear-gradient(180deg,rgba(3,14,28,.08),rgba(3,14,28,.88)),url('../optimized_v3/gomoku_board_bronze_cloud_v2.webp')!important}
+#cinemaFx.mode-gomoku.fx-gm-opening,#cinemaFx.mode-gomoku.fx-gm-threat,#cinemaFx.mode-gomoku.fx-gm-finish{background-image:linear-gradient(90deg,rgba(1,5,14,.72),rgba(1,5,14,.12) 38%,rgba(1,5,14,.12) 62%,rgba(1,5,14,.72)),url('../optimized_v3/generated_v3__fx-gomoku.webp')!important;background-position:center!important;background-size:cover!important}
+#lobbyScreen .mode-card::before{z-index:0!important;background:linear-gradient(120deg,rgba(255,239,159,.18),transparent 44%,rgba(79,181,217,.15))!important}
+#lobbyScreen .mode-card strong{padding:6px 10px;border-radius:10px;background:rgba(3,16,31,.64);backdrop-filter:blur(5px);text-shadow:0 2px 5px #000}
+.mode-chat-fab{position:absolute;z-index:92;right:18px;top:82px;min-width:58px;height:38px;padding:0 13px;border:1px solid var(--room-accent,#e2bd68);border-radius:20px;background:linear-gradient(180deg,rgba(27,65,101,.98),rgba(5,24,47,.98));color:#fff4cf;font-weight:900;box-shadow:0 7px 18px rgba(0,0,0,.38),0 0 12px var(--room-tint,rgba(255,215,102,.16));cursor:pointer}
+.mode-chat-panel.chat-collapsed{display:none!important}
+#ddzScreen .mode-chat-panel:not(.chat-collapsed),#pdkScreen .mode-chat-panel:not(.chat-collapsed){top:126px!important;right:18px!important;width:246px!important;height:224px!important}
+#mjScreen .mode-chat-panel:not(.chat-collapsed),#gmScreen .mode-chat-panel:not(.chat-collapsed){top:126px!important;right:18px!important;width:246px!important;height:208px!important}
+#shopDialog{width:min(1120px,94vw);max-height:88vh;overflow:hidden}
+#shopDialog .shop-live-preview{height:150px;margin:0 18px 12px;display:grid;grid-template-columns:220px 1fr;align-items:center;gap:20px;padding:12px;border:1px solid rgba(225,186,94,.42);border-radius:16px;background:linear-gradient(135deg,rgba(18,52,87,.92),rgba(5,19,38,.94));overflow:hidden}
+#shopDialog .shop-live-art{height:126px;display:grid;place-items:center;border-radius:12px;overflow:hidden;background:rgba(3,13,27,.55)}
+#shopDialog .shop-live-art .shop-preview{width:100%!important;height:100%!important;min-height:0!important;margin:0!important;border-radius:10px;transform:none!important}
+#shopDialog .shop-live-meta{display:flex;flex-direction:column;gap:6px}.shop-live-meta small{color:#8fb4d8}.shop-live-meta strong{font-size:24px;color:#ffe39a}.shop-live-meta span{color:#d6e5f4}
+#shopDialog .shop-grid{max-height:calc(88vh - 292px);overflow-y:auto;overscroll-behavior:contain}
+/* 炸弹玩法专属电影式事件：50K、同点炸与王炸不再共用赌场海报。 */
+#cinemaFx.mode-bomb{background-color:#020914;background-position:center;background-size:cover}
+#cinemaFx.mode-bomb.bomb-50k{
+  --fx-accent:#9cf3d0;
+  background-image:linear-gradient(90deg,rgba(1,7,17,.84),rgba(1,7,17,.12) 35%,rgba(1,7,17,.12) 65%,rgba(1,7,17,.84)),url('../optimized_v3/bomb_fx_50k_lock_v2.webp')!important;
+}
+#cinemaFx.mode-bomb.bomb-rank{
+  --fx-accent:#9ddcff;
+  background-image:radial-gradient(circle at 50% 50%,rgba(2,10,22,.12),rgba(1,6,14,.72) 76%),url('../optimized_v3/bomb_fx_rank_crush_v2.webp')!important;
+}
+#cinemaFx.mode-bomb.bomb-joker{
+  --fx-accent:#ffe49a;
+  background-image:radial-gradient(circle at 50% 48%,rgba(1,6,14,.06),rgba(1,5,13,.72) 78%),url('../optimized_v3/bomb_fx_joker_crown_v2.webp')!important;
+}
+#cinemaFx.mode-bomb.bomb-50k.show{animation:bomb50kVeil 1.78s cubic-bezier(.16,.82,.22,1) forwards}
+#cinemaFx.mode-bomb.bomb-rank.show{animation:bombRankVeil 1.82s cubic-bezier(.1,.82,.18,1) forwards}
+#cinemaFx.mode-bomb.bomb-joker.show{animation:bombJokerVeil 2.25s cubic-bezier(.12,.8,.18,1) forwards}
+#cinemaFx.mode-bomb.bomb-50k .fx-title,#cinemaFx.mode-bomb.bomb-rank .fx-title,#cinemaFx.mode-bomb.bomb-joker .fx-title{
+  position:relative;z-index:4;font-family:STKaiti,KaiTi,"Microsoft YaHei",sans-serif;letter-spacing:.22em;
+}
+#cinemaFx.mode-bomb.bomb-50k .fx-title{color:#efffdc;text-shadow:0 0 8px #fff,0 0 26px #6ee7c4,0 4px 0 #174a46;animation:bomb50kTitle 1.55s cubic-bezier(.12,.9,.2,1) forwards}
+#cinemaFx.mode-bomb.bomb-rank .fx-title{color:#f7fbff;text-shadow:0 0 9px #fff,0 0 27px #72cfff,0 5px 0 #143a62;animation:bombRankTitle 1.48s cubic-bezier(.08,.92,.18,1) forwards}
+#cinemaFx.mode-bomb.bomb-joker .fx-title{color:#fff6cf;text-shadow:-7px 0 24px #b9e6ff,7px 0 24px #f4bf55,0 5px 0 #3f2b0b;animation:bombJokerTitle 1.92s cubic-bezier(.1,.88,.18,1) forwards}
+#cinemaFx.mode-bomb.bomb-50k::before,#cinemaFx.mode-bomb.bomb-50k::after{width:24vmin;height:24vmin;border:2px solid rgba(135,246,211,.86);border-radius:12%;transform:rotate(45deg);animation:bomb50kSeal 1.42s ease-out both}
+#cinemaFx.mode-bomb.bomb-50k::after{border-color:rgba(255,213,111,.8);animation-delay:.12s}
+#cinemaFx.mode-bomb.bomb-rank::before,#cinemaFx.mode-bomb.bomb-rank::after{border-color:rgba(151,222,255,.92);box-shadow:0 0 18px #75cfff,0 0 70px rgba(75,176,255,.34);animation:bombRankRing 1.34s ease-out both}
+#cinemaFx.mode-bomb.bomb-rank::after{animation-delay:.1s}
+#cinemaFx.mode-bomb.bomb-joker::before,#cinemaFx.mode-bomb.bomb-joker::after{width:22vmax;height:22vmax;border-width:3px;border-color:rgba(203,235,255,.9);box-shadow:-20px 0 48px rgba(137,205,255,.42),20px 0 48px rgba(255,201,87,.4);animation:bombJokerRing 1.78s ease-out both}
+#cinemaFx.mode-bomb.bomb-joker::after{border-color:rgba(255,215,111,.9);animation-delay:.14s;animation-direction:reverse}
+#cinemaFx.mode-bomb.bomb-rank.bomb-tier-4{filter:saturate(.9) brightness(.9)}
+#cinemaFx.mode-bomb.bomb-rank.bomb-tier-5{filter:saturate(.98) brightness(.95)}
+#cinemaFx.mode-bomb.bomb-rank.bomb-tier-6{filter:saturate(1.06) brightness(1)}
+#cinemaFx.mode-bomb.bomb-rank.bomb-tier-7{filter:saturate(1.15) brightness(1.06)}
+#cinemaFx.mode-bomb.bomb-rank.bomb-tier-8{filter:saturate(1.24) contrast(1.08) brightness(1.1)}
+#cinemaFx.mode-bomb.bomb-joker.bomb-tier-2{filter:saturate(.92) brightness(.94)}
+#cinemaFx.mode-bomb.bomb-joker.bomb-tier-3{filter:saturate(1.08) brightness(1.04)}
+#cinemaFx.mode-bomb.bomb-joker.bomb-tier-4{filter:saturate(1.2) contrast(1.08) brightness(1.1)}
+#cinemaFx.mode-bomb.bomb-50k .fx-spark{width:5px;height:17px;background:linear-gradient(#fff,#8bffd8,transparent);box-shadow:0 0 12px #65e7c1}
+#cinemaFx.mode-bomb.bomb-rank .fx-spark{width:6px;height:25px;background:linear-gradient(#fff,#7fcfff,transparent);box-shadow:0 0 14px #51b8ff}
+#cinemaFx.mode-bomb.bomb-joker .fx-spark{width:7px;height:28px;background:linear-gradient(#fff,#ffe18b,#8ccfff,transparent);box-shadow:0 0 16px #d9eaff}
+#cinemaFx.mode-bomb.score,#cinemaFx.mode-bomb.report,#cinemaFx.mode-bomb.settle-even,#cinemaFx.mode-bomb.settle-transfer,#cinemaFx.mode-bomb.match-finish,#cinemaFx.mode-bomb.match-gua{background-image:radial-gradient(circle at 50% 48%,rgba(25,75,101,.82),rgba(2,10,24,.94) 64%,rgba(0,4,12,.98))!important;backdrop-filter:blur(3px)}
+#cinemaFx.mode-bomb.score .fx-title{color:#c9fff0;text-shadow:0 0 22px #49d4b3;animation:bombNoticeTitle 1.05s ease-out forwards}
+#cinemaFx.mode-bomb.report .fx-title{color:#fff2d0;text-shadow:0 0 22px #f06f68;animation:bombNoticeTitle 1.02s ease-out forwards}
+#cinemaFx.mode-bomb.settle-transfer .fx-title,#cinemaFx.mode-bomb.match-gua .fx-title{color:#ffe09a;text-shadow:0 0 26px #dc8e35;animation:bombSettleTitle 1.45s ease-out forwards}
+#cinemaFx.mode-bomb.settle-even .fx-title,#cinemaFx.mode-bomb.match-finish .fx-title{color:#d8f1ff;text-shadow:0 0 24px #62add6;animation:bombSettleTitle 1.45s ease-out forwards}
+/* 事件说明始终压在素材与伪元素上方，避免有演出却看不懂触发内容。 */
+#cinemaFx .fx-caption{position:absolute;z-index:18;left:50%;top:calc(50% + clamp(54px,8.5vw,116px));transform:translateX(-50%);min-width:min(310px,78vw);max-width:88vw;padding:8px 18px;border:1px solid color-mix(in srgb,var(--fx-accent,#ffe18a) 68%,transparent);border-radius:999px;background:linear-gradient(90deg,transparent,rgba(3,12,25,.86) 16%,rgba(3,12,25,.92) 84%,transparent);color:#fff8db;text-align:center;font:800 clamp(13px,1.45vw,20px)/1.2 "Microsoft YaHei",sans-serif;letter-spacing:.14em;text-shadow:0 2px 7px #000;opacity:0;pointer-events:none;white-space:nowrap}
+#cinemaFx.show .fx-caption{animation:fxCaptionIn 1.5s .1s cubic-bezier(.18,.86,.22,1) both}
+@keyframes fxCaptionIn{0%{opacity:0;transform:translate(-50%,14px) scale(.94)}22%,72%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-5px) scale(1.025)}}
+.table-felt.fx-shake-heavy{animation:bombTableHeavyShake .56s cubic-bezier(.16,.8,.22,1)}
+@keyframes bomb50kVeil{0%{opacity:0;background-size:122%;filter:brightness(.6)}20%,72%{opacity:1;background-size:104%;filter:brightness(1.05)}100%{opacity:0;background-size:98%;filter:brightness(.9)}}
+@keyframes bombRankVeil{0%{opacity:0;background-size:138%;filter:blur(3px)}16%,68%{opacity:1;background-size:103%;filter:blur(0)}100%{opacity:0;background-size:96%;filter:blur(1px)}}
+@keyframes bombJokerVeil{0%{opacity:0;background-size:116%;filter:contrast(.72)}22%,76%{opacity:1;background-size:101%;filter:contrast(1.08)}100%{opacity:0;background-size:98%;filter:contrast(1)}}
+@keyframes bomb50kTitle{0%{transform:scale(.42) rotate(-12deg);opacity:0}32%,68%{transform:scale(1) rotate(0);opacity:1}100%{transform:scale(1.12) rotate(5deg);opacity:0}}
+@keyframes bombRankTitle{0%{transform:scale(1.9);letter-spacing:.7em;opacity:0}28%,67%{transform:scale(1);letter-spacing:.22em;opacity:1}100%{transform:scale(.86);letter-spacing:.08em;opacity:0}}
+@keyframes bombJokerTitle{0%{transform:scale(.35);letter-spacing:.8em;opacity:0}32%,72%{transform:scale(1.06);letter-spacing:.26em;opacity:1}100%{transform:scale(1.24);letter-spacing:.12em;opacity:0}}
+@keyframes bomb50kSeal{0%{transform:rotate(0) scale(.18);opacity:0}28%{opacity:1}100%{transform:rotate(135deg) scale(4.2);opacity:0}}
+@keyframes bombRankRing{0%{transform:scale(.08);opacity:0}24%{opacity:1}100%{transform:scale(5.8);opacity:0}}
+@keyframes bombJokerRing{0%{transform:scale(.24) rotate(-32deg);opacity:0}26%{opacity:1}100%{transform:scale(3.9) rotate(38deg);opacity:0}}
+@keyframes bombNoticeTitle{0%{transform:translateY(18px) scale(.82);opacity:0}28%,70%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-14px) scale(1.05);opacity:0}}
+@keyframes bombSettleTitle{0%{transform:scale(.5);opacity:0}30%,72%{transform:scale(1);opacity:1}100%{transform:scale(1.12);opacity:0}}
+@keyframes bombTableHeavyShake{0%,100%{transform:translate(0,0)}14%{transform:translate(-12px,4px)}28%{transform:translate(11px,-3px)}43%{transform:translate(-8px,-2px)}58%{transform:translate(7px,3px)}75%{transform:translate(-4px,0)}88%{transform:translate(3px,0)}}
+@media(prefers-reduced-motion:reduce){
+  #cinemaFx.mode-bomb.show{animation:bombReducedVeil .7s ease-out forwards!important}
+  #cinemaFx.mode-bomb.show .fx-title{animation:bombReducedTitle .7s ease-out forwards!important}
+  #cinemaFx.mode-bomb.show::before,#cinemaFx.mode-bomb.show::after,#cinemaFx.mode-bomb.show .fx-spark{animation:none!important;display:none!important}
+  .table-felt.fx-shake,.table-felt.fx-shake-heavy{animation:none!important}
+}
+@keyframes bombReducedVeil{0%,100%{opacity:0}24%,70%{opacity:1}}
+@keyframes bombReducedTitle{0%,100%{opacity:0}25%,72%{opacity:1}}
+/* 炸弹牌桌信息抽屉：常态只留一个消息入口，展开时仍避开右侧头像。 */
+#app .bomb-chat-toggle{position:absolute;z-index:92;right:18px;top:88px;min-width:62px;height:36px;padding:0 14px;border:1px solid #d7b968;border-radius:19px;background:linear-gradient(180deg,rgba(28,65,98,.98),rgba(6,25,47,.98));color:#fff5d2;font-weight:900;box-shadow:0 7px 18px rgba(0,0,0,.36);cursor:pointer}
+#app .bomb-chat-toggle.active{border-color:#ffe49a;box-shadow:0 0 0 2px rgba(255,221,126,.14),0 8px 20px rgba(0,0,0,.42)}
+#app .bomb-chat-unread{position:absolute;right:-5px;top:-6px;min-width:18px;height:18px;padding:0 4px;display:grid;place-items:center;border:1px solid #fff3d1;border-radius:10px;background:#d83d42;color:#fff;font:900 10px/1 sans-serif;box-shadow:0 2px 7px rgba(0,0,0,.5)}
+#app .bomb-chat-unread.hidden{display:none!important}
+#app #bombChatPanel.chat-collapsed{display:none!important}
+#app #bombChatPanel{right:18px;top:132px;width:220px;height:224px;transform:none;opacity:1;border-color:rgba(224,188,99,.58);background:linear-gradient(180deg,rgba(9,34,61,.97),rgba(3,17,34,.96));box-shadow:0 15px 34px rgba(0,0,0,.52),0 0 18px rgba(111,184,215,.12);backdrop-filter:blur(10px)}
+#app .bomb-chat-close{width:25px;height:25px;border:1px solid rgba(157,190,219,.5);border-radius:50%;background:rgba(13,42,70,.82);color:#eaf6ff;font-size:16px;line-height:1;cursor:pointer}
+#app:has(#bombChatPanel:not(.chat-collapsed)) .seat.right{right:max(19%,244px)!important}
+#app .bomb-chat-toggle:focus-visible,#app .bomb-chat-close:focus-visible{outline:3px solid #fff1a6;outline-offset:3px}
+/* 手牌稳定性：扩大每张牌露出的可点宽度，并避免触屏残留 hover 位移。 */
+@media(min-width:901px){#app .hand-zone{bottom:62px}#app .seat.bottom{bottom:0}}
+#app .card{margin-left:-38px;transition:transform .1s cubic-bezier(.2,.8,.2,1),border-color .1s ease,box-shadow .1s ease}
+#app .card:first-child{margin-left:0}
+#app .card.selected{transform:translateY(-14px)}
+#app .card:focus-visible{outline:3px solid #7fe8ff;outline-offset:2px;z-index:55}
+@media(hover:hover){#app .card:hover:not(:disabled):not(.selected){transform:translateY(-6px)}}
+@media(hover:none){#app .card:hover:not(:disabled):not(.selected){transform:none;border-color:#b7ac9b}}
+@media(max-width:900px){
+  #app .bomb-chat-toggle{right:7px;top:60px;height:32px;min-width:54px;padding:0 10px;font-size:11px}
+  #app #bombChatPanel{right:7px;top:98px;width:min(190px,31vw);height:min(190px,48vh)}
+  #app:has(#bombChatPanel:not(.chat-collapsed)) .seat.right{right:calc(min(190px,31vw) + 18px)!important}
+}
+/* 五子棋落子反馈：保持在棋子中心，并保证桌面分辨率下清晰可见。 */
+#gmScreen .gm-stone>.gm-vfx.land{
+  left:50%!important;top:50%!important;width:42px!important;height:42px!important;
+  margin:-21px!important;z-index:12!important;opacity:1!important;overflow:visible!important;
+}
+#gmScreen .gm-stone>.gm-vfx.land::before{width:54px!important;height:54px!important}
+#gmScreen .gm-stone>.gm-vfx.land::after{width:68px!important;height:68px!important}
+#gmScreen .gm-stone>.gm-vfx.gm-effect-gold.land{width:42px!important;height:42px!important;margin:-21px!important}
+#gmScreen .gm-stone>.gm-vfx.gm-effect-ink.land{width:46px!important;height:40px!important;margin:-20px -23px!important}
+#gmScreen .gm-stone>.gm-vfx.gm-effect-vermilion.land{width:42px!important;height:42px!important;margin:-21px!important}
+/* 麻将牌桌重排：摸牌独立、牌面放大，吃碰杠贴回各自座位。 */
+#mjScreen .mj-hand-zone{width:min(92vw,1160px)!important;bottom:58px!important;min-height:94px!important;padding:4px 0 10px!important;overflow:visible!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;gap:14px!important}
+#mjScreen #mjHand{width:auto!important;max-width:860px!important;gap:2px!important;justify-content:center!important;align-items:flex-end!important;overflow:visible!important;flex:0 1 auto!important}
+#mjScreen #mjHand .mj-tile{width:58px!important;height:82px!important;min-width:58px!important;flex:0 0 58px!important;padding:4px 4px 8px!important;filter:drop-shadow(0 7px 6px rgba(0,0,0,.4))!important}
+#mjScreen #mjHand .mj-tile.drawn{position:relative!important;margin-left:18px!important;border-color:#ffe18a!important;box-shadow:inset 0 -6px 0 var(--mjedge,#8eb48c),0 5px 0 var(--mjback,#3d7c5a),0 0 0 3px rgba(255,220,119,.28),0 9px 16px rgba(0,0,0,.46)!important}
+#mjScreen #mjHand .mj-tile.drawn::before{content:'摸';position:absolute;left:50%;top:-19px;transform:translateX(-50%);padding:2px 6px;border:1px solid rgba(255,224,137,.8);border-radius:8px;background:rgba(22,52,49,.94);color:#ffe69c;font:900 11px/1.2 "Microsoft YaHei",sans-serif;text-shadow:0 1px 2px #000;pointer-events:none}
+#mjScreen .mj-seat-meld{position:absolute!important;z-index:23!important;display:flex!important;align-items:flex-end!important;gap:5px!important;min-height:49px!important;max-width:220px!important;padding:16px 7px 5px!important;border:1px solid rgba(231,203,126,.38)!important;border-radius:10px!important;background:linear-gradient(145deg,rgba(5,29,29,.88),rgba(4,18,24,.8))!important;box-shadow:0 7px 16px rgba(0,0,0,.38)!important;pointer-events:none}
+#mjScreen .mj-seat-meld:empty{display:none!important}
+#mjScreen .mj-seat-meld:not(:empty)::before{content:'吃碰杠';position:absolute;left:7px;top:3px;color:#f4d57d;font:900 10px/1 "Microsoft YaHei",sans-serif;letter-spacing:.08em;text-shadow:0 1px 2px #000}
+#mjScreen #mjMeld0.mj-seat-meld-bottom{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:max-content!important;max-width:390px!important;flex:0 0 auto!important}
+#mjScreen #mjMeld0:not(:empty)::before{display:block!important;content:'我的吃碰杠'!important}
+#mjScreen #mjMeld2.mj-seat-meld-top{position:absolute!important;left:calc(50% + 68px)!important;right:auto!important;top:64px!important;bottom:auto!important;width:max-content!important}
+#mjScreen #mjMeld1.mj-seat-meld-left{position:absolute!important;left:92px!important;right:auto!important;top:31%!important;bottom:auto!important;width:max-content!important}
+#mjScreen #mjMeld3.mj-seat-meld-right{position:absolute!important;right:92px!important;left:auto!important;top:31%!important;bottom:auto!important;width:max-content!important}
+#mjScreen .mj-seat-meld .mj-zone-meld{display:flex!important;gap:0!important;filter:drop-shadow(0 3px 3px rgba(0,0,0,.38))}
+#mjScreen .mj-seat-meld .mj-tile{width:33px!important;height:46px!important;min-width:33px!important;padding:2px 2px 5px!important}
+#mjScreen #mjRiver0{grid-template-columns:repeat(9,43px)!important;grid-auto-rows:59px!important}
+#mjScreen #mjRiver0 .mj-tile{width:43px!important;height:59px!important;min-width:43px!important}
+#mjScreen #mjRiver1 .mj-tile,#mjScreen #mjRiver3 .mj-tile{width:37px!important;height:51px!important;min-width:37px!important}
+#mjScreen #mjRiver2 .mj-tile{width:40px!important;height:55px!important;min-width:40px!important}
+@media(max-width:900px){
+  .mode-chat-fab{top:58px;right:7px;height:32px;min-width:50px;font-size:11px}
+  #ddzScreen .mode-chat-panel:not(.chat-collapsed),#pdkScreen .mode-chat-panel:not(.chat-collapsed),#mjScreen .mode-chat-panel:not(.chat-collapsed),#gmScreen .mode-chat-panel:not(.chat-collapsed){top:96px!important;right:7px!important;width:min(230px,46vw)!important;height:min(210px,44vh)!important}
+  #mjScreen #mjMeld0.mj-seat-meld-bottom{left:auto!important;right:auto!important;bottom:auto!important;max-width:300px!important}#mjScreen #mjMeld1.mj-seat-meld-left{left:60px!important}#mjScreen #mjMeld3.mj-seat-meld-right{right:60px!important}
+}
+@media(max-width:900px) and (orientation:landscape){
+  #mjScreen .mj-hand-zone{width:min(78vw,680px)!important;bottom:42px!important;padding-bottom:4px!important;gap:10px!important}
+  #mjScreen #mjHand .mj-tile{width:44px!important;height:62px!important;min-width:44px!important;flex-basis:44px!important;padding:3px 3px 6px!important}
+  #mjScreen #mjHand .mj-tile.drawn{margin-left:13px!important}
+  #mjScreen .mj-seat-meld .mj-tile{width:27px!important;height:38px!important;min-width:27px!important}
+  #mjScreen .ddz-topbar-left{gap:3px!important}#mjScreen .ddz-topbar-left .ddz-tool{padding:0 7px!important;font-size:10px!important;white-space:nowrap!important}
+}
+@media(max-width:560px) and (orientation:portrait){
+  body{min-width:0!important;overflow:hidden!important}
+  #lobbyScreen{height:100dvh;padding:10px;overflow-y:auto;overflow-x:hidden}
+  #lobbyScreen .lobby-header{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px;align-items:start;padding:0 0 8px;background:linear-gradient(180deg,rgba(5,20,42,.96),rgba(5,20,42,.72));backdrop-filter:blur(8px)}
+  #lobbyScreen .lobby-brand{width:44px;height:44px;border-radius:14px;font-size:23px}
+  #lobbyScreen .lobby-tools{min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+  #lobbyScreen .bean-badge{grid-column:span 2;min-width:0;height:34px;padding:5px 7px;font-size:11px}
+  #lobbyScreen .lobby-tool{min-width:0;min-height:34px;padding:5px 3px;border-radius:10px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #lobbyScreen .lobby-main{height:auto;padding-top:12px}.lobby-feature{display:grid;grid-template-columns:1fr 132px;align-items:center;gap:10px;padding:8px!important}
+  #lobbyScreen .lobby-feature h2{font-size:38px;margin:0}.lobby-enter{margin:0;min-height:44px;font-size:14px}
+  #lobbyScreen .mode-grid{margin-top:10px;grid-template-columns:1fr 1fr;gap:9px;padding-bottom:20px}
+  #lobbyScreen .mode-card{min-height:126px}.mode-card strong{font-size:16px!important}
+  #app,#ddzScreen,#pdkScreen,#mjScreen,#gmScreen{width:100vw!important;height:100dvh!important;min-width:0!important;overflow:hidden!important}
+  #app .game-wrapper{width:100vw!important;height:100dvh!important;min-width:0!important;padding:0!important;border-radius:0!important}
+  #app .top-bar{height:88px!important;grid-template-columns:1fr auto!important;padding:4px 6px!important}.header-quick-actions{flex-wrap:wrap;max-width:164px}.top-actions{max-width:174px;flex-wrap:wrap;justify-content:flex-end}.vs-scoreboard{top:88px!important;transform:translateX(-50%) scale(.72)!important;transform-origin:top center}
+  #app .table-area{top:130px!important;bottom:0!important}.table-felt{inset:0!important;border-radius:62px!important;border-width:5px!important}
+  #app .seat.top{left:50%!important;top:10px!important;transform:translateX(-50%) scale(.78)!important}#app .seat.left{left:2px!important;top:42%!important;transform:scale(.72)!important}#app .seat.right{right:2px!important;top:42%!important;transform:scale(.72)!important}
+  #app .seat.bottom{left:8px!important;bottom:50px!important;transform:scale(.72)!important}.played-cards-box{top:42%!important;width:92vw!important;min-height:82px!important}.hand-zone{left:0!important;right:0!important;bottom:92px!important;width:100vw!important;height:118px!important;overflow-x:auto!important;overflow-y:visible!important;justify-content:flex-start!important;padding:18px 10px 4px!important;scrollbar-width:thin}.hand-zone .hand{width:max-content!important;min-width:100%;justify-content:flex-start!important;padding-left:24px}.card{flex:0 0 62px!important;width:62px!important;height:96px!important;margin-left:-24px!important}.card:first-child{margin-left:0!important}.action-bar{bottom:8px!important;gap:6px!important}.action-btn{width:82px!important;height:40px!important}
+  .ddz-topbar{height:108px!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:34px 30px 32px!important;align-content:center!important;gap:3px!important;padding:4px 6px!important}.ddz-topbar-left{width:100%!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:4px!important}.ddz-topbar-left .ddz-tool{width:100%!important;min-width:0!important;padding:0 3px!important;white-space:nowrap!important}.ddz-topbar-right{justify-content:center!important;gap:4px!important;flex-wrap:nowrap!important}.ddz-topbar h2{font-size:17px!important}.ddz-tool{min-height:29px!important;padding:0 8px!important;font-size:10px!important}.ddz-base-control{font-size:10px!important}.ddz-base-control select,.ddz-base-control input{height:28px!important;width:78px!important;padding:3px 5px!important}
+  #ddzScreen .ddz-table,#pdkScreen .ddz-table,#mjScreen .ddz-table{inset:110px 3px 3px!important;border-radius:46px!important}
+  #ddzScreen .ddz-seat,#pdkScreen .ddz-seat,#mjScreen .ddz-seat{transform:scale(.72)!important}#ddzScreen .ddz-seat.top,#pdkScreen .ddz-seat.top,#mjScreen .ddz-seat.top{top:9px!important;left:50%!important;transform:translateX(-50%) scale(.72)!important}#ddzScreen .ddz-seat.left,#pdkScreen .ddz-seat.left,#mjScreen .ddz-seat.left{left:-5px!important;top:39%!important}#ddzScreen .ddz-seat.right,#pdkScreen .ddz-seat.right,#mjScreen .ddz-seat.right{right:-5px!important;top:39%!important}
+  #ddzScreen .ddz-hand-zone,#pdkScreen .ddz-hand-zone{left:0!important;right:0!important;bottom:64px!important;width:100vw!important;height:118px!important;overflow-x:auto!important;padding:16px 8px 3px!important;transform:none!important}#ddzScreen .ddz-hand,#pdkScreen .ddz-hand{width:max-content!important;min-width:100%;justify-content:flex-start!important;padding-left:12px;transform:none!important}#ddzScreen .card,#pdkScreen .card{flex:0 0 60px!important;width:60px!important;height:94px!important;margin-left:-22px!important}.ddz-actions{bottom:8px!important;gap:5px!important}.ddz-action{min-width:86px!important;height:40px!important;font-size:13px!important}.ddz-played-zone{top:43%!important;width:92vw!important;left:50%!important;transform:translate(-50%,-50%)!important}
+  #mjScreen .mj-hand-zone{left:0!important;right:0!important;bottom:62px!important;width:100vw!important;transform:none!important;overflow-x:auto!important;padding:22px 8px 8px!important}#mjScreen #mjHand{width:max-content!important;justify-content:flex-start!important;padding-right:16px!important}#mjScreen #mjHand .mj-tile{width:48px!important;height:68px!important;min-width:48px!important;flex-basis:48px!important}#mjScreen #mjHand .mj-tile.drawn{margin-left:12px!important}.mj-actions{bottom:7px!important;gap:4px!important}.mj-actions button{min-width:72px!important;height:38px!important;font-size:12px!important}.mj-river{transform:translate(-50%,-50%) scale(.78)!important}#mjScreen .mj-seat-meld{transform:scale(.82)!important;transform-origin:left bottom!important;max-width:170px!important}
+  #gmScreen .gm-table{inset:110px 3px 3px!important}#gmScreen .gm-center{top:46%!important;width:min(94vw,58vh)!important;height:auto!important;min-width:0!important;min-height:0!important}#gmScreen .gm-seat.left{left:-4px!important;top:18%!important}#gmScreen .gm-seat.right{right:-4px!important;top:18%!important}.gm-actions{bottom:8px!important;gap:5px!important}.gm-actions button{min-width:78px!important;height:39px!important}
+  .mode-chat-fab{top:115px!important;right:7px!important}.mode-chat-panel:not(.chat-collapsed){display:grid!important;top:154px!important;right:7px!important;width:250px!important;height:224px!important}
+  #mjScreen .mj-board{width:94vw!important;height:55vh!important;aspect-ratio:auto!important;top:48%!important}
+  #mjScreen .mj-zone-top,#mjScreen .mj-zone-bottom{left:15%!important;right:15%!important;height:24%!important}#mjScreen .mj-zone-top{top:8%!important}#mjScreen .mj-zone-bottom{bottom:8%!important}
+  #mjScreen .mj-zone-left,#mjScreen .mj-zone-right{top:32%!important;width:28%!important;height:36%!important}#mjScreen .mj-zone-left{left:1%!important}#mjScreen .mj-zone-right{right:1%!important}
+  #mjScreen #mjRiver0,#mjScreen #mjRiver2{grid-template-columns:repeat(7,32px)!important;grid-auto-rows:44px!important}#mjScreen #mjRiver0 .mj-tile,#mjScreen #mjRiver2 .mj-tile{width:32px!important;height:44px!important;min-width:32px!important}
+  #mjScreen #mjRiver1,#mjScreen #mjRiver3{grid-template-columns:repeat(3,28px)!important;grid-auto-rows:39px!important}#mjScreen #mjRiver1 .mj-tile,#mjScreen #mjRiver3 .mj-tile{width:28px!important;height:39px!important;min-width:28px!important}
+  #mjScreen .mj-hand-zone{justify-content:flex-start!important;gap:10px!important}#mjScreen #mjMeld0.mj-seat-meld-bottom{max-width:170px!important;transform:scale(.82)!important;transform-origin:left bottom!important}
+  #shopDialog .shop-live-preview{height:116px;grid-template-columns:120px 1fr;margin:0 10px 8px;gap:10px;padding:8px}#shopDialog .shop-live-art{height:98px}.shop-live-meta strong{font-size:18px!important}#shopDialog .shop-grid{max-height:calc(88vh - 245px)}
+}
+@media(max-width:900px) and (orientation:portrait){
+  .landscape-guard-card{display:grid;gap:12px;width:min(86vw,330px)!important;max-width:none!important;padding:28px 22px!important}
+  .landscape-guard-card button{min-height:44px;border:1px solid rgba(255,224,137,.8);border-radius:13px;background:linear-gradient(180deg,#dfaa3a,#9a6112);color:#fff8dc;font:900 14px/1 "Microsoft YaHei",sans-serif;box-shadow:0 7px 16px rgba(0,0,0,.34)}
+}

@@ -1,0 +1,12 @@
+{
+  "name": "炸弹牌友馆",
+  "short_name": "炸弹",
+  "description": "炸弹、斗地主、跑得快、长沙麻将、转转麻将和五子棋单机牌友馆",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#071a2e",
+  "theme_color": "#071a2e"
+}

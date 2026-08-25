@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071a2e" />
   <title>炸弹</title>
+  <link rel="icon" type="image/webp" href="assets/optimized_v3/poker-back-xiang-night.webp">
+  <link rel="manifest" href="manifest.webmanifest">
   <style>
     :root {
       --navy-bg: #0c162b;
@@ -1240,38 +1243,38 @@
     .loan-credit b { color:#a8f3d5; }
 
     .cinema-fx {
-      --fx-art:url('assets/vfx/bomb.png'); --fx-accent:#ffd45f;
+      --fx-art:url('assets/optimized_v3/vfx__bomb.webp'); --fx-accent:#ffd45f;
       position:fixed; inset:0; z-index:3000; pointer-events:none; display:grid; place-items:center;
       opacity:0; overflow:hidden;
       background-image:linear-gradient(90deg,rgba(1,5,14,.76),rgba(1,5,14,.12) 38%,rgba(1,5,14,.12) 62%,rgba(1,5,14,.76)),var(--fx-art);
       background-position:center; background-size:cover; isolation:isolate;
     }
     .cinema-fx.show { animation:fxVeil 1.75s ease-out forwards; }
-    .cinema-fx.mode-bomb { --fx-art:url('assets/vfx/bomb.png'); --fx-accent:#ffd45f; }
+    .cinema-fx.mode-bomb { --fx-art:url('assets/optimized_v3/vfx__bomb.webp'); --fx-accent:#ffd45f; }
     .cinema-fx.mode-doudizhu { --fx-accent:#ffe28a; }
     .cinema-fx.mode-paodekuai { --fx-accent:#78efff; }
     .cinema-fx.mode-changsha { --fx-accent:#ffbf6e; }
     .cinema-fx.mode-zhuanzhuan { --fx-accent:#7effc2; }
     /* 非炸弹玩法逐事件美术：每一类事件有自己的画面、标题动作与粒子路径。 */
-    .cinema-fx.fx-ddz-landlord { --fx-art:url('/manus-storage/fx-ddz-landlord-crown_6c153e54.jpg'); --fx-accent:#ffd26b; background-position:center 58%; }
-    .cinema-fx.fx-ddz-rocket { --fx-art:url('/manus-storage/fx-ddz-rocket-burst_cd6fc8cd.jpg'); --fx-accent:#ff563d; background-position:center; }
-    .cinema-fx.fx-ddz-spring { --fx-art:url('/manus-storage/fx-ddz-spring-victory_93c011d8.jpg'); --fx-accent:#ffdc74; background-position:center; }
-    .cinema-fx.fx-pdk-start { --fx-art:url('/manus-storage/fx-pdk-heart3-start_8b80114a.jpg'); --fx-accent:#ff6a70; background-position:center; }
-    .cinema-fx.fx-pdk-plane { --fx-art:url('/manus-storage/fx-pdk-plane-run_680749b5.jpg'); --fx-accent:#73edff; background-position:center; }
-    .cinema-fx.fx-pdk-finish { --fx-art:url('/manus-storage/fx-pdk-finish-ribbon_7ed09fbd.jpg'); --fx-accent:#7cf4ff; background-position:center; }
-    .cinema-fx.fx-cs-dice { --fx-art:url('/manus-storage/fx-cs-dice-dealer_90ca6f80.jpg'); --fx-accent:#f9d474; background-position:center; }
-    .cinema-fx.fx-cs-tianhu { --fx-art:url('/manus-storage/fx-cs-tianhu-jade_2510a051.jpg'); --fx-accent:#f5c76a; background-position:center; }
-    .cinema-fx.fx-cs-bird { --fx-art:url('/manus-storage/fx-cs-bird-score_cf58899c.jpg'); --fx-accent:#fff0ae; background-position:center; }
-    .cinema-fx.fx-zz-redzhong { --fx-art:url('/manus-storage/fx-zz-redzhong-spiral_d3f7d79f.jpg'); --fx-accent:#ff6d60; background-position:center; }
-    .cinema-fx.fx-zz-flip { --fx-art:url('/manus-storage/fx-zz-flipcode-orbit_aab17c8a.jpg'); --fx-accent:#f0cf7b; background-position:center; }
-    .cinema-fx.fx-zz-kill { --fx-art:url('/manus-storage/fx-zz-killghost-shatter_e8e77dc8.jpg'); --fx-accent:#8ff0c7; background-position:center; }
+    .cinema-fx.fx-ddz-landlord { --fx-art:url('assets/optimized_v3/generated_v3__fx-doudizhu.webp'); --fx-accent:#ffd26b; background-position:center 58%; }
+    .cinema-fx.fx-ddz-rocket { --fx-art:url('assets/optimized_v3/generated_v3__fx-doudizhu.webp'); --fx-accent:#ff563d; background-position:center; }
+    .cinema-fx.fx-ddz-spring { --fx-art:url('assets/optimized_v3/generated_v3__fx-doudizhu.webp'); --fx-accent:#ffdc74; background-position:center; }
+    .cinema-fx.fx-pdk-start { --fx-art:url('assets/optimized_v3/generated_v3__fx-paodekuai.webp'); --fx-accent:#ff6a70; background-position:center; }
+    .cinema-fx.fx-pdk-plane { --fx-art:url('assets/optimized_v3/generated_v3__fx-paodekuai.webp'); --fx-accent:#73edff; background-position:center; }
+    .cinema-fx.fx-pdk-finish { --fx-art:url('assets/optimized_v3/generated_v3__fx-paodekuai.webp'); --fx-accent:#7cf4ff; background-position:center; }
+    .cinema-fx.fx-cs-dice { --fx-art:url('assets/optimized_v3/generated_v3__fx-changsha-mahjong.webp'); --fx-accent:#f9d474; background-position:center; }
+    .cinema-fx.fx-cs-tianhu { --fx-art:url('assets/optimized_v3/generated_v3__fx-changsha-mahjong.webp'); --fx-accent:#f5c76a; background-position:center; }
+    .cinema-fx.fx-cs-bird { --fx-art:url('assets/optimized_v3/generated_v3__fx-changsha-mahjong.webp'); --fx-accent:#fff0ae; background-position:center; }
+    .cinema-fx.fx-zz-redzhong { --fx-art:url('assets/optimized_v3/generated_v3__fx-zhuanzhuan-mahjong.webp'); --fx-accent:#ff6d60; background-position:center; }
+    .cinema-fx.fx-zz-flip { --fx-art:url('assets/optimized_v3/generated_v3__fx-zhuanzhuan-mahjong.webp'); --fx-accent:#f0cf7b; background-position:center; }
+    .cinema-fx.fx-zz-kill { --fx-art:url('assets/optimized_v3/generated_v3__fx-zhuanzhuan-mahjong.webp'); --fx-accent:#8ff0c7; background-position:center; }
     /* 本轮新增的稀有事件美术：加倍、AAA、抢杠胡、飞鬼均保留各玩法自己的色彩语汇。 */
-    .cinema-fx.fx-ddz-double { --fx-art:url('assets/vfx/fx-ddz-super-double.png'); --fx-accent:#ffc15e; background-position:center; }
-    .cinema-fx.fx-pdk-aaa { --fx-art:url('assets/vfx/fx-pdk-aaa-storm.png'); --fx-accent:#8cecff; background-position:center; }
-    .cinema-fx.fx-cs-robgang { --fx-art:url('assets/vfx/fx-cs-robgang-jade.png'); --fx-accent:#ffcf77; background-position:center; }
-    .cinema-fx.fx-zz-fly { --fx-art:url('assets/vfx/fx-zz-flying-ghost.png'); --fx-accent:#92ffd0; background-position:center; }
-    .cinema-fx.fx-ddz-chain { --fx-art:url('assets/vfx/fx-ddz-chain-rush.png'); --fx-accent:#94f6ff; background-position:center; }
-    .cinema-fx.fx-cs-pure { --fx-art:url('assets/vfx/fx-cs-pure-suit-jade.png'); --fx-accent:#b8ffaf; background-position:center; }
+    .cinema-fx.fx-ddz-double { --fx-art:url('assets/optimized_v3/vfx__fx-ddz-super-double.webp'); --fx-accent:#ffc15e; background-position:center; }
+    .cinema-fx.fx-pdk-aaa { --fx-art:url('assets/optimized_v3/vfx__fx-pdk-aaa-storm.webp'); --fx-accent:#8cecff; background-position:center; }
+    .cinema-fx.fx-cs-robgang { --fx-art:url('assets/optimized_v3/vfx__fx-cs-robgang-jade.webp'); --fx-accent:#ffcf77; background-position:center; }
+    .cinema-fx.fx-zz-fly { --fx-art:url('assets/optimized_v3/vfx__fx-zz-flying-ghost.webp'); --fx-accent:#92ffd0; background-position:center; }
+    .cinema-fx.fx-ddz-chain { --fx-art:url('assets/optimized_v3/vfx__fx-ddz-chain-rush.webp'); --fx-accent:#94f6ff; background-position:center; }
+    .cinema-fx.fx-cs-pure { --fx-art:url('assets/optimized_v3/vfx__fx-cs-pure-suit-jade.webp'); --fx-accent:#b8ffaf; background-position:center; }
     .cinema-fx.cinema-theme-ddz { --fx-accent:#ffe18a; }
     .cinema-fx.cinema-theme-pdk { --fx-accent:#76f1ff; }
     .cinema-fx.cinema-theme-cs { --fx-accent:#ffe18a; }
@@ -1333,7 +1336,7 @@
     .cinema-fx.fx-cs-pure.show::before,.cinema-fx.fx-cs-pure.show::after { border-color:rgba(184,255,175,.86); animation-name:fxJadeRing; }
     .mj-event-art { position:absolute; z-index:1; left:50%; top:50%; width:min(54vmin,520px); height:min(54vmin,520px); pointer-events:none; background:center/contain no-repeat; opacity:0; transform:translate(-50%,-50%) scale(.62) rotate(-18deg); }
     .cinema-fx.show .mj-event-art { animation:mjEventArt 1.72s cubic-bezier(.15,.86,.22,1) forwards; }
-    .mj-event-art.jade { background-image:url('assets/mj_fx_jade_meld_v2.png'); }.mj-event-art.vermilion { background-image:url('assets/mj_fx_redzhong_v2.png'); }
+    .mj-event-art.jade { background-image:url('assets/optimized_v3/mj_fx_jade_meld_v2.webp'); }.mj-event-art.vermilion { background-image:url('assets/optimized_v3/mj_fx_redzhong_v2.webp'); }
     @keyframes mjEventArt { 0%{opacity:0;transform:translate(-50%,-50%) scale(.62) rotate(-18deg)} 25%,67%{opacity:.95;transform:translate(-50%,-50%) scale(1) rotate(8deg)} 100%{opacity:0;transform:translate(-50%,-50%) scale(1.24) rotate(24deg)} }
     .cinema-fx.fifty .fx-title { color:#ffef8e; text-shadow:0 0 12px #35d6ff,0 0 38px #1169ff,0 5px 0 #092a64; }
     .cinema-fx.report .fx-title { color:#fff; text-shadow:0 0 12px #ff3d57,0 0 40px #c40032,0 5px 0 #5a0018; }
@@ -1407,7 +1410,7 @@
     @keyframes mjDieRoll { from { transform:translateY(-4px) rotate(-11deg) } to { transform:translateY(4px) rotate(13deg) } }
 
     /* 五子棋：独立牌盘保留现有顶栏、成长与消息系统，棋盘和棋子由主题变量控制。 */
-    .gm-screen { --gm-board-art:url('assets/gomoku_board_jade_mountain.png'); --gm-stone-art:url('assets/gomoku_stones_jade.png'); --gm-accent:#b8e7cf; background:radial-gradient(circle at 50% 45%,#1a4f54 0,#071927 58%,#02080e 100%); }
+    .gm-screen { --gm-board-art:url('assets/optimized_v3/gomoku_board_jade_mountain.webp'); --gm-stone-art:url('assets/optimized_v3/gomoku_stones_jade.webp'); --gm-accent:#b8e7cf; background:radial-gradient(circle at 50% 45%,#1a4f54 0,#071927 58%,#02080e 100%); }
     .gm-table { position:absolute; inset:88px 22px 20px; border:3px solid #b69149; border-radius:42% / 18%; background:linear-gradient(rgba(4,17,23,.18),rgba(2,10,15,.4)),var(--gm-board-art) center/cover no-repeat; box-shadow:0 0 0 5px #19140d,0 0 0 8px #765d2e,0 25px 55px rgba(0,0,0,.62),inset 0 0 45px rgba(2,10,18,.55); overflow:hidden; }
     .gm-center { position:absolute; left:50%; top:49%; transform:translate(-50%,-50%); width:min(70vh,61vw); height:min(70vh,61vw); min-width:460px; min-height:460px; display:grid; place-items:center; }
     .gm-status { position:absolute; z-index:4; top:-35px; left:50%; transform:translateX(-50%); max-width:90%; padding:7px 16px; border:1px solid color-mix(in srgb,var(--gm-accent) 70%,#d9b35a); border-radius:20px; background:rgba(3,18,27,.78); color:#fff0bd; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:850; box-shadow:0 7px 18px rgba(0,0,0,.35); }
@@ -1427,8 +1430,8 @@
     .gm-avatar { width:58px; height:58px; padding:7px; border-radius:50%; background:var(--avatar-frame,url('assets/avatar-frame-xiang-river.png')) center/contain no-repeat; filter:drop-shadow(0 4px 8px rgba(0,0,0,.55)); }.gm-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
     .gm-seat b { display:block; color:#fff0b1; font-size:15px; }.gm-seat small { display:block; margin-top:4px; color:#bcd6e9; font-size:11px; font-weight:800; }.gm-seat em { display:inline-grid; place-items:center; width:17px; height:17px; margin-right:4px; border-radius:50%; background:#15110f; border:1px solid #d9c498; vertical-align:-3px; }.gm-seat em.white { background:#f2ead8; }
     .gm-actions { position:absolute; left:50%; bottom:13px; transform:translateX(-50%); display:flex; gap:12px; z-index:25; }
-    #gmScreen.mode-theme-gm-ink { --gm-board-art:url('assets/gomoku_board_blackgold.png'); --gm-stone-art:url('assets/gomoku_stones_jade.png'); --gm-accent:#e5c979; background:radial-gradient(circle at 50% 42%,#27231a 0,#0c1117 64%,#030405 100%); }
-    #gmScreen.mode-theme-gm-vermilion { --gm-board-art:url('assets/gomoku_board_vermilion.png'); --gm-stone-art:url('assets/gomoku_stones_jade.png'); --gm-accent:#ffd5a7; background:radial-gradient(circle at 50% 42%,#682920 0,#1d1012 64%,#070304 100%); }
+    #gmScreen.mode-theme-gm-ink { --gm-board-art:url('assets/optimized_v3/gomoku_board_blackgold.webp'); --gm-stone-art:url('assets/optimized_v3/gomoku_stones_jade.webp'); --gm-accent:#e5c979; background:radial-gradient(circle at 50% 42%,#27231a 0,#0c1117 64%,#030405 100%); }
+    #gmScreen.mode-theme-gm-vermilion { --gm-board-art:url('assets/optimized_v3/gomoku_board_vermilion.webp'); --gm-stone-art:url('assets/optimized_v3/gomoku_stones_jade.webp'); --gm-accent:#ffd5a7; background:radial-gradient(circle at 50% 42%,#682920 0,#1d1012 64%,#070304 100%); }
     #gmScreen.mode-theme-gm-vermilion .gm-stone.black { background-image:radial-gradient(circle at 34% 28%,#9b3d32 0 8%,#4b1517 31%,#170609 72%,#080204 100%)!important; background-size:100% 100%; }
     #gmScreen.mode-theme-gm-vermilion .gm-stone.white { background-image:radial-gradient(circle at 34% 28%,#fff7dd 0 8%,#e9d4b4 43%,#a34938 100%)!important; background-size:100% 100%; }
     @media (max-width:900px) { .gm-center { width:min(72vh,70vw); height:min(72vh,70vw); min-width:380px; min-height:380px; }.gm-seat { min-width:118px; padding:6px 8px; }.gm-avatar { width:47px; height:47px; }.gm-seat.left{left:1%}.gm-seat.right{right:1%}.gm-table{inset:76px 7px 12px}.gm-screen .mode-chat-panel{display:none} }
@@ -1589,7 +1592,7 @@
     .ddz-topbar-left .ddz-tool { padding:0 10px; }
     .ddz-tool { min-height:38px; padding:0 15px; border:1px solid rgba(128,179,221,.44); border-radius:20px; background:rgba(13,44,78,.78); color:#eef7ff; cursor:pointer; font-weight:750; }
     .ddz-beans { color:#ffd769; font-weight:850; }
-    .ddz-table { position:absolute; inset:88px 22px 20px; border:3px solid #b69149; border-radius:42% / 18%; background:linear-gradient(rgba(7,33,48,.28),rgba(7,33,48,.42)),url('assets/table-xiangjiang-mist.png') center/cover no-repeat; box-shadow:0 0 0 5px #19140d,0 0 0 8px #765d2e,0 25px 55px rgba(0,0,0,.62),inset 0 0 45px rgba(2,10,18,.55); }
+    .ddz-table { position:absolute; inset:88px 22px 20px; border:3px solid #b69149; border-radius:42% / 18%; background:linear-gradient(rgba(7,33,48,.28),rgba(7,33,48,.42)),url('assets/optimized_v3/table-xiangjiang-mist.webp') center/cover no-repeat; box-shadow:0 0 0 5px #19140d,0 0 0 8px #765d2e,0 25px 55px rgba(0,0,0,.62),inset 0 0 45px rgba(2,10,18,.55); }
     .ddz-seat { position:absolute; z-index:8; display:flex; flex-direction:column; align-items:center; gap:4px; min-width:105px; }
     .ddz-seat.left { left:4%; top:39%; transform:translateY(-50%); }
     .ddz-seat.right { right:4%; top:39%; transform:translateY(-50%); }
@@ -1604,13 +1607,13 @@
     .ddz-status { padding:8px 18px; border:1px solid rgba(229,184,79,.72); border-radius:20px; background:rgba(3,18,35,.76); color:#fff1be; font-weight:800; box-shadow:0 8px 20px rgba(0,0,0,.3); }
     .ddz-bottom-cards,.ddz-played { min-height:108px; display:flex; justify-content:center; align-items:center; padding-left:20px; }
     .ddz-bottom-cards { position:absolute; top:-48px; right:0; min-height:44px; transform:scale(.58); transform-origin:top right; opacity:.88; }
-    .ddz-mini-card,.ddz-played-card { position:relative; flex:0 0 66px; width:66px; height:99px; margin-left:-20px; border:1px solid #b99752; border-radius:7px; overflow:hidden; background:#fffdf5 url('assets/poker-face-xiang-ivory.png') center/100% 100% no-repeat; color:#162238; box-shadow:0 5px 12px rgba(0,0,0,.55); }
+    .ddz-mini-card,.ddz-played-card { position:relative; flex:0 0 66px; width:66px; height:99px; margin-left:-20px; border:1px solid #b99752; border-radius:7px; overflow:hidden; background:#fffdf5 url('assets/optimized_v3/poker-face-xiang-ivory.webp') center/100% 100% no-repeat; color:#162238; box-shadow:0 5px 12px rgba(0,0,0,.55); }
     .ddz-mini-card.red,.ddz-played-card.red { color:#cc2d33; }
-    .ddz-bottom-cards.hidden-cards .ddz-mini-card { background:#061832 url('assets/poker-back-xiang-night.png') center/100% 100% no-repeat; }
+    .ddz-bottom-cards.hidden-cards .ddz-mini-card { background:#061832 url('assets/optimized_v3/poker-back-xiang-night.webp') center/100% 100% no-repeat; }
     .ddz-bottom-cards.hidden-cards .ddz-mini-card>* { display:none; }
     .ddz-hand-zone { position:absolute; left:50%; bottom:48px; width:82%; height:145px; transform:translateX(-50%); display:flex; justify-content:center; align-items:flex-end; z-index:20; }
     .ddz-hand { width:100%; height:100%; display:flex; justify-content:center; align-items:flex-end; }
-    .ddz-hand .card { background-color:#fffdf5; background-image:url('assets/poker-face-xiang-ivory.png'); background-position:center; background-size:100% 100%; background-repeat:no-repeat; }
+    .ddz-hand .card { background-color:#fffdf5; background-image:url('assets/optimized_v3/poker-face-xiang-ivory.webp'); background-position:center; background-size:100% 100%; background-repeat:no-repeat; }
     .ddz-actions { position:absolute; left:50%; bottom:10px; transform:translateX(-50%); display:flex; gap:12px; z-index:25; }
     .ddz-action { min-width:112px; height:42px; border:1px solid #7cbaf0; border-radius:22px; background:linear-gradient(#3a86cc,#175396); color:white; font-size:17px; font-weight:900; cursor:pointer; box-shadow:0 5px 14px rgba(0,0,0,.42); }
     .ddz-action.gold { border-color:#f2c85b; background:linear-gradient(#d99e25,#8f5510); color:#1d1203; }
@@ -1634,38 +1637,38 @@
     .mode-reveal-card.red { color:#cc2d33; }
     /* 2026-08 独立美术资产：每套皮肤拥有自己的构图、材质、牌面与牌背。 */
     #app,#ddzScreen,#pdkScreen,#mjScreen,#gmScreen {
-      --card-face:url('assets/poker-face-xiang-ivory.png');
-      --card-back:url('assets/poker-back-xiang-night.png');
+      --card-face:url('assets/optimized_v3/poker-face-xiang-ivory.webp');
+      --card-back:url('assets/optimized_v3/poker-back-xiang-night.webp');
       --avatar-frame:url('assets/avatar-frame-xiang-river.png');
-      --table-art:url('assets/table-xiangjiang-mist.png');
+      --table-art:url('assets/optimized_v3/table-xiangjiang-mist.webp');
     }
-    #app.card-skin-night,#ddzScreen.card-skin-night { --card-face:url('assets/card-face-moon.png'); --card-back:url('assets/card-back-moon.png'); }
-    #app.card-skin-lacquer,#ddzScreen.card-skin-lacquer { --card-face:url('assets/card-face-lacquer.png'); --card-back:url('assets/card-back-lacquer.png'); }
-    #app.card-skin-bamboo,#ddzScreen.card-skin-bamboo { --card-face:url('assets/card-face-bamboo.png'); --card-back:url('assets/card-back-bamboo.png'); }
-    #app.card-skin-obsidian,#ddzScreen.card-skin-obsidian { --card-face:url('assets/card-face-obsidian.png'); --card-back:url('assets/card-back-obsidian.png'); }
-    #app.card-skin-blossom,#ddzScreen.card-skin-blossom { --card-face:url('assets/card-face-blossom.png'); --card-back:url('assets/card-back-blossom.png'); }
-    #pdkScreen.card-skin-night { --card-face:url('assets/card-face-moon.png'); --card-back:url('assets/card-back-moon.png'); }
-    #pdkScreen.card-skin-lacquer { --card-face:url('assets/card-face-lacquer.png'); --card-back:url('assets/card-back-lacquer.png'); }
-    #pdkScreen.card-skin-bamboo { --card-face:url('assets/card-face-bamboo.png'); --card-back:url('assets/card-back-bamboo.png'); }
-    #pdkScreen.card-skin-obsidian { --card-face:url('assets/card-face-obsidian.png'); --card-back:url('assets/card-back-obsidian.png'); }
-    #pdkScreen.card-skin-blossom { --card-face:url('assets/card-face-blossom.png'); --card-back:url('assets/card-back-blossom.png'); }
-    #app.frame-skin-cyan,#ddzScreen.frame-skin-cyan { --avatar-frame:url('assets/frame-cyan-lightning.png'); }
-    #app.frame-skin-royal,#ddzScreen.frame-skin-royal { --avatar-frame:url('assets/frame-crimson-phoenix.png'); }
+    #app.card-skin-night,#ddzScreen.card-skin-night { --card-face:url('assets/optimized_v3/card-face-moon.webp'); --card-back:url('assets/optimized_v3/card-back-moon.webp'); }
+    #app.card-skin-lacquer,#ddzScreen.card-skin-lacquer { --card-face:url('assets/optimized_v3/card-face-lacquer.webp'); --card-back:url('assets/optimized_v3/card-back-lacquer.webp'); }
+    #app.card-skin-bamboo,#ddzScreen.card-skin-bamboo { --card-face:url('assets/optimized_v3/card-face-bamboo.webp'); --card-back:url('assets/optimized_v3/card-back-bamboo.webp'); }
+    #app.card-skin-obsidian,#ddzScreen.card-skin-obsidian { --card-face:url('assets/optimized_v3/card-face-obsidian.webp'); --card-back:url('assets/optimized_v3/card-back-obsidian.webp'); }
+    #app.card-skin-blossom,#ddzScreen.card-skin-blossom { --card-face:url('assets/optimized_v3/card-face-blossom.webp'); --card-back:url('assets/optimized_v3/card-back-blossom.webp'); }
+    #pdkScreen.card-skin-night { --card-face:url('assets/optimized_v3/card-face-moon.webp'); --card-back:url('assets/optimized_v3/card-back-moon.webp'); }
+    #pdkScreen.card-skin-lacquer { --card-face:url('assets/optimized_v3/card-face-lacquer.webp'); --card-back:url('assets/optimized_v3/card-back-lacquer.webp'); }
+    #pdkScreen.card-skin-bamboo { --card-face:url('assets/optimized_v3/card-face-bamboo.webp'); --card-back:url('assets/optimized_v3/card-back-bamboo.webp'); }
+    #pdkScreen.card-skin-obsidian { --card-face:url('assets/optimized_v3/card-face-obsidian.webp'); --card-back:url('assets/optimized_v3/card-back-obsidian.webp'); }
+    #pdkScreen.card-skin-blossom { --card-face:url('assets/optimized_v3/card-face-blossom.webp'); --card-back:url('assets/optimized_v3/card-back-blossom.webp'); }
+    #app.frame-skin-cyan,#ddzScreen.frame-skin-cyan { --avatar-frame:url('assets/optimized_v3/frame-cyan-lightning.webp'); }
+    #app.frame-skin-royal,#ddzScreen.frame-skin-royal { --avatar-frame:url('assets/optimized_v3/frame-crimson-phoenix.webp'); }
     #app.frame-skin-ink,#ddzScreen.frame-skin-ink { --avatar-frame:url('assets/frame-ink-porcelain.png'); }
-    #app.frame-skin-frost,#ddzScreen.frame-skin-frost { --avatar-frame:url('assets/frame-frost-wheel.png'); }
+    #app.frame-skin-frost,#ddzScreen.frame-skin-frost { --avatar-frame:url('assets/optimized_v3/frame-frost-wheel.webp'); }
     #app.frame-skin-lantern,#ddzScreen.frame-skin-lantern { --avatar-frame:url('assets/frame-lantern-workshop.png'); }
-    #pdkScreen.frame-skin-cyan { --avatar-frame:url('assets/frame-cyan-lightning.png'); } #pdkScreen.frame-skin-royal { --avatar-frame:url('assets/frame-crimson-phoenix.png'); } #pdkScreen.frame-skin-ink { --avatar-frame:url('assets/frame-ink-porcelain.png'); } #pdkScreen.frame-skin-frost { --avatar-frame:url('assets/frame-frost-wheel.png'); } #pdkScreen.frame-skin-lantern { --avatar-frame:url('assets/frame-lantern-workshop.png'); }
-    #mjScreen.frame-skin-cyan,#gmScreen.frame-skin-cyan { --avatar-frame:url('assets/frame-cyan-lightning.png'); } #mjScreen.frame-skin-royal,#gmScreen.frame-skin-royal { --avatar-frame:url('assets/frame-crimson-phoenix.png'); } #mjScreen.frame-skin-ink,#gmScreen.frame-skin-ink { --avatar-frame:url('assets/frame-ink-porcelain.png'); } #mjScreen.frame-skin-frost,#gmScreen.frame-skin-frost { --avatar-frame:url('assets/frame-frost-wheel.png'); } #mjScreen.frame-skin-lantern,#gmScreen.frame-skin-lantern { --avatar-frame:url('assets/frame-lantern-workshop.png'); }
-    #app.table-skin-classic,#ddzScreen.table-skin-classic { --table-art:url('assets/table-xiangjiang-mist.png'); }
-    #app.table-skin-ember,#ddzScreen.table-skin-ember { --table-art:url('assets/table-kiln-fire.png'); }
-    #app.table-skin-jade,#ddzScreen.table-skin-jade { --table-art:url('assets/table-bamboo-rain.png'); }
-    #app.table-skin-moon,#ddzScreen.table-skin-moon { --table-art:url('assets/table-moon-observatory.png'); }
-    #app.table-skin-plum,#ddzScreen.table-skin-plum { --table-art:url('assets/table-plum-shadow.png'); }
-    #app.table-skin-cloud,#ddzScreen.table-skin-cloud { --table-art:url('assets/table-cloud-jade.png'); }
-    #app.table-skin-xiangye,#ddzScreen.table-skin-xiangye { --table-art:url('assets/table-xiangye-gold.png'); }
-    #app.table-skin-xiangjiang,#ddzScreen.table-skin-xiangjiang { --table-art:url('assets/table-lacquer-pavilion.png'); }
-    #pdkScreen.table-skin-classic { --table-art:url('assets/table-xiangjiang-mist.png'); } #pdkScreen.table-skin-ember { --table-art:url('assets/table-kiln-fire.png'); } #pdkScreen.table-skin-jade { --table-art:url('assets/table-bamboo-rain.png'); } #pdkScreen.table-skin-moon { --table-art:url('assets/table-moon-observatory.png'); } #pdkScreen.table-skin-plum { --table-art:url('assets/table-plum-shadow.png'); } #pdkScreen.table-skin-cloud { --table-art:url('assets/table-cloud-jade.png'); } #pdkScreen.table-skin-xiangye { --table-art:url('assets/table-xiangye-gold.png'); } #pdkScreen.table-skin-xiangjiang { --table-art:url('assets/table-lacquer-pavilion.png'); }
-    #mjScreen.table-skin-classic { --table-art:url('assets/table-xiangjiang-mist.png'); } #mjScreen.table-skin-ember { --table-art:url('assets/table-kiln-fire.png'); } #mjScreen.table-skin-jade { --table-art:url('assets/table-bamboo-rain.png'); } #mjScreen.table-skin-moon { --table-art:url('assets/table-moon-observatory.png'); } #mjScreen.table-skin-plum { --table-art:url('assets/table-plum-shadow.png'); } #mjScreen.table-skin-cloud { --table-art:url('assets/table-cloud-jade.png'); } #mjScreen.table-skin-xiangye { --table-art:url('assets/table-xiangye-gold.png'); } #mjScreen.table-skin-xiangjiang { --table-art:url('assets/table-lacquer-pavilion.png'); }
+    #pdkScreen.frame-skin-cyan { --avatar-frame:url('assets/optimized_v3/frame-cyan-lightning.webp'); } #pdkScreen.frame-skin-royal { --avatar-frame:url('assets/optimized_v3/frame-crimson-phoenix.webp'); } #pdkScreen.frame-skin-ink { --avatar-frame:url('assets/frame-ink-porcelain.png'); } #pdkScreen.frame-skin-frost { --avatar-frame:url('assets/optimized_v3/frame-frost-wheel.webp'); } #pdkScreen.frame-skin-lantern { --avatar-frame:url('assets/frame-lantern-workshop.png'); }
+    #mjScreen.frame-skin-cyan,#gmScreen.frame-skin-cyan { --avatar-frame:url('assets/optimized_v3/frame-cyan-lightning.webp'); } #mjScreen.frame-skin-royal,#gmScreen.frame-skin-royal { --avatar-frame:url('assets/optimized_v3/frame-crimson-phoenix.webp'); } #mjScreen.frame-skin-ink,#gmScreen.frame-skin-ink { --avatar-frame:url('assets/frame-ink-porcelain.png'); } #mjScreen.frame-skin-frost,#gmScreen.frame-skin-frost { --avatar-frame:url('assets/optimized_v3/frame-frost-wheel.webp'); } #mjScreen.frame-skin-lantern,#gmScreen.frame-skin-lantern { --avatar-frame:url('assets/frame-lantern-workshop.png'); }
+    #app.table-skin-classic,#ddzScreen.table-skin-classic { --table-art:url('assets/optimized_v3/table-xiangjiang-mist.webp'); }
+    #app.table-skin-ember,#ddzScreen.table-skin-ember { --table-art:url('assets/optimized_v3/table-kiln-fire.webp'); }
+    #app.table-skin-jade,#ddzScreen.table-skin-jade { --table-art:url('assets/optimized_v3/table-bamboo-rain.webp'); }
+    #app.table-skin-moon,#ddzScreen.table-skin-moon { --table-art:url('assets/optimized_v3/table-moon-observatory.webp'); }
+    #app.table-skin-plum,#ddzScreen.table-skin-plum { --table-art:url('assets/optimized_v3/table-plum-shadow.webp'); }
+    #app.table-skin-cloud,#ddzScreen.table-skin-cloud { --table-art:url('assets/optimized_v3/table-cloud-jade.webp'); }
+    #app.table-skin-xiangye,#ddzScreen.table-skin-xiangye { --table-art:url('assets/optimized_v3/table-xiangye-gold.webp'); }
+    #app.table-skin-xiangjiang,#ddzScreen.table-skin-xiangjiang { --table-art:url('assets/optimized_v3/table-lacquer-pavilion.webp'); }
+    #pdkScreen.table-skin-classic { --table-art:url('assets/optimized_v3/table-xiangjiang-mist.webp'); } #pdkScreen.table-skin-ember { --table-art:url('assets/optimized_v3/table-kiln-fire.webp'); } #pdkScreen.table-skin-jade { --table-art:url('assets/optimized_v3/table-bamboo-rain.webp'); } #pdkScreen.table-skin-moon { --table-art:url('assets/optimized_v3/table-moon-observatory.webp'); } #pdkScreen.table-skin-plum { --table-art:url('assets/optimized_v3/table-plum-shadow.webp'); } #pdkScreen.table-skin-cloud { --table-art:url('assets/optimized_v3/table-cloud-jade.webp'); } #pdkScreen.table-skin-xiangye { --table-art:url('assets/optimized_v3/table-xiangye-gold.webp'); } #pdkScreen.table-skin-xiangjiang { --table-art:url('assets/optimized_v3/table-lacquer-pavilion.webp'); }
+    #mjScreen.table-skin-classic { --table-art:url('assets/optimized_v3/table-xiangjiang-mist.webp'); } #mjScreen.table-skin-ember { --table-art:url('assets/optimized_v3/table-kiln-fire.webp'); } #mjScreen.table-skin-jade { --table-art:url('assets/optimized_v3/table-bamboo-rain.webp'); } #mjScreen.table-skin-moon { --table-art:url('assets/optimized_v3/table-moon-observatory.webp'); } #mjScreen.table-skin-plum { --table-art:url('assets/optimized_v3/table-plum-shadow.webp'); } #mjScreen.table-skin-cloud { --table-art:url('assets/optimized_v3/table-cloud-jade.webp'); } #mjScreen.table-skin-xiangye { --table-art:url('assets/optimized_v3/table-xiangye-gold.webp'); } #mjScreen.table-skin-xiangjiang { --table-art:url('assets/optimized_v3/table-lacquer-pavilion.webp'); }
     /* 玩法主题套装：独立牌桌背景、顶栏材质和按钮主色，不影响炸弹玩法的既有规则与牌桌状态。 */
     #ddzScreen.mode-theme-ddz-royal { --table-art:url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/GUdMDWtTArDiBVuQ.jpg'); --mode-accent:#ffd26b; --mode-deep:#5c211f; }
     #pdkScreen.mode-theme-pdk-run { --table-art:url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/RPZyyLyrsSwlTNqu.jpg'); --mode-accent:#72efff; --mode-deep:#193f63; }
@@ -1737,12 +1740,12 @@
     }
     /* 麻将桌：四边牌墙围出中央牌河，四家副露和弃牌均回到各自座位区域；弃牌紧密排布以便一眼读牌。 */
     .mj-table { background:linear-gradient(rgba(5,45,42,.28),rgba(4,28,31,.44)),var(--mj-table-art,var(--table-art)) center/cover no-repeat; }
-    #mjScreen.mj-theme-jade { --mj-table-art:url('assets/mahjong_table_xiang_v2.png'); }
-    #mjScreen.mj-theme-redzhong { --mj-table-art:url('assets/mahjong_table_redcourtyard_v2.png'); }
-    #mjScreen.mj-theme-ebony { --mj-table-art:url('assets/mahjong_table_ebony_v2.png'); }
-    #mjScreen.mj-theme-jade .mj-table { background-image:linear-gradient(rgba(3,28,31,.13),rgba(3,20,28,.34)),url('assets/mahjong_table_xiang_v2.png')!important; }
-    #mjScreen.mj-theme-redzhong .mj-table { background-image:linear-gradient(rgba(22,16,17,.13),rgba(16,10,12,.35)),url('assets/mahjong_table_redcourtyard_v2.png')!important; }
-    #mjScreen.mj-theme-ebony .mj-table { background-image:linear-gradient(rgba(4,10,16,.14),rgba(3,7,12,.37)),url('assets/mahjong_table_ebony_v2.png')!important; }
+    #mjScreen.mj-theme-jade { --mj-table-art:url('assets/optimized_v3/mahjong_table_xiang_v2.webp'); }
+    #mjScreen.mj-theme-redzhong { --mj-table-art:url('assets/optimized_v3/mahjong_table_redcourtyard_v2.webp'); }
+    #mjScreen.mj-theme-ebony { --mj-table-art:url('assets/optimized_v3/mahjong_table_ebony_v2.webp'); }
+    #mjScreen.mj-theme-jade .mj-table { background-image:linear-gradient(rgba(3,28,31,.13),rgba(3,20,28,.34)),url('assets/optimized_v3/mahjong_table_xiang_v2.webp')!important; }
+    #mjScreen.mj-theme-redzhong .mj-table { background-image:linear-gradient(rgba(22,16,17,.13),rgba(16,10,12,.35)),url('assets/optimized_v3/mahjong_table_redcourtyard_v2.webp')!important; }
+    #mjScreen.mj-theme-ebony .mj-table { background-image:linear-gradient(rgba(4,10,16,.14),rgba(3,7,12,.37)),url('assets/optimized_v3/mahjong_table_ebony_v2.webp')!important; }
     #mjScreen .ddz-count { display:none!important; }
     .mj-seat.top { left:50%; top:3%; transform:translateX(-50%); }
     .mj-board { position:absolute; z-index:4; left:50%; top:51%; width:min(78%,980px); aspect-ratio:1.36/1; transform:translate(-50%,-50%); border:1px solid rgba(235,197,110,.5); border-radius:30px; background:radial-gradient(circle at 50% 46%,rgba(37,111,92,.26),rgba(2,22,27,.54) 72%); box-shadow:inset 0 0 0 13px rgba(1,18,23,.18),inset 0 0 36px rgba(0,0,0,.42),0 18px 36px rgba(0,0,0,.34); overflow:hidden; }
@@ -1837,7 +1840,7 @@
     .game-lobby {
       background:
         linear-gradient(90deg,rgba(4,13,27,.78),rgba(7,20,37,.24) 52%,rgba(4,13,27,.72)),
-        url('/manus-storage/experience_lobby_royal_navy_297f61c0.png') center/cover no-repeat,
+        url('assets/optimized_v3/generated_v3__lobby-royal-navy.webp') center/cover no-repeat,
         linear-gradient(155deg,#07142a 0%,#102e55 54%,#071328 100%);
     }
     .game-lobby::before { opacity:.46; mix-blend-mode:screen; }
@@ -1860,9 +1863,9 @@
     .ddz-seat, .gm-seat, .mj-zone { backdrop-filter:blur(5px); }
     .mode-chat-panel { border-color:rgba(219,183,96,.38); box-shadow:0 14px 32px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.07); backdrop-filter:blur(10px); }
     .status-toast { min-height:29px; display:flex; align-items:center; gap:7px; padding:4px 15px 4px 7px; border-color:rgba(243,202,104,.7); background:linear-gradient(90deg,rgba(12,35,65,.96),rgba(9,21,42,.88)); box-shadow:0 8px 20px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.09); }
-    .status-toast::before { content:""; width:24px; height:24px; flex:0 0 24px; background:url('/manus-storage/experience_turn_seal_e97b9ef5.png') center/contain no-repeat; filter:drop-shadow(0 2px 3px rgba(0,0,0,.45)); }
+    .status-toast::before { content:""; width:24px; height:24px; flex:0 0 24px; background:radial-gradient(circle,#fff4af 0 18%,#d59b22 20% 48%,#563005 51% 100%); border-radius:50%; filter:drop-shadow(0 2px 3px rgba(0,0,0,.45)); }
     .seat-bubble { overflow:visible; border-color:rgba(255,231,153,.9); box-shadow:0 10px 24px rgba(0,0,0,.46),inset 0 1px rgba(255,255,255,.1); }
-    .seat-bubble::before { content:""; position:absolute; z-index:-1; inset:-22px; opacity:.48; background:url('/manus-storage/experience_card_trick_spark_d6cd08a6.png') center/contain no-repeat; pointer-events:none; }
+    .seat-bubble::before { content:""; position:absolute; z-index:-1; inset:-22px; opacity:.48; background:radial-gradient(circle,rgba(255,239,149,.7),rgba(93,203,255,.22) 35%,transparent 70%); pointer-events:none; }
     .seat-bubble.emoji::before { opacity:.72; }
     .mode-chat-msg { animation:chatMessageIn .24s var(--ux-ease-out) both; }
     @keyframes chatMessageIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
@@ -1872,7 +1875,7 @@
     .mj-zone { box-shadow:inset 0 1px rgba(255,255,255,.07),0 8px 20px rgba(0,0,0,.18); }
     .mj-river-grid .mj-tile { transition:transform .16s var(--ux-ease-out),filter .16s var(--ux-ease-out); }
     .mj-river-grid .mj-tile:hover { transform:translateY(-2px); filter:brightness(1.08); }
-    .mj-event-art::after { content:""; position:absolute; inset:-22%; background:url('/manus-storage/experience_mahjong_event_frame_9716d2a4.png') center/contain no-repeat; opacity:.62; }
+    .mj-event-art::after { content:""; position:absolute; inset:-22%; border:2px solid rgba(238,207,115,.58); border-radius:50%; box-shadow:0 0 38px rgba(104,235,187,.42),inset 0 0 32px rgba(255,222,126,.2); opacity:.72; }
     #gmScreen .gm-center { left:45%; width:min(68vh,56vw); height:min(68vh,56vw); min-width:430px; min-height:430px; }
     #gmScreen .gm-table { box-shadow:0 0 0 5px #19140d,0 0 0 8px #765d2e,0 25px 55px rgba(0,0,0,.62),inset 0 0 45px rgba(2,10,18,.55),inset 0 0 0 1px rgba(255,229,151,.18); }
     #gmScreen .gm-seat.left { left:2.4%; top:64%; }
@@ -1884,7 +1887,7 @@
     .gm-board { overflow:visible; }
     .gm-cell:hover:not(:disabled)::after { animation:gmHoverPulse .8s ease-in-out infinite alternate; }
     @keyframes gmHoverPulse { from{transform:scale(.88);opacity:.48} to{transform:scale(1.16);opacity:.85} }
-    .gm-cell.last .gm-stone::after { width:42%; height:42%; border:0; box-shadow:none; background:url('/manus-storage/experience_gomoku_lastmove_1a73d97a.png') center/contain no-repeat; animation:gmLastMarker 1.35s ease-in-out infinite alternate; }
+    .gm-cell.last .gm-stone::after { width:34%; height:34%; border:2px solid #ffdf73; border-radius:50%; box-shadow:0 0 8px #ffcf47; background:transparent; animation:gmLastMarker 1.35s ease-in-out infinite alternate; }
     @keyframes gmLastMarker { from{transform:translate(-50%,-50%) scale(.86);opacity:.72} to{transform:translate(-50%,-50%) scale(1.13);opacity:1} }
     .gm-seat.active { animation:gmSeatBreathe 1.45s ease-in-out infinite alternate; }
     @keyframes gmSeatBreathe { from{filter:brightness(.98)} to{filter:brightness(1.12)} }
@@ -2059,7 +2062,6 @@
     <div class="lobby-brand" aria-label="游戏大厅">炸</div>
     <div class="lobby-tools">
       <span class="bean-badge">🪙 <span id="lobbyBeans">10,000</span></span>
-      <button class="lobby-tool" id="lobbyDailyBtn">📅 签到</button>
       <button class="lobby-tool" id="lobbyReliefBtn">🧧 救济</button>
       <button class="lobby-tool" id="lobbyLoanBtn">🏦 借豆</button>
       <button class="lobby-tool" id="lobbyMusicBtn">🎵 音乐</button>
@@ -2104,7 +2106,7 @@
     </div>
     <div class="ddz-bid-panel hidden" id="ddzBidPanel"><strong id="ddzBidTitle">请选择加倍</strong><div class="ddz-bid-buttons" id="ddzBidButtons"><button data-ddz-double="1">不加倍</button><button data-ddz-double="2">加倍 ×2</button><button data-ddz-double="3">加倍 ×3</button><button data-ddz-double="4">超级加倍 ×4</button><button class="ddz-reveal-btn" id="ddzRevealBtn">明牌 ×2</button></div><div class="ddz-bid-buttons hidden" id="ddzCallButtons"><button data-ddz-call="0">不叫</button><button data-ddz-call="1">叫地主</button></div></div>
     <div class="mode-quick-popover hidden" id="ddzQuickMenu"><div class="mode-quick-grid" id="ddzQuickGrid"></div></div>
-    <aside class="mode-chat-panel"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="ddzQuickBtn">快捷语</button> <button class="ddz-tool" id="ddzEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="ddzChatLog"></div><div class="mode-chat-input"><input id="ddzChatInput" placeholder="说点什么"><button id="ddzChatSend">发送</button></div></aside>
+    <button class="mode-chat-fab" id="ddzChatToggle" type="button" aria-expanded="false">消息</button><aside class="mode-chat-panel chat-collapsed"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="ddzQuickBtn">快捷语</button> <button class="ddz-tool" id="ddzEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="ddzChatLog"></div><div class="mode-chat-input"><input id="ddzChatInput" placeholder="说点什么"><button id="ddzChatSend">发送</button></div></aside>
     <div class="ddz-hand-zone"><div class="ddz-hand" id="ddzHand"></div></div>
     <div class="ddz-actions"><button class="ddz-action" id="ddzPassBtn">不出</button><button class="ddz-action" id="ddzHintBtn">提示</button><button class="ddz-action gold" id="ddzPlayBtn">出牌</button></div>
     <div class="ddz-result hidden" id="ddzResult"><div class="ddz-result-card"><h3 id="ddzResultTitle">本局结束</h3><p id="ddzResultText"></p><div class="mode-reveal-hands" id="ddzRevealHands"></div><button class="ddz-action gold" id="ddzAgainBtn">再来一局</button></div></div>
@@ -2123,7 +2125,7 @@
     <div class="ddz-seat bottom" id="pdkSeat0"><div class="ddz-avatar"><img id="pdkAvatar0" alt="我的头像"></div><div><span class="ddz-seat-name" id="pdkName0">玩家</span><br><span class="ddz-role-badge farmer">玩家</span><span class="ddz-count" id="pdkCount0">16</span></div></div>
     <div class="ddz-center"><div class="ddz-status" id="pdkStatus">准备发牌</div><div class="ddz-played" id="pdkPlayed"></div></div>
     <div class="mode-quick-popover hidden" id="pdkQuickMenu"><div class="mode-quick-grid" id="pdkQuickGrid"></div></div>
-    <aside class="mode-chat-panel"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="pdkQuickBtn">快捷语</button> <button class="ddz-tool" id="pdkEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="pdkChatLog"></div><div class="mode-chat-input"><input id="pdkChatInput" placeholder="说点什么"><button id="pdkChatSend">发送</button></div></aside>
+    <button class="mode-chat-fab" id="pdkChatToggle" type="button" aria-expanded="false">消息</button><aside class="mode-chat-panel chat-collapsed"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="pdkQuickBtn">快捷语</button> <button class="ddz-tool" id="pdkEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="pdkChatLog"></div><div class="mode-chat-input"><input id="pdkChatInput" placeholder="说点什么"><button id="pdkChatSend">发送</button></div></aside>
     <div class="ddz-hand-zone"><div class="ddz-hand" id="pdkHand"></div></div>
     <div class="ddz-actions"><button class="ddz-action" id="pdkPassBtn">不出</button><button class="ddz-action" id="pdkHintBtn">提示</button><button class="ddz-action gold" id="pdkPlayBtn">出牌</button></div>
     <div class="ddz-result hidden" id="pdkResult"><div class="ddz-result-card"><h3 id="pdkResultTitle">本局结束</h3><p id="pdkResultText"></p><div class="mode-reveal-hands" id="pdkRevealHands"></div><button class="ddz-action gold" id="pdkAgainBtn">再来一局</button></div></div>
@@ -2135,9 +2137,9 @@
   <main class="gm-table">
     <div class="gm-seat left" id="gmSeat0"><div class="gm-avatar"><img id="gmAvatar0" alt="我的头像"></div><div><b id="gmName0">玩家</b><small><em></em>黑棋 · 先手</small></div></div>
     <div class="gm-seat right" id="gmSeat1"><div class="gm-avatar"><img id="gmAvatar1" alt="AI头像"></div><div><b id="gmName1">对手</b><small><em class="white"></em>白棋 · <span id="gmAIDifficultyLabel">AI·普通</span></small></div></div>
-    <div class="gm-center"><img class="gm-board-art" id="gmBoardArt" src="assets/gomoku_board_square_obsidian.png" alt="五子棋棋盘"><div class="gm-status" id="gmStatus">准备开局</div><div class="gm-board"><div class="gm-grid" id="gmGrid"><i class="gm-star s1"></i><i class="gm-star s2"></i><i class="gm-star s3"></i><i class="gm-star s4"></i><i class="gm-star s5"></i></div></div></div>
+    <div class="gm-center"><img class="gm-board-art" id="gmBoardArt" src="assets/optimized_v3/gomoku_board_square_obsidian.webp" alt="五子棋棋盘"><div class="gm-status" id="gmStatus">准备开局</div><div class="gm-board"><div class="gm-grid" id="gmGrid"><i class="gm-star s1"></i><i class="gm-star s2"></i><i class="gm-star s3"></i><i class="gm-star s4"></i><i class="gm-star s5"></i></div></div></div>
     <div class="mode-quick-popover hidden" id="gmQuickMenu"><div class="mode-quick-grid" id="gmQuickGrid"></div></div>
-    <aside class="mode-chat-panel"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="gmQuickBtn">快捷语</button><button class="ddz-tool" id="gmEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="gmChatLog"></div><div class="mode-chat-input"><input id="gmChatInput" placeholder="说点什么"><button id="gmChatSend">发送</button></div></aside>
+    <button class="mode-chat-fab" id="gmChatToggle" type="button" aria-expanded="false">消息</button><aside class="mode-chat-panel chat-collapsed"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="gmQuickBtn">快捷语</button><button class="ddz-tool" id="gmEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="gmChatLog"></div><div class="mode-chat-input"><input id="gmChatInput" placeholder="说点什么"><button id="gmChatSend">发送</button></div></aside>
     <div class="gm-actions"><button class="ddz-action" id="gmHintBtn">提示</button><button class="ddz-action" id="gmUndoBtn">悔棋</button><button class="ddz-action gold" id="gmRestartBtn">重新开局</button></div>
     <div class="ddz-result hidden" id="gmResult"><div class="ddz-result-card"><h3 id="gmResultTitle">本局结束</h3><p id="gmResultText"></p><button class="ddz-action gold" id="gmAgainBtn">再来一局</button></div></div>
   </main>
@@ -2154,19 +2156,22 @@
     <div class="ddz-seat left" id="mjSeat1"><div class="ddz-avatar"><img id="mjAvatar1" alt="左侧玩家头像"></div><span class="ddz-seat-name" id="mjName1">玩家一</span></div>
     <div class="ddz-seat top mj-seat" id="mjSeat2"><div class="ddz-avatar"><img id="mjAvatar2" alt="对面玩家头像"></div><span class="ddz-seat-name" id="mjName2">玩家二</span></div>
     <div class="ddz-seat right" id="mjSeat3"><div class="ddz-avatar"><img id="mjAvatar3" alt="右侧玩家头像"></div><span class="ddz-seat-name" id="mjName3">玩家三</span></div>
+    <div class="mj-seat-meld mj-seat-meld-left" id="mjMeld1" aria-label="左家吃碰杠牌"></div>
+    <div class="mj-seat-meld mj-seat-meld-top" id="mjMeld2" aria-label="对家吃碰杠牌"></div>
+    <div class="mj-seat-meld mj-seat-meld-right" id="mjMeld3" aria-label="右家吃碰杠牌"></div>
     <div class="mj-dice-ritual" id="mjDiceRitual" aria-live="polite" aria-hidden="true"><div class="mj-dice-card"><div class="mj-dice-kicker">双骰定庄</div><div class="mj-dice-grid" id="mjDiceGrid"></div><div class="mj-dice-result" id="mjDiceResult">掷骰定庄</div></div></div>
     <div class="mj-board" aria-label="四边牌墙与各家牌河">
       <div class="mj-wall-side mj-wall-top" id="mjWallTop"></div><div class="mj-wall-side mj-wall-bottom" id="mjWallBottom"></div><div class="mj-wall-side mj-wall-left" id="mjWallLeft"></div><div class="mj-wall-side mj-wall-right" id="mjWallRight"></div>
       <div class="mj-board-status"><b id="mjStatus">准备开局</b><small id="mjWallCount">牌墙 0</small></div>
-      <section class="mj-zone mj-zone-bottom" id="mjZone0"><div class="mj-zone-head"><span id="mjZoneLabel0">我的牌河</span><b>副露</b></div><div class="mj-zone-melds" id="mjMeld0"></div><div class="mj-river-grid" id="mjRiver0"></div></section>
-      <section class="mj-zone mj-zone-left" id="mjZone1"><div class="mj-zone-head"><span id="mjZoneLabel1">左家牌河</span><b>副露</b></div><div class="mj-zone-melds" id="mjMeld1"></div><div class="mj-river-grid" id="mjRiver1"></div></section>
-      <section class="mj-zone mj-zone-top" id="mjZone2"><div class="mj-zone-head"><span id="mjZoneLabel2">对家牌河</span><b>副露</b></div><div class="mj-zone-melds" id="mjMeld2"></div><div class="mj-river-grid" id="mjRiver2"></div></section>
-      <section class="mj-zone mj-zone-right" id="mjZone3"><div class="mj-zone-head"><span id="mjZoneLabel3">右家牌河</span><b>副露</b></div><div class="mj-zone-melds" id="mjMeld3"></div><div class="mj-river-grid" id="mjRiver3"></div></section>
+      <section class="mj-zone mj-zone-bottom" id="mjZone0"><div class="mj-zone-head"><span id="mjZoneLabel0">我的牌河</span></div><div class="mj-river-grid" id="mjRiver0"></div></section>
+      <section class="mj-zone mj-zone-left" id="mjZone1"><div class="mj-zone-head"><span id="mjZoneLabel1">左家牌河</span></div><div class="mj-river-grid" id="mjRiver1"></div></section>
+      <section class="mj-zone mj-zone-top" id="mjZone2"><div class="mj-zone-head"><span id="mjZoneLabel2">对家牌河</span></div><div class="mj-river-grid" id="mjRiver2"></div></section>
+      <section class="mj-zone mj-zone-right" id="mjZone3"><div class="mj-zone-head"><span id="mjZoneLabel3">右家牌河</span></div><div class="mj-river-grid" id="mjRiver3"></div></section>
     </div>
     <div class="mj-state-flag hidden" id="mjStateFlag"></div>
     <div class="mode-quick-popover hidden" id="mjQuickMenu"><div class="mode-quick-grid" id="mjQuickGrid"></div></div>
-    <aside class="mode-chat-panel"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="mjQuickBtn">快捷语</button> <button class="ddz-tool" id="mjEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="mjChatLog"></div><div class="mode-chat-input"><input id="mjChatInput" placeholder="说点什么"><button id="mjChatSend">发送</button></div></aside>
-    <div class="mj-hand-zone"><div class="mj-hand" id="mjHand"></div></div>
+    <button class="mode-chat-fab" id="mjChatToggle" type="button" aria-expanded="false">消息</button><aside class="mode-chat-panel chat-collapsed"><div class="mode-chat-head"><span>房间消息</span><span><button class="ddz-tool" id="mjQuickBtn">快捷语</button> <button class="ddz-tool" id="mjEmojiBtn">表情</button></span></div><div class="mode-chat-log" id="mjChatLog"></div><div class="mode-chat-input"><input id="mjChatInput" placeholder="说点什么"><button id="mjChatSend">发送</button></div></aside>
+    <div class="mj-hand-zone"><div class="mj-seat-meld mj-seat-meld-bottom" id="mjMeld0" aria-label="我的吃碰杠牌"></div><div class="mj-hand" id="mjHand"></div></div>
     <div class="mj-claim-panel hidden" id="mjClaimPanel"><div class="mj-claim-title" id="mjClaimTitle">声明牌型</div><div class="mj-claim-sub" id="mjClaimSub"></div><div class="mj-claim-actions" id="mjClaimActions"></div></div>
     <div class="mj-actions"><button class="ddz-action" id="mjHintBtn">提示弃牌</button><button class="ddz-action" id="mjGangBtn">碰杠</button><button class="ddz-action gold" id="mjHuBtn">胡牌</button><button class="ddz-action" id="mjDiscardBtn">打出</button></div>
     <div class="ddz-result hidden" id="mjResult"><div class="ddz-result-card"><h3 id="mjResultTitle">本局结束</h3><p class="mj-result-detail" id="mjResultText"></p><div class="mode-reveal-hands" id="mjRevealHands"></div><button class="ddz-action gold" id="mjAgainBtn">再来一局</button></div></div>
@@ -2239,14 +2244,13 @@
   <!-- 牌桌主体 -->
   <main class="table-container">
     <!-- 右侧房间消息 -->
-    <aside class="chat-panel">
+    <button class="bomb-chat-toggle" id="bombChatToggle" type="button" aria-label="打开房间消息" aria-expanded="false" aria-controls="bombChatPanel">消息<span class="bomb-chat-unread hidden" id="bombChatUnread" aria-hidden="true">0</span></button>
+    <aside class="chat-panel chat-collapsed" id="bombChatPanel" aria-label="房间消息">
       <div class="chat-header">
         <span>房间消息</span>
-        <small>全部可见</small>
+        <button class="bomb-chat-close" id="bombChatClose" type="button" aria-label="收起房间消息">×</button>
       </div>
-      <div class="chat-messages" id="chatLog">
-        <div class="chat-msg sys">系统：聊天全桌可见；发送表情请直接点玩家头像。</div>
-      </div>
+      <div class="chat-messages" id="chatLog"></div>
       <div class="chat-input-bar">
         <input type="text" id="chatInput" placeholder="请输入聊天内容..." />
         <button class="chat-send-btn" id="chatSendBtn">发送</button>
@@ -2377,6 +2381,14 @@
     <button class="interact-btn" data-emoji="🛡️">🛡️ 帮你守分</button>
     <button class="interact-btn" data-emoji="😏">😏 等着瞧</button>
     <button class="interact-btn" data-emoji="🏆">🏆 漂亮收墩</button>
+  </div>
+</div>
+
+<div class="landscape-guard" role="dialog" aria-modal="true" aria-label="请横屏游玩">
+  <div class="landscape-guard-card">
+    <b>请横屏游玩</b>
+    <span>牌桌按照手机横屏设计。关闭手机方向锁并横置设备，牌面会更大、座位也不会拥挤。</span>
+    <button type="button" id="landscapeFullscreenBtn">全屏并尝试横屏</button>
   </div>
 </div>
 
@@ -2512,6 +2524,7 @@
   </div>
   <div class="shop-mode-tabs" id="shopModeTabs"></div>
   <div class="shop-category-tabs" id="shopCategoryTabs"></div>
+  <div class="shop-live-preview" id="shopLivePreview" aria-live="polite"></div>
   <div class="dialog-body shop-grid" id="shopGrid"></div>
 </dialog>
 
@@ -2579,7 +2592,7 @@
   </div>
 </dialog>
 
-<div class="cinema-fx" id="cinemaFx" aria-hidden="true"><div class="fx-title" id="fxTitle"></div></div>
+<div class="cinema-fx" id="cinemaFx" aria-hidden="true"><div class="fx-title" id="fxTitle"></div><div class="fx-caption" id="fxCaption"></div></div>
 
 <script>
 (() => {
@@ -2630,26 +2643,26 @@
     pizza: 'avatars/pizza.webp'
   };
   const SHOP_ITEMS = [
-    { id:'table-classic', type:'table', name:'湘江烟岚', icon:'江', price:0, preview:"url('assets/table-xiangjiang-mist.png') center/cover" },
-    { id:'table-ember', type:'table', name:'窑火铜炉', icon:'火', price:1200, preview:"url('assets/table-kiln-fire.png') center/cover" },
-    { id:'table-jade', type:'table', name:'竹雨青瓷', icon:'竹', price:1600, preview:"url('assets/table-bamboo-rain.png') center/cover" },
-    { id:'table-moon', type:'table', name:'月台星仪', icon:'月', price:1800, preview:"url('assets/table-moon-observatory.png') center/cover" },
-    { id:'table-plum', type:'table', name:'梅影骨嵌', icon:'梅', price:2200, preview:"url('assets/table-plum-shadow.png') center/cover" },
-    { id:'table-cloud', type:'table', name:'云海玉浮', icon:'云', price:2400, preview:"url('assets/table-cloud-jade.png') center/cover" },
-    { id:'table-xiangye', type:'table', name:'湘夜鎏金', icon:'湘', price:5200, preview:"url('assets/table-xiangye-gold.png') center/cover" },
-    { id:'table-xiangjiang', type:'table', name:'朱阁黑漆', icon:'阁', price:4800, preview:"url('assets/table-lacquer-pavilion.png') center/cover" },
+    { id:'table-classic', type:'table', name:'湘江烟岚', icon:'江', price:0, preview:"url('assets/optimized_v3/table-xiangjiang-mist.webp') center/cover" },
+    { id:'table-ember', type:'table', name:'窑火铜炉', icon:'火', price:1200, preview:"url('assets/optimized_v3/table-kiln-fire.webp') center/cover" },
+    { id:'table-jade', type:'table', name:'竹雨青瓷', icon:'竹', price:1600, preview:"url('assets/optimized_v3/table-bamboo-rain.webp') center/cover" },
+    { id:'table-moon', type:'table', name:'月台星仪', icon:'月', price:1800, preview:"url('assets/optimized_v3/table-moon-observatory.webp') center/cover" },
+    { id:'table-plum', type:'table', name:'梅影骨嵌', icon:'梅', price:2200, preview:"url('assets/optimized_v3/table-plum-shadow.webp') center/cover" },
+    { id:'table-cloud', type:'table', name:'云海玉浮', icon:'云', price:2400, preview:"url('assets/optimized_v3/table-cloud-jade.webp') center/cover" },
+    { id:'table-xiangye', type:'table', name:'湘夜鎏金', icon:'湘', price:5200, preview:"url('assets/optimized_v3/table-xiangye-gold.webp') center/cover" },
+    { id:'table-xiangjiang', type:'table', name:'朱阁黑漆', icon:'阁', price:4800, preview:"url('assets/optimized_v3/table-lacquer-pavilion.webp') center/cover" },
     { id:'frame-classic', type:'frame', name:'湘水铜纹', icon:'', price:0, preview:"url('assets/avatar-frame-xiang-river.png') center/contain no-repeat" },
-    { id:'frame-cyan', type:'frame', name:'青电', icon:'', price:900, preview:"url('assets/frame-cyan-lightning.png') center/contain no-repeat" },
-    { id:'frame-royal', type:'frame', name:'绯凰', icon:'', price:1400, preview:"url('assets/frame-crimson-phoenix.png') center/contain no-repeat" },
+    { id:'frame-cyan', type:'frame', name:'青电', icon:'', price:900, preview:"url('assets/optimized_v3/frame-cyan-lightning.webp') center/contain no-repeat" },
+    { id:'frame-royal', type:'frame', name:'绯凰', icon:'', price:1400, preview:"url('assets/optimized_v3/frame-crimson-phoenix.webp') center/contain no-repeat" },
     { id:'frame-ink', type:'frame', name:'墨瓷', icon:'', price:1500, preview:"url('assets/frame-ink-porcelain.png') center/contain no-repeat" },
-    { id:'frame-frost', type:'frame', name:'霜轮', icon:'', price:1900, preview:"url('assets/frame-frost-wheel.png') center/contain no-repeat" },
+    { id:'frame-frost', type:'frame', name:'霜轮', icon:'', price:1900, preview:"url('assets/optimized_v3/frame-frost-wheel.webp') center/contain no-repeat" },
     { id:'frame-lantern', type:'frame', name:'灯坊', icon:'', price:2100, preview:"url('assets/frame-lantern-workshop.png') center/contain no-repeat" },
-    { id:'card-ivory', type:'card', name:'象牙', icon:'A♠', price:0, preview:"url('assets/poker-face-xiang-ivory.png') center/cover" },
-    { id:'card-night', type:'card', name:'月影', icon:'A♠', price:800, preview:"url('assets/card-face-moon.png') center/cover" },
-    { id:'card-lacquer', type:'card', name:'朱漆', icon:'A♦', price:1100, preview:"url('assets/card-face-lacquer.png') center/cover" },
-    { id:'card-bamboo', type:'card', name:'竹纸', icon:'A♣', price:1300, preview:"url('assets/card-face-bamboo.png') center/cover" },
-    { id:'card-obsidian', type:'card', name:'玄曜', icon:'A♠', price:2000, preview:"url('assets/card-face-obsidian.png') center/cover" },
-    { id:'card-blossom', type:'card', name:'桃笺', icon:'A♥', price:1700, preview:"url('assets/card-face-blossom.png') center/cover" },
+    { id:'card-ivory', type:'card', name:'象牙', icon:'A♠', price:0, preview:"url('assets/optimized_v3/poker-face-xiang-ivory.webp') center/cover" },
+    { id:'card-night', type:'card', name:'月影', icon:'A♠', price:800, preview:"url('assets/optimized_v3/card-face-moon.webp') center/cover" },
+    { id:'card-lacquer', type:'card', name:'朱漆', icon:'A♦', price:1100, preview:"url('assets/optimized_v3/card-face-lacquer.webp') center/cover" },
+    { id:'card-bamboo', type:'card', name:'竹纸', icon:'A♣', price:1300, preview:"url('assets/optimized_v3/card-face-bamboo.webp') center/cover" },
+    { id:'card-obsidian', type:'card', name:'玄曜', icon:'A♠', price:2000, preview:"url('assets/optimized_v3/card-face-obsidian.webp') center/cover" },
+    { id:'card-blossom', type:'card', name:'桃笺', icon:'A♥', price:1700, preview:"url('assets/optimized_v3/card-face-blossom.webp') center/cover" },
     { id:'mj-classic', type:'mjtile', name:'竹骨经典', icon:'中', price:0 },
     { id:'mj-jade', type:'mjtile', name:'湘玉', icon:'中', price:1500 },
     { id:'mj-ink', type:'mjtile', name:'墨翠', icon:'中', price:1800 },
@@ -2659,16 +2672,16 @@
     { id:'mj-amber', type:'mjtile', name:'琥珀金', icon:'中', price:2800 },
     { id:'mode-ddz-royal', type:'modeTheme', mode:'doudizhu', name:'金冠局', icon:'斗', price:2600, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/GUdMDWtTArDiBVuQ.jpg') center/cover" },
     { id:'mode-pdk-run', type:'modeTheme', mode:'paodekuai', name:'疾风跑道', icon:'跑', price:2400, preview:"url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663889058694/RPZyyLyrsSwlTNqu.jpg') center/cover" },
-    { id:'mj-table-jade', type:'mjTable', name:'湘玉开局', icon:'玉', price:0, preview:"url('assets/mahjong_table_xiang_v2.png') center/cover" },
-    { id:'mj-table-ebony', type:'mjTable', name:'月下墨台', icon:'墨', price:4200, preview:"url('assets/mahjong_table_ebony_v2.png') center/cover" },
-    { id:'mj-table-redzhong', type:'mjTable', name:'朱庭红局', icon:'中', price:3000, preview:"url('assets/mahjong_table_redcourtyard_v2.png') center/cover" },
-    ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/gomoku_board_jade_standard_v2.png') center/cover" }
-    ,{ id:'mode-gm-ink', type:'modeTheme', mode:'gomoku', name:'玄金残局', icon:'弈', price:4000, preview:"url('assets/gomoku_board_inkstone_standard_v2.png') center/cover" }
-    ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/gomoku_board_obsidian_crimson_v2.png') center/cover" }
-    ,{ id:'mode-gm-rosewood', type:'modeTheme', mode:'gomoku', name:'檀木棋枰', icon:'檀', price:4200, preview:"url('assets/gomoku_board_rosewood_standard_v2.png') center/cover" }
-    ,{ id:'mode-gm-bronze-cloud', type:'modeTheme', mode:'gomoku', name:'金错云局', icon:'云', price:4600, preview:"url('assets/gomoku_board_bronze_cloud_v2.png') center/cover" }
-    ,{ id:'mode-gm-porcelain-lacquer', type:'modeTheme', mode:'gomoku', name:'汝窑青枰', icon:'瓷', price:4800, preview:"url('assets/gomoku_board_porcelain_lacquer_v2.png') center/cover" }
-    ,{ id:'mode-gm-obsidian-crimson', type:'modeTheme', mode:'gomoku', name:'朱墨玄台', icon:'玄', price:5000, preview:"url('assets/gomoku_board_obsidian_crimson_v2.png') center/cover" }
+    { id:'mj-table-jade', type:'mjTable', name:'湘玉开局', icon:'玉', price:0, preview:"url('assets/optimized_v3/mahjong_table_xiang_v2.webp') center/cover" },
+    { id:'mj-table-ebony', type:'mjTable', name:'月下墨台', icon:'墨', price:4200, preview:"url('assets/optimized_v3/mahjong_table_ebony_v2.webp') center/cover" },
+    { id:'mj-table-redzhong', type:'mjTable', name:'朱庭红局', icon:'中', price:3000, preview:"url('assets/optimized_v3/mahjong_table_redcourtyard_v2.webp') center/cover" },
+    ,{ id:'mode-gm-jade', type:'modeTheme', mode:'gomoku', name:'苍岚玉局', icon:'棋', price:3600, preview:"url('assets/optimized_v3/gomoku_board_jade_standard_v2.webp') center/cover" }
+    ,{ id:'mode-gm-ink', type:'modeTheme', mode:'gomoku', name:'玄金残局', icon:'弈', price:4000, preview:"url('assets/optimized_v3/gomoku_board_inkstone_standard_v2.webp') center/cover" }
+    ,{ id:'mode-gm-vermilion', type:'modeTheme', mode:'gomoku', name:'朱砂棋台', icon:'朱', price:3800, preview:"url('assets/optimized_v3/gomoku_board_obsidian_crimson_v2.webp') center/cover" }
+    ,{ id:'mode-gm-rosewood', type:'modeTheme', mode:'gomoku', name:'檀木棋枰', icon:'檀', price:4200, preview:"url('assets/optimized_v3/gomoku_board_rosewood_standard_v2.webp') center/cover" }
+    ,{ id:'mode-gm-bronze-cloud', type:'modeTheme', mode:'gomoku', name:'金错云局', icon:'云', price:4600, preview:"url('assets/optimized_v3/gomoku_board_bronze_cloud_v2.webp') center/cover" }
+    ,{ id:'mode-gm-porcelain-lacquer', type:'modeTheme', mode:'gomoku', name:'汝窑青枰', icon:'瓷', price:4800, preview:"url('assets/optimized_v3/gomoku_board_porcelain_lacquer_v2.webp') center/cover" }
+    ,{ id:'mode-gm-obsidian-crimson', type:'modeTheme', mode:'gomoku', name:'朱墨玄台', icon:'玄', price:5000, preview:"url('assets/optimized_v3/gomoku_board_obsidian_crimson_v2.webp') center/cover" }
     ,{ id:'mode-frame-bomb', type:'frame', name:'雷纹战框', icon:'炸', price:1100, preview:'linear-gradient(135deg,#09223f,#bf8d30)' }
     ,{ id:'mode-frame-ddz', type:'frame', name:'金冠牌框', icon:'斗', price:1200, preview:'linear-gradient(135deg,#47200b,#d8a73d)' }
     ,{ id:'mode-frame-pdk', type:'frame', name:'风驰牌框', icon:'跑', price:1200, preview:'linear-gradient(135deg,#083b54,#44b8d6)' }
@@ -2679,16 +2692,16 @@
     ,{ id:'mode-ddz-river', type:'modeTheme', mode:'doudizhu', name:'江山牌局', icon:'江', price:3200, preview:'linear-gradient(135deg,#0c3444,#75b6bb)' }
     ,{ id:'mode-pdk-spring', type:'modeTheme', mode:'paodekuai', name:'春风跑道', icon:'春', price:2800, preview:'linear-gradient(135deg,#0d3b3f,#8dd2ad)' }
     ,{ id:'mode-pdk-night', type:'modeTheme', mode:'paodekuai', name:'夜驰蓝湾', icon:'夜', price:3100, preview:'linear-gradient(135deg,#081630,#3b87c5)' }
-    ,{ id:'mode-ddz-copper-court', type:'modeTheme', mode:'doudizhu', name:'铜院牌局', icon:'铜', price:3600, preview:"url('assets/poker_table_copper_courtyard.png') center/cover" }
-    ,{ id:'mode-pdk-silver-river', type:'modeTheme', mode:'paodekuai', name:'银江竞速', icon:'银', price:3800, preview:"url('assets/poker_table_silver_river.png') center/cover" }
-    ,{ id:'mj-table-celadon', type:'mjTable', name:'青瓷灯宴', icon:'瓷', price:4800, preview:"url('assets/mahjong_table_celadon_lantern.png') center/cover" }
-    ,{ id:'mj-table-moonstone', type:'mjTable', name:'月石轮台', icon:'月', price:5000, preview:"url('assets/mahjong_table_moonstone.png') center/cover" }
-    ,{ id:'mode-gm-amber-walnut', type:'modeTheme', mode:'gomoku', name:'琥珀胡桃枰', icon:'琥', price:5200, preview:"url('assets/gomoku_board_amber_walnut.png') center/cover" }
-    ,{ id:'mode-ddz-jade-lacquer', type:'modeTheme', mode:'doudizhu', name:'玉漆灯庭', icon:'玉', price:4600, preview:"url('assets/ddz_table_jade_lacquer_hall.png') center/cover" }
-    ,{ id:'mode-pdk-teal-gale', type:'modeTheme', mode:'paodekuai', name:'青岚竞速', icon:'岚', price:4400, preview:"url('assets/pdk_table_teal_gale.png') center/cover" }
-    ,{ id:'mj-table-lotus', type:'mjTable', name:'莲影玉台', icon:'莲', price:5400, preview:"url('assets/changsha_mahjong_table_lotus_jade.png') center/cover" }
-    ,{ id:'mj-table-cinnabar', type:'mjTable', name:'月魄朱庭', icon:'月', price:5600, preview:"url('assets/zhuanzhuan_mahjong_table_cinnabar_moon.png') center/cover" }
-    ,{ id:'mode-gm-silver-ink', type:'modeTheme', mode:'gomoku', name:'银墨棋枰', icon:'银', price:5800, preview:"url('assets/gomoku_board_silver_ink_standard.png') center/cover" }
+    ,{ id:'mode-ddz-copper-court', type:'modeTheme', mode:'doudizhu', name:'铜院牌局', icon:'铜', price:3600, preview:"url('assets/optimized_v3/poker_table_copper_courtyard.webp') center/cover" }
+    ,{ id:'mode-pdk-silver-river', type:'modeTheme', mode:'paodekuai', name:'银江竞速', icon:'银', price:3800, preview:"url('assets/optimized_v3/poker_table_silver_river.webp') center/cover" }
+    ,{ id:'mj-table-celadon', type:'mjTable', name:'青瓷灯宴', icon:'瓷', price:4800, preview:"url('assets/optimized_v3/mahjong_table_celadon_lantern.webp') center/cover" }
+    ,{ id:'mj-table-moonstone', type:'mjTable', name:'月石轮台', icon:'月', price:5000, preview:"url('assets/optimized_v3/mahjong_table_moonstone.webp') center/cover" }
+    ,{ id:'mode-gm-amber-walnut', type:'modeTheme', mode:'gomoku', name:'琥珀胡桃枰', icon:'琥', price:5200, preview:"url('assets/optimized_v3/gomoku_board_amber_walnut.webp') center/cover" }
+    ,{ id:'mode-ddz-jade-lacquer', type:'modeTheme', mode:'doudizhu', name:'玉漆灯庭', icon:'玉', price:4600, preview:"url('assets/optimized_v3/ddz_table_jade_lacquer_hall.webp') center/cover" }
+    ,{ id:'mode-pdk-teal-gale', type:'modeTheme', mode:'paodekuai', name:'青岚竞速', icon:'岚', price:4400, preview:"url('assets/optimized_v3/pdk_table_teal_gale.webp') center/cover" }
+    ,{ id:'mj-table-lotus', type:'mjTable', name:'莲影玉台', icon:'莲', price:5400, preview:"url('assets/optimized_v3/changsha_mahjong_table_lotus_jade.webp') center/cover" }
+    ,{ id:'mj-table-cinnabar', type:'mjTable', name:'月魄朱庭', icon:'月', price:5600, preview:"url('assets/optimized_v3/zhuanzhuan_mahjong_table_cinnabar_moon.webp') center/cover" }
+    ,{ id:'mode-gm-silver-ink', type:'modeTheme', mode:'gomoku', name:'银墨棋枰', icon:'银', price:5800, preview:"url('assets/optimized_v3/gomoku_board_silver_ink_standard.webp') center/cover" }
     ,{ id:'gm-effect-gold', type:'gmEffect', mode:'gomoku', name:'金线落子', icon:'✦', price:0, preview:'radial-gradient(circle,#fff2a3 0 9%,#d6a03d 10% 22%,#17251f 23% 100%)' }
     ,{ id:'gm-effect-ink', type:'gmEffect', mode:'gomoku', name:'墨痕落子', icon:'墨', price:1200, preview:'radial-gradient(circle,#e8eadb 0 8%,#1b2422 9% 28%,#06100f 29% 100%)' }
     ,{ id:'gm-effect-vermilion', type:'gmEffect', mode:'gomoku', name:'朱砂连珠', icon:'朱', price:1600, preview:'radial-gradient(circle,#ffd77b 0 8%,#bd3d27 9% 28%,#34110d 29% 100%)' }
@@ -2927,16 +2940,16 @@
     const gmTheme={ 'mode-gm-jade':'mode-theme-gm-jade', 'mode-gm-ink':'mode-theme-gm-ink', 'mode-gm-vermilion':'mode-theme-gm-vermilion', 'mode-gm-rosewood':'mode-theme-gm-rosewood', 'mode-gm-bronze-cloud':'mode-theme-gm-bronze-cloud', 'mode-gm-porcelain-lacquer':'mode-theme-gm-porcelain-lacquer', 'mode-gm-obsidian-crimson':'mode-theme-gm-obsidian-crimson', 'mode-gm-amber-walnut':'mode-theme-gm-amber-walnut', 'mode-gm-silver-ink':'mode-theme-gm-silver-ink' }[profile.modeThemes.gomoku];
     if(gmTheme)gmApp.classList.add(gmTheme);
     const gmBoardSource={
-      'mode-gm-jade':'assets/gomoku_board_jade_standard_v2.png',
-      'mode-gm-ink':'assets/gomoku_board_inkstone_standard_v2.png',
-      'mode-gm-vermilion':'assets/gomoku_board_obsidian_crimson_v2.png',
-      'mode-gm-rosewood':'assets/gomoku_board_rosewood_standard_v2.png',
-      'mode-gm-bronze-cloud':'assets/gomoku_board_bronze_cloud_v2.png',
-      'mode-gm-porcelain-lacquer':'assets/gomoku_board_porcelain_lacquer_v2.png',
-      'mode-gm-obsidian-crimson':'assets/gomoku_board_obsidian_crimson_v2.png',
-      'mode-gm-amber-walnut':'assets/gomoku_board_amber_walnut.png',
-      'mode-gm-silver-ink':'assets/gomoku_board_silver_ink_standard.png'
-    }[profile.modeThemes.gomoku] || 'assets/gomoku_board_square_obsidian.png';
+      'mode-gm-jade':'assets/optimized_v3/gomoku_board_jade_standard_v2.webp',
+      'mode-gm-ink':'assets/optimized_v3/gomoku_board_inkstone_standard_v2.webp',
+      'mode-gm-vermilion':'assets/optimized_v3/gomoku_board_obsidian_crimson_v2.webp',
+      'mode-gm-rosewood':'assets/optimized_v3/gomoku_board_rosewood_standard_v2.webp',
+      'mode-gm-bronze-cloud':'assets/optimized_v3/gomoku_board_bronze_cloud_v2.webp',
+      'mode-gm-porcelain-lacquer':'assets/optimized_v3/gomoku_board_porcelain_lacquer_v2.webp',
+      'mode-gm-obsidian-crimson':'assets/optimized_v3/gomoku_board_obsidian_crimson_v2.webp',
+      'mode-gm-amber-walnut':'assets/optimized_v3/gomoku_board_amber_walnut.webp',
+      'mode-gm-silver-ink':'assets/optimized_v3/gomoku_board_silver_ink_standard.webp'
+    }[profile.modeThemes.gomoku] || 'assets/optimized_v3/gomoku_board_square_obsidian.webp';
     const gmBoardArt=$('gmBoardArt');
     if(gmBoardArt) gmBoardArt.src=gmBoardSource;
     const mjCourtTheme={
@@ -3438,8 +3451,12 @@
     // ----------------------------------------------------
     // 情况 2: 接牌 / 跟牌 (g.lead !== null)
     // ----------------------------------------------------
-    // 队友掌握牌权时一律让牌：同队收墩已经共享分数，抢回牌权没有收益，反而会破坏协作节奏。
+    // 队友通常让牌；但敌方已经报单且队友领的是单张时，必须替队友封住出口。
     if (leaderIsAlly) {
+      if (enemyIsOne && g.lead.k === 'single') {
+        const covers = singles.filter(x => x.x > g.lead.x).sort((a,b)=>b.x-a.x);
+        if (covers.length) return covers[0];
+      }
       return null;
     }
 
@@ -3612,7 +3629,7 @@
     g.p[id].cap += n;
     if (n >= 25) AudioSys.fx('win');
     // 全屏特效只属于玩家所在分队的收分时刻；对方收分仍正常计分和音效，但不占用玩家画面。
-    if (n >= 25 && g.t[id] === g.t[0]) playCinema(`收 ${n} 分`, 'fifty');
+    if (n >= 25 && g.t[id] === g.t[0]) playCinema(`收 ${n} 分`, 'score', 'bomb', {duration:1180,particles:16});
     return n;
   }
 
@@ -3641,13 +3658,13 @@
     g.pass = 0;
 
     AudioSys.fx(z.t ? 'bomb' : 'play');
-    if (z.t) playCinema(z.l, (z.k === 'flush' || z.k === 'mixed') ? 'fifty' : 'bomb');
+    if (z.t && g.t[id] === g.t[0]) playBombCinema(z);
     addChat(N[id], `打出 ${z.l}`, id === 0 ? 'me' : 'other');
 
     if (p.h.length === 1) {
       p.one = true;
       addChat(N[id], '⚠️ 报单！', 'sys');
-      playCinema('报 单', 'report');
+      if (g.t[id] === g.t[0]) playCinema('报 单', 'report', 'bomb', {duration:1080,particles:12});
     }
 
     if (!p.h.length) {
@@ -3782,7 +3799,7 @@
         ? `双方同为 ${g.match[0]} 分，继续加赛。`
         : `本小局结算：${label}。${g.match[0]} 分 : ${g.match[1]} 分`;
       addChat('系统', g.msg, 'sys');
-      playCinema(label.includes('双下') ? '双 下' : label.includes('单抓') ? '单 抓' : '保 本', label.includes('保本') ? 'fifty' : 'bomb');
+      if (win === g.t[0]) playCinema(label.includes('双下') ? '双 下' : '单 抓', 'settle-transfer', 'bomb', {duration:1560,particles:24});
     }
 
     saveProfile();
@@ -3814,7 +3831,7 @@
       $('settlementSummary').innerHTML = `<strong style="font-size:24px;color:#ffe680">${g.match[0]} : ${g.match[1]}</strong><br>${g.msg}`;
       $('settlementActions').innerHTML = `<button class="start-game-btn" id="settlementDoneBtn">完成</button>`;
       $('settlementDoneBtn').onclick = () => dialog.close();
-      playCinema(gua ? '寡 掉' : '胜 负 已 定', gua ? 'bomb' : 'fifty');
+      if (youWin) playCinema(gua ? '寡 掉' : '胜 负 已 定', gua ? 'match-gua' : 'match-finish', 'bomb', {duration:1960,particles:gua?42:26,shake:gua});
       render();
     };
 
@@ -3911,17 +3928,41 @@
     const maps={
       doudizhu:{'mode-ddz-royal':'cinema-theme-ddz-royal','mode-ddz-lantern':'cinema-theme-ddz-lantern','mode-ddz-river':'cinema-theme-ddz-river','mode-ddz-copper-court':'cinema-theme-ddz-copper','mode-ddz-jade-lacquer':'cinema-theme-ddz-jade'},
       paodekuai:{'mode-pdk-run':'cinema-theme-pdk-run','mode-pdk-spring':'cinema-theme-pdk-spring','mode-pdk-night':'cinema-theme-pdk-night','mode-pdk-silver-river':'cinema-theme-pdk-silver','mode-pdk-teal-gale':'cinema-theme-pdk-teal'},
-      changsha:{'mode-cs-jade':'cinema-theme-cs'},zhuanzhuan:{'mode-zz-redzhong':'cinema-theme-zz'}
+      changsha:{'mj-table-jade':'cinema-theme-mj-jade','mj-table-ebony':'cinema-theme-mj-ebony','mj-table-redzhong':'cinema-theme-mj-redzhong','mj-table-celadon':'cinema-theme-mj-celadon','mj-table-moonstone':'cinema-theme-mj-moonstone','mj-table-lotus':'cinema-theme-mj-lotus','mj-table-cinnabar':'cinema-theme-mj-cinnabar'},
+      zhuanzhuan:{'mj-table-jade':'cinema-theme-mj-jade','mj-table-ebony':'cinema-theme-mj-ebony','mj-table-redzhong':'cinema-theme-mj-redzhong','mj-table-celadon':'cinema-theme-mj-celadon','mj-table-moonstone':'cinema-theme-mj-moonstone','mj-table-lotus':'cinema-theme-mj-lotus','mj-table-cinnabar':'cinema-theme-mj-cinnabar'}
     };
-    return maps[mode]?.[profile.modeThemes?.[mode]]||'';
+    const selected=mode==='changsha'||mode==='zhuanzhuan'?profile.mjTable:profile.modeThemes?.[mode];
+    return maps[mode]?.[selected]||'';
   }
   function playModeCinema(mode,event,title){const spec=MODE_CINEMA[mode]?.[event];if(!spec)return playCinema(title,'fifty',mode);if(spec.sound)AudioSys.fx(spec.sound);return playCinema(title,spec.kind,mode,spec);}
+  // 敌方事件保留原有音效和局内反馈，但奖励型全屏演出只属于玩家所在阵营。
+  function playFriendlyModeCinema(mode,event,title,isFriendly){
+    if(isFriendly)return playModeCinema(mode,event,title);
+    const spec=MODE_CINEMA[mode]?.[event];if(spec?.sound)AudioSys.fx(spec.sound);
+  }
+  const ddzFriendly=id=>id===0||(ddz?.landlord!==null&&id!==ddz.landlord&&ddz.landlord!==0);
+  function playBombCinema(z){
+    const jokerKinds=new Set(['fourJ','threeJ','bigJ','mixedJ','smallJ']);
+    if(z.k==='flush'||z.k==='mixed'){
+      return playCinema(z.l,'bomb-50k','bomb',{duration:1780,particles:26,className:z.k==='flush'?'bomb-flush':'bomb-mixed'});
+    }
+    if(jokerKinds.has(z.k)){
+      const tier=z.k==='fourJ'?4:z.k==='threeJ'?3:2;
+      return playCinema(z.l,'bomb-joker','bomb',{duration:1820+tier*140,particles:34+tier*8,className:`bomb-tier-${tier}`,shake:tier>=3});
+    }
+    const tier=Math.max(4,Math.min(8,z.n||4));
+    const numeral={4:'四',5:'五',6:'六',7:'七',8:'八'}[tier]||tier;
+    return playCinema(`${numeral} 张 炸`,'bomb-rank','bomb',{duration:1260+tier*105,particles:18+tier*5,className:`bomb-tier-${tier}`,shake:true,heavyShake:tier>=7});
+  }
   function playCinema(title, kind = 'bomb', mode = activeCinemaMode(), opts = {}) {
     const fx = $('cinemaFx');
     if (!fx) return;
     clearTimeout(fxTimer);
-    fx.className = `cinema-fx mode-${mode} ${kind} ${activeCinemaTheme(mode)}`;
-    $('fxTitle').textContent = title;
+    const safeTitle=String(title||'特殊事件').trim()||'特殊事件';
+    const modeName={bomb:'炸弹',doudizhu:'斗地主',paodekuai:'跑得快',changsha:'长沙麻将',zhuanzhuan:'转转麻将',gomoku:'五子棋'}[mode]||'牌局';
+    fx.className = `cinema-fx mode-${mode} ${kind} ${opts.className||''} ${activeCinemaTheme(mode)}`;
+    $('fxTitle').textContent = safeTitle;
+    $('fxCaption').textContent = `${modeName} · ${safeTitle}`;
     fx.querySelectorAll('.fx-spark,.mj-event-art').forEach(node => node.remove());
     if (mode === 'changsha' || mode === 'zhuanzhuan') {
       const art = document.createElement('i');
@@ -3939,18 +3980,32 @@
     }
     void fx.offsetWidth;
     fx.classList.add('show');
-    if (kind === 'bomb' && mode === 'bomb') {
+    if ((kind === 'bomb' && mode === 'bomb') || opts.shake) {
       const felt = $('tableFelt');
-      felt.classList.remove('fx-shake');
+      felt.classList.remove('fx-shake','fx-shake-heavy');
       void felt.offsetWidth;
-      felt.classList.add('fx-shake');
+      felt.classList.add(opts.heavyShake?'fx-shake-heavy':'fx-shake');
     }
     fxTimer = setTimeout(() => {
       fx.classList.remove('show');
-      $('tableFelt').classList.remove('fx-shake');
+      $('tableFelt').classList.remove('fx-shake','fx-shake-heavy');
     }, opts.duration || 1800);
   }
 
+  let bombChatUnread=0;
+  function syncBombChatUnread(){
+    const badge=$('bombChatUnread');if(!badge)return;
+    badge.textContent=bombChatUnread>9?'9+':String(bombChatUnread);
+    badge.classList.toggle('hidden',bombChatUnread===0);
+  }
+  function setBombChatOpen(open){
+    const panel=$('bombChatPanel'),toggle=$('bombChatToggle');if(!panel||!toggle)return;
+    panel.classList.toggle('chat-collapsed',!open);
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'收起房间消息':'打开房间消息');
+    toggle.classList.toggle('active',open);
+    if(open){bombChatUnread=0;syncBombChatUnread();requestAnimationFrame(()=>$('chatInput')?.focus());}
+  }
   function addChat(name, text, type = 'other') {
     let row = document.createElement('div');
     row.className = `chat-msg ${type}`;
@@ -3958,6 +4013,7 @@
     let log = $('chatLog');
     log.appendChild(row);
     log.scrollTop = log.scrollHeight;
+    if($('bombChatPanel')?.classList.contains('chat-collapsed')){bombChatUnread++;syncBombChatUnread();}
   }
 
   function showSeatBubble(id, text, emoji = false) {
@@ -4351,9 +4407,14 @@
         <span class="shop-price">${equipped ? '使用中' : owned ? '点击装备' : `🪙 ${item.price}`}</span>
       </button>`;
     }).join('');
+    const live=$('shopLivePreview');
+    const showPreview=card=>{const item=SHOP_ITEMS.find(x=>x?.id===card.dataset.shopId),visual=card.querySelector('.shop-preview')?.cloneNode(true);if(!item||!live||!visual)return;live.innerHTML='';const copy=document.createElement('div');copy.className='shop-live-art';copy.appendChild(visual);const meta=document.createElement('div');meta.className='shop-live-meta';meta.innerHTML=`<small>当前预览</small><strong>${item.name}</strong><span>${categoryLabel[categoryOf(item)]}</span>`;live.append(copy,meta);};
+    const firstCard=$('shopGrid').querySelector('[data-shop-id]');if(firstCard)showPreview(firstCard);else if(live)live.textContent='当前分类暂无外观';
     $('shopGrid').querySelectorAll('[data-shop-id]').forEach(card => {
+      card.onpointerenter=()=>showPreview(card);card.onfocus=()=>showPreview(card);
       card.onclick = () => {
-        const item = SHOP_ITEMS.find(x => x.id === card.dataset.shopId);
+        const item = SHOP_ITEMS.find(x => x?.id === card.dataset.shopId);
+        if (!item) return;
         if (!profile.ownedSkins.includes(item.id)) {
           if (profile.beans < item.price) return toast('游戏豆不足，暂时无法购买');
           profile.beans -= item.price;
@@ -4419,6 +4480,10 @@
     };
   });
 
+  $('bombChatToggle').onclick=e=>{e.stopPropagation();setBombChatOpen($('bombChatPanel').classList.contains('chat-collapsed'));};
+  $('bombChatClose').onclick=()=>setBombChatOpen(false);
+  $('bombChatPanel').onclick=e=>e.stopPropagation();
+  document.addEventListener('pointerdown',e=>{if(!$('bombChatPanel').contains(e.target)&&!$('bombChatToggle').contains(e.target))setBombChatOpen(false);});
   $('chatSendBtn').onclick = () => {
     let txt = $('chatInput').value.trim();
     if (txt) {
@@ -4447,7 +4512,7 @@
   };
   $('cfgMusicBtn').onclick = $('musicToggleBtn').onclick;
   $('lobbyMusicBtn').onclick = $('musicToggleBtn').onclick;
-  $('lobbyDailyBtn').onclick = openGrowthDialog;
+  if($('lobbyDailyBtn'))$('lobbyDailyBtn').onclick = openGrowthDialog;
   $('lobbyReliefBtn').onclick = openGrowthDialog;
   $('dailyClaimBtn').onclick = claimDaily;
   $('reliefClaimBtn').onclick = claimRelief;
@@ -4777,7 +4842,7 @@
     if(!ddz||ddz.phase!=='double')return;
     const id=ddz.doubleTurn;factor=Math.max(1,Math.min(4,Number(factor)||1));ddz.doubles[id]=factor;ddz.doubleFactor=Math.max(...ddz.doubles);ddz.doubleCount++;
     ddz.message=`${ddz.names[id]} ${factor===1?'不加倍':factor===4?'超级加倍 ×4':`加倍 ×${factor}`}`;
-    if(factor>1){playModeCinema('doudizhu','double',factor===4?'超 级 加 倍':'加 倍 ×2');modeEventReact('ddz',ddz.names,'doudizhu','double');}
+    if(factor>1){playFriendlyModeCinema('doudizhu','double',factor===4?'超 级 加 倍':'加 倍 ×2',id===0);modeEventReact('ddz',ddz.names,'doudizhu','double');}
     if(ddz.doubleCount===3){ddz.phase='call';ddz.callTurn=ddz.doubleStarter;ddz.message='加倍完成，开始叫地主';renderDDZ();return ddzAI();}
     ddz.doubleTurn=ddzNext(id);renderDDZ();ddzAI();
   }
@@ -4801,7 +4866,7 @@
     ddz.p[ddz.landlord].h=ddzSort([...ddz.p[ddz.landlord].h,...ddz.bottom]);ddz.p[ddz.landlord].count=ddz.p[ddz.landlord].h.length;
     const contested=ddz.callers.length>1;
     ddz.message=`${ddz.names[ddz.landlord]} ${contested?'抢下地主':'成为地主'}，先出牌`;renderDDZ();
-    playModeCinema('doudizhu',contested?'bidfinal':'landlord',contested?'抢 地 主 定 局':'地 主');
+    playFriendlyModeCinema('doudizhu',contested?'bidfinal':'landlord',contested?'抢 地 主 定 局':'地 主',ddz.landlord===0);
     if(contested)modeEventReact('ddz',ddz.names,'doudizhu','bidfinal');
     ddzAI();
   }
@@ -4814,10 +4879,10 @@
     const used=new Set(cards.map(c=>c.id));ddz.p[id].h=hand.filter(c=>!used.has(c.id));ddz.p[id].count=ddz.p[id].h.length;
     ddz.table.push(...cards);ddz.playedHistory.push(...cards);ddz.lead=z;ddz.leader=id;ddz.passes=0;ddz.playCounts[id]++;ddzSelected.clear();
     const comboRush=['straight','pairRun','plane','planeSingle','planePair'].includes(z.k)&&z.a.length>=8;
-    if(z.bomb){ddz.bombFactor*=2;playModeCinema('doudizhu','bomb',z.k==='rocket'?'王 炸':'炸 弹');modeEventReact('ddz',ddz.names,'doudizhu','bomb');}else if(comboRush){playModeCinema('doudizhu','combo',z.k.startsWith('plane')?'飞 机 连 击':'链 式 压 制');modeEventReact('ddz',ddz.names,'doudizhu','combo');}else AudioSys.fx('play');
+    if(z.bomb){ddz.bombFactor*=2;playFriendlyModeCinema('doudizhu','bomb',z.k==='rocket'?'王 炸':'炸 弹',ddzFriendly(id));modeEventReact('ddz',ddz.names,'doudizhu','bomb');}else if(comboRush){playFriendlyModeCinema('doudizhu','combo',z.k.startsWith('plane')?'飞 机 连 击':'链 式 压 制',ddzFriendly(id));modeEventReact('ddz',ddz.names,'doudizhu','combo');}else AudioSys.fx('play');
     ddz.message=`${ddz.names[id]} 打出 ${z.l}`;
     if(!ddz.p[id].h.length)return ddzSettle(id);
-    if(ddz.p[id].h.length===1){ddz.message+=` · ${ddz.names[id]} 报单`;playModeCinema('doudizhu','report','报 单');modeEventReact('ddz',ddz.names,'doudizhu','report');}
+    if(ddz.p[id].h.length===1){ddz.message+=` · ${ddz.names[id]} 报单`;playFriendlyModeCinema('doudizhu','report','报 单',ddzFriendly(id));modeEventReact('ddz',ddz.names,'doudizhu','report');}
     ddz.turn=ddzNext(id);renderDDZ();ddzAI();
   }
 
@@ -4833,9 +4898,9 @@
     clearTimeout(ddzTimer);ddz.phase='result';
     const landlordWin=finisher===ddz.landlord;
     const spring=landlordWin ? ddz.playCounts.filter((_,i)=>i!==ddz.landlord).every(n=>n===0) : ddz.playCounts[ddz.landlord]===1;
-    playModeCinema('doudizhu',spring?'spring':'win',spring?'春 天':(landlordWin?'地主胜':'农民胜'));modeEventReact('ddz',ddz.names,'doudizhu','win');
     ddz.springFactor=spring?2:1;
     const userLandlord=ddz.landlord===0,userWin=userLandlord===landlordWin;
+    playFriendlyModeCinema('doudizhu',spring?'spring':'win',spring?'春 天':(landlordWin?'地主胜':'农民胜'),userWin);modeEventReact('ddz',ddz.names,'doudizhu','win');
     const totalMultiplier=ddzTotalMultiplier();
     const share=base*totalMultiplier;
     const delta=(userWin?1:-1)*share*(userLandlord?2:1);
@@ -4960,8 +5025,10 @@
     const placeMenu=anchor=>{const r=anchor.getBoundingClientRect(),w=252,h=targetId===null?174:156,left=Math.max(8,Math.min(window.innerWidth-w-8,r.left+r.width/2-w/2)),above=r.top-h-10,top=above>8?above:Math.min(window.innerHeight-h-8,r.bottom+10);menu.style.left=`${left}px`;menu.style.top=`${top}px`;};
     const send=text=>{if(!text?.trim())return;const names=getNames(),cfg=MODE_CHAT[modeKey()]||MODE_CHAT.bomb,isEmoji=menuKind==='emojis',replyTarget=targetId;addModeChat(prefix,names,profile.playerName,text.trim(),true);if(isEmoji&&Number.isInteger(replyTarget)&&replyTarget>0)showModeBubble(prefix,replyTarget,text,true);closeMenu();setTimeout(()=>{const aiId=Number.isInteger(replyTarget)&&replyTarget>0?replyTarget:1+Math.floor(Math.random()*Math.max(1,names.length-1)),ai=names[aiId],friendly=modeKey()==='doudizhu'&&ddz?.landlord!==undefined&&aiId!==ddz.landlord&&0!==ddz.landlord,pool=isEmoji?(friendly?cfg.emojiTeam:cfg.emojiOpponent):(friendly?cfg.team:cfg.opponent),reply=pool[Math.floor(Math.random()*pool.length)];addModeChat(prefix,names,ai,reply);},560+Math.random()*520);};
     const rebuild=(kind,anchor)=>{menuKind=kind;const names=getNames(),cfg=MODE_CHAT[modeKey()]||MODE_CHAT.bomb,items=kind==='phrases'?cfg.phrases:cfg.emojis,title=targetId===null?(kind==='phrases'?'快捷语 · 全桌可见':'表情 · 全桌可见'):`给 ${names[targetId]} 的表情`;menu.classList.toggle('avatar-target',targetId!==null);menu.innerHTML=`<div class="mode-popover-title">${title}</div><div class="mode-quick-grid">${items.map(x=>`<button type="button" data-mode-msg="${x}">${x}</button>`).join('')}</div>`;menu.querySelectorAll('[data-mode-msg]').forEach(b=>b.onclick=e=>{e.stopPropagation();send(b.dataset.modeMsg);});placeMenu(anchor);menu.classList.remove('hidden');};
-    const quickBtn=$(`${prefix}QuickBtn`),emojiBtn=$(`${prefix}EmojiBtn`),chatPanel=menu.parentElement.querySelector('.mode-chat-panel');
-    quickBtn.onclick=e=>{e.stopPropagation();targetId=null;rebuild('phrases',quickBtn);};emojiBtn.onclick=e=>{e.stopPropagation();targetId=null;rebuild('emojis',emojiBtn);};$(`${prefix}ChatSend`).onclick=()=>{targetId=null;menuKind='phrases';const input=$(`${prefix}ChatInput`);send(input.value);input.value='';};$(`${prefix}ChatInput`).onkeydown=e=>{if(e.key==='Enter')$(`${prefix}ChatSend`).click();};
+    const quickBtn=$(`${prefix}QuickBtn`),emojiBtn=$(`${prefix}EmojiBtn`),chatPanel=menu.parentElement.querySelector('.mode-chat-panel'),toggle=$(`${prefix}ChatToggle`);
+    const setOpen=open=>{chatPanel.classList.toggle('chat-collapsed',!open);if(toggle){toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'收起':'消息';}};
+    if(toggle)toggle.onclick=e=>{e.stopPropagation();setOpen(chatPanel.classList.contains('chat-collapsed'));};
+    quickBtn.onclick=e=>{e.stopPropagation();setOpen(true);targetId=null;rebuild('phrases',quickBtn);};emojiBtn.onclick=e=>{e.stopPropagation();setOpen(true);targetId=null;rebuild('emojis',emojiBtn);};$(`${prefix}ChatSend`).onclick=()=>{targetId=null;menuKind='phrases';const input=$(`${prefix}ChatInput`);send(input.value);input.value='';};$(`${prefix}ChatInput`).onkeydown=e=>{if(e.key==='Enter')$(`${prefix}ChatSend`).click();};
     for(let id=0;$(`${prefix}Seat${id}`);id++){const avatar=$(`${prefix}Seat${id}`).querySelector('.ddz-avatar,.gm-avatar');if(!avatar)continue;avatar.onclick=e=>{e.stopPropagation();targetId=id;rebuild('emojis',avatar);};}
     menu.onclick=e=>e.stopPropagation();document.addEventListener('pointerdown',e=>{if(!menu.contains(e.target)&&!chatPanel.contains(e.target))closeMenu();});
   }
@@ -5033,11 +5100,14 @@
     const hand=pdk.p[id].h;let legal=pdkCandidates(hand).filter(z=>pdkBeat(z,pdk.lead));
     const finish=legal.find(z=>z.a.length===hand.length);if(finish)return finish;
     const nextOne=pdk.p[pdkNext(id)].h.length===1,safe=nextOne?legal.filter(z=>z.k!=='single'):legal;
+    // 下家只剩一张且当前只能出单张时，必须顶到自己能出的最大牌，不能用最小牌直接送走。
+    if(nextOne&&!safe.length){const blockers=legal.filter(z=>z.k==='single').sort((a,b)=>b.x-a.x);if(blockers.length)return blockers[0];}
     return (safe.length?safe:legal).map(z=>{
       const used=new Set(z.a.map(c=>c.id)),remain=hand.filter(c=>!used.has(c.id));
       let score=-z.a.length*16+z.x*.6-pdkRemainValue(remain)*1.55;
       if(z.bomb&&remain.length>3&&!nextOne)score+=260;
       if(!pdk.lead&&nextOne&&z.k==='single')score+=150;
+      if(nextOne&&z.k!=='single')score-=55+z.a.length*5;
       if(pdk.lead&&z.a.length===1&&z.x>=V['2']&&remain.length>5)score+=70;
       return {z,score};
     }).sort((a,b)=>a.score-b.score)[0]?.z||null;
@@ -5046,7 +5116,7 @@
     clearTimeout(pdkTimer);pdkSelected.clear();if(!pdkNames)pdkNames=[profile.playerName,...shuffle(allRoles()).slice(0,2)];const cards=shuffle(pdkDeck());pdk={phase:'play',names:pdkNames,p:[],turn:0,lead:null,leader:null,passes:0,table:[],message:'开始出牌',playCounts:[0,0,0],roundBase:base,lastThreeAlerted:new Set()};for(let i=0;i<3;i++)pdk.p.push({id:i,h:ddzSort(cards.slice(i*16,i*16+16))});
     if(pdkFirstRound)pdk.turn=pdk.p.findIndex(x=>x.h.some(c=>c.r==='3'&&c.s==='♥'));else pdk.turn=pdkNextStarter??0;$('pdkResult').classList.add('hidden');pdk.message=pdkFirstRound?'首局开牌':`${pdk.names[pdk.turn]} 先出`;renderPDK();pdkAI();
   }
-  function pdkPlay(id,ids){if(!pdk||pdk.phase!=='play'||pdk.turn!==id)return;const hand=pdk.p[id].h,cards=ids.map(x=>hand.find(c=>c.id===x)).filter(Boolean),z=pdkCombo(cards);if(!z)return pdkToast('所选牌型不能这样出');if(!pdkBeat(z,pdk.lead))return pdkToast('这手牌压不过桌面牌');const used=new Set(cards.map(c=>c.id));pdk.p[id].h=hand.filter(c=>!used.has(c.id));pdk.table.push(...cards);pdk.lead=z;pdk.leader=id;pdk.passes=0;pdk.playCounts[id]++;pdkSelected.clear();if(z.bomb){const event=z.k==='aaa'?'aaa':'bomb';playModeCinema('paodekuai',event,z.k==='aaa'?'AAA':'炸 弹');modeEventReact('pdk',pdk.names,'paodekuai',event);}else if(z.k==='plane'||z.k==='planeWings')playModeCinema('paodekuai','plane','飞 机');else AudioSys.fx('play');pdk.message=`${pdk.names[id]} 打出 ${z.l}`;if(!pdk.p[id].h.length)return pdkSettle(id);if(pdk.p[id].h.length===3&&!pdk.lastThreeAlerted.has(id)){pdk.lastThreeAlerted.add(id);pdk.message+=` · ${pdk.names[id]} 仅余三张`;playModeCinema('paodekuai','lastthree','残 局 三 张');modeEventReact('pdk',pdk.names,'paodekuai','lastthree');}else if(pdk.p[id].h.length===1){pdk.message+=` · ${pdk.names[id]} 报单`;playModeCinema('paodekuai','report','冲 刺');modeEventReact('pdk',pdk.names,'paodekuai','report');}pdk.turn=pdkNext(id);renderPDK();pdkAI();}
+  function pdkPlay(id,ids){if(!pdk||pdk.phase!=='play'||pdk.turn!==id)return;const hand=pdk.p[id].h,cards=ids.map(x=>hand.find(c=>c.id===x)).filter(Boolean),z=pdkCombo(cards);if(!z)return pdkToast('所选牌型不能这样出');if(!pdkBeat(z,pdk.lead))return pdkToast('这手牌压不过桌面牌');const used=new Set(cards.map(c=>c.id));pdk.p[id].h=hand.filter(c=>!used.has(c.id));pdk.table.push(...cards);pdk.lead=z;pdk.leader=id;pdk.passes=0;pdk.playCounts[id]++;pdkSelected.clear();if(z.bomb){const event=z.k==='aaa'?'aaa':'bomb';playFriendlyModeCinema('paodekuai',event,z.k==='aaa'?'AAA':'炸 弹',id===0);modeEventReact('pdk',pdk.names,'paodekuai',event);}else if(z.k==='plane'||z.k==='planeWings')playFriendlyModeCinema('paodekuai','plane','飞 机',id===0);else AudioSys.fx('play');pdk.message=`${pdk.names[id]} 打出 ${z.l}`;if(!pdk.p[id].h.length)return pdkSettle(id);if(pdk.p[id].h.length===3&&!pdk.lastThreeAlerted.has(id)){pdk.lastThreeAlerted.add(id);pdk.message+=` · ${pdk.names[id]} 仅余三张`;playFriendlyModeCinema('paodekuai','lastthree','残 局 三 张',id===0);modeEventReact('pdk',pdk.names,'paodekuai','lastthree');}else if(pdk.p[id].h.length===1){pdk.message+=` · ${pdk.names[id]} 报单`;playFriendlyModeCinema('paodekuai','report','冲 刺',id===0);modeEventReact('pdk',pdk.names,'paodekuai','report');}pdk.turn=pdkNext(id);renderPDK();pdkAI();}
   function pdkPass(id){if(!pdk||pdk.phase!=='play'||pdk.turn!==id||!pdk.lead||pdk.leader===id)return;const canBeat=pdkCandidates(pdk.p[id].h).some(z=>pdkBeat(z,pdk.lead));if(canBeat){if(id===0)pdkToast('跑得快要得起必须出，不能选择不出');return;}pdk.passes++;pdkSelected.clear();pdk.message=`${pdk.names[id]} 无牌可压`;if(pdk.passes>=2){const leader=pdk.leader;pdk.lead=null;pdk.table=[];pdk.passes=0;pdk.turn=leader;pdk.message=`${pdk.names[leader]} 重新领出`;}else pdk.turn=pdkNext(id);renderPDK();pdkAI();}
   function pdkSettle(winner){
     clearTimeout(pdkTimer);pdk.phase='result';
@@ -5055,7 +5125,7 @@
     const springSeats=bills.filter(x=>x.spring).map(x=>x.i),userBill=bills.find(x=>x.i===0),delta=userWin?bills.reduce((n,x)=>n+x.amount,0):-(userBill?.amount||0);
     const billText=bills.map(x=>`${pdk.names[x.i]}：余 ${x.left} 张 × ${stake.toLocaleString()}${x.spring?' × 春天2':''} = ${x.amount.toLocaleString()}`).join('<br>');
     const historyDetail=bills.map(x=>`${pdk.names[x.i]}余${x.left}张×${stake}${x.spring?'×春天2':''}=${x.amount}`).join('；');
-    playModeCinema('paodekuai',springSeats.length?'spring':'finish',springSeats.length?'春 天':'冲 线');modeEventReact('pdk',pdk.names,'paodekuai','win');
+    playFriendlyModeCinema('paodekuai',springSeats.length?'spring':'finish',springSeats.length?'春 天':'冲 线',userWin);modeEventReact('pdk',pdk.names,'paodekuai','win');
     profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;
     profile.pdkHistory.push({at:Date.now(),win:userWin,base:stake,multiplier:springSeats.length?2:1,delta,spring:springSeats.map(i=>pdk.names[i]),detail:`余牌计费：${historyDetail}`});profile.pdkHistory=profile.pdkHistory.slice(-30);
     const loan=serviceLoanAfterMatch();saveProfile();pdkNextStarter=winner;pdkFirstRound=false;
@@ -5153,29 +5223,45 @@
     const hu=sorted.find(x=>x.type==='hu');if(hu)return hu;
     const scored=sorted.filter(x=>x.type!=='hu').map(opt=>{
       const hand=mj.p[opt.id].h,used=new Set((opt.used||[]).map(t=>t.id)),remain=hand.filter(t=>!used.has(t.id));
-      let score=opt.type==='gang'?58:opt.type==='pong'?35:18;
-      score+=mjStructureValue(remain,mj.mode)*.34;
+      const before=mjStructureValue(hand,mj.mode),after=mjStructureValue(remain,mj.mode),meldGain=opt.type==='gang'?42:opt.type==='pong'?24:16;
+      let score=meldGain+(after-before)*1.15;
       if(opt.type==='chow'&&remain.length>10)score-=10;
       if(opt.type==='pong'&&remain.length<=5)score+=16;
+      if(mj.mode==='changsha'&&opt.tile&&[2,5,8].includes(opt.tile.n)&&opt.type==='pong')score-=8;
       return {opt,score};
     }).sort((a,b)=>b.score-a.score);
     const best=scored[0];
     if(!best)return null;
     // 不为无意义副露硬拆好牌：碰、吃仅在结构收益足够时选择。
-    if(best.opt.type==='chow'&&best.score<28)return null;
-    if(best.opt.type==='pong'&&best.score<37)return null;
+    if(best.opt.type==='chow'&&best.score<15)return null;
+    if(best.opt.type==='pong'&&best.score<22)return null;
     return best.opt;
   }
   function mjMeldLabel(m){return ({chow:'吃',pong:'碰',gang:'明杠',darkGang:'暗杠',upgradeGang:'补杠'})[m.type]||m.type;}
   function mjDiscardScore(tile,hand){
-    if(tile.suit==='中')return 999;
-    const remain=hand.filter(t=>t.id!==tile.id),same=hand.filter(t=>t.suit===tile.suit&&t.n===tile.n).length;
-    const near=hand.filter(t=>t.suit===tile.suit&&Math.abs(t.n-tile.n)<=2&&t.id!==tile.id).length;
-    const edge=tile.n===1||tile.n===9?1:0;
-    // 分值越高越值得保留；AI实际弃掉留牌价值最低的一张。
-    return mjStructureValue(remain,mj.mode)+same*8+near*2.2-edge*3;
+    // 分值越高表示“打掉这张以后”的牌效越好；红中是转转麻将赖子，默认不弃。
+    if(tile.suit==='中')return -100000;
+    const remain=hand.filter(t=>t.id!==tile.id),baseValue=mjStructureValue(remain,mj.mode);
+    const publicTiles=[...(mj.river||[]),...(mj.melds||[]).flatMap(ms=>ms.flatMap(m=>m.tiles||[]))];
+    const types=MJ_SUITS.flatMap(suit=>Array.from({length:9},(_,i)=>({suit,n:i+1,label:`${i+1}${suit}`})));
+    if(mj.mode==='zhuanzhuan')types.push({suit:'中',n:0,label:'红中'});
+    let ukeire=0,winningOuts=0;
+    for(const draw of types){
+      const visible=[...hand,...publicTiles].filter(t=>t.suit===draw.suit&&t.n===draw.n).length,outs=Math.max(0,4-visible);
+      if(!outs)continue;
+      const next=[...remain,{...draw,id:'ai-probe'}];
+      if(mjCanHu(next,mj.mode)){winningOuts+=outs;ukeire+=outs*5;continue;}
+      const gain=mjStructureValue(next,mj.mode)-baseValue;
+      if(gain>1.5)ukeire+=outs*(1+Math.min(3,gain/6));
+    }
+    const riverSeen=(mj.river||[]).filter(t=>t.suit===tile.suit&&t.n===tile.n).length;
+    const late=Math.max(0,42-(mj.wall?.length||42))/42;
+    const central=tile.n>=3&&tile.n<=7?1:0;
+    // 长沙可点炮：中后盘稍微照顾公开出现过的牌；转转只能自摸，不伪造点炮防守。
+    const safety=mj.mode==='changsha'?late*(riverSeen*7-central*Math.max(0,2-riverSeen)*3):0;
+    return baseValue*2.1+ukeire*3.2+winningOuts*14+safety;
   }
-  function mjAIChoice(id){const h=mj.p[id].h;return [...h].sort((a,b)=>mjDiscardScore(a,h)-mjDiscardScore(b,h)||b.n-a.n||a.suit.localeCompare(b.suit))[0];}
+  function mjAIChoice(id){const h=mj.p[id].h;return [...h].sort((a,b)=>mjDiscardScore(b,h)-mjDiscardScore(a,h)||b.n-a.n||a.suit.localeCompare(b.suit))[0];}
   const MJ_CN=['一','二','三','四','五','六','七','八','九'];
   /* 筒/条点位：已按图案实际尺寸核算，任意相邻两图案间距均大于其直径，无重叠 */
   const MJ_COIN_POS={1:[[50,54]],2:[[50,34],[50,76]],3:[[28,30],[50,55],[72,80]],4:[[30,30],[70,30],[30,80],[70,80]],5:[[29,26],[71,26],[50,55],[29,84],[71,84]],6:[[30,26],[70,26],[30,55],[70,55],[30,84],[70,84]],7:[[50,17],[30,44],[70,44],[30,70],[70,70],[30,96],[70,96]],8:[[30,20],[70,20],[30,48],[70,48],[30,76],[70,76],[30,104],[70,104]],9:[[26,24],[50,24],[74,24],[26,55],[50,55],[74,55],[26,86],[50,86],[74,86]]};
@@ -5207,7 +5293,7 @@
   function mjRenderDice(names,rolls,contenders,winner=null){$('mjDiceGrid').innerHTML=names.map((name,id)=>{const pair=rolls[id],sum=pair?pair[0]+pair[1]:null;return `<div class="mj-dice-player ${winner===id?'winner':''}"><span class="mj-dice-name">${name}</span><div class="mj-dice-pair">${pair?mjDieHTML(pair[0])+mjDieHTML(pair[1]):'<span class="mj-die"></span><span class="mj-die"></span>'}</div><span class="mj-dice-score">${sum?`${sum} 点`:(contenders.includes(id)?'重摇':'—')}</span></div>`;}).join('');}
   function mjRollForDealer(session){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;$('mjResult').classList.add('hidden');const ritual=$('mjDiceRitual');ritual.classList.add('show','rolling');ritual.setAttribute('aria-hidden','false');let contenders=[0,1,2,3],round=0;
     const roll=()=>{round++;const rolls=Array(4).fill(null);contenders.forEach(id=>rolls[id]=mjRollPair());mjRenderDice(session.names,rolls,contenders);$('mjDiceResult').textContent=round===1?'四家掷双骰定庄':'最高点重摇';mjRitualTimer=setTimeout(()=>{ritual.classList.remove('rolling');const high=Math.max(...contenders.map(id=>rolls[id][0]+rolls[id][1])),tops=contenders.filter(id=>rolls[id][0]+rolls[id][1]===high);if(tops.length>1){$('mjDiceResult').textContent=`${tops.map(id=>session.names[id]).join('、')} 同为 ${high} 点，重摇`;contenders=tops;ritual.classList.add('rolling');return mjRitualTimer=setTimeout(roll,820);}const dealer=tops[0];mjRenderDice(session.names,rolls,contenders,dealer);$('mjDiceResult').textContent=`${session.names[dealer]} ${high} 点，坐庄`;session.dealer=dealer;session.opened=true;session.diceRounds=round;mjRitualTimer=setTimeout(()=>{ritual.classList.remove('show');ritual.setAttribute('aria-hidden','true');playModeCinema(mjMode,'dice','双 骰 定 庄');modeEventReact('mj',session.names,mjMode,'dice');mjDealRound(session,dealer);},860);},720);};roll();}
-  function mjDealRound(session,dealer){clearTimeout(mjTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;const cards=shuffle(mjDeck(mjMode)),p=Array.from({length:4},(_,id)=>({id,h:mjSort(cards.slice(id*13,id*13+13))})),wall=cards.slice(52),first=wall.shift();p[dealer].h=mjSort([...p[dealer].h,first]);mj={mode:mjMode,names:session.names,p,wall,river:[],turn:dealer,dealer,phase:'play',canHu:false,lastDraw:first,roundBase:base,message:`${session.names[dealer]} 坐庄，先打`,melds:[[],[],[],[]],flyGhost:[false,false,false,false],flyGhostOnDraw:null,gangCounts:[0,0,0,0],pending:null,lastDiscard:null};mjRefreshState(dealer);$('mjResult').classList.add('hidden');renderMJ();AudioSys.fx('deal');if(mj.canHu){mj.message=`${session.names[dealer]} 天胡`;renderMJ();playModeCinema(mjMode,'heaven','天 胡');modeEventReact('mj',mj.names,mjMode,'heaven');return mjTimer=setTimeout(()=>mjSettle(dealer,'heaven',first),1060);}if(dealer!==0)mjTimer=setTimeout(()=>mjDiscard(dealer,mjAIChoice(dealer).id),650);}
+  function mjDealRound(session,dealer){clearTimeout(mjTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;const cards=shuffle(mjDeck(mjMode)),p=Array.from({length:4},(_,id)=>({id,h:mjSort(cards.slice(id*13,id*13+13))})),wall=cards.slice(52),first=wall.shift();p[dealer].h=mjSort([...p[dealer].h,first]);mj={mode:mjMode,names:session.names,p,wall,river:[],turn:dealer,dealer,phase:'play',canHu:false,lastDraw:first,drawnIds:Array(4).fill(null),roundBase:base,message:`${session.names[dealer]} 坐庄，先打`,melds:[[],[],[],[]],flyGhost:[false,false,false,false],flyGhostOnDraw:null,gangCounts:[0,0,0,0],pending:null,lastDiscard:null};mj.drawnIds[dealer]=first.id;mjRefreshState(dealer);$('mjResult').classList.add('hidden');renderMJ();AudioSys.fx('deal');if(mj.canHu){mj.message=`${session.names[dealer]} 天胡`;renderMJ();playFriendlyModeCinema(mjMode,'heaven','天 胡',dealer===0);modeEventReact('mj',mj.names,mjMode,'heaven');return mjTimer=setTimeout(()=>mjSettle(dealer,'heaven',first),1060);}if(dealer!==0)mjTimer=setTimeout(()=>mjDiscard(dealer,mjAIChoice(dealer).id),650);}
   function mjStart(){clearTimeout(mjTimer);clearTimeout(mjRitualTimer);mjSelected=null;mjClickTile=null;mjClickAt=0;let session=mjSessions[mjMode];if(!session){session={names:[profile.playerName,...shuffle(allRoles()).slice(0,3)],dealer:null,opened:false,diceRounds:0};mjSessions[mjMode]=session;}if(session.dealer===null)return mjRollForDealer(session);mjDealRound(session,session.dealer);}
   function mjVisual(kind,id,tile){
     const table=document.querySelector('#mjScreen .mj-table');if(!table)return;
@@ -5218,7 +5304,7 @@
   }
   function mjDraw(id,gangDraw=false){
     if(!mj.wall.length)return mjDrawEnd();
-    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;if(id===0){mjClickTile=null;mjClickAt=0;}mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;AudioSys.fx('mjDraw');mjVisual(gangDraw?'gangDraw':'draw',id,tile);renderMJ();
+    const tile=mj.wall.shift(),wasFlyingGhost=mj.flyGhost?.[id]===true;if(id===0){mjClickTile=null;mjClickAt=0;}mj.turn=id;mj.phase='play';mj.pending=null;mj.p[id].h=mjSort([...mj.p[id].h,tile]);mj.lastDraw=tile;mj.drawnIds??=Array(4).fill(null);mj.drawnIds[id]=tile.id;mjRefreshState(id);mj.flyGhostOnDraw=wasFlyingGhost?id:null;mj.message=id===0?`${gangDraw?'补张':'摸到'} ${tile.label}`:`${mj.names[id]} ${gangDraw?'补张':'摸牌'}`;AudioSys.fx('mjDraw');mjVisual(gangDraw?'gangDraw':'draw',id,tile);renderMJ();
     if(id!==0)mjTimer=setTimeout(()=>mjAIDecide(id),650);
   }
   function mjAfterNoClaim(discarder){if(!mj||mj.phase==='result')return;mj.pending=null;renderMJ();mjTimer=setTimeout(()=>mjDraw(mjNext(discarder)),420);}
@@ -5243,7 +5329,7 @@
     if(!mj||mj.phase==='result')return;
     const discarder=mj.pending?.discarder,tile=opt.tile;
     if(opt.type==='hu')return mjSettle(opt.id,'discard',tile,discarder);
-    const used=new Set(opt.used.map(c=>c.id));mj.p[opt.id].h=mj.p[opt.id].h.filter(c=>!used.has(c.id));
+    const used=new Set(opt.used.map(c=>c.id));mj.p[opt.id].h=mj.p[opt.id].h.filter(c=>!used.has(c.id));if(mj.drawnIds)mj.drawnIds[opt.id]=null;
     const riverIndex=[...mj.river].map(t=>t.id).lastIndexOf(tile.id);if(riverIndex>=0)mj.river.splice(riverIndex,1);
     const type=opt.type==='gang'?'gang':opt.type,meld={type,tiles:[...opt.used,tile],from:discarder};mj.melds[opt.id].push(meld);mj.pending=null;mj.turn=opt.id;mj.phase='play';mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[opt.id]=mjIsFlyingGhostFor(opt.id);mj.message=`${mj.names[opt.id]} ${mjMeldLabel(meld)} ${tile.label}`;AudioSys.fx(opt.type==='gang'?'mjGang':'mjClaim');mjVisual(opt.type==='gang'?'gang':'claim',opt.id,tile);renderMJ();
     if(opt.type==='gang'){mj.gangCounts[opt.id]++;return mjTimer=setTimeout(()=>mjDraw(opt.id,true),480);}if(opt.id!==0)mjTimer=setTimeout(()=>mjAIDecide(opt.id),520);
@@ -5262,7 +5348,7 @@
     }else{
       const used=new Set(option.used.map(c=>c.id));mj.p[id].h=hand.filter(c=>!used.has(c.id));meld={type:'darkGang',tiles:option.used,from:id};mj.melds[id].push(meld);
     }
-    mj.pending=null;mj.phase='play';mj.turn=id;mj.flyGhostOnDraw=null;mj.gangCounts[id]++;mj.message=`${mj.names[id]} ${mjMeldLabel(meld)} ${option.tile.label}`;AudioSys.fx('mjGang');mjVisual('gang',id,option.tile);renderMJ();mjTimer=setTimeout(()=>mjDraw(id,true),480);
+    mj.pending=null;mj.phase='play';mj.turn=id;mj.flyGhostOnDraw=null;if(mj.drawnIds)mj.drawnIds[id]=null;mj.gangCounts[id]++;mj.message=`${mj.names[id]} ${mjMeldLabel(meld)} ${option.tile.label}`;AudioSys.fx('mjGang');mjVisual('gang',id,option.tile);renderMJ();mjTimer=setTimeout(()=>mjDraw(id,true),480);
   }
   function mjOfferSelfGang(id){
     const opts=mjSelfGangOptions(id);if(!opts.length)return;
@@ -5281,8 +5367,8 @@
   }
   function mjDiscard(id,tileId){
     if(!mj||mj.phase!=='play'||mj.turn!==id)return;const h=mj.p[id].h,tile=h.find(t=>t.id===tileId);if(!tile)return;
-    mj.p[id].h=h.filter(t=>t.id!==tileId);mj.river.push({...tile,by:id});mj.lastDiscard={...tile,by:id};mjSelected=null;mjClickTile=null;mjClickAt=0;mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[id]=mjIsFlyingGhostFor(id);mj.message=`${mj.names[id]} 打出 ${tile.label}`;
-    mjVisual('discard',id,tile);if(mj.mode==='zhuanzhuan'&&tile.suit==='中')playModeCinema('zhuanzhuan','redzhong','红 中');else AudioSys.fx('mj');
+    mj.p[id].h=h.filter(t=>t.id!==tileId);if(mj.drawnIds)mj.drawnIds[id]=null;mj.river.push({...tile,by:id});mj.lastDiscard={...tile,by:id};mjSelected=null;mjClickTile=null;mjClickAt=0;mj.canHu=false;mj.flyGhostOnDraw=null;mj.flyGhost[id]=mjIsFlyingGhostFor(id);mj.message=`${mj.names[id]} 打出 ${tile.label}`;
+    mjVisual('discard',id,tile);if(mj.mode==='zhuanzhuan'&&tile.suit==='中')playFriendlyModeCinema('zhuanzhuan','redzhong','红 中',id===0);else AudioSys.fx('mj');
     if(id!==0)AudioSys.speak(`${mj.names[id]}，${tile.label}`);
     const options=mjClaimOptions(id,tile);renderMJ();modeEventReact('mj',mj.names,mj.mode,'play');mjStartClaim(id,tile,options);
   }
@@ -5292,7 +5378,7 @@
     if(kind==='heaven'){factor=4;effectTitle='天 胡';event='heaven';const amount=stake*factor;delta=winner===0?amount*3:-amount;detail='天胡 · 庄家起手十四张成胡 · ×4';}
     else if(mj.mode==='changsha'){const bird=mj.wall.shift()||null,birdHit=bird&&((Math.max(1,bird.n)-1)%4)==((winner-mj.dealer+4)%4),pureSuitSelf=kind==='self'&&(()=>{const tiles=mjAllTiles(winner),suit=tiles[0]?.suit;return tiles.length>=14&&['万','筒','条'].includes(suit)&&tiles.every(t=>t.suit===suit);})();factor=birdHit?2:1;effectTitle=pureSuitSelf?'清 一 色 自 摸':birdHit?'扎 鸟 命 中':(kind==='self'?'自 摸':kind==='robGang'?'抢 杠 胡':'胡 牌');event=pureSuitSelf?'pure':birdHit?'bird':'win';const amount=stake*factor;if(kind==='self')delta=winner===0?amount*3:-amount;else delta=winner===0?amount*3:(discarder===0?-amount*3:0);detail=`${pureSuitSelf?'清一色自摸 · ':''}${kind==='self'?'自摸':kind==='robGang'?'抢杠胡':'点炮'} · 二五八将<br>扎鸟 ${bird?bird.label:'无牌'}${birdHit?'，命中 ×2':'，未命中'}`;}
     else {const code=mj.wall.shift()||tile,codeScore=code.suit==='中'||code.n===1||code.n===9?10:code.n+1,killGhost=!mj.p[winner].h.some(t=>t.suit==='中'),flyGhostWin=kind==='self'&&mj.flyGhostOnDraw===winner;factor=killGhost?2:1;effectTitle=killGhost?'杀 鬼':flyGhostWin?'飞 鬼 自 摸':'翻 码';event=killGhost?'kill':'win';const amount=stake*codeScore*factor;delta=winner===0?amount*3:-amount;const intercepted=(mj.flyGhost||[]).map((v,id)=>v&&id!==winner?mj.names[id]:null).filter(Boolean);detail=`自摸 · 翻码 ${code.label} = ${codeScore}分${killGhost?' · 杀鬼 ×2':''}${flyGhostWin?' · 飞鬼':''}${intercepted.length?`<br>飞鬼被截胡：${intercepted.join('、')}`:''}`;}
-    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(kind==='robGang'?'robgang':event==='pure'?'pure':event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':flyGhostWin?'fly':'flip'));playModeCinema(mj.mode,cinemaEvent,effectTitle);modeEventReact('mj',mj.names,mj.mode,event);
+    mjSessions[mj.mode].dealer=winner;const cinemaEvent=kind==='heaven'?'heaven':(mj.mode==='changsha'?(kind==='robGang'?'robgang':event==='pure'?'pure':event==='bird'?'bird':kind==='self'?'self':'discard'):(event==='kill'?'kill':flyGhostWin?'fly':'flip'));playFriendlyModeCinema(mj.mode,cinemaEvent,effectTitle,winner===0);modeEventReact('mj',mj.names,mj.mode,event);
     profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(winner===0)profile.wins++;profile.mjHistory[mj.mode].push({at:Date.now(),win:winner===0,base:stake,multiplier:factor,delta,detail:detail.replace(/<br>/g,' ')});profile.mjHistory[mj.mode]=profile.mjHistory[mj.mode].slice(-30);const loan=serviceLoanAfterMatch();saveProfile();$('mjResultTitle').textContent=kind==='heaven'?'天胡':(winner===0?'本局获胜':`${mj.names[winner]} 胡牌`);$('mjResultText').innerHTML=`${detail}<br>${mj.names[winner]} 下局坐庄<br>底注 ${stake.toLocaleString()}<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('mjRevealHands').innerHTML=mjRevealHTML();$('mjResult').classList.remove('hidden');renderMJ();AudioSys.fx(winner===0?'win':'bomb');}
   function renderMJ(){
     if(!mj)return;
@@ -5300,7 +5386,7 @@
     for(let i=0;i<4;i++){$(`mjName${i}`).textContent=mj.names[i];$(`mjAvatar${i}`).src=i===0?profile.playerAvatar:AVATAR_LIBRARY[mj.names[i]];$(`mjSeat${i}`).classList.toggle('active',(mj.phase==='play'&&mj.turn===i)||(mj.phase==='claim'&&mj.pending?.human?.some(x=>x.id===i)));$(`mjSeat${i}`).classList.toggle('dealer',mj.dealer===i);$(`mjZoneLabel${i}`).textContent=i===0?'我的牌河':`${mj.names[i]}的牌河`;const river=mj.river.filter(t=>t.by===i).slice(-21);$(`mjRiver${i}`).innerHTML=river.map(t=>`<span class="mj-tile ${t.suit==='中'?'red':''}" title="${mj.names[i]} 打出">${mjTileHTML(t,true)}</span>`).join('');const melds=(mj.melds?.[i]||[]),meldEl=$(`mjMeld${i}`);meldEl.dataset.owner=i===0?'我的':mj.names[i];meldEl.innerHTML=melds.map(m=>`<div class="mj-zone-meld" title="${mj.names[i]} ${mjMeldLabel(m)}">${m.tiles.map(t=>`<span class="mj-tile ${t.suit==='中'?'red':''}">${mjTileHTML(t)}</span>`).join('')}</div>`).join('');}
     const wallSegments=Math.max(4,Math.min(17,Math.ceil(mj.wall.length/8))),wallHTML=Array.from({length:wallSegments},()=>'<i class="mj-wall-stack"></i>').join('');['mjWallTop','mjWallBottom','mjWallLeft','mjWallRight'].forEach(id=>$(id).innerHTML=wallHTML);
     const flag=$('mjStateFlag'),flyingNow=mj.flyGhost?.[0],flyingWin=mj.flyGhostOnDraw===0&&mj.canHu;flag.textContent=flyingWin?'飞鬼自摸 · 任意摸牌已成胡':flyingNow?'飞鬼听牌 · 任意摸牌可胡':'';flag.classList.toggle('hidden',!flyingNow&&!flyingWin);
-    const hand=$('mjHand');hand.innerHTML=mj.p[0].h.map(t=>`<button class="mj-tile ${t.suit==='中'?'red':''} ${mjSelected===t.id?'selected':''}" data-mj-id="${t.id}" title="单击选中，再次快速点击打出">${mjTileHTML(t)}</button>`).join('');hand.querySelectorAll('[data-mj-id]').forEach(b=>{b.onclick=()=>{if(mj.phase!=='play'||mj.turn!==0)return;const id=b.dataset.mjId,now=Date.now(),isDouble=mjClickTile===id&&now-mjClickAt<=560;mjSelected=id;if(isDouble){mjClickTile=null;mjClickAt=0;return mjDiscard(0,id);}mjClickTile=id;mjClickAt=now;renderMJ();};b.ondblclick=e=>e.preventDefault();});
+    const hand=$('mjHand'),drawnId=mj.drawnIds?.[0],drawnTile=drawnId?mj.p[0].h.find(t=>t.id===drawnId):null,ordered=[...mj.p[0].h.filter(t=>t.id!==drawnId),...(drawnTile?[drawnTile]:[])];hand.innerHTML=ordered.map(t=>`<button class="mj-tile ${t.suit==='中'?'red':''} ${t.id===drawnId?'drawn':''} ${mjSelected===t.id?'selected':''}" data-mj-id="${t.id}" title="${t.id===drawnId?`本次摸到：${t.label}`:'单击选中，再次快速点击打出'}">${mjTileHTML(t)}</button>`).join('');hand.querySelectorAll('[data-mj-id]').forEach(b=>{b.onclick=()=>{if(mj.phase!=='play'||mj.turn!==0)return;const id=b.dataset.mjId,now=Date.now(),isDouble=mjClickTile===id&&now-mjClickAt<=560;mjSelected=id;if(isDouble){mjClickTile=null;mjClickAt=0;return mjDiscard(0,id);}mjClickTile=id;mjClickAt=now;renderMJ();};b.ondblclick=e=>e.preventDefault();});if(drawnId)requestAnimationFrame(()=>{const zone=hand.parentElement;if(zone&&zone.scrollWidth>zone.clientWidth+2)zone.scrollTo({left:zone.scrollWidth,behavior:'smooth'});});
     const mine=mj.phase==='play'&&mj.turn===0,gangs=mine?mjSelfGangOptions(0):[];$('mjHuBtn').disabled=!mine||!mj.canHu;$('mjDiscardBtn').disabled=!mine||!mjSelected;$('mjHintBtn').disabled=!mine;$('mjGangBtn').disabled=!mine||!gangs.length;$('mjGangBtn').textContent=gangs.length?`碰杠 ${gangs.length}`:'碰杠';
     const panel=$('mjClaimPanel'),pending=mj.pending;if(pending?.human?.length){const human=pending.human;const title=pending.kind==='robGang'?'抢杠胡':pending.kind==='selfGang'?'选择开杠':`${mj.names[pending.discarder]} 打出 ${pending.tile.label}`;$('mjClaimTitle').textContent=title;$('mjClaimSub').textContent=pending.kind==='robGang'?'长沙麻将仅明杠、补杠可抢杠胡':pending.kind==='selfGang'?'补杠会先检查长沙麻将抢杠胡':'选择要声明的牌型，或选择过牌';$('mjClaimActions').innerHTML=`${human.map((x,i)=>`<button class="${x.type==='hu'?'gold':''}" data-mj-claim="${i}">${x.label}</button>`).join('')}<button data-mj-pass="1">过</button>`;$('mjClaimActions').querySelectorAll('[data-mj-claim]').forEach(b=>b.onclick=()=>mjContinuePending(false,Number(b.dataset.mjClaim)));$('mjClaimActions').querySelector('[data-mj-pass]').onclick=()=>mjContinuePending(true);panel.classList.remove('hidden');}else panel.classList.add('hidden');
   }
@@ -5316,8 +5402,29 @@
   function gmLine(board,r,c,color,detail=false){let best=0,openBest=0;for(const [dr,dc] of GM_DIRS){const a=gmRun(board,r,c,dr,dc,color),b=gmRun(board,r,c,-dr,-dc,color),total=1+a+b;let open=0;const r1=r+(a+1)*dr,c1=c+(a+1)*dc,r2=r-(b+1)*dr,c2=c-(b+1)*dc;if(gmInside(r1,c1)&&!board[r1][c1])open++;if(gmInside(r2,c2)&&!board[r2][c2])open++;if(total>best||(total===best&&open>openBest)){best=total;openBest=open;}}return detail?{count:best,open:openBest}:best;}
   function gmWouldWin(board,r,c,color){if(board[r][c])return false;board[r][c]=color;const yes=gmLine(board,r,c,color)>=5;board[r][c]=0;return yes;}
   function gmPointValue(board,r,c,color){if(board[r][c])return -Infinity;board[r][c]=color;let score=0;for(const [dr,dc] of GM_DIRS){const a=gmRun(board,r,c,dr,dc,color),b=gmRun(board,r,c,-dr,-dc,color),n=1+a+b;let open=0;const r1=r+(a+1)*dr,c1=c+(a+1)*dc,r2=r-(b+1)*dr,c2=c-(b+1)*dc;if(gmInside(r1,c1)&&!board[r1][c1])open++;if(gmInside(r2,c2)&&!board[r2][c2])open++;if(n>=5)score+=2000000;else if(n===4)score+=open===2?220000:36000;else if(n===3)score+=open===2?11000:2100;else if(n===2)score+=open===2?460:95;else score+=open?16:3;}board[r][c]=0;const center=7-Math.max(Math.abs(r-7),Math.abs(c-7));return score+center*3;}
+  function gmThreatValue(board,r,c,color){
+    if(board[r][c])return -Infinity;board[r][c]=color;let score=0,fours=0,threes=0;
+    for(const [dr,dc] of GM_DIRS)for(let start=-4;start<=0;start++){
+      const cells=[];let valid=true;for(let k=0;k<5;k++){const rr=r+(start+k)*dr,cc=c+(start+k)*dc;if(!gmInside(rr,cc)){valid=false;break;}cells.push(board[rr][cc]);}
+      if(!valid||cells.some(v=>v&&v!==color))continue;const own=cells.filter(v=>v===color).length,empty=5-own;
+      if(own===4&&empty===1){fours++;score+=90000;}else if(own===3&&empty===2){threes++;score+=7500;}else if(own===2&&empty===3)score+=420;
+    }
+    board[r][c]=0;if(fours>=2)score+=520000;if(fours&&threes)score+=150000;if(threes>=2)score+=52000;return score;
+  }
+  function gmNearbyCells(board){const out=[];for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]){const near=GM_DIRS.some(([dr,dc])=>[1,2].some(k=>[[r+dr*k,c+dc*k],[r-dr*k,c-dc*k]].some(([x,y])=>gmInside(x,y)&&board[x][y])));if(near||!gm.moves)out.push({r,c});}return out;}
   const GM_DIFFICULTY={easy:'简单',normal:'普通',hard:'困难'};
-  function gmAIPick(){const board=gm.board,options=[],difficulty=profile.gmDifficulty;for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,2))return {r,c,reason:'成五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]&&gmWouldWin(board,r,c,1)&&(difficulty!=='easy'||Math.random()<.55))return {r,c,reason:'挡五'};for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++)if(!board[r][c]){const own=gmPointValue(board,r,c,2),block=gmPointValue(board,r,c,1),near=GM_DIRS.some(([dr,dc])=>[1,2].some(k=>[[r+dr*k,c+dc*k],[r-dr*k,c-dc*k]].some(([x,y])=>gmInside(x,y)&&board[x][y])));if(near||!gm.moves)options.push({r,c,score:own*1.04+block*1.12+Math.random()*.6});}options.sort((a,b)=>b.score-a.score);if(!options.length)return {r:7,c:7};const pool=difficulty==='hard'?1:difficulty==='normal'?Math.min(4,options.length):Math.min(12,options.length);return options[Math.floor(Math.random()*pool)];}
+  function gmAIPick(){
+    const board=gm.board,difficulty=profile.gmDifficulty,cells=gmNearbyCells(board);for(const p of cells)if(gmWouldWin(board,p.r,p.c,2))return {...p,reason:'成五'};for(const p of cells)if(gmWouldWin(board,p.r,p.c,1)&&(difficulty!=='easy'||Math.random()<.55))return {...p,reason:'挡五'};
+    let options=cells.map(p=>{const own=gmPointValue(board,p.r,p.c,2),block=gmPointValue(board,p.r,p.c,1),threat=gmThreatValue(board,p.r,p.c,2),stopThreat=gmThreatValue(board,p.r,p.c,1);return {...p,score:own*1.04+block*1.16+threat*1.12+stopThreat*.92};}).sort((a,b)=>b.score-a.score);
+    if(!options.length)return {r:7,c:7,reason:'占中'};
+    // 普通与困难会预看玩家下一步；困难搜索更多候选，优先消除双三、双四和冲四反击。
+    if(difficulty!=='easy'){
+      const limit=difficulty==='hard'?Math.min(10,options.length):Math.min(5,options.length),look=options.slice(0,limit);
+      for(const option of look){board[option.r][option.c]=2;const replies=gmNearbyCells(board);let replyBest=0;for(const q of replies){const reply=gmPointValue(board,q.r,q.c,1)*1.08+gmThreatValue(board,q.r,q.c,1)*1.16+gmPointValue(board,q.r,q.c,2)*.38;if(reply>replyBest)replyBest=reply;}board[option.r][option.c]=0;option.score-=replyBest*(difficulty==='hard'?.94:.58);}
+      options=[...look,...options.slice(limit)].sort((a,b)=>b.score-a.score);
+    }
+    const pool=difficulty==='hard'?1:difficulty==='normal'?Math.min(2,options.length):Math.min(10,options.length),pick=options[Math.floor(Math.random()*pool)];pick.reason=pick.score>160000?'处理强制威胁':'两步推演';return pick;
+  }
   function gmStart(){
     clearTimeout(gmTimer);gmSelectedMove=null;
     document.querySelectorAll('#gmScreen .gm-vfx').forEach(node=>node.remove());
@@ -5341,8 +5448,8 @@
     stone.appendChild(fx);
     setTimeout(()=>fx.remove(),effect==='gm-effect-ink'?1680:effect==='gm-effect-vermilion'?1540:1480);
   }
-  function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';playModeCinema('gomoku','finish','五 子 连 珠');const userWin=winner===0,delta=userWin?gm.roundBase:-gm.roundBase,color=gm.colors?.[winner]||'black',colorText=color==='black'?'执黑':'执白';profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${colorText}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${colorText}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
-  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.history.push({r,c,owner:id});gm.last={r,c,owner:id};if(id===0&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${note?` · ${note}`:''}`;AudioSys.fx('stone');gm.turn=id===0?1:0;renderGM();gmVisual('land',r,c,id);if(line.count===4)playModeCinema('gomoku','threat','四 连 警 戒');if(line.count>=5)return gmSettle(id);if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
+  function gmSettle(winner){if(!gm||gm.phase==='result')return;clearTimeout(gmTimer);gm.phase='result';const userWin=winner===0;playFriendlyModeCinema('gomoku','finish','五 子 连 珠',userWin);const delta=userWin?gm.roundBase:-gm.roundBase,color=gm.colors?.[winner]||'black',colorText=color==='black'?'执黑':'执白';profile.beans=Math.max(0,profile.beans+delta);profile.matches++;if(userWin)profile.wins++;profile.gomokuHistory.push({at:Date.now(),win:userWin,base:gm.roundBase,multiplier:1,delta,detail:`${gm.names[winner]} ${colorText}五子连珠`,firstCenter:gm.firstCenter});profile.gomokuHistory=profile.gomokuHistory.slice(-30);const loan=serviceLoanAfterMatch();saveProfile();modeEventReact('gm',gm.names,'gomoku','win');$('gmResultTitle').textContent=userWin?'五子连珠 · 获胜':`${gm.names[winner]} 五子连珠`;$('gmResultText').innerHTML=`${gm.names[winner]} ${colorText}连成五子<br>底注 ${gm.roundBase.toLocaleString()} 豆<br><strong>${delta>=0?'+':''}${delta.toLocaleString()} 豆</strong>${loan?`<br>${loan}`:''}`;$('gmResult').classList.remove('hidden');renderGM();AudioSys.fx(userWin?'win':'bomb');}
+  function gmPlace(id,r,c,note=''){if(!gm||gm.phase!=='play'||gm.turn!==id||!gmInside(r,c)||gm.board[r][c])return;gmSelectedMove=null;gm.board[r][c]=id+1;gm.moves++;gm.history.push({r,c,owner:id});gm.last={r,c,owner:id};if(id===0&&Math.abs(r-7)<=1&&Math.abs(c-7)<=1)gm.firstCenter=true;const line=gmLine(gm.board,r,c,id+1,true);gm.message=`${gm.names[id]} 落在 ${String.fromCharCode(65+c)}${r+1}${note?` · ${note}`:''}`;AudioSys.fx('stone');gm.turn=id===0?1:0;renderGM();gmVisual('land',r,c,id);if(line.count===4)playFriendlyModeCinema('gomoku','threat','四 连 警 戒',id===0);if(line.count>=5)return gmSettle(id);if(gm.turn===1)gmTimer=setTimeout(()=>{const move=gmAIPick();gmPlace(1,move.r,move.c,move.reason||'');},Math.max(380,profile.aiDelay));}
   function gmUndo(){if(!gm||gm.phase!=='play'||!gm.history.some(move=>move.owner===0))return;clearTimeout(gmTimer);gmSelectedMove=null;const undoCount=gm.turn===1?1:Math.min(2,gm.history.length),removed=gm.history.splice(-undoCount,undoCount);removed.forEach(move=>{gm.board[move.r][move.c]=0;});gm.moves=gm.history.length;const lastMove=gm.history.at(-1);gm.last=lastMove?{r:lastMove.r,c:lastMove.c,owner:lastMove.owner}:null;gm.firstCenter=Boolean(gm.history.find(move=>move.owner===0&&Math.abs(move.r-7)<=1&&Math.abs(move.c-7)<=1));gm.turn=0;gm.message=undoCount===2?'已悔棋，双方最近一手已撤回':'已撤回刚才落子';renderGM();}
   function gmEnsureGrid(){const grid=$('gmGrid');if(gmCellMap.size===GM_SIZE*GM_SIZE&&grid.querySelectorAll('.gm-cell').length===GM_SIZE*GM_SIZE)return;const point=(r,c)=>`left:${(c*100/(GM_SIZE-1)).toFixed(6)}%;top:${(r*100/(GM_SIZE-1)).toFixed(6)}%`,stars=[[3,3],[3,11],[7,7],[11,3],[11,11]].map(([r,c])=>`<i class="gm-star" style="${point(r,c)}"></i>`).join('');gmCellMap.clear();grid.innerHTML=stars+Array.from({length:GM_SIZE},(_,r)=>Array.from({length:GM_SIZE},(_,c)=>`<button class="gm-cell" style="${point(r,c)}" data-gm-r="${r}" data-gm-c="${c}"></button>`).join('')).join('');grid.querySelectorAll('[data-gm-r]').forEach(cell=>{const r=Number(cell.dataset.gmR),c=Number(cell.dataset.gmC);gmCellMap.set(`${r},${c}`,cell);cell.onclick=()=>{if(!gm||gm.phase!=='play'||gm.turn!==0||gm.board[r][c])return;const same=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;if(same)return gmPlace(0,r,c);gmSelectedMove={r,c};gm.message=`已选 ${String.fromCharCode(65+c)}${r+1}，再次点击确认`;renderGM();};});}
   function renderGM(){
@@ -5357,7 +5464,7 @@
     gmEnsureGrid();
     for(let r=0;r<GM_SIZE;r++)for(let c=0;c<GM_SIZE;c++){
       const v=gm.board[r][c],cell=gmCellMap.get(`${r},${c}`),color=v?(gm.colors?.[v-1]||'black'):null,last=gm.last?.r===r&&gm.last?.c===c,selected=gmSelectedMove?.r===r&&gmSelectedMove?.c===c;
-      cell.className=`gm-cell ${last?`last last-${color}`:''} ${selected?'selected':''}`;cell.disabled=gm.phase!=='play'||gm.turn!==0||Boolean(v);cell.title=last?`${gm.names[v-1]} 上一手落子`:'';
+      cell.className=`gm-cell ${last?`last last-${color}`:''} ${selected?'selected':''}`;cell.disabled=gm.phase!=='play'||gm.turn!==0||Boolean(v);const coord=`${String.fromCharCode(65+c)}${r+1}`;cell.title=last?`${gm.names[v-1]} 上一手落子`:`落子 ${coord}`;cell.setAttribute('aria-label',v?`${coord}，${gm.names[v-1]} 的${color==='black'?'黑':'白'}子`:`${coord}，空位`);
       const stone=cell.querySelector('.gm-stone');if(v){if(!stone||!stone.classList.contains(color))cell.innerHTML=`<i class="gm-stone ${color}"></i>`;}else if(stone)cell.innerHTML='';
     }
   }
@@ -5394,9 +5501,9 @@
     #shopDialog .shop-preview.gomoku-board-preview::after{inset:5px;border:1px solid rgba(255,236,174,.48);border-radius:8px;background:linear-gradient(135deg,rgba(255,247,207,.13),transparent 42%,rgba(0,0,0,.14));}
     #shopDialog .shop-avatar-preview{display:grid;place-items:center;width:74px;height:74px;padding:5px;border-radius:50%;box-shadow:0 0 0 3px rgba(244,210,128,.8),0 5px 16px rgba(0,0,0,.48)}
     #shopDialog .shop-avatar-preview img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #061a2e}
-    #mjScreen .mj-table{--mj-table-art:url('assets/mahjong_table_xiang_v2.png');background:#081b20 url('assets/mahjong_table_xiang_v2.png') center/cover no-repeat}
-    #mjScreen.mj-theme-redzhong .mj-table{background:#250b10 url('assets/mahjong_table_redcourtyard_v2.png') center/cover no-repeat}
-    #mjScreen.mj-theme-ebony .mj-table{background:#111519 url('assets/mahjong_table_ebony_v2.png') center/cover no-repeat}
+    #mjScreen .mj-table{--mj-table-art:url('assets/optimized_v3/mahjong_table_xiang_v2.webp');background:#081b20 url('assets/optimized_v3/mahjong_table_xiang_v2.webp') center/cover no-repeat}
+    #mjScreen.mj-theme-redzhong .mj-table{background:#250b10 url('assets/optimized_v3/mahjong_table_redcourtyard_v2.webp') center/cover no-repeat}
+    #mjScreen.mj-theme-ebony .mj-table{background:#111519 url('assets/optimized_v3/mahjong_table_ebony_v2.webp') center/cover no-repeat}
     #mjScreen .mj-table::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,4,6,.05),rgba(0,4,6,.18));z-index:0}
     #mjScreen .mj-board{background:transparent!important;border:0!important;box-shadow:none!important}
     #mjScreen .mj-zone{background:linear-gradient(145deg,rgba(8,36,34,.76),rgba(30,69,62,.54));border-color:rgba(225,194,111,.32)}
@@ -5439,9 +5546,9 @@
     #mjScreen #mjMeld1 .mj-tile,#mjScreen #mjMeld3 .mj-tile{width:31px;height:43px;min-width:31px}
     #mjScreen #mjMeld2 .mj-tile{width:35px;height:49px;min-width:35px}
     #gmScreen .gm-table{background:radial-gradient(ellipse at 50% 46%,rgba(35,57,50,.52),transparent 48%),linear-gradient(145deg,#061311,#020706 66%,#0d1916)}
-    #gmScreen .gm-center{inset:auto!important;left:50%!important;top:50%!important;width:min(54vw,68vh,720px)!important;height:auto!important;aspect-ratio:1/1;padding:0;background:#06110f url('assets/gomoku_board_square_obsidian.png') center/cover no-repeat!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;border:1px solid rgba(221,185,94,.72);border-radius:14px;box-shadow:0 0 0 4px rgba(5,10,9,.92),0 18px 36px rgba(0,0,0,.58);transform:translate(-50%,-50%)!important;overflow:hidden}
+    #gmScreen .gm-center{inset:auto!important;left:50%!important;top:50%!important;width:min(54vw,68vh,720px)!important;height:auto!important;aspect-ratio:1/1;padding:0;background:#06110f url('assets/optimized_v3/gomoku_board_square_obsidian.webp') center/cover no-repeat!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;border:1px solid rgba(221,185,94,.72);border-radius:14px;box-shadow:0 0 0 4px rgba(5,10,9,.92),0 18px 36px rgba(0,0,0,.58);transform:translate(-50%,-50%)!important;overflow:hidden}
     #gmScreen .gm-board-art{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;z-index:0!important;pointer-events:none!important}
-    #gmScreen .gm-center::after{content:'';position:absolute;inset:3%;z-index:1;pointer-events:none;opacity:.32;mix-blend-mode:screen;background:radial-gradient(circle at 18% 22%,rgba(255,221,132,.48) 0 1px,transparent 2px),radial-gradient(circle at 76% 16%,rgba(192,239,208,.32) 0 1px,transparent 2px),radial-gradient(circle at 85% 72%,rgba(255,198,102,.28) 0 1.2px,transparent 2.6px),radial-gradient(ellipse at 50% 49%,transparent 35%,rgba(214,179,87,.1) 60%,transparent 73%),url('assets/gomoku_living_jade_overlay.png') center/cover no-repeat;filter:blur(.15px);transform:scale(1)}
+    #gmScreen .gm-center::after{content:'';position:absolute;inset:3%;z-index:1;pointer-events:none;opacity:.32;mix-blend-mode:screen;background:radial-gradient(circle at 18% 22%,rgba(255,221,132,.48) 0 1px,transparent 2px),radial-gradient(circle at 76% 16%,rgba(192,239,208,.32) 0 1px,transparent 2px),radial-gradient(circle at 85% 72%,rgba(255,198,102,.28) 0 1.2px,transparent 2.6px),radial-gradient(ellipse at 50% 49%,transparent 35%,rgba(214,179,87,.1) 60%,transparent 73%),url('assets/optimized_v3/gomoku_living_jade_overlay.webp') center/cover no-repeat;filter:blur(.15px);transform:scale(1)}
     @media (prefers-reduced-motion:no-preference){#gmScreen .gm-center::after{animation:gmBoardLiving 9s ease-in-out infinite alternate}#gmScreen .gm-center.gm-recent-land::after{animation:gmBoardLand .9s ease-out both}#gmScreen .gm-center.gm-recent-threat::after{animation:gmBoardThreat 1.1s ease-out both}#gmScreen .gm-center.gm-recent-finish::after{animation:gmBoardFinish 1.65s cubic-bezier(.16,.9,.2,1) both}}
     @keyframes gmBoardLiving{0%{opacity:.2;transform:scale(.985) rotate(-.12deg);filter:brightness(.88)}100%{opacity:.62;transform:scale(1.025) rotate(.12deg);filter:brightness(1.16)}}
     @keyframes gmBoardLand{0%{opacity:.18;transform:scale(.98)}35%{opacity:.92;transform:scale(1.02)}100%{opacity:.4;transform:scale(1)}}
@@ -5449,10 +5556,10 @@
     @keyframes gmBoardFinish{0%{opacity:.25;transform:scale(.98)}38%{opacity:1;transform:scale(1.05);filter:brightness(1.75)}100%{opacity:.4;transform:scale(1);filter:brightness(1)}}
     #gmScreen .gm-status{z-index:3!important}
     #gmScreen #gmGrid .gm-star{display:none!important}
-    #gmScreen.mode-theme-gm-jade .gm-center{background-image:url('assets/gomoku_board_jade_standard_v2.png')}
-    #gmScreen.mode-theme-gm-ink .gm-center{background-image:url('assets/gomoku_board_inkstone_standard_v2.png')}
-    #gmScreen.mode-theme-gm-vermilion .gm-center{background-image:url('assets/gomoku_board_obsidian_crimson_v2.png')}
-    #gmScreen.mode-theme-gm-rosewood .gm-center{background-image:url('assets/gomoku_board_rosewood_standard_v2.png')}
+    #gmScreen.mode-theme-gm-jade .gm-center{background-image:url('assets/optimized_v3/gomoku_board_jade_standard_v2.webp')}
+    #gmScreen.mode-theme-gm-ink .gm-center{background-image:url('assets/optimized_v3/gomoku_board_inkstone_standard_v2.webp')}
+    #gmScreen.mode-theme-gm-vermilion .gm-center{background-image:url('assets/optimized_v3/gomoku_board_obsidian_crimson_v2.webp')}
+    #gmScreen.mode-theme-gm-rosewood .gm-center{background-image:url('assets/optimized_v3/gomoku_board_rosewood_standard_v2.webp')}
     #gmScreen .gm-board{position:relative;z-index:2;width:100%;height:100%;background:transparent;border:0;border-radius:0;box-shadow:none}
     #gmScreen .gm-board::before{display:none}
     #gmScreen .gm-grid{position:absolute;inset:0;display:block;isolation:isolate;background:none;box-shadow:none}
@@ -5509,9 +5616,9 @@
     #gmScreen .gm-cell.selected::after{content:'';position:absolute;inset:17%;border:2px solid #d7a83a;border-radius:50%;box-shadow:0 0 16px rgba(255,211,93,.95);animation:gmConfirm 1s ease-in-out infinite}
     @keyframes gmConfirm{50%{transform:scale(.82);opacity:.48}}
     /* 麻将直接落在单张桌面图上：取消牌河/副露预览框，只保留真实牌位。 */
-    #mjScreen .mj-table{background-image:linear-gradient(90deg,rgba(3,11,9,.4),rgba(3,11,9,.02) 24%,rgba(3,11,9,.02) 76%,rgba(3,11,9,.4)),url('assets/mahjong_table_xiang_v2.png')!important;background-position:center!important;background-size:cover!important;border:0!important;border-radius:0!important;box-shadow:inset 0 0 52px rgba(0,0,0,.45)!important}
-    #mjScreen.mj-theme-redzhong .mj-table{background-image:linear-gradient(90deg,rgba(18,4,6,.38),rgba(18,4,6,.02) 25%,rgba(18,4,6,.02) 75%,rgba(18,4,6,.38)),url('assets/mahjong_table_redcourtyard_v2.png')!important}
-    #mjScreen.mj-theme-ebony .mj-table{background-image:linear-gradient(90deg,rgba(3,6,9,.44),rgba(3,6,9,.03) 25%,rgba(3,6,9,.03) 75%,rgba(3,6,9,.44)),url('assets/mahjong_table_ebony_v2.png')!important}
+    #mjScreen .mj-table{background-image:linear-gradient(90deg,rgba(3,11,9,.4),rgba(3,11,9,.02) 24%,rgba(3,11,9,.02) 76%,rgba(3,11,9,.4)),url('assets/optimized_v3/mahjong_table_xiang_v2.webp')!important;background-position:center!important;background-size:cover!important;border:0!important;border-radius:0!important;box-shadow:inset 0 0 52px rgba(0,0,0,.45)!important}
+    #mjScreen.mj-theme-redzhong .mj-table{background-image:linear-gradient(90deg,rgba(18,4,6,.38),rgba(18,4,6,.02) 25%,rgba(18,4,6,.02) 75%,rgba(18,4,6,.38)),url('assets/optimized_v3/mahjong_table_redcourtyard_v2.webp')!important}
+    #mjScreen.mj-theme-ebony .mj-table{background-image:linear-gradient(90deg,rgba(3,6,9,.44),rgba(3,6,9,.03) 25%,rgba(3,6,9,.03) 75%,rgba(3,6,9,.44)),url('assets/optimized_v3/mahjong_table_ebony_v2.webp')!important}
     #mjScreen .mj-table::before,#mjScreen .mj-board::before,#mjScreen .mj-board::after{display:none!important}
     #mjScreen .mj-board{top:49%;width:min(75%,980px);background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
     #mjScreen .mj-zone{padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;gap:2px}
@@ -5546,11 +5653,11 @@
     #gmScreen .gm-vfx.gm-effect-vermilion.finish{background:radial-gradient(circle,#fff0b1 0 7%,#b62f25 8% 25%,transparent 27%);box-shadow:0 0 44px 15px rgba(223,64,39,.58)}
     @keyframes gmInkVfx{from{transform:translate(-50%,-50%) scale(.25) rotate(-40deg);opacity:1}to{transform:translate(-50%,-50%) scale(4.9) rotate(145deg);opacity:0}}@keyframes gmInkOrbit{from{transform:scale(.25) rotate(0);opacity:1}to{transform:scale(2.7) rotate(-160deg);opacity:0}}@keyframes gmVermilionVfx{from{transform:translate(-50%,-50%) scale(.24) rotate(12deg);opacity:1}to{transform:translate(-50%,-50%) scale(4.8) rotate(132deg);opacity:0}}@keyframes gmSealOrbit{from{transform:scale(.3) rotate(0);opacity:1}to{transform:scale(2.6) rotate(112deg);opacity:0}}@keyframes gmIceOrbit{from{transform:scale(.2) rotate(0);opacity:1}to{transform:scale(2.55) rotate(90deg);opacity:0}}
     /* 非炸弹玩法新增桌面与麻将皮面；炸弹桌面不引用这些选择器。 */
-    #mjScreen.mj-theme-celadon-lantern .mj-table{background-image:linear-gradient(90deg,rgba(4,26,24,.40),rgba(4,26,24,.02) 24%,rgba(4,26,24,.02) 76%,rgba(4,26,24,.40)),url('assets/mahjong_table_celadon_lantern.png')!important}
-    #mjScreen.mj-theme-moonstone .mj-table{background-image:linear-gradient(90deg,rgba(4,10,25,.46),rgba(4,10,25,.02) 24%,rgba(4,10,25,.02) 76%,rgba(4,10,25,.46)),url('assets/mahjong_table_moonstone.png')!important}
-    #ddzScreen.mode-theme-ddz-copper-court .ddz-table{background:linear-gradient(rgba(26,10,5,.18),rgba(4,10,9,.34)),url('assets/poker_table_copper_courtyard.png') center/cover no-repeat!important}
-    #pdkScreen.mode-theme-pdk-silver-river .ddz-table{background:linear-gradient(rgba(3,11,29,.20),rgba(3,11,29,.38)),url('assets/poker_table_silver_river.png') center/cover no-repeat!important}
-    #gmScreen.mode-theme-gm-amber-walnut .gm-center{background-image:url('assets/gomoku_board_amber_walnut.png')!important}
+    #mjScreen.mj-theme-celadon-lantern .mj-table{background-image:linear-gradient(90deg,rgba(4,26,24,.40),rgba(4,26,24,.02) 24%,rgba(4,26,24,.02) 76%,rgba(4,26,24,.40)),url('assets/optimized_v3/mahjong_table_celadon_lantern.webp')!important}
+    #mjScreen.mj-theme-moonstone .mj-table{background-image:linear-gradient(90deg,rgba(4,10,25,.46),rgba(4,10,25,.02) 24%,rgba(4,10,25,.02) 76%,rgba(4,10,25,.46)),url('assets/optimized_v3/mahjong_table_moonstone.webp')!important}
+    #ddzScreen.mode-theme-ddz-copper-court .ddz-table{background:linear-gradient(rgba(26,10,5,.18),rgba(4,10,9,.34)),url('assets/optimized_v3/poker_table_copper_courtyard.webp') center/cover no-repeat!important}
+    #pdkScreen.mode-theme-pdk-silver-river .ddz-table{background:linear-gradient(rgba(3,11,29,.20),rgba(3,11,29,.38)),url('assets/optimized_v3/poker_table_silver_river.webp') center/cover no-repeat!important}
+    #gmScreen.mode-theme-gm-amber-walnut .gm-center{background-image:url('assets/optimized_v3/gomoku_board_amber_walnut.webp')!important}
     .mj-skin-moonstone{--mjf1:#fcfcff;--mjf2:#edf2fb;--mjf3:#c9d5e8;--mjbd:#9caec9;--mjedge:#8daed1;--mjback:#304967;--mjbackhi:#7695b7}
     .mj-skin-amber{--mjf1:#fff9e8;--mjf2:#f8edca;--mjf3:#dec58d;--mjbd:#c79d4c;--mjedge:#d5ae53;--mjback:#6b3519;--mjbackhi:#b87130}
     /* 15×15棋盘：格线与15个交叉点使用同一套 0–100% 坐标，消除落点偏移。 */
@@ -5581,11 +5688,11 @@
     #gmScreen .gm-seal-spark{position:absolute;left:50%;top:50%;width:3px;height:3px;background:#ffdc8d;box-shadow:0 0 7px #ffbd57;animation:gmSealSpark .78s ease-out both}.gm-seal-spark.s1{--sx:15px;--sy:-14px}.gm-seal-spark.s2{--sx:-16px;--sy:11px;animation-delay:.1s}
     @keyframes gmGoldCrown{0%{transform:scale(.35)!important;opacity:1}42%{transform:scale(1.2)!important;opacity:1}100%{transform:scale(2.45)!important;opacity:0}}@keyframes gmGoldCrownRing{from{transform:translate(-50%,-50%) scale(.18);opacity:1}to{transform:translate(-50%,-50%) scale(2.7);opacity:0}}@keyframes gmInkBloom{0%{transform:scale(.2) rotate(-18deg)!important;opacity:0}22%{opacity:1}100%{transform:scale(2.85) rotate(126deg)!important;opacity:0}}@keyframes gmInkHalo{from{transform:translate(-50%,-50%) scale(.22) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.9) rotate(-96deg);opacity:0}}@keyframes gmInkDrop{0%{transform:translate(-50%,-50%) scale(.25);opacity:0}25%{opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.45);opacity:0}}@keyframes gmSealStamp{0%{transform:scale(2.35) rotate(-11deg)!important;opacity:0}28%{opacity:1}100%{transform:scale(1.04) rotate(0)!important;opacity:0}}@keyframes gmSealFrame{from{transform:translate(-50%,-50%) scale(.28) rotate(0);opacity:1}to{transform:translate(-50%,-50%) scale(2.2) rotate(45deg);opacity:0}}@keyframes gmSealSpark{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}30%{opacity:1}100%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(.35);opacity:0}}
     /* 非炸弹新增桌面：各自保留可摆放手牌、牌河和提示的清净中心区域。 */
-    #ddzScreen.mode-theme-ddz-jade-lacquer .ddz-table{background:linear-gradient(rgba(8,31,24,.18),rgba(20,6,5,.42)),url('assets/ddz_table_jade_lacquer_hall.png') center/cover!important}
-    #pdkScreen.mode-theme-pdk-teal-gale .ddz-table{background:linear-gradient(rgba(0,30,38,.12),rgba(3,10,20,.48)),url('assets/pdk_table_teal_gale.png') center/cover!important}
-    #mjScreen.mj-theme-cs-lotus-jade .mj-table{background:linear-gradient(rgba(6,50,42,.16),rgba(2,17,14,.46)),url('assets/changsha_mahjong_table_lotus_jade.png') center/cover!important}
-    #mjScreen.mj-theme-zz-cinnabar-moon .mj-table{background:linear-gradient(rgba(57,10,18,.18),rgba(8,7,17,.48)),url('assets/zhuanzhuan_mahjong_table_cinnabar_moon.png') center/cover!important}
-    #gmScreen.mode-theme-gm-silver-ink{--gm-board-art:url('assets/gomoku_board_silver_ink_standard.png');--gm-stone-art:url('assets/gomoku_stones_jade.png');--gm-accent:#d9ecff;background:radial-gradient(circle at 50% 42%,#27354c 0,#0b1424 63%,#02060d 100%)}
+    #ddzScreen.mode-theme-ddz-jade-lacquer .ddz-table{background:linear-gradient(rgba(8,31,24,.18),rgba(20,6,5,.42)),url('assets/optimized_v3/ddz_table_jade_lacquer_hall.webp') center/cover!important}
+    #pdkScreen.mode-theme-pdk-teal-gale .ddz-table{background:linear-gradient(rgba(0,30,38,.12),rgba(3,10,20,.48)),url('assets/optimized_v3/pdk_table_teal_gale.webp') center/cover!important}
+    #mjScreen.mj-theme-cs-lotus-jade .mj-table{background:linear-gradient(rgba(6,50,42,.16),rgba(2,17,14,.46)),url('assets/optimized_v3/changsha_mahjong_table_lotus_jade.webp') center/cover!important}
+    #mjScreen.mj-theme-zz-cinnabar-moon .mj-table{background:linear-gradient(rgba(57,10,18,.18),rgba(8,7,17,.48)),url('assets/optimized_v3/zhuanzhuan_mahjong_table_cinnabar_moon.webp') center/cover!important}
+    #gmScreen.mode-theme-gm-silver-ink{--gm-board-art:url('assets/optimized_v3/gomoku_board_silver_ink_standard.webp');--gm-stone-art:url('assets/optimized_v3/gomoku_stones_jade.webp');--gm-accent:#d9ecff;background:radial-gradient(circle at 50% 42%,#27354c 0,#0b1424 63%,#02060d 100%)}
     #gmScreen.mode-theme-gm-silver-ink .gm-stone.black{background-image:radial-gradient(circle at 32% 26%,#9dc0e2 0 4%,#263750 21%,#0a101e 72%,#010308 100%)!important;background-size:100% 100%}
     #gmScreen.mode-theme-gm-silver-ink .gm-stone.white{background-image:radial-gradient(circle at 31% 24%,#fff 0 9%,#d4dfef 38%,#60748e 100%)!important;background-size:100% 100%}
 
@@ -5625,6 +5732,8 @@
     /* 扑克桌面主题专属全屏色彩：每张已购桌面都有独立轮廓、光晕和粒子色，不再只有首套主题会变色。 */
     .cinema-fx.cinema-theme-ddz-royal{--fx-accent:#ffe18a;background:radial-gradient(circle at 50% 44%,rgba(255,217,108,.34),rgba(50,24,6,.62) 48%,rgba(5,8,18,.93))!important}.cinema-fx.cinema-theme-ddz-lantern{--fx-accent:#ffc168;background:radial-gradient(circle at 50% 44%,rgba(255,161,53,.35),rgba(82,25,5,.65) 48%,rgba(17,4,2,.94))!important}.cinema-fx.cinema-theme-ddz-river{--fx-accent:#9fece0;background:radial-gradient(circle at 50% 44%,rgba(112,220,211,.3),rgba(5,60,70,.66) 48%,rgba(1,16,28,.94))!important}.cinema-fx.cinema-theme-ddz-copper{--fx-accent:#f0b06e;background:radial-gradient(circle at 50% 44%,rgba(221,132,63,.32),rgba(78,31,7,.67) 48%,rgba(14,6,3,.94))!important}.cinema-fx.cinema-theme-ddz-jade{--fx-accent:#cbeaa9;background:radial-gradient(circle at 50% 44%,rgba(152,226,163,.28),rgba(10,69,54,.65) 48%,rgba(3,18,17,.94))!important}
     .cinema-fx.cinema-theme-pdk-run{--fx-accent:#76f1ff;background:radial-gradient(circle at 50% 44%,rgba(75,215,255,.32),rgba(5,45,83,.66) 48%,rgba(2,11,28,.94))!important}.cinema-fx.cinema-theme-pdk-spring{--fx-accent:#a4f0b8;background:radial-gradient(circle at 50% 44%,rgba(125,224,158,.31),rgba(6,72,55,.67) 48%,rgba(2,20,17,.94))!important}.cinema-fx.cinema-theme-pdk-night{--fx-accent:#9bb9ff;background:radial-gradient(circle at 50% 44%,rgba(86,122,241,.32),rgba(5,24,74,.68) 48%,rgba(2,7,25,.95))!important}.cinema-fx.cinema-theme-pdk-silver{--fx-accent:#c7ebff;background:radial-gradient(circle at 50% 44%,rgba(145,208,255,.3),rgba(20,42,83,.66) 48%,rgba(3,11,30,.95))!important}.cinema-fx.cinema-theme-pdk-teal{--fx-accent:#86f3e4;background:radial-gradient(circle at 50% 44%,rgba(61,222,205,.31),rgba(1,76,84,.66) 48%,rgba(2,17,26,.95))!important}
+    /* 麻将桌面已共享为七套唯一资源；每套仍保有独立的全屏事件取色。 */
+    .cinema-fx.cinema-theme-mj-jade{--fx-accent:#d8e9ae;background:radial-gradient(circle at 50% 44%,rgba(174,224,128,.28),rgba(13,72,59,.68) 48%,rgba(2,19,18,.95))!important}.cinema-fx.cinema-theme-mj-ebony{--fx-accent:#c5d7f6;background:radial-gradient(circle at 50% 44%,rgba(157,180,239,.28),rgba(15,28,62,.7) 48%,rgba(3,7,19,.96))!important}.cinema-fx.cinema-theme-mj-redzhong{--fx-accent:#ffc27d;background:radial-gradient(circle at 50% 44%,rgba(242,107,69,.31),rgba(105,19,24,.71) 48%,rgba(19,3,8,.96))!important}.cinema-fx.cinema-theme-mj-celadon{--fx-accent:#bfe9c5;background:radial-gradient(circle at 50% 44%,rgba(113,210,161,.29),rgba(5,78,68,.7) 48%,rgba(2,19,20,.96))!important}.cinema-fx.cinema-theme-mj-moonstone{--fx-accent:#d7e8ff;background:radial-gradient(circle at 50% 44%,rgba(151,198,255,.29),rgba(25,45,96,.7) 48%,rgba(4,8,23,.96))!important}.cinema-fx.cinema-theme-mj-lotus{--fx-accent:#bfe9c5;background:radial-gradient(circle at 50% 44%,rgba(108,214,167,.3),rgba(4,83,66,.69) 48%,rgba(1,20,17,.96))!important}.cinema-fx.cinema-theme-mj-cinnabar{--fx-accent:#ffc6a6;background:radial-gradient(circle at 50% 44%,rgba(235,102,91,.32),rgba(111,19,33,.7) 48%,rgba(20,3,10,.96))!important}
     .cinema-fx.cinema-theme-ddz-royal::before,.cinema-fx.cinema-theme-ddz-lantern::before,.cinema-fx.cinema-theme-ddz-river::before,.cinema-fx.cinema-theme-ddz-copper::before,.cinema-fx.cinema-theme-ddz-jade::before,.cinema-fx.cinema-theme-pdk-run::before,.cinema-fx.cinema-theme-pdk-spring::before,.cinema-fx.cinema-theme-pdk-night::before,.cinema-fx.cinema-theme-pdk-silver::before,.cinema-fx.cinema-theme-pdk-teal::before{border-color:var(--fx-accent)!important}.cinema-fx.cinema-theme-ddz-royal::after,.cinema-fx.cinema-theme-ddz-lantern::after,.cinema-fx.cinema-theme-ddz-river::after,.cinema-fx.cinema-theme-ddz-copper::after,.cinema-fx.cinema-theme-ddz-jade::after,.cinema-fx.cinema-theme-pdk-run::after,.cinema-fx.cinema-theme-pdk-spring::after,.cinema-fx.cinema-theme-pdk-night::after,.cinema-fx.cinema-theme-pdk-silver::after,.cinema-fx.cinema-theme-pdk-teal::after{border-color:var(--fx-accent)!important}
     /* 斗地主：多人叫地主后最后一位抢下地主时，出现一次红金封印式定局反馈。 */
     .cinema-fx.mode-doudizhu.fx-ddz-bidfinal{background:radial-gradient(circle at 50% 44%,rgba(255,202,93,.32),rgba(123,25,14,.72) 44%,rgba(20,4,8,.97) 100%)!important}.cinema-fx.mode-doudizhu.fx-ddz-bidfinal::before{content:'♠  抢 地 主 定 局  ♦';color:#fff0bc;font:900 clamp(25px,4.4vw,58px)/1 STKaiti,KaiTi,serif;letter-spacing:.18em;text-shadow:0 0 12px #ffbf4f,0 0 34px #b92818;animation:ddzBidSeal 2.18s cubic-bezier(.16,.9,.2,1) both}.cinema-fx.mode-doudizhu.fx-ddz-bidfinal::after{content:'♣   ♥';color:#ffe18d;font:900 min(19vw,164px)/1 Georgia,serif;text-shadow:0 0 18px #ff8d47,0 0 55px #bc241b;animation:ddzBidSuit 2.18s ease-out both}@keyframes ddzBidSeal{0%{transform:scale(.62);opacity:0}28%{opacity:1}100%{transform:scale(1.08);opacity:0}}@keyframes ddzBidSuit{0%{transform:scale(.18) rotate(-42deg);opacity:0}30%{opacity:1}100%{transform:scale(1.42) rotate(35deg);opacity:0}}
@@ -5714,6 +5823,7 @@
     }
   `;
   document.head.append(experienceVisualPatch);
+  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css';document.head.append(completionStyles);
 
   function enterTable() {
     $('lobbyScreen').classList.add('hidden-view');
@@ -5758,6 +5868,7 @@
     lobbySelectedMode=game;lobbyModeArmed=true;refreshLobbyMode();
   }
   function showLobby() {
+    setBombChatOpen(false);
     clearTimeout(aiTimer);
     clearTimeout(ddzTimer);
     clearTimeout(pdkTimer);
@@ -5824,6 +5935,13 @@
   $('pdkShopBtn').onclick=()=>openSharedShop('poker','poker-table');
   $('mjShopBtn').onclick=()=>openSharedShop('mahjong','mahjong-table');
   $('gmShopBtn').onclick=()=>openSharedShop('gomoku','gomoku-board');
+
+  $('landscapeFullscreenBtn')?.addEventListener('click',async()=>{
+    const root=document.documentElement;
+    try{if(!document.fullscreenElement&&root.requestFullscreen)await root.requestFullscreen();}catch{}
+    try{if(screen.orientation?.lock)await screen.orientation.lock('landscape');}catch{}
+    if(matchMedia('(orientation:portrait)').matches)toast('请关闭手机方向锁，然后横置手机');
+  });
 
   // 启动游戏
   document.addEventListener('pointerdown', () => AudioSys.init(), { once:true });
