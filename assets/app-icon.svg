@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="炸弹牌友馆">
+  <defs>
+    <radialGradient id="bg" cx="48%" cy="32%" r="78%"><stop offset="0" stop-color="#1e4b72"/><stop offset=".58" stop-color="#0a203b"/><stop offset="1" stop-color="#051222"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4b3"/><stop offset=".44" stop-color="#ffd75b"/><stop offset="1" stop-color="#b87516"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="30" y="30" width="452" height="452" rx="92" fill="none" stroke="#d8a33c" stroke-opacity=".9" stroke-width="8"/>
+  <circle cx="256" cy="274" r="128" fill="#0a1729" stroke="url(#gold)" stroke-width="12"/>
+  <path d="M263 86c-29 34-28 75-12 101 12 19 11 42-7 62" fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-width="20" filter="url(#glow)"/>
+  <path d="M243 271h48l-47 58h42l-69 84 21-65h-40z" fill="url(#gold)" filter="url(#glow)"/>
+  <circle cx="210" cy="252" r="12" fill="#ffeaa1"/><circle cx="302" cy="252" r="12" fill="#ffeaa1"/>
+  <path d="M207 317c31 24 67 24 98 0" fill="none" stroke="#ffd65d" stroke-linecap="round" stroke-width="10"/>
+</svg>

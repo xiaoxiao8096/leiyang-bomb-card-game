@@ -191,3 +191,58 @@
   .landscape-guard-card{display:grid;gap:12px;width:min(86vw,330px)!important;max-width:none!important;padding:28px 22px!important}
   .landscape-guard-card button{min-height:44px;border:1px solid rgba(255,224,137,.8);border-radius:13px;background:linear-gradient(180deg,#dfaa3a,#9a6112);color:#fff8dc;font:900 14px/1 "Microsoft YaHei",sans-serif;box-shadow:0 7px 16px rgba(0,0,0,.34)}
 }
+
+/* iPhone / Android 横屏终版：铺满安全区，禁止页面缩放，并把牌与操作区彻底分层。 */
+html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
+@media(max-width:900px) and (orientation:landscape){
+  html,body{position:fixed!important;inset:0!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#061326!important}
+  body{display:block!important}
+  #app,#ddzScreen,#pdkScreen,#mjScreen,#gmScreen{position:fixed!important;inset:0!important;width:100%!important;height:100dvh!important;min-width:0!important;min-height:0!important;margin:0!important;border:0!important;border-radius:0!important;overflow:hidden!important;background-color:#061326!important}
+  #app{padding:0!important}
+  #app .top-bar,.ddz-topbar{padding-left:max(6px,env(safe-area-inset-left))!important;padding-right:max(6px,env(safe-area-inset-right))!important}
+  #app .table-area{left:env(safe-area-inset-left)!important;right:env(safe-area-inset-right)!important;bottom:env(safe-area-inset-bottom)!important}
+  #ddzScreen .ddz-table,#pdkScreen .ddz-table,#mjScreen .ddz-table,#gmScreen .gm-table{left:max(3px,env(safe-area-inset-left))!important;right:max(3px,env(safe-area-inset-right))!important;bottom:max(3px,env(safe-area-inset-bottom))!important}
+  .ddz-topbar{height:54px!important;min-height:54px!important;display:grid!important;grid-template-columns:minmax(210px,auto) minmax(150px,1fr) auto!important;align-items:center!important;gap:5px!important;overflow:hidden!important}
+  .ddz-topbar-left{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;gap:3px!important;min-width:0!important}
+  .ddz-topbar-left .ddz-tool{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;min-width:40px!important;height:34px!important;min-height:34px!important;padding:0 7px!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important;word-break:keep-all!important;writing-mode:horizontal-tb!important}
+  .ddz-top-title{min-width:0!important;gap:5px!important;white-space:nowrap!important}.ddz-top-title h2{font-size:20px!important;white-space:nowrap!important}.ddz-multiplier{font-size:11px!important;padding:4px 7px!important;white-space:nowrap!important}
+  .ddz-topbar-right{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important;min-width:0!important;white-space:nowrap!important}.ddz-topbar-right .ddz-tool{min-width:42px!important;height:34px!important;font-size:10px!important}.ddz-beans{font-size:12px!important;white-space:nowrap!important}
+  .ddz-base-control{gap:3px!important;font-size:9px!important;white-space:nowrap!important}.ddz-base-control select,.ddz-base-control input{width:76px!important;height:30px!important;font-size:16px!important}
+  .mode-chat-input input,.mode-chat-input textarea,input,select,textarea{font-size:16px!important}
+
+  #ddzScreen .ddz-hand-zone,#pdkScreen .ddz-hand-zone{left:50%!important;right:auto!important;bottom:48px!important;width:min(74vw,620px)!important;height:76px!important;padding:3px 0!important;overflow:visible!important;transform:translateX(-50%)!important}
+  #ddzScreen .ddz-hand,#pdkScreen .ddz-hand{width:max-content!important;min-width:0!important;height:72px!important;justify-content:center!important;overflow:visible!important;padding:0!important;transform:none!important}
+  #ddzScreen .card,#pdkScreen .card{flex:0 0 43px!important;width:43px!important;height:68px!important;margin-left:-18px!important;padding:3px!important;border-radius:5px!important}
+  #ddzScreen .card:first-child,#pdkScreen .card:first-child{margin-left:0!important}
+  #ddzScreen .card .c-top,#ddzScreen .card .c-suit,#pdkScreen .card .c-top,#pdkScreen .card .c-suit{font-size:16px!important}
+  #ddzScreen .ddz-actions,#pdkScreen .ddz-actions{bottom:max(4px,env(safe-area-inset-bottom))!important;gap:7px!important}.ddz-actions .ddz-action{min-width:104px!important;height:38px!important;font-size:14px!important}
+  #ddzScreen .ddz-seat.bottom,#pdkScreen .ddz-seat.bottom{left:max(4px,env(safe-area-inset-left))!important;bottom:4px!important;transform:scale(.72)!important;transform-origin:left bottom!important}
+  #ddzScreen .ddz-played-zone,#pdkScreen .ddz-played-zone{top:44%!important;width:min(70vw,600px)!important}
+  #ddzScreen .ddz-bid-panel{top:47%!important;width:min(540px,72vw)!important;min-width:0!important;padding:12px 14px!important;transform:translate(-50%,-50%) scale(.88)!important}
+
+  #mjScreen .mj-hand-zone{bottom:53px!important;width:min(78vw,680px)!important;height:70px!important;padding:2px 0!important;overflow:visible!important}
+  #mjScreen #mjHand .mj-tile{width:42px!important;height:59px!important;min-width:42px!important;flex-basis:42px!important}
+  #mjScreen .mj-actions{bottom:max(4px,env(safe-area-inset-bottom))!important}
+  #mjScreen .mj-actions button{min-width:92px!important;height:38px!important;font-size:13px!important}
+
+  #gmScreen .gm-center{top:51%!important;width:min(66vh,52vw)!important;height:min(66vh,52vw)!important;min-width:0!important;min-height:0!important}
+  #gmScreen .gm-actions{bottom:max(4px,env(safe-area-inset-bottom))!important}
+}
+
+/* 极窄横屏：大厅工具栏不再把图标和两字标签强行折行。 */
+@media(max-width:690px) and (orientation:landscape){
+  #lobbyScreen{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}
+  #lobbyScreen .lobby-header{grid-template-columns:46px minmax(0,1fr);gap:6px;padding:4px 0 7px}
+  #lobbyScreen .lobby-brand{width:44px;height:44px;font-size:23px}
+  #lobbyScreen .lobby-tools{display:flex;align-items:center;justify-content:flex-end;gap:5px;min-width:0}
+  #lobbyScreen .bean-badge{grid-column:auto;flex:0 0 auto;height:34px;min-width:76px;padding:5px 8px;font-size:11px;white-space:nowrap}
+  #lobbyScreen .lobby-tool{display:grid;place-items:center;flex:0 0 38px;width:38px;min-width:38px;height:34px;min-height:34px;padding:0;font-size:0;line-height:1;overflow:visible}
+  #lobbyScreen .lobby-tool::before{font-size:18px;line-height:1}
+  #lobbyReliefBtn::before{content:'🧧'}#lobbyLoanBtn::before{content:'🏦'}#lobbyMusicBtn::before{content:'🎵'}#lobbyRoleBtn::before{content:'👑'}#lobbyShopBtn::before{content:'🛍️'}#lobbySettingBtn::before{content:'⚙️'}
+  #lobbyScreen .lobby-main{padding-top:4px}
+  #lobbyScreen .lobby-feature h2{font-size:42px}
+  #lobbyScreen .mode-grid{gap:7px}
+  #lobbyScreen .mode-card{min-height:52px}
+  #lobbyScreen .mode-card strong{padding:4px 7px;font-size:14px!important}
+}
