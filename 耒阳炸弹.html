@@ -2099,7 +2099,7 @@
     <div class="ddz-seat left" id="ddzSeat1"><div class="ddz-avatar"><img id="ddzAvatar1" alt="左侧玩家头像"></div><span class="ddz-seat-name" id="ddzName1">玩家一</span><span class="ddz-role-badge farmer" id="ddzRole1">农民</span><span class="ddz-count" id="ddzCount1">17</span></div>
     <div class="ddz-seat right" id="ddzSeat2"><div class="ddz-avatar"><img id="ddzAvatar2" alt="右侧玩家头像"></div><span class="ddz-seat-name" id="ddzName2">玩家二</span><span class="ddz-role-badge farmer" id="ddzRole2">农民</span><span class="ddz-count" id="ddzCount2">17</span></div>
     <div class="ddz-seat bottom" id="ddzSeat0"><div class="ddz-avatar"><img id="ddzAvatar0" alt="我的头像"></div><div><span class="ddz-seat-name" id="ddzName0">玩家</span><br><span class="ddz-role-badge farmer" id="ddzRole0">农民</span> <span class="ddz-count" id="ddzCount0">17</span></div></div>
-    <aside class="ddz-counter" aria-label="记牌器"><div class="ddz-counter-head"><span>记牌器</span><small>未出现</small></div><div class="ddz-counter-grid" id="ddzCounterGrid"></div></aside>
+    <button class="ddz-counter-toggle" id="ddzCounterToggle" type="button" aria-label="展开记牌器" aria-expanded="false">记</button><aside class="ddz-counter counter-collapsed" id="ddzCounter" aria-label="记牌器"><div class="ddz-counter-head"><span>记牌器</span><small>未出现</small><button class="ddz-counter-close" id="ddzCounterClose" type="button" aria-label="收起记牌器">×</button></div><div class="ddz-counter-grid" id="ddzCounterGrid"></div></aside>
     <div class="ddz-center">
       <div class="ddz-status" id="ddzStatus">准备发牌</div>
       <div class="ddz-bottom-cards hidden-cards" id="ddzBottomCards"></div>
@@ -2184,10 +2184,10 @@
   <header class="top-bar">
     <!-- 快捷操作放入顶栏，给左右玩家座位留出空间 -->
     <nav class="header-quick-actions" aria-label="牌桌快捷操作">
-      <button class="quick-bar-btn" id="quickChatBtn" aria-haspopup="true" aria-expanded="false">💬 快捷语</button>
-      <button class="quick-bar-btn" id="soundToggleBtn">🔊 音效: 开</button>
-      <button class="quick-bar-btn" id="musicToggleBtn">🎵 音乐: 开</button>
-      <button class="quick-bar-btn" id="ruleBtn">❓ 规则</button>
+      <button class="quick-bar-btn" id="quickChatBtn" aria-label="快捷语" aria-haspopup="true" aria-expanded="false"><span class="quick-icon" aria-hidden="true">💬</span><span class="quick-label">快捷语</span></button>
+      <button class="quick-bar-btn" id="soundToggleBtn" aria-label="音效"><span class="quick-icon" aria-hidden="true">🔊</span><span class="quick-label">音效: 开</span></button>
+      <button class="quick-bar-btn" id="musicToggleBtn" aria-label="音乐"><span class="quick-icon" aria-hidden="true">🎵</span><span class="quick-label">音乐: 开</span></button>
+      <button class="quick-bar-btn" id="ruleBtn" aria-label="规则"><span class="quick-icon quick-rule-icon" aria-hidden="true">?</span><span class="quick-label">规则</span></button>
     </nav>
 
     <!-- 中央 VS 记分与底注 -->
@@ -4324,8 +4324,10 @@
   };
 
   function syncSoundLabels() {
-    $('soundToggleBtn').textContent = `🔊 音效: ${profile.sound ? '开' : '关'}`;
-    $('musicToggleBtn').textContent = `🎵 音乐: ${profile.music ? '开' : '关'}`;
+    $('soundToggleBtn').querySelector('.quick-label').textContent = `音效: ${profile.sound ? '开' : '关'}`;
+    $('musicToggleBtn').querySelector('.quick-label').textContent = `音乐: ${profile.music ? '开' : '关'}`;
+    $('soundToggleBtn').setAttribute('aria-label',`音效: ${profile.sound ? '开' : '关'}`);
+    $('musicToggleBtn').setAttribute('aria-label',`音乐: ${profile.music ? '开' : '关'}`);
     $('cfgSoundBtn').textContent = profile.sound ? '开启' : '关闭';
     $('cfgMusicBtn').textContent = profile.music ? '开启' : '关闭';
     $('lobbyMusicBtn').textContent = `🎵 音乐: ${profile.music ? '开' : '关'}`;
@@ -4941,7 +4943,12 @@
     $('ddzRevealBtn').disabled=ddz.revealed[0];$('ddzRevealBtn').classList.toggle('active',ddz.revealed[0]);$('ddzRevealBtn').textContent=ddz.revealed[0]?'已明牌 ×2':'明牌 ×2';
     $('ddzMultiplier').textContent=`底注 ${base.toLocaleString()} · ×${ddzTotalMultiplier()}`;
     $('ddzBaseSelect').disabled=ddz.phase==='play';$('ddzCustomBase').disabled=ddz.phase==='play';
-    const myTurn=ddz.phase==='play'&&ddz.turn===0;$('ddzPassBtn').disabled=!myTurn||!ddz.lead||ddz.leader===0;$('ddzHintBtn').disabled=!myTurn;$('ddzPlayBtn').disabled=!myTurn||!ddzSelected.size;
+    const myTurn=ddz.phase==='play'&&ddz.turn===0;
+    const chosenCards=ddz.p[0].h.filter(c=>ddzSelected.has(c.id)),chosenCombo=ddzCombo(chosenCards),canPlay=!!chosenCombo&&ddzBeat(chosenCombo,ddz.lead);
+    $('ddzPassBtn').disabled=!myTurn||!ddz.lead||ddz.leader===0;
+    $('ddzHintBtn').disabled=!myTurn;
+    $('ddzPlayBtn').disabled=!myTurn||!canPlay;
+    $('ddzPlayBtn').title=!myTurn?'等待自己回合':!ddzSelected.size?'先选择要出的牌':!chosenCombo?'所选牌型不成立':!canPlay?'这手牌压不过桌面牌':`出 ${chosenCombo.l}`;
   }
 
   function ddzAI(){
@@ -4958,6 +4965,9 @@
   document.querySelectorAll('[data-ddz-double]').forEach(btn=>btn.onclick=()=>ddzDouble(btn.dataset.ddzDouble));
   document.querySelectorAll('[data-ddz-call]').forEach(btn=>btn.onclick=()=>ddzCall(btn.dataset.ddzCall));
   $('ddzRevealBtn').onclick=ddzReveal;
+  function setDDZCounterOpen(open){const panel=$('ddzCounter'),toggle=$('ddzCounterToggle');panel.classList.toggle('counter-collapsed',!open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'收起记牌器':'展开记牌器');}
+  $('ddzCounterToggle').onclick=()=>setDDZCounterOpen($('ddzCounter').classList.contains('counter-collapsed'));
+  $('ddzCounterClose').onclick=()=>setDDZCounterOpen(false);
   $('ddzPassBtn').onclick=()=>ddzPass(0);
   $('ddzHintBtn').onclick=()=>{const z=ddzChoose(0);ddzSelected=new Set(z?z.a.map(c=>c.id):[]);ddzToast(z?`建议：${z.l}（${z.reason||'当前较稳妥'}）`:'建议不出，让队友保留牌权');renderDDZ();};
   $('ddzPlayBtn').onclick=()=>ddzPlay(0,[...ddzSelected]);
@@ -5824,7 +5834,7 @@
     }
   `;
   document.head.append(experienceVisualPatch);
-  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260825-layout5';document.head.append(completionStyles);
+  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260825-layout6';document.head.append(completionStyles);
 
   function enterTable() {
     $('lobbyScreen').classList.add('hidden-view');
