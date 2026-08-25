@@ -336,3 +336,27 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
   #ddzScreen .ddz-counter-cell{min-height:28px!important;padding:2px 1px!important;font-size:9px!important}
   #ddzScreen .ddz-counter-cell b{font-size:11px!important}
 }
+
+/* 手机横屏二次交互精修：记牌器收成贴边抽屉，手牌只抬起被选中的单张。 */
+@media(max-width:900px) and (orientation:landscape){
+  #ddzScreen .ddz-counter-toggle{left:max(6px,env(safe-area-inset-left))!important;top:60px!important;width:30px!important;height:30px!important;font-size:13px!important}
+  #ddzScreen .ddz-counter:not(.counter-collapsed){left:max(6px,env(safe-area-inset-left))!important;top:95px!important;width:128px!important;max-height:124px!important;padding:6px!important;border-radius:12px!important}
+  #ddzScreen .ddz-counter-head{min-height:15px!important;margin-bottom:4px!important;padding-right:18px!important;font-size:10px!important}
+  #ddzScreen .ddz-counter-close{right:5px!important;top:4px!important;width:17px!important;height:17px!important;font-size:13px!important}
+  #ddzScreen .ddz-counter-grid{grid-template-columns:repeat(5,1fr)!important;gap:2px!important}
+  #ddzScreen .ddz-counter-cell{min-height:19px!important;padding:1px 0!important;border-radius:4px!important;font-size:8px!important;line-height:1!important}
+  #ddzScreen .ddz-counter-cell b{margin-top:1px!important;font-size:10px!important}
+
+  #ddzScreen .card,#pdkScreen .card{touch-action:manipulation!important;will-change:transform!important}
+  #ddzScreen .card.selected,#pdkScreen .card.selected{transform:translateY(-14px)!important;z-index:50!important;border-color:#ffe88b!important;box-shadow:0 0 0 2px rgba(255,224,112,.72),0 8px 14px rgba(0,0,0,.48)!important}
+  #ddzScreen .card:active:not(:disabled),#pdkScreen .card:active:not(:disabled){transform:translateY(-4px) scale(.98)!important}
+  #ddzScreen .card.selected:active:not(:disabled),#pdkScreen .card.selected:active:not(:disabled){transform:translateY(-12px) scale(.98)!important}
+
+  #mjScreen #mjHand{gap:0!important;padding:0 6px!important;overflow:visible!important}
+  #mjScreen #mjHand .mj-tile{margin-left:-4px!important;position:relative!important;touch-action:manipulation!important;transition:transform .12s cubic-bezier(.2,.8,.2,1),box-shadow .12s ease!important}
+  #mjScreen #mjHand .mj-tile:first-child{margin-left:0!important}
+  #mjScreen #mjHand .mj-tile.drawn{margin-left:10px!important}
+  #mjScreen #mjHand .mj-tile.selected{transform:translateY(-12px)!important;z-index:52!important;box-shadow:0 0 0 2px #ffe36c,0 8px 15px rgba(0,0,0,.52)!important}
+  #mjScreen #mjHand .mj-tile:active{transform:translateY(-4px) scale(.98)!important}
+  #mjScreen #mjHand .mj-tile.selected:active{transform:translateY(-11px) scale(.98)!important}
+}
