@@ -360,3 +360,49 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
   #mjScreen #mjHand .mj-tile:active{transform:translateY(-4px) scale(.98)!important}
   #mjScreen #mjHand .mj-tile.selected:active{transform:translateY(-11px) scale(.98)!important}
 }
+
+/* 非炸弹玩法的手机端重做：桌面是主体，控制只是一条安静的边轨。 */
+@media(max-width:900px) and (orientation:landscape){
+  #ddzScreen,#pdkScreen,#mjScreen,#gmScreen{--rail:#06162a;--rail-edge:rgba(134,178,211,.28);--quiet:#102740;--quiet-edge:rgba(154,196,225,.44);--active:#c79a48;--active-edge:#ffe49a}
+  #ddzScreen .ddz-topbar,#pdkScreen .ddz-topbar,#mjScreen .ddz-topbar,#gmScreen .ddz-topbar{height:48px!important;min-height:48px!important;padding:0 max(8px,env(safe-area-inset-right)) 0 max(8px,env(safe-area-inset-left))!important;background:linear-gradient(90deg,rgba(3,12,25,.97),rgba(8,25,43,.92) 52%,rgba(3,12,25,.97))!important;border-bottom:1px solid var(--rail-edge)!important;box-shadow:0 4px 16px rgba(0,0,0,.35)!important}
+  #ddzScreen .ddz-topbar-left,#pdkScreen .ddz-topbar-left,#mjScreen .ddz-topbar-left,#gmScreen .ddz-topbar-left{gap:5px!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool,#pdkScreen .ddz-topbar-left .ddz-tool,#mjScreen .ddz-topbar-left .ddz-tool,#gmScreen .ddz-topbar-left .ddz-tool{width:27px!important;min-width:27px!important;height:27px!important;min-height:27px!important;border:1px solid rgba(150,190,220,.34)!important;border-radius:7px!important;background:rgba(22,54,83,.64)!important;box-shadow:none!important;font-size:0!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool:nth-child(1)::before,#pdkScreen .ddz-topbar-left .ddz-tool:nth-child(1)::before,#mjScreen .ddz-topbar-left .ddz-tool:nth-child(1)::before,#gmScreen .ddz-topbar-left .ddz-tool:nth-child(1)::before{content:'⌂'!important;font-size:15px!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool:nth-child(2)::before,#pdkScreen .ddz-topbar-left .ddz-tool:nth-child(2)::before,#mjScreen .ddz-topbar-left .ddz-tool:nth-child(2)::before,#gmScreen .ddz-topbar-left .ddz-tool:nth-child(2)::before{content:'◇'!important;font-size:16px!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool:nth-child(3)::before,#pdkScreen .ddz-topbar-left .ddz-tool:nth-child(3)::before,#mjScreen .ddz-topbar-left .ddz-tool:nth-child(3)::before,#gmScreen .ddz-topbar-left .ddz-tool:nth-child(3)::before{content:'▤'!important;font-size:14px!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool:nth-child(4)::before,#pdkScreen .ddz-topbar-left .ddz-tool:nth-child(4)::before,#mjScreen .ddz-topbar-left .ddz-tool:nth-child(4)::before,#gmScreen .ddz-topbar-left .ddz-tool:nth-child(4)::before{content:'⚙'!important;font-size:14px!important}
+  #ddzScreen .ddz-topbar-left .ddz-tool:nth-child(5)::before,#pdkScreen .ddz-topbar-left .ddz-tool:nth-child(5)::before,#mjScreen .ddz-topbar-left .ddz-tool:nth-child(5)::before,#gmScreen .ddz-topbar-left .ddz-tool:nth-child(5)::before{content:'?'!important;font:900 14px/1 Arial,sans-serif!important}
+  #ddzScreen .ddz-top-title h2,#pdkScreen .ddz-top-title h2,#mjScreen .ddz-top-title h2,#gmScreen .ddz-top-title h2{font-size:18px!important;letter-spacing:.12em!important;text-shadow:0 2px 8px #000!important}
+  #ddzScreen .ddz-multiplier,#pdkScreen .ddz-multiplier,#mjScreen .ddz-multiplier,#gmScreen .ddz-multiplier{padding:3px 6px!important;border-radius:6px!important;background:rgba(88,58,13,.58)!important;font-size:10px!important}
+  #ddzScreen .ddz-topbar-right .ddz-tool,#pdkScreen .ddz-topbar-right .ddz-tool,#mjScreen .ddz-topbar-right .ddz-tool,#gmScreen .ddz-topbar-right .ddz-tool{width:30px!important;min-width:30px!important;height:27px!important;border-radius:7px!important;background:rgba(22,54,83,.64)!important;box-shadow:none!important;font-size:0!important}
+  #ddzScreen .ddz-topbar-right .ddz-tool::before,#pdkScreen .ddz-topbar-right .ddz-tool::before,#mjScreen .ddz-topbar-right .ddz-tool::before,#gmScreen .ddz-topbar-right .ddz-tool::before{content:'↻'!important;font-size:15px!important}
+  #ddzScreen .ddz-beans,#pdkScreen .ddz-beans,#mjScreen .ddz-beans,#gmScreen .ddz-beans{font-size:11px!important;color:#ffe3a0!important}
+
+  #ddzScreen .ddz-table,#pdkScreen .ddz-table,#mjScreen .ddz-table,#gmScreen .gm-table{top:48px!important;border-color:rgba(198,151,58,.58)!important;box-shadow:inset 0 0 0 1px rgba(9,33,47,.68),0 10px 22px rgba(0,0,0,.22)!important}
+  #ddzScreen .ddz-status,#pdkScreen .ddz-status,#mjScreen .mj-board-status{padding:6px 12px!important;border-radius:9px!important;border-color:rgba(230,198,112,.52)!important;background:rgba(5,21,35,.78)!important;box-shadow:0 5px 12px rgba(0,0,0,.25)!important;font-size:13px!important;letter-spacing:.03em!important}
+  #ddzScreen .ddz-actions,#pdkScreen .ddz-actions,#mjScreen .mj-actions,#gmScreen .gm-actions{padding:0!important;min-height:38px!important;border:0!important;border-radius:0!important;background:transparent!important;gap:8px!important}
+  #ddzScreen .ddz-action,#pdkScreen .ddz-action,#mjScreen .mj-actions button,#gmScreen .gm-actions button{min-width:88px!important;height:34px!important;border:1px solid var(--quiet-edge)!important;border-radius:9px!important;background:linear-gradient(180deg,rgba(27,65,97,.93),rgba(9,29,48,.96))!important;box-shadow:inset 0 1px rgba(255,255,255,.12),0 4px 9px rgba(0,0,0,.24)!important;color:#e6f2fb!important;font-size:13px!important;letter-spacing:.05em!important}
+  #ddzScreen .ddz-action:active:not(:disabled),#pdkScreen .ddz-action:active:not(:disabled),#mjScreen .mj-actions button:active:not(:disabled),#gmScreen .gm-actions button:active:not(:disabled){transform:translateY(1px) scale(.98)!important}
+  #ddzScreen #ddzPlayBtn:not(:disabled),#pdkScreen #pdkPlayBtn:not(:disabled),#mjScreen #mjDiscardBtn:not(:disabled),#gmScreen .gm-actions button.gold:not(:disabled){border-color:var(--active-edge)!important;background:linear-gradient(180deg,#d1a552,#805218)!important;color:#201604!important;text-shadow:0 1px rgba(255,248,215,.6)!important}
+  #ddzScreen .ddz-action:disabled,#pdkScreen .ddz-action:disabled,#mjScreen .mj-actions button:disabled,#gmScreen .gm-actions button:disabled{opacity:.38!important;filter:saturate(.55)!important}
+
+  #ddzScreen .ddz-seat,#pdkScreen .ddz-seat,#mjScreen .ddz-seat{filter:drop-shadow(0 4px 8px rgba(0,0,0,.36))!important}
+  #ddzScreen .ddz-seat.bottom,#pdkScreen .ddz-seat.bottom,#mjScreen .ddz-seat.bottom{opacity:.92!important}
+  #ddzScreen .ddz-played-zone,#pdkScreen .ddz-played-zone{top:40%!important;max-height:106px!important}
+  #ddzScreen .ddz-hand-zone,#pdkScreen .ddz-hand-zone{bottom:43px!important;height:81px!important}
+  #ddzScreen .card,#pdkScreen .card{width:44px!important;height:70px!important;flex-basis:44px!important;margin-left:-20px!important;border-radius:4px!important}
+  #ddzScreen .card.selected,#pdkScreen .card.selected{transform:translateY(-16px)!important}
+
+  #mjScreen .mj-board{top:46%!important;height:66%!important;filter:drop-shadow(0 6px 14px rgba(0,0,0,.26))!important}
+  #mjScreen .mj-hand-zone{bottom:41px!important;width:min(73vw,650px)!important;height:78px!important}
+  #mjScreen #mjHand{height:70px!important;padding:0 4px!important}
+  #mjScreen #mjHand .mj-tile{width:43px!important;height:62px!important;min-width:43px!important;flex-basis:43px!important;margin-left:-6px!important;border-radius:5px!important}
+  #mjScreen #mjHand .mj-tile:first-child{margin-left:0!important}
+  #mjScreen #mjHand .mj-tile.drawn{margin-left:12px!important}
+  #mjScreen #mjHand .mj-tile.selected{transform:translateY(-15px)!important}
+  #mjScreen .mj-actions{bottom:4px!important}
+  #mjScreen .mj-seat-meld{background:rgba(4,21,28,.68)!important;border-color:rgba(190,154,78,.30)!important;box-shadow:none!important}
+  #mjScreen .mj-seat-meld:not(:empty)::before{color:#d9bc73!important}
+
+  #ddzScreen .mode-chat-fab,#pdkScreen .mode-chat-fab,#mjScreen .mode-chat-fab,#gmScreen .mode-chat-fab{min-width:42px!important;height:28px!important;padding:0 8px!important;border-radius:7px!important;background:rgba(12,38,62,.88)!important;box-shadow:0 3px 9px rgba(0,0,0,.32)!important;font-size:10px!important}
+}
