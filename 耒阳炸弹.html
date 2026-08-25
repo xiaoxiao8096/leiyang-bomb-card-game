@@ -4959,15 +4959,16 @@
   }
 
   function enterDoudizhu(){
-    clearTimeout(aiTimer);clearTimeout(pdkTimer);clearTimeout(mjTimer);$('lobbyScreen').classList.add('hidden-view');$('app').classList.add('hidden-view');$('pdkScreen').classList.add('hidden-view');$('mjScreen').classList.add('hidden-view');$('ddzScreen').classList.remove('hidden-view');ddzStart();
+    clearTimeout(aiTimer);clearTimeout(pdkTimer);clearTimeout(mjTimer);$('lobbyScreen').classList.add('hidden-view');$('app').classList.add('hidden-view');$('pdkScreen').classList.add('hidden-view');$('mjScreen').classList.add('hidden-view');$('ddzScreen').classList.remove('hidden-view');setDDZCounterOpen(false);ddzStart();
   }
 
   document.querySelectorAll('[data-ddz-double]').forEach(btn=>btn.onclick=()=>ddzDouble(btn.dataset.ddzDouble));
   document.querySelectorAll('[data-ddz-call]').forEach(btn=>btn.onclick=()=>ddzCall(btn.dataset.ddzCall));
   $('ddzRevealBtn').onclick=ddzReveal;
-  function setDDZCounterOpen(open){const panel=$('ddzCounter'),toggle=$('ddzCounterToggle');panel.classList.toggle('counter-collapsed',!open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'收起记牌器':'展开记牌器');}
+  function setDDZCounterOpen(open){const panel=$('ddzCounter'),toggle=$('ddzCounterToggle');panel.classList.toggle('counter-collapsed',!open);panel.style.setProperty('display',open?'grid':'none','important');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'收起记牌器':'展开记牌器');}
   $('ddzCounterToggle').onclick=()=>setDDZCounterOpen($('ddzCounter').classList.contains('counter-collapsed'));
   $('ddzCounterClose').onclick=()=>setDDZCounterOpen(false);
+  setDDZCounterOpen(false);
   $('ddzPassBtn').onclick=()=>ddzPass(0);
   $('ddzHintBtn').onclick=()=>{const z=ddzChoose(0);ddzSelected=new Set(z?z.a.map(c=>c.id):[]);ddzToast(z?`建议：${z.l}（${z.reason||'当前较稳妥'}）`:'建议不出，让队友保留牌权');renderDDZ();};
   $('ddzPlayBtn').onclick=()=>ddzPlay(0,[...ddzSelected]);
@@ -5834,7 +5835,7 @@
     }
   `;
   document.head.append(experienceVisualPatch);
-  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260825-layout9';document.head.append(completionStyles);
+  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260825-mobile12';document.head.append(completionStyles);
 
   function enterTable() {
     $('lobbyScreen').classList.add('hidden-view');
