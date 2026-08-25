@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#071a2e" />
   <title>炸弹</title>
   <link rel="icon" type="image/webp" href="assets/optimized_v3/poker-back-xiang-night.webp">
@@ -5823,7 +5823,7 @@
     }
   `;
   document.head.append(experienceVisualPatch);
-  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css';document.head.append(completionStyles);
+  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260825-safari1';document.head.append(completionStyles);
 
   function enterTable() {
     $('lobbyScreen').classList.add('hidden-view');
@@ -5942,6 +5942,8 @@
     try{if(screen.orientation?.lock)await screen.orientation.lock('landscape');}catch{}
     if(matchMedia('(orientation:portrait)').matches)toast('请关闭手机方向锁，然后横置手机');
   });
+  document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
+  document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
 
   // 启动游戏
   document.addEventListener('pointerdown', () => AudioSys.init(), { once:true });
