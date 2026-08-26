@@ -920,3 +920,82 @@ button,a,input,select,textarea,[role="button"]{touch-action:manipulation}
   #shopDialog[open] .shop-card strong{font-size:13px!important;line-height:1.2!important;}
   #shopDialog[open] .shop-card small,#shopDialog[open] .shop-card span{font-size:11px!important;line-height:1.15!important;}
 }
+
+/* layout16：以实际手机横屏控件边界为准。大厅不再用桌面两栏挤压玩法；非炸弹玩法只保留可稳定点按的高频工具、主行动带和桌面主体。 */
+@media (max-height:520px) and (orientation:landscape){
+  /* 大厅：压缩静态装饰，给六个玩法与主入口分配明确的可点区域。 */
+  #lobbyScreen .lobby-header{height:56px!important;padding:6px 14px!important;}
+  #lobbyScreen .lobby-brand{width:44px!important;height:44px!important;font-size:23px!important;}
+  #lobbyScreen .lobby-tools{gap:6px!important;overflow-x:auto!important;scrollbar-width:none!important;}
+  #lobbyScreen .lobby-tools::-webkit-scrollbar{display:none!important;}
+  #lobbyScreen .bean-badge{min-width:86px!important;height:40px!important;font-size:13px!important;}
+  #lobbyScreen .lobby-tool{flex:0 0 46px!important;width:46px!important;min-width:46px!important;min-height:42px!important;height:42px!important;padding:0!important;font-size:0!important;}
+  #lobbyScreen .lobby-tool::after{display:grid!important;place-items:center!important;width:100%!important;height:100%!important;font-size:19px!important;line-height:1!important;}
+  #lobbyReliefBtn::after{content:'🧧'!important;}#lobbyLoanBtn::after{content:'🏦'!important;}#lobbyMusicBtn::after{content:'♫'!important;}#lobbyRoleBtn::after{content:'♛'!important;}#lobbyShopBtn::after{content:'🛍'!important;}#lobbySettingBtn::after{content:'⚙'!important;}
+  #lobbyScreen .lobby-main{grid-template-columns:clamp(154px,22vw,205px) minmax(0,1fr)!important;gap:clamp(18px,3vw,32px)!important;align-items:center!important;padding:18px clamp(24px,4vw,46px) 24px!important;}
+  #lobbyScreen .lobby-feature{align-items:flex-start!important;gap:18px!important;}
+  #lobbyScreen .lobby-feature h2{font-size:clamp(38px,5vw,54px)!important;line-height:1!important;}
+  #lobbyScreen .lobby-enter{width:100%!important;min-height:50px!important;height:50px!important;font-size:16px!important;}
+  #lobbyScreen .mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px 12px!important;width:100%!important;}
+  #lobbyScreen .mode-card{min-height:52px!important;height:52px!important;padding:0 14px!important;font-size:15px!important;text-align:left!important;}
+
+  /* 顶栏：低频入口用清晰图标盒收口；游戏名/底注和主工具不再彼此挤压。 */
+  #ddzScreen .ddz-topbar,#pdkScreen .ddz-topbar,#mjScreen .ddz-topbar,#gmScreen .ddz-topbar{height:52px!important;min-height:52px!important;grid-template-columns:270px minmax(0,1fr) auto!important;padding:6px 8px!important;}
+  #ddzScreen .ddz-topbar-left,#pdkScreen .ddz-topbar-left,#mjScreen .ddz-topbar-left,#gmScreen .ddz-topbar-left{gap:4px!important;}
+  #ddzScreen .ddz-topbar-left .ddz-tool,#pdkScreen .ddz-topbar-left .ddz-tool,#mjScreen .ddz-topbar-left .ddz-tool,#gmScreen .ddz-topbar-left .ddz-tool{width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;padding:0!important;font-size:0!important;}
+  #ddzScreen .ddz-topbar-left .ddz-tool::before,#pdkScreen .ddz-topbar-left .ddz-tool::before,#mjScreen .ddz-topbar-left .ddz-tool::before,#gmScreen .ddz-topbar-left .ddz-tool::before{content:none!important;display:none!important;}
+  #ddzLobbyBtn::after,#pdkLobbyBtn::after,#mjLobbyBtn::after,#gmLobbyBtn::after{content:'⌂';font-size:19px!important;}
+  #ddzShopBtn::after,#pdkShopBtn::after,#mjShopBtn::after,#gmShopBtn::after{content:'🛍';font-size:16px!important;}
+  #ddzRecordBtn::after,#pdkRecordBtn::after,#mjRecordBtn::after,#gmRecordBtn::after{content:'▥';font-size:17px!important;}
+  #ddzSettingBtn::after,#pdkSettingBtn::after,#mjSettingBtn::after,#gmSettingBtn::after{content:'⚙';font-size:17px!important;}
+  #ddzRuleBtn::after,#pdkRuleBtn::after,#mjRuleBtn::after,#gmRuleBtn::after{content:'?';font-size:18px!important;font-weight:900!important;}
+  #ddzNewBtn,#pdkNewBtn,#mjNewBtn,#gmNewBtn{min-width:42px!important;height:38px!important;padding:0 9px!important;font-size:0!important;}
+  #ddzNewBtn::after,#pdkNewBtn::after,#mjNewBtn::after,#gmNewBtn::after{content:'↻';font-size:20px!important;}
+  #ddzScreen .ddz-counter-toggle{left:232px!important;top:6px!important;width:40px!important;height:40px!important;min-height:40px!important;font-size:13px!important;}
+  #ddzScreen .ddz-counter:not(.counter-collapsed){top:54px!important;left:10px!important;max-height:142px!important;overflow-y:auto!important;}
+  #ddzScreen .ddz-top-title,#pdkScreen .ddz-top-title,#mjScreen .ddz-top-title,#gmScreen .ddz-top-title{min-width:0!important;overflow:hidden!important;white-space:nowrap!important;}
+  #ddzScreen .ddz-top-title h2,#pdkScreen .ddz-top-title h2,#mjScreen .ddz-top-title h2,#gmScreen .ddz-top-title h2{font-size:18px!important;}
+  #ddzScreen .ddz-multiplier,#pdkScreen .ddz-multiplier,#mjScreen .ddz-multiplier,#gmScreen .ddz-multiplier{font-size:11px!important;}
+  #ddzScreen .ddz-topbar-right,#pdkScreen .ddz-topbar-right,#mjScreen .ddz-topbar-right,#gmScreen .ddz-topbar-right{gap:6px!important;}
+  #ddzScreen .ddz-base-control,#pdkScreen .ddz-base-control,#gmScreen .ddz-base-control{font-size:0!important;}
+  #ddzScreen .ddz-base-control select,#pdkScreen .ddz-base-control select,#gmScreen .ddz-base-control select{min-width:78px!important;height:36px!important;font-size:13px!important;}
+  #ddzScreen .ddz-beans,#pdkScreen .ddz-beans,#mjScreen .ddz-beans,#gmScreen .ddz-beans{font-size:12px!important;white-space:nowrap!important;}
+
+  /* 行动优先：加倍与出牌不再用34px高的长条压在牌桌中央。 */
+  #ddzScreen .ddz-bid-panel{width:min(420px,58vw)!important;padding:11px 12px!important;}
+  #ddzScreen .ddz-bid-buttons{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;}
+  #ddzScreen .ddz-bid-buttons.hidden{display:none!important;}
+  #ddzScreen .ddz-bid-buttons button{min-height:40px!important;height:40px!important;padding:0 7px!important;font-size:12px!important;}
+  #ddzScreen .ddz-actions,#pdkScreen .ddz-actions,#mjScreen .mj-actions,#gmScreen .gm-actions{gap:8px!important;bottom:8px!important;}
+  #ddzScreen .ddz-action,#pdkScreen .ddz-action,#mjScreen .ddz-action,#gmScreen .ddz-action{min-height:42px!important;height:42px!important;min-width:86px!important;font-size:14px!important;}
+  #mjScreen .mj-actions .ddz-action{min-width:78px!important;}
+  #ddzScreen .ddz-played,#pdkScreen .ddz-played{transform:scale(.88)!important;transform-origin:center!important;}
+  #ddzScreen .mode-chat-fab,#pdkScreen .mode-chat-fab,#mjScreen .mode-chat-fab,#gmScreen .mode-chat-fab{min-width:52px!important;min-height:40px!important;height:40px!important;right:12px!important;}
+
+  /* 长内容弹层：固定标题与关闭键，正文成为明确可滚动区域而不是仅露出一半的资料卡。 */
+  dialog[open]{width:min(720px,calc(100vw - 24px))!important;height:calc(100vh - 18px)!important;max-height:calc(100vh - 18px)!important;margin:9px auto!important;padding:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;}
+  dialog[open] .dialog-header{flex:0 0 50px!important;min-height:50px!important;padding:12px 18px!important;}
+  dialog[open] .dialog-body{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;padding:12px 18px calc(18px + env(safe-area-inset-bottom))!important;overscroll-behavior:contain!important;}
+
+  /* 五子棋：扩大实际交点和棋盘主体，底部行动区移出棋盘边框。 */
+  #gmScreen .gm-center{top:47%!important;width:min(72vh,66vw)!important;height:min(72vh,66vw)!important;}
+  #gmScreen .gm-actions{bottom:7px!important;z-index:44!important;}
+  #gmScreen .gm-cell{width:8.2%!important;height:8.2%!important;}
+}
+
+@media (max-width:700px) and (max-height:440px) and (orientation:landscape){
+  #gmScreen .ddz-top-title{display:none!important;}
+  #gmScreen .ddz-topbar{grid-template-columns:218px minmax(0,1fr)!important;}
+  #gmScreen .ddz-topbar-right{justify-self:end!important;}
+  #gmScreen .ddz-beans{display:none!important;}
+  #gmScreen .ddz-base-control select{min-width:70px!important;}
+  #ddzScreen .ddz-top-title,#pdkScreen .ddz-top-title{max-width:112px!important;}
+  #ddzScreen .ddz-multiplier,#pdkScreen .ddz-multiplier{display:none!important;}
+  #ddzScreen .ddz-top-title h2,#pdkScreen .ddz-top-title h2{font-size:16px!important;}
+  #ddzScreen .ddz-beans,#pdkScreen .ddz-beans{display:none!important;}
+  #ddzScreen .ddz-base-control select,#pdkScreen .ddz-base-control select{min-width:70px!important;}
+  #ddzScreen .ddz-bid-panel{width:min(440px,72vw)!important;}
+  #lobbyScreen .lobby-main{grid-template-columns:150px minmax(0,1fr)!important;gap:20px!important;padding:14px 24px 20px!important;}
+  #lobbyScreen .lobby-feature h2{font-size:38px!important;}
+  #lobbyScreen .lobby-enter{min-height:46px!important;height:46px!important;}
+}

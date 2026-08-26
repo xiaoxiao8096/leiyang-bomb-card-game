@@ -5482,6 +5482,7 @@
     }
   }
   function gmSyncBaseControl(){const select=$('gmBaseSelect'),custom=$('gmCustomBase'),presets=[50,100,200,500,1000],amount=Math.max(50,Math.min(1000000,Number(gmBase)||200)),isPreset=presets.includes(amount);select.value=isPreset?String(amount):'custom';custom.value=String(amount);custom.classList.toggle('hidden',isPreset);}
+  $('gmGrid').addEventListener('click',event=>{if(!matchMedia('(max-height:520px) and (orientation:landscape)').matches||event.target.closest('.gm-cell'))return;const grid=$('gmGrid'),rect=grid.getBoundingClientRect(),c=Math.round((event.clientX-rect.left)/rect.width*(GM_SIZE-1)),r=Math.round((event.clientY-rect.top)/rect.height*(GM_SIZE-1));if(!gmInside(r,c))return;gmCellMap.get(`${r},${c}`)?.click();});
   function gmApplyBase(){const select=$('gmBaseSelect'),custom=$('gmCustomBase'),oldBase=gmBase;if(select.value==='custom'){custom.classList.remove('hidden');gmBase=Math.max(50,Math.min(1000000,Number(custom.value)||oldBase||200));}else{custom.classList.add('hidden');gmBase=Number(select.value);}base=gmBase;localStorage.setItem('ly_base',String(base));if(!gm||gm.moves===0){if(gm)gm.roundBase=gmBase;renderGM();}else{gm.message=`下局底注已设为 ${gmBase.toLocaleString()} 豆 · 点击重开生效`;renderGM();}}
   function enterGomoku(){clearTimeout(aiTimer);clearTimeout(ddzTimer);clearTimeout(pdkTimer);clearTimeout(mjTimer);clearTimeout(gmTimer);$('lobbyScreen').classList.add('hidden-view');$('app').classList.add('hidden-view');$('ddzScreen').classList.add('hidden-view');$('pdkScreen').classList.add('hidden-view');$('mjScreen').classList.add('hidden-view');$('gmScreen').classList.remove('hidden-view');gmBase=Math.max(50,Math.min(1000000,Number(base)||200));gmSyncBaseControl();applySkins();gmStart();}
   function gmApplyDifficulty(){const value=$('gmDifficultySelect').value;profile.gmDifficulty=['easy','normal','hard'].includes(value)?value:'normal';saveProfile();if(gm){gm.message=`AI难度已切换为${GM_DIFFICULTY[profile.gmDifficulty]}`;renderGM();}}
@@ -5836,7 +5837,7 @@
     }
   `;
   document.head.append(experienceVisualPatch);
-  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260826-mobile15';document.head.append(completionStyles);
+  const completionStyles=document.createElement('link');completionStyles.rel='stylesheet';completionStyles.href='assets/styles/experience-v3.css?v=20260826-mobile16';document.head.append(completionStyles);
 
   function enterTable() {
     $('lobbyScreen').classList.add('hidden-view');
